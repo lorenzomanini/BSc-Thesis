@@ -55,18 +55,18 @@ One natural way to proceed is to consider how hard it is to distinguish a probab
 
 For simplicity, let's consider the $N=2$ case, i.e. the case of binomial distributions. Let $\mathbf{q}=(t,1-t)$ and $\mathbf{p}=(r,1-r)$ be two probability distributions. Then if $N_s$ samples are drawn with underlying probability $q$, the probability $P_{N_s}(\mathbf{p})$ that the obtained frequencies correspond to $\mathbf{p}$ is given by
 \begin{equation*}
-    P_{N_s}(\mathbf{p})=\binom{N_s}{N_s\cdot r}t^{N_s\cdot r}(1-t)^{N_s\cdot (1-r)}
+    P_{N_s}(\mathbf{p})=\binom{N_s}{N_s\cdot r}t^{\,N_s\cdot r}(1-t)^{\,N_s\cdot (1-r)}
 \end{equation*}
 then by assuming $r\ne 0,1$ and using Stirling's formula, we obtain the following asymptotic behavior for $N_s\to\infty$
 \begin{equation}
     P_{N_s}(\mathbf{p})\sim\exp\biggl\{-N_s\biggl[r\ln\biggl(\frac{r}{t}\biggr)+(1-r)\ln\biggl(\frac{1-r}{1-t}\biggr)\biggr]\biggr\}
 \end{equation}
 so the probability decreases exponentially with $N_s$ times the factor in the square parenthesis. This factor only depends on the probability distributions $p$ and $q$, and one may recognize it from statistics as the \emph{relative entropy} of the two distributions. For a generic finite sample space $\mathcal{X}$, the relative entropy is defined as
-\begin{equation}
+\begin{equation} \label{eq:rel-entropy}
     S(p\parallel q)\coloneqq\sum_{x\in\mathcal{X}}p(x)\ln\biggl(\frac{p(x)}{q(x)}\biggr)
 \end{equation}
+
 More generally it can be shown that the following theorem holds.
-\newpage
 \begin{theorem}[Sanov's Theorem]
     Let $\mathcal{P}$ be the set of probability distributions on a finite sample space $\mathcal{X}$ and $\mathcal{E}\subseteq\mathcal{P}$ be a closed set without isolated points. Then if $N_s$ samples are drawn with underlying probability distribution $q\in\mathcal{P}$, the probability $P_{N_s}(\mathcal{E})$ that the obtained frequencies correspond to an element in $\mathcal{E}$ has the following asymptotic behavior
     \begin{equation}
@@ -74,4 +74,13 @@ More generally it can be shown that the following theorem holds.
     \end{equation}
     where $p_*$ is the element of $\mathcal{E}$ for which $S(p_*\parallel q)$ is smallest.
 \end{theorem}
-Roughly speaking, this shows that the greater the relative entropy $S(p_*\parallel q)$ the faster the probability of obtaining frequencies in a small neighborhood of $p$ decreases with the number of samples drawn.
+Roughly speaking, this shows that the greater the relative entropy $S(p\parallel q)$ the faster the probability of obtaining frequencies in a small neighborhood of $p$ decreases with the number of samples drawn with underlying probability $q$. In this view, relative entropy can serve as a kind of distance between probability distributions, but with some caveats. From the definition in \cref{eq:rel-entropy} relative entropy has the following properties
+\begin{gather}
+    S(p\parallel q)\ge 0\quad\forall p,q\in\mathcal{P}\\
+    S(p\parallel q)=0\iff p=q
+\end{gather}
+but it is not symmetric and it doesn't follow the triangle inequality, so it is not a metric distance. We may ask ourselves if the asymmetry is an accident of our definition of relative entropy or if it is inherent in the distinguishability of probability distributions. The latter turns out to be true, as shown by the following example.
+\begin{example}
+    Consider two coins, one fair and one with heads on both sides. We want to pick one and guess which one it is just by tossing it multiple times. Clearly, the game is not symmetric in the choice of the coin; in fact, if we pick the fair coin the first time we will get a tail we will be sure that we picked the fair one, while if we pick the double-head one we will only get heads but this result will always be also compatible with a fair coin that, by chance, is only giving heads.
+\end{example}
+This game is precisely a problem of distinguishability of probability distributions. In fact, we have the $N=2$ sample space and two probability distributions: $\mathbf{p}=(0.5,0.5)$ (the fair coin) and $\mathbf{q}=(1,0)$ (the double-head coin), so the two relative entropies are $S(p\parallel q)=\infty$ and $S(q\parallel p)=\ln 2$. If we pick the fair coin for large $N_s$ the obtained frequencies will approach $\mathbf{p}$; then we consider the probability of obtaining these frequencies if the underlying distribution was $q$. This probability is identically 0, and it is coherent with Sanov's theorem since  $S(p\parallel q)=\infty$ and so $P_{N_s}(p)\sim e^{-N_s\cdot\infty}=0$. Otherwise, if we pick the double-head coin the frequencies will always match exactly $\mathbf{q}$, and the probability of getting this if the underlying distribution was $q$ is $0.5^{N_s}$. This is coherent with Sanov's theorem since  $S(q\parallel p)=\ln 2$ and so $P_{N_s}(q)\sim e^{-N_s\cdot\ln 2}=0.5^{N_s}$
