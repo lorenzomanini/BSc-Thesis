@@ -48,7 +48,7 @@ that immediately imply that $\Xi$ is also an open set. This allows us to differe
 \todo{Esempi}
 
 \section{The Fisher information metric}
-\subsection{The information divergence}
+\subsection{The relative entropy}
 Given a statistical manifold, we may consider its tangent bundle and ask ourselves if a certain metric can be naturally defined on it. Such a metric would give rise to a Riemaniann connection and consequently to a geodesic distance between elements of the manifold. For this reason, we should first find a statistical meaning to the notion of distance between probability distributions.
 
 One natural way to proceed is to consider how hard it is to distinguish a probability distribution from another one by extracting some samples. More precisely let's assume that a random variable has an underlying distribution $q$ and that $N_s$ samples are extracted. Then we can consider the probability that the resulting frequencies $f_i$ of the samples correspond to the probabilities $p_i$ of another probability distribution $p$.
@@ -83,4 +83,19 @@ but it is not symmetric and it doesn't follow the triangle inequality, so it is 
 \begin{example}
     Consider two coins, one fair and one with heads on both sides. We want to pick one and guess which one it is just by tossing it multiple times. Clearly, the game is not symmetric in the choice of the coin; in fact, if we pick the fair coin the first time we will get a tail we will be sure that we picked the fair one, while if we pick the double-head one we will only get heads but this result will always be also compatible with a fair coin that, by chance, is only giving heads.
 \end{example}
-This game is precisely a problem of distinguishability of probability distributions. In fact, we have the $N=2$ sample space and two probability distributions: $\mathbf{p}=(0.5,0.5)$ (the fair coin) and $\mathbf{q}=(1,0)$ (the double-head coin), so the two relative entropies are $S(p\parallel q)=\infty$ and $S(q\parallel p)=\ln 2$. If we pick the fair coin for large $N_s$ the obtained frequencies will approach $\mathbf{p}$; then we consider the probability of obtaining these frequencies if the underlying distribution was $q$. This probability is identically 0, and it is coherent with Sanov's theorem since  $S(p\parallel q)=\infty$ and so $P_{N_s}(p)\sim e^{-N_s\cdot\infty}=0$. Otherwise, if we pick the double-head coin the frequencies will always match exactly $\mathbf{q}$, and the probability of getting this if the underlying distribution was $q$ is $0.5^{N_s}$. This is coherent with Sanov's theorem since  $S(q\parallel p)=\ln 2$ and so $P_{N_s}(q)\sim e^{-N_s\cdot\ln 2}=0.5^{N_s}$
+This game is precisely a problem of distinguishability of probability distributions. In fact, we have the $N=2$ sample space and two probability distributions: $\mathbf{p}=(0.5,0.5)$ (the fair coin) and $\mathbf{q}=(1,0)$ (the double-head coin), so the two relative entropies are $S(p\parallel q)=\infty$ and $S(q\parallel p)=\ln 2$. If we pick the fair coin for large $N_s$ the obtained frequencies will approach $\mathbf{p}$; then we consider the probability of obtaining these frequencies if the underlying distribution was $q$. This probability is identically 0, and it is coherent with Sanov's theorem since  $S(p\parallel q)=\infty$ and so $P_{N_s}(p)\sim e^{-N_s\cdot\infty}=0$. Otherwise, if we pick the double-head coin the frequencies will always match exactly $\mathbf{q}$, and the probability of getting this if the underlying distribution was $q$ is $0.5^{N_s}$. This is coherent with Sanov's theorem since  $S(q\parallel p)=\ln 2$ and so $P_{N_s}(q)\sim e^{-N_s\cdot\ln 2}=0.5^{N_s}$.
+
+Even though relative entropy doesn't follow triangle inequality, it does follow a generalization of the Pythagorean theorem stated as follows
+\begin{theorem}[Generalized Pythagorean theorem]
+    Let $\mathcal{E}\subset\mathcal{P}$ be a convex set and consider $p\in\mathcal{E}$ and $q\in\mathcal{P}\setminus\mathcal{E}$. Then
+    \begin{equation} \label{eq:gen-pyth}
+        S(p\parallel q)\le S(p\parallel p_*)+S(p_*\parallel q)
+    \end{equation}
+    where $p_*=\min\limits_{r\in\partial\mathcal{E}}S(r\parallel q)$.
+\end{theorem}
+This is a generalization of the Pythagorean theorem in the sense that if it was stated in terms of the Euclidean distance squared, the angle between $\overline{pp_*}$ and $\overline{p_*q}$ would be convex and so \cref{eq:gen-pyth} would be the corollary of the Pythagorean theorem for convex triangles. This suggests that the relative entropy may be regarded as an asymmetric distance squared, this is explored in the following section.
+
+\section{Divergences}
+As we have seen the relative entropy has some properties of squared distances and so we may try to relate it to a metric tensor in the same way we would do for a metric squared distance.
+
+Let 
