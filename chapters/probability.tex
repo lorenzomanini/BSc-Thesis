@@ -93,9 +93,49 @@ Even though relative entropy doesn't follow triangle inequality, it does follow 
     \end{equation}
     where $p_*=\min\limits_{r\in\partial\mathcal{E}}S(r\parallel q)$.
 \end{theorem}
-This is a generalization of the Pythagorean theorem in the sense that if it was stated in terms of the Euclidean distance squared, the angle between $\overline{pp_*}$ and $\overline{p_*q}$ would be convex and so \cref{eq:gen-pyth} would be the corollary of the Pythagorean theorem for convex triangles. This suggests that the relative entropy may be regarded as an asymmetric distance squared, this is explored in the following section.
+This is a generalization of the Pythagorean theorem in the sense that if it was stated in terms of the Euclidean distance squared, the angle between $\overline{pp_*}$ and $\overline{p_*q}$ would be convex and so \cref{eq:gen-pyth} would be the corollary of the Pythagorean theorem for convex triangles. This suggests that the relative entropy may be regarded as an asymmetric distance squared and as we will see this is enough to define a metric on the manifold.
 
-\section{Divergences}
-As we have seen the relative entropy has some properties of squared distances and so we may try to relate it to a metric tensor in the same way we would do for a metric squared distance.
+\subsection{Squared Riemannian distances}\todo{Find better title: maybe Metric Riemaniann manifolds?}
+Now that we have some notion of distance, we shall explore how to define a coherent metric on the manifold. First, we shall study this for a Riemannian distance as defined in \ref{}.
 
-Let 
+Let $(M,g)$ be a Riemannian manifold where $g$ is the metric tensor, then consider a point $p\in M$. We define the \emph{exponential map} in $p$ as follows
+\begin{equation}
+    \text{Exp}_p:T_pM\to M,\quad \text{Exp}_p(\mathbf{v})\coloneqq\gamma_{\mathbf{v}}(1)
+\end{equation}
+where $\mathbf{v}\in T_p$ and $\gamma_{\mathbf{v}}:[0,1]\to M$ is the unique geodesic tangent to $v$ in $p$, i.e. satisfying $\gamma_{\mathbf{v}}(0)=p$ and $\gamma_{\mathbf{v}}'(0)=\mathbf{v}$. In general, this map will be well-defined only from a neighborhood of the origin of $T_p$ to a neighborhood of $p$, since only locally the uniqueness of the geodesic curve is guaranteed. By eventually further restricting the neighborhood, this map will also be 1-1 since locally the geodesic curves don't cross.
+
+Then in this neighborhood, we have the inverse of the exponential map that maps $q\mapsto\mathbf{v}_q\in T_pM$ so that $\gamma_{\mathbf{v}_q}(1)=q$. Since $\gamma_{\mathbf{v}_q}$ is the only geodesic connecting $p$ and $q$, the geodesic distance between them will be
+\begin{equation}
+    L=\int_{0}^{1}\sqrt{g_{\gamma_{\mathbf{v}_q}(\lambda)}(\gamma_{\mathbf{v}_q}'(\lambda),\gamma_{\mathbf{v}_q}'(\lambda))}d\lambda
+\end{equation}
+Because $\gamma_{\mathbf{v}_q}$ is a geodesic, by definition we have that $\gamma_{\mathbf{v}_q}'(\lambda)$ is parallel transported along the curve and so
+\begin{equation}
+    g_{\gamma_{\mathbf{v}_q}(\lambda)}(\gamma_{\mathbf{v}_q}'(\lambda),\gamma_{\mathbf{v}_q}'(\lambda))=g_p(\mathbf{v}_q,\mathbf{v}_q)\quad\forall\lambda\in [0,1]
+\end{equation}
+Finally then, we get
+\begin{equation} \label{eq:geo-dist}
+    L(p,q)=\int_{0}^{1}\sqrt{g_p(\mathbf{v}_q,\mathbf{v}_q)}d\lambda=\sqrt{g_p(\mathbf{v}_q,\mathbf{v}_q)}=\lVert \mathbf{v}_q \rVert
+\end{equation}
+and so $\mathbf{\hat{v}}_q={\mathbf{v}_q}\backslash{L(p,q)}$.
+
+Now chose a vector $\mathbf{dp}\in T_pM$ and let $q=\text{Exp}_p(\mathbf{dp})$. Then, let $\Gamma_{\hat{\mathbf{dp}}}$ be the unique geodesic curve such that $\Gamma_{\hat{\mathbf{dp}}}(0)=p$ and $\Gamma_{\hat{\mathbf{dp}}}'(0)=\mathbf{\hat{dp}}$. Clearly, this is the following reparametrization of $\gamma_{\mathbf{dp}}$
+\begin{equation}
+    \Gamma_{\hat{\mathbf{dp}}}(l)=\gamma_{\mathbf{dp}}\biggl(\frac{l}{\lVert \mathbf{v}_q \rVert}\biggr)=\gamma_{\mathbf{dp}}\biggl(\frac{l}{L(p,q)}\biggr)
+\end{equation}
+and so $q=\Gamma_{\hat{\mathbf{dp}}}(L(p,q))$.
+
+Now let $\{x^{(i)}\}$ be a coordinate system for the neighborhood; from the Taylor expansion of $\Gamma_{\hat{\mathbf{dp}}}^{(i)}(l)$ in $l=0$ we get
+\begin{equation}
+    \Gamma_{\hat{\mathbf{dp}}}^{(i)}(l)=\Gamma_{\hat{\mathbf{dp}}}^{(i)}(0)+\left.\frac{d\Gamma_{\hat{\mathbf{dp}}}^{(i)}(l)}{dl}\right\rvert_{l=0}\cdot l+O(l^2)
+\end{equation}
+then, from $\Gamma_{\hat{\mathbf{dp}}}(0)=p$, $\Gamma_{\hat{\mathbf{dp}}}'(0)=\mathbf{\hat{dp}}$ and $q=\Gamma_{\hat{\mathbf{dp}}}(L(p,q))$ we get that
+\begin{equation} \label{eq:p-dp}
+    q^{(i)}=p^{(i)}+\hat{dp^i}\,L(p,q)+O(L(p,q)^2)=p^{(i)}+dp^i+O(L(p,q)^2)
+\end{equation}
+for every $q$ in the image of $\Gamma_{\hat{\mathbf{dp}}}$.
+
+From \cref{eq:geo-dist} it follows that $L^2(p,q)=g_{ij}dp^i dp^j$ and combining it with \cref{eq:p-dp} we get
+\begin{equation}
+    L^2(p^{(i)},p^{(i)}+dp^i)\to g_{ij}dp^i dp^j \quad \text{for} \quad dp^i\to 0
+\end{equation}
+This result allows us to recover the metric tensor from the squared Riemaniann distance.
