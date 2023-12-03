@@ -47,9 +47,9 @@ that immediately imply that $\Xi$ is also an open set. This allows us to differe
 \subsubsection{Examples}
 \todo{Esempi}
 
-\section{The Fisher information metric}
-\subsection{The relative entropy}
-Given a statistical manifold, we may consider its tangent bundle and ask ourselves if a certain metric can be naturally defined on it. Such a metric would give rise to a Riemaniann connection and consequently to a geodesic distance between elements of the manifold. For this reason, we should first find a statistical meaning to the notion of distance between probability distributions.
+\section{Fisher information metric}
+\subsection{Relative entropy} \label{ch:rel-entr}
+Given a statistical manifold, we may consider its tangent bundle and ask ourselves if a certain metric can be naturally defined on it. Such a metric would give rise to a Riemannian connection and consequently to a geodesic distance between elements of the manifold. For this reason, we should first find a statistical meaning to the notion of distance between probability distributions.
 
 One natural way to proceed is to consider how hard it is to distinguish a probability distribution from another one by extracting some samples. More precisely let's assume that a random variable has an underlying distribution $q$ and that $N_s$ samples are extracted. Then we can consider the probability that the resulting frequencies $f_i$ of the samples correspond to the probabilities $p_i$ of another probability distribution $p$.
 
@@ -95,7 +95,7 @@ Even though relative entropy doesn't follow triangle inequality, it does follow 
 \end{theorem}
 This is a generalization of the Pythagorean theorem in the sense that if it was stated in terms of the Euclidean distance squared, the angle between $\overline{pp_*}$ and $\overline{p_*q}$ would be convex and so \cref{eq:gen-pyth} would be the corollary of the Pythagorean theorem for convex triangles. This suggests that the relative entropy may be regarded as an asymmetric distance squared and as we will see this is enough to define a metric on the manifold.
 
-\subsection{Squared Riemannian distances}\todo{Find better title: maybe Metric Riemaniann manifolds?}
+\subsection{Squared Riemannian distances} \label{ch:square-dist} \todo{Find better title: maybe Metric Riemannian manifolds?}
 Now that we have some notion of distance, we shall explore how to define a coherent metric on the manifold. First, we shall study this for a Riemannian distance as defined in \ref{}.
 
 Let $(M,g)$ be a Riemannian manifold where $g$ is the metric tensor, then consider a point $p\in M$. We define the \emph{exponential map} in $p$ as follows
@@ -130,12 +130,57 @@ Now let $\{x^{(i)}\}$ be a coordinate system for the neighborhood; from the Tayl
 \end{equation}
 then, from $\Gamma_{\hat{\mathbf{dp}}}(0)=p$, $\Gamma_{\hat{\mathbf{dp}}}'(0)=\mathbf{\hat{dp}}$ and $q=\Gamma_{\hat{\mathbf{dp}}}(L(p,q))$ we get that
 \begin{equation} \label{eq:p-dp}
-    q^{(i)}=p^{(i)}+\hat{dp^i}\,L(p,q)+O(L(p,q)^2)=p^{(i)}+dp^i+O(L(p,q)^2)
+    q^{(i)}=p^{(i)}+\hat{dp^i}\,L(p,q)+O(L^2(p,q))=p^{(i)}+dp^i+O(\lVert \mathbf{dp} \rVert^2)
 \end{equation}
-for every $q$ in the image of $\Gamma_{\hat{\mathbf{dp}}}$.
-
-From \cref{eq:geo-dist} it follows that $L^2(p,q)=g_{ij}dp^i dp^j$ and combining it with \cref{eq:p-dp} we get
+for every $q$ in the image of $\Gamma_{\hat{\mathbf{dp}}}$. Then, combining \cref{eq:geo-dist} and \cref{eq:p-dp} we get
 \begin{equation}
-    L^2(p^{(i)},p^{(i)}+dp^i)\to g_{ij}dp^i dp^j \quad \text{for} \quad dp^i\to 0
+    L^2(\{p^{(i)}\},\{p^{(i)}+dp^i\})\to L^2(p,q)=g_{ij}dp^i dp^j \quad \text{for} \quad dp^i\to 0
 \end{equation}
-This result allows us to recover the metric tensor from the squared Riemaniann distance.
+
+We define $L_p^2:M\to [0,+\infty)$, $L_p^2(q)\coloneqq L^2(p,q)$ and consider its Taylor expansion in $q=p$
+\begin{equation}
+    L_p^2(\{p^{(i)}+dp^i\})=\frac{1}{2}\Bigl[\partial_i\partial_j L_p^2(q)\Bigr]_{q=p} dp^i dp^j + O(dp^3)
+\end{equation}
+where the first derivative vanishes because $p$ is a minimum of $L_p^2$. Then we get
+\begin{equation}
+    g_{ij}^{(p)}=\frac{1}{2}\Bigl[\partial_i\partial_j L_p^2(q)\Bigr]_{q=p}
+\end{equation}
+so the metric tensor in $p$ is proportional to the Hessian matrix of $L_p^2$ in $p$. This result allows us to recover the metric tensor from the squared Riemannian distance.
+
+\subsection{Divergences}
+As argued in the last paragraph of \cref{ch:rel-entr}, relative entropy has some properties of squared distances and so we may try to find a metric tensor coherent with it as we did in \cref{ch:square-dist}.
+
+Let $M$ be an analytic manifold and $D(\,\cdot\parallel\cdot\,):M\times M\to[o,+\infty)$ a $C^2$ function (possibly asymmetric) satisfying
+\begin{equation} \label{eq:div-def}
+    D(p\parallel q)\ge 0\quad\text{and}\quad D(p\parallel q)=0\iff p=q\qquad \forall p,q\in M
+\end{equation}
+Then, given a coordinate system $\{\xi^{(i)}\}$ on $M$ we have that every pair of points $(q,q')\in M\times M$ has coordinates $(\{\xi^{(i)}\},\{\xi^{(i)'}\})$ and we use the following notation for partial derivatives in one of the two terms on the diagonal $(p,p)$
+\begin{gather*}
+    D[\,\partial_i\parallel\cdot\,]\colon p\mapsto \left[\partial_i D(q\parallel q')\right]_{(q,q')=(p,p)}\\
+    D[\,\cdot\parallel\partial_i\,]\colon p\mapsto \left[\partial_i' D(q\parallel q')\right]_{(q,q')=(p,p)}
+\end{gather*}
+
+From the fact that the diagonal $(p,p)$ is a constant surface of minima of $D$ follows that
+\begin{equation} \label{eq:div-firstd}
+    D[\,\partial_i\parallel\cdot\,]=D[\,\cdot\parallel\partial_i\,]\equiv 0
+\end{equation}
+so the diagonal is also a constant surface of the derivatives of $D$. Then by further deriving parallel to the diagonal, we get
+\begin{gather*}
+    (\partial_i+\partial_i') D[\,\cdot\parallel\partial_j\,]=D[\,\cdot\parallel\partial_i\partial_j\,]+D[\,\partial_i\parallel\partial_j\,]\equiv 0\\
+    (\partial_j+\partial_j')D[\,\partial_i\parallel\cdot\,]=D[\,\partial_i\partial_j\parallel\cdot\,]+D[\,\partial_i\parallel\partial_j\,]\equiv 0
+\end{gather*}
+where we used the fact that since $D$ is $C^2$ we can swap second-order derivatives. Finally, we get
+\begin{equation} \label{eq:div-secd}
+    D[\,\partial_i\partial_j\parallel\cdot\,]=D[\,\cdot\parallel\partial_i\partial_j\,]=-D[\,\partial_i\parallel\partial_j\,]\eqqcolon g_{ij}^{(D)}
+\end{equation}
+where from the fact that the diagonal is a surface of minima, it follows that the previous expression defines a (symmetric) positive semi-definite matrix. It can further be shown that the Hessian matrix of any $C^2$ function of the manifold evaluated in a critical point is a $\left(\frac{0}{2}\right)$ tensor. From \cref{eq:div-firstd} and \cref{eq:div-secd} it follows that denoting
+\begin{equation*}
+    D_p^{(R)}: q\mapsto D(p\parallel q) \quad\text{and}\quad D_p^{(L)}: q\mapsto D(q\parallel p)
+\end{equation*}
+to second order, we get
+\begin{equation*}
+    D_p^{(R)}(q)=\frac{1}{2}g_{ij}d\xi^id\xi^j + O(d\xi^2) \quad\text{and}\quad D_p^{(L)}(q)=\frac{1}{2}g_{ij}d\xi^id\xi^j + O(d\xi^2)
+\end{equation*}
+and so to the lowest order, the asymmetry is not present.
+
+Finally, if $g_{ij}^{(D)}$ is positive definite we say that $D$ is a \emph{divergence}, then $\frac{1}{2}g_{ij}^{(D)}$ defines a metric tensor and so a unique Riemannian structure on the manifold. The induced squared Riemannian distance coincides at the lowest order near the diagonal with the divergence.
