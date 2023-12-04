@@ -14,3 +14,17 @@
 
 \binoppenalty=10000 
 \relpenalty=10000 
+
+%Work in progress
+\newcommand{\todo}[1]{\PackageWarning{todo}{Todo: #1}}
+
+\usepackage{silence}
+\WarningFilter[todo]{todo}
+  {Todo }
+\WarningFilter[ref]{latex}
+  {Reference }
+\WarningFilter[ref]{latex}
+  {There were undefined references }
+
+\ActivateWarningFilters[ref]
+\ActivateWarningFilters[todo]

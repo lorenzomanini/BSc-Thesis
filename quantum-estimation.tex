@@ -1,22 +1,7 @@
 \documentclass[a4paper,12pt]{report}
 \input{preamble.tex}
 
-%Work in progress
-\newcommand{\todo}[1]{\PackageWarning{todo}{Todo: #1}}
-
-\usepackage{silence}
-\WarningFilter[todo]{todo}
-  {Todo }
-\WarningFilter[ref]{latex}
-  {Reference }
-\WarningFilter[ref]{latex}
-  {There were undefined references }
-
-\ActivateWarningFilters[ref]
-\ActivateWarningFilters[todo]
-
 \begin{document}
 \tableofcontents
-\input{chapters/probability.tex}
-%\input{chapters/quantum.tex}
+\input{sections/probability.tex}
 \end{document}
