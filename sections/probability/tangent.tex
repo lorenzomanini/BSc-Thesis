@@ -1,1 +1,20 @@
 \chapter{Representations of the tangent space}
+In this chapter, we will study the tangent spaces of statistical manifolds from various points of view.
+
+\section{The mixture representation}
+Now that we have defined a metric on $\mathcal{P}$ we may look back at the convex embedding of $\mathcal{P}$ in $\mathbb{R}^N$ as defined in \cref{eq:P-conv-emb}. In this view $\mathcal{P}$ is a convex subset of the affine space $\mathcal{A}_1\coloneqq\{\mathbf{p}\in\mathbb{R}^N\vert\sum p_i=1\}$ and so one natural representation of the tangent space is the vector space $\mathcal{A}_0\coloneqq\{\mathbf{p}\in\mathbb{R}^N\vert\sum p_i=0\}$. This is done through the isomorphism
+\begin{equation}
+    \partial_i\leftrightarrow\\partial_ip(x;\theta)
+\end{equation}
+then $X^{(m)}\coloneqq X^i\partial_ip(x;\theta)$ is called the \emph{mixture representation} or \emph{m-representation} of $X\in T_p\mathcal{P}$ and we have
+\begin{equation}
+    T_p\mathcal{P}\sim T_p^{(m)}\mathcal{P}\coloneqq\{X^{(m)}\vert X\in T_p\mathcal{P}\}=\{\}
+\end{equation}
+$\mathcal{A}_0$  is the plane parralel to the convex embedding of $\mathcal{P}$ and, intuitively, $d\mathbf{p}=\partial_i\mathbf{p}(\theta)d\theta^i$ is the infenitesimal displacement of the probabilities $p_k$ due to an infenitesimal change of the parameter $\theta$, then we have $\sum dp_k=0$ as we would expect.
+
+In this representation from \cref{eq:fisher-mix} we get that given $X,Y\in T_p\mathcal{S}$
+\begin{equation}
+    \langle \mathrm{X},\mathrm{Y} \rangle = \sum_{x\in\mathcal{X}}\frac{\mathrm{X}^{(m)}(x)\mathrm{Y}^{(m)}(x)}{p(x)}
+\end{equation}
+
+\section{The statistical geometry of $\mathcal{P}$}
