@@ -1,67 +1,49 @@
 \chapter{Manifolds of probability distributions}
-\section{Space of probability distributions1}
-%Define sample space X as just the space of possible outcomes
-%Define right away R^X
-%Define probability distributions saying they also are in R^X
-%Talk about R^X being a convex space and how one could picture R^X in his mind thinking of R^N
-%Talk about the expectation value and the Euclidean product between rnd var and p dist
-Consider a \emph{random process} and the set $\mathcal{X}$ of its possible outcomes. We call this set the \emph{sample space}, and we will only consider random processes for which it is finite. Then, a \emph{probability distribution} on $\mathcal{X}$ is a function $p\in\mathbb{R}^\mathcal{X}\coloneq\{f\mid f\colon \mathcal{X}\to\mathbb{R}\}$ which satisfies
+\section{Space of probability distributions} \label{ch:space-prob-dist}
+Consider a \emph{random process} and the set $\mathcal{X}$ of all its possible outcomes. We call this set the \emph{sample space}, and we will only consider random processes for which it is finite. Then, a \emph{probability distribution} on $\mathcal{X}$ is a function $p\in\mathbb{R}^\mathcal{X}\coloneq\{f\mid f\colon \mathcal{X}\to\mathbb{R}\}$ which satisfies
 \begin{equation} \label{eq:prob-dist-def}
     p(x)\ge 0 \quad \forall x\in\mathcal{X} \quad \text{and} \quad \sum_{x\in\mathcal{X}}p(x)=1
 \end{equation}
 where $p(x)$ represents the probability of the outcome $x$. We also have that every function $A\in\mathbb{R}^\mathcal{X}$ represents a real \emph{random variable}, as it maps every outcome of a random process to a number.
 
-Let now $N$ be the cardinality of $\mathcal{X}$, then we can consider the natural isomorphism between $\mathbb{R}^\mathcal{X}$ and $\mathbb{R}^N$ by indexing the outcomes
+Let now $N$ be the cardinality of $\mathcal{X}$. To have a picture of $\mathbb{R}^\mathcal{X}$ we can index the outcomes and consider the natural isomorphism between $\mathbb{R}^\mathcal{X}$ and $\mathbb{R}^N$
 \begin{equation}
     f \leftrightarrow (f(x_1),\dots,f(x_N))
 \end{equation}
-then it's easy to see that the \emph{space of probability distributions} is the convex set resulting from the convex mixing of the trivial probability distributions $f(x_i)=\delta_{ik}$, represented by the unit vectors of $\mathbb{R}^N$.
+then it's easy to recognize that the \emph{space of probability distributions} is a convex subset of the affine subspace $\mathcal{A}_1\coloneqq\{f\in\mathbb{R}^\mathcal{X}\mid\sum_{x\in\mathcal{X}}f(x)=1\}$. In particular, it is the set resulting from the convex mixing of the trivial probability distributions $f(x_i)=\delta_{ik}$, represented by the unit vectors of $\mathbb{R}^N$.
 
-It's also interesting to consider the inner product induced on $\mathbb{R}^\mathcal{X}$ by the Euclidean one of $\mathbb{R}^N$. In particular, let $p$ be a probability distribution and $A$ a random variable, then
+It's also interesting to consider the inner product induced on $\mathbb{R}^\mathcal{X}$ by the Euclidean one of $\mathbb{R}^N$. Let $p$ be a probability distribution and $A$ a random variable, then
 \begin{equation}
     p \cdot A = \sum_{x\in\mathcal{X}}p(x)A(x)\coloneqq\mathrm{E}_p[A]
 \end{equation}
-where $\mathrm{E}_p[A]$ is the \emph{expectation value} of the random variable $A$ when the underlying probability distribution of the random process is $p$. 
-
-\section{Space of probability distributions2}
-Consider a \emph{random variable} that can take values in a finite set $\mathcal{X}$ of cardinality $N$ that we call \emph{sample space}. Then a \emph{probability distribution} on $\mathcal{X}$ is a function $p\colon\mathcal{X}\to\mathbb{R}$ which satisfies
-\begin{equation}
-    p(x)\ge 0 \quad \forall x\in\mathcal{X} \quad \text{and} \quad \sum_{x\in\mathcal{X}}p(x)=1
-\end{equation}
-where $p(x)$ represents the probability that the random variable is found with value $x$. Accordingly, the \emph{space of probability distributions} is
-\begin{equation}
-    \mathcal{P} = \Bigl\{ p\colon\mathcal{X}\to\mathbb{R} \bigm\vert p(x)\ge 0 \quad \text{and} \quad \sum_{x\in\mathcal{X}}p(x)=1 \Bigr\}
-\end{equation}
-that we consider equipped with the point-wise topology.
-\todo{Decidere se parlare della topologia}
-
-Since we are working with a finite sample space we can consider the isomorphism between functions $f\colon\mathcal{X}\to\mathbb{R}$ and $\mathbb{R}^{card(\mathcal{X})}=\mathbb{R}^N$ through 
-\begin{equation*}
-    f\leftrightarrow\boldsymbol{f}\coloneqq(f(x_1),f(x_2),\dots,f(x_N))
-\end{equation*}
-so that
-\begin{equation} \label{eq:P-conv-emb}
-    \mathcal{P}\sim\Bigl\{ \boldsymbol{p}\in\mathbb{R}^N \bigm\vert p_i\geq 0  \quad \text{and} \quad \sum p_i=1 \Bigr\}
-\end{equation}
-where the standard topology induced by this isomorphism corresponds to the point-wise one. We call this the convex embedding of $\mathcal{P}$ in $\mathbb{R}^N$.
-\todo{Decidere se parlare della topologia}
-
-We can conclude that the space of probability distributions is the (N-1)-simplex generated by convex mixing of the trivial distributions, as seen in \ref{}; in \ref{} pictures for the first few dimensions are given.
-\todo{Decidere se parlare degli spazi convessi}
-
-\todo{Esempi}
+where $\mathrm{E}_p[A]$ is the \emph{expectation value} of the random variable $A$ when the underlying probability distribution of the random process is $p$.
 
 \section{Statistical models and manifolds}
-We call an n-dimensional \emph{statistical model} on $\mathcal{X}$ a family of probability distributions that are globally parametrized by n real-valued variables. Formally this is a set $\mathcal{S}\subseteq\mathcal{P}$ with an invertible function $\psi\colon\mathcal{S}\to\Xi\subseteq\mathbb{R}^n$, so that we may write
+We call an n-dimensional \emph{statistical model} on $\mathcal{X}$ a family of probability distributions that are globally parametrized by n real-valued variables. Formally this is a subset $\mathcal{S}$ of the space of probability distributions with an invertible function $\psi\colon\mathcal{S}\to\Xi\subseteq\mathbb{R}^n$, so that we may write
 \begin{equation}
-    \mathcal{S} = \Bigl\{ p_\xi\in\mathcal{P} \bigm\vert \exists\xi=[\xi^1,\xi^2,\dots,\xi^n]\in\Xi \colon p_\xi=\psi^{-1}(\xi) \Bigr\}
+    \mathcal{S} = \Bigl\{ p_\xi \bigm\vert \exists\,\xi=(\xi^{(1)},\dots,\xi^{(n)})\in\Xi \colon p_\xi=\psi^{-1}(\xi) \Bigr\}
 \end{equation}
-where $p_\xi(x)$ may be equivalently written as $p(x;\xi)$ or $p(x;\xi^1,\xi^2,\dots,\xi^n)$. This definition of a statistical model reflects the act of hypothesizing an underlying model, that may depend on some parameters, for the generation of the random variable's samples. Then only a subset, here represented by $\mathcal{S}$, of all the possible probability distributions is considered as a candidate of the underlying probability distribution, and every candidate probability distribution is identified uniquely by the corresponding parameters, here represented by $\xi$.
+where $p_\xi(x)$ may be equivalently written as $p(x;\xi)$ or $p(x;\xi^{(1)},\dots,\xi^{(n)})$. This definition of a statistical model reflects the act of hypothesizing an underlying model, that may depend on some parameters, for the generation of the random variable's samples. Then only a subset, here represented by $\mathcal{S}$, of all the possible probability distributions is considered as a candidate of the underlying probability distribution, and every candidate probability distribution is identified uniquely by the corresponding parameters, here represented by $\xi$.
 
-We also require two important additional regularity properties:
+We now introduce some additional requirements to $S$ so that we may treat it as a well-behaved manifold. Firstly we regard $S$ as a subset of $\mathcal{A}_1$ equipped with the topology induced by the standard one of $\mathbb{R}^N$. Then, we require that
+\begin{equation} \label{eq:param-prop}
+    \begin{aligned}
+        &\text{$\Xi$ is an open set}\\
+        &\text{$\psi$ is a $\mathit{C}^\infty$ diffeomorphism from $\mathcal{S}$ to $\Xi$}
+    \end{aligned}
+\end{equation}
+This allows us to differentiate the probability distributions with respect to the parameters so that $\partial_ip(x;\xi)$ is well defined, where we wrote $\partial_i\coloneqq\frac{\partial}{\partial\xi^{(i)}}$. These conditions also imply that the pair $\mathcal{S}$ and $\psi$ form a chart of $\mathcal{S}$. Then for any another statistical model on $\mathcal{S}$ with parametrization $\psi'\colon\mathcal{S}\to\Xi'\subseteq\mathbb{R}^n$ that follows \cref{eq:param-prop}, the composed function $\psi'\circ\psi^{-1}\colon\Xi\to\Xi'$ will be a $\mathit{C}^\infty$ diffeomorphism. By considering all the possible parametrizations of this kind we may treat $\mathcal{S}$ as a $\mathit{C}^\infty$-differentiable manifold, where statistical models are the charts and the different parametrizations are the coordinate systems; we call manifolds like these \emph{statistical manifolds}.
+
+From our definitions, it is clear that the maximal dimension of a model is $n=N-1$ and that every statistical manifold is a submanifold of
 \begin{equation}
-    \text{$\mathcal{S}$ is an open set}\qquad\text{and}\qquad\text{$\psi^{-1}$ is $\mathit{C}^\infty$}
+    \mathcal{P}\coloneqq\{p\in\mathbb{R}^\mathcal{X}\mid p(x)>0 \quad \forall x\in\mathcal{X} \quad \text{and} \quad \sum_{x\in\mathcal{X}}p(x)=1\}
 \end{equation}
-that immediately imply that $\Xi$ is also an open set. This allows us to differentiate the probability distributions with respect to the parameters so that $\partial_ip(x;\xi)$ is well defined, where we wrote $\partial_i\coloneqq\frac{\partial}{\partial\xi_i}$. These conditions also imply that the pair $\mathcal{S}$ and $\psi$ form a chart (both of $\mathcal{P}$ and $\mathcal{S}$). Then by taking parametrizations that are $\mathit{C}^\infty$ diffeomorphic to each other, we can construct $\mathit{C}^\infty$ manifolds as described in \ref{}, where statistical models are the charts and the different parametrizations are the coordinate systems; we call manifolds like these \emph{statistical manifolds}.
-
+that we call the \emph{manifold of probability distributions}. Notice that $\mathcal{P}$ is the interior of the space of probability distributions, this is because from our definitions follows that every $(N-1)$-dimensional statistical manifold must be an open subset of $\mathcal{A}_1$.
 \todo{Esempi}
+
+\section{The tangent space and its representations}
+%Define m-representation of Tp through the displacement vector space of A1: A0
+%Explain the natural isomorphism and state sum dip = 0 and dip l.i.
+%Define the e-representation of Tp through the orthogonal space of the points
+%Define the isomorphism justifying it as possible and saying it will be usefull that way later
+We will now study tangent vectors of statistical manifolds looking for useful statistical interpretations of them. To do this we will use the fact that, as explained in \cref{ch:space-prob-dist}, $\mathcal{P}$ can be embedded in the space of random variables $\mathbb{R}^\mathcal{X}$. Then we can try to also embed the tangent spaces in $\mathbb{R}^\mathcal{X}$ in some meaningful way, thus linking tangent vectors and random variables.
