@@ -13,7 +13,7 @@ Let now $N$ be the cardinality of $\mathcal{X}$. To have a picture of $\mathbb{R
 then it's easy to recognize that the \emph{space of probability distributions} is a convex subset of the affine subspace $\mathcal{A}_1\coloneqq\{f\in\mathbb{R}^\mathcal{X}\mid\sum_{x\in\mathcal{X}}f(x)=1\}$. In particular, it is the set resulting from the convex mixing of the trivial probability distributions $f(x_i)=\delta_{ik}$, represented by the unit vectors of $\mathbb{R}^N$.
 
 It's also interesting to consider the inner product induced on $\mathbb{R}^\mathcal{X}$ by the Euclidean one of $\mathbb{R}^N$. Let $p$ be a probability distribution and $A$ a random variable, then
-\begin{equation}
+\begin{equation} \label{eq:inn-prod-Rx}
     p \cdot A = \sum_{x\in\mathcal{X}}p(x)A(x)\coloneqq\mathrm{E}_p[A]
 \end{equation}
 where $\mathrm{E}_p[A]$ is the \emph{expectation value} of the random variable $A$ when the underlying probability distribution of the random process is $p$.
@@ -45,5 +45,67 @@ that we call the \emph{manifold of probability distributions}. Notice that $\mat
 %Define m-representation of Tp through the displacement vector space of A1: A0
 %Explain the natural isomorphism and state sum dip = 0 and dip l.i.
 %Define the e-representation of Tp through the orthogonal space of the points
-%Define the isomorphism justifying it as possible and saying it will be usefull that way later
-We will now study tangent vectors of statistical manifolds looking for useful statistical interpretations of them. To do this we will use the fact that, as explained in \cref{ch:space-prob-dist}, $\mathcal{P}$ can be embedded in the space of random variables $\mathbb{R}^\mathcal{X}$. Then we can try to also embed the tangent spaces in $\mathbb{R}^\mathcal{X}$ in some meaningful way, thus linking tangent vectors and random variables.
+%Define the isomorphism justifying it as possible and saying it will be useful that way later
+We will now study tangent vectors of statistical manifolds looking for useful statistical interpretations of them. To do this we will use the fact that, as explained in \cref{ch:space-prob-dist}, $\mathcal{P}$ can be embedded in the space of random variables $\mathbb{R}^\mathcal{X}$. Then we can try to also embed the tangent spaces in $\mathbb{R}^\mathcal{X}$ in some meaningful ways, thus linking tangent vectors and random variables.
+
+\subsection*{The mixture representation}
+Since $\mathcal{P}$ is an open subset of the affine space $\mathcal{A}_1$ we can naturally identify the tangent space at every point with the displacement vector space $\mathcal{A}_0\coloneqq\{A\in\mathbb{R}^\mathcal{X}\mid\sum_{x\in\mathcal{X}}A(x)=0\}$. This is the natural embedding of $T_p(\mathcal{P})$ that arises from the trivial embedding of $\mathcal{P}$ in $\mathbb{R}^\mathcal{X}$, in fact for any $X\in T_p(\mathcal{P})$ we can define
+\begin{equation}
+    X^{(m)}(x)\coloneqq X(p(x))
+\end{equation}
+then by considering a parametrization $\{\xi^{(i)}\}$ of $\mathcal{P}$ and its relative coordinate basis $\{\partial_i\}$ we have that
+\begin{equation}
+    \partial_i^{(m)}(x)=\partial_ip(x;\xi)\in\mathcal{A}_0
+\end{equation}
+since
+\begin{equation}
+    \sum_{x\in\mathcal{X}}\partial_ip(x;\xi)=\partial_i\sum_{x\in\mathcal{X}}p(x;\xi)=0
+\end{equation}
+Finally, from \cref{eq:param-prop} follows that $\partial_ip(x;\xi)$ are $N-1$ linearly independent functions and thus
+\begin{equation}
+    X^{(m)}\leftrightarrow X
+\end{equation}
+is an isomorphism and
+\begin{equation}
+    T_p(\mathcal{P})\sim T_p^{(m)}(\mathcal{P})\coloneqq\{X^{(m)}\mid X\in T_p(\mathcal{P})\}=\mathcal{A}_0\qquad\forall p\in\mathcal{P}
+\end{equation}
+We call $X^{(m)}$ the \emph{mixture representation} or \emph{m-representation} of $X$.
+
+\subsection*{The exponential representation}
+Since $T_p(\mathcal{P})$ is an $(N-1)$-dimensional vector space, for every $p$ we may try to identify it to the subspace of $\mathbb{R}^\mathcal{X}$ orthogonal to $p$ with respect to the inner product defined in \cref{eq:inn-prod-Rx}. This is interesting given the statistical meaning of the inner product between a generic element of $\mathbb{R}^\mathcal{X}$ and a probability distribution. For every $p\in\mathcal{P}$ the orthogonal space is
+\begin{equation}
+    \mathcal{A}_{p}^{\bot}\coloneqq\{A\in\mathbb{R}^\mathcal{X}\mid p\cdot A=\mathrm{E}_p[A]=0\}
+\end{equation}
+that is the space of random variables with null expectation value when the underlying probability distribution is $p$.
+
+Now we wish to find a natural isomorphism between $T_p(\mathcal{P})$ and $\mathcal{A}_{p}^{\bot}$. One way to do this that will prove to be useful is to consider the following alternative embedding of $\mathcal{P}$ in $\mathbb{R}^\mathcal{X}$
+\begin{equation}
+    p\mapsto \ln p\in\mathbb{R}^\mathcal{X}
+\end{equation}
+then, for any $X\in T_p(\mathcal{P})$ we can define
+\begin{equation}
+    X^{(e)}(x)\coloneqq X(\ln p(x))=\frac{X(p(x))}{p(x)}
+\end{equation}
+and by considering a parametrization $\{\xi^{(i)}\}$ of $\mathcal{P}$ and its relative coordinate basis $\{\partial_i\}$ we have that
+\begin{equation}
+    \partial_i^{(e)}(x)=\partial_i\ln p(x;\xi)\in\mathcal{A}_{p}^{\bot}
+\end{equation}
+since
+\begin{equation}
+    \mathrm{E}_p[\partial_i\ln p(x;\xi)]=\sum_{x\in\mathcal{X}}p(x;\xi)\frac{\partial_ip(x;\xi)}{p(x;\xi)}=\sum_{x\in\mathcal{X}}\partial_ip(x;\xi)=0
+\end{equation}
+It's easy to prove that the linear independence of $\partial_i\ln p(x;\xi)$ follows from the one of $\partial_i p(x;\xi)$ and thus
+\begin{equation}
+    X^{(e)}\leftrightarrow X
+\end{equation}
+is an isomorphism and
+\begin{equation}
+    T_p(\mathcal{P})\sim T_p^{(e)}(\mathcal{P})\coloneqq\{X^{(e)}\mid X\in T_p(\mathcal{P})\}=\mathcal{A}_{p}^{\bot}\qquad\forall p\in\mathcal{P}
+\end{equation}
+We call $X^{(m)}$ the \emph{exponential representation} or \emph{e-representation} of $X$.
+
+From their definitions, we have that the two representations of a tangent vector $X\in T_p(\mathcal{P})$ are related as follows
+\begin{equation}
+    X^{(m)}(x)=X^{(e)}(x)p(x)
+\end{equation}
+and that while $T_p^{(m)}(\mathcal{P})$ is the same for every $p$, $T_p^{(e)}(\mathcal{P})$ varies since the set of random variables with null expectation value will differ depending on the underlying probability distribution.
