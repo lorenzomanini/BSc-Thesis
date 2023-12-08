@@ -18,7 +18,7 @@ It's also interesting to consider the inner product induced on $\mathbb{R}^\math
 \end{equation}
 where $\mathrm{E}_p[A]$ is the \emph{expectation value} of the random variable $A$ when the underlying probability distribution of the random process is $p$.
 
-\section{Statistical models and manifolds}
+\section{Statistical models and manifolds} \label{ch:stat-models}
 We call an n-dimensional \emph{statistical model} on $\mathcal{X}$ a family of probability distributions that are globally parametrized by n real-valued variables. Formally this is a subset $\mathcal{S}$ of the space of probability distributions with an invertible function $\psi\colon\mathcal{S}\to\Xi\subseteq\mathbb{R}^n$, so that we may write
 \begin{equation}
     \mathcal{S} = \Bigl\{ p_\xi \bigm\vert \exists\,\xi=(\xi^{(1)},\dots,\xi^{(n)})\in\Xi \colon p_\xi=\psi^{-1}(\xi) \Bigr\}
@@ -28,8 +28,8 @@ where $p_\xi(x)$ may be equivalently written as $p(x;\xi)$ or $p(x;\xi^{(1)},\do
 We now introduce some additional requirements to $S$ so that we may treat it as a well-behaved manifold. Firstly we regard $S$ as a subset of $\mathcal{A}_1$ equipped with the topology induced by the standard one of $\mathbb{R}^N$. Then, we require that
 \begin{equation} \label{eq:param-prop}
     \begin{aligned}
-        &\text{$\Xi$ is an open set}\\
-        &\text{$\psi$ is a $\mathit{C}^\infty$ diffeomorphism from $\mathcal{S}$ to $\Xi$}
+         & \text{$\Xi$ is an open set}                                                       \\
+         & \text{$\psi$ is a $\mathit{C}^\infty$ diffeomorphism from $\mathcal{S}$ to $\Xi$}
     \end{aligned}
 \end{equation}
 This allows us to differentiate the probability distributions with respect to the parameters so that $\partial_ip(x;\xi)$ is well defined, where we wrote $\partial_i\coloneqq\frac{\partial}{\partial\xi^{(i)}}$. These conditions also imply that the pair $\mathcal{S}$ and $\psi$ form a chart of $\mathcal{S}$. Then for any another statistical model on $\mathcal{S}$ with parametrization $\psi'\colon\mathcal{S}\to\Xi'\subseteq\mathbb{R}^n$ that follows \cref{eq:param-prop}, the composed function $\psi'\circ\psi^{-1}\colon\Xi\to\Xi'$ will be a $\mathit{C}^\infty$ diffeomorphism. By considering all the possible parametrizations of this kind we may treat $\mathcal{S}$ as a $\mathit{C}^\infty$-differentiable manifold, where statistical models are the charts and the different parametrizations are the coordinate systems; we call manifolds like these \emph{statistical manifolds}.

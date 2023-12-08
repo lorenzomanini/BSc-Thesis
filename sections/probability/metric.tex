@@ -152,8 +152,8 @@ for a fixed $p$ and $\partial_i=\frac{\partial}{\partial\theta^i}$. So we have
 \end{equation}
 and equivalently
 \begin{align}
-    g_{ij}^{(S)}=\mathrm{E}_p\left[\frac{1}{p^2(x)}\partial_ip(x;\theta)\partial_jp(x;\theta)\right] &=\mathrm{E}_p[\partial_i\ln p(x;\theta) \partial_j\ln p(x;\theta)]\label{eq:fisher-exp} \\
-    &=\sum_{x\in\mathcal{X}}\frac{\partial_ip(x;\theta)\partial_jp(x;\theta)}{p(x)} \label{eq:fisher-mix}
+    g_{ij}^{(S)}=\mathrm{E}_p\left[\frac{1}{p^2(x)}\partial_ip(x;\theta)\partial_jp(x;\theta)\right] & =\mathrm{E}_p[\partial_i\ln p(x;\theta) \partial_j\ln p(x;\theta)]\label{eq:fisher-exp}              \\
+                                                                                                     & =\sum_{x\in\mathcal{X}}\frac{\partial_ip(x;\theta)\partial_jp(x;\theta)}{p(x)} \label{eq:fisher-mix}
 \end{align}
 where we used the fact that
 \begin{equation}
@@ -168,11 +168,11 @@ Finally, then, $g_{ij}^{(S)}$ defines a metric tensor and it is known as the \em
 The Fisher metric defines the inner product $\langle\,\cdot\,,\,\cdot\,\rangle_p$ between tangent vectors of a point $p\in\mathcal{P}$. Let us now express this inner product through the representations we defined in \cref{ch:tgt-space}. Given two tangent vectors $X,Y\in T_p\mathcal{P}$ from \cref{eq:fisher-exp} we find that
 \begin{equation}
     \langle X,Y \rangle_p=\mathrm{E}_p[X^{(e)}Y^{(e)}]
-\end{equation} 
+\end{equation}
 while from \cref{eq:fisher-mix} we get
 \begin{align}
-    \langle X,Y \rangle_p &=\sum_{x\in\mathcal{X}}\frac{X^{(m)}(x)Y^{(m)}(x)}{p(x)}\\
-    &=\sum_{x\in\mathcal{X}}{X^{(m)}(x)Y^{(e)}(x)}=\sum_{x\in\mathcal{X}}{X^{(e)}(x)Y^{(m)}(x)}
+    \langle X,Y \rangle_p & =\sum_{x\in\mathcal{X}}\frac{X^{(m)}(x)Y^{(m)}(x)}{p(x)}                                   \\
+                          & =\sum_{x\in\mathcal{X}}{X^{(m)}(x)Y^{(e)}(x)}=\sum_{x\in\mathcal{X}}{X^{(e)}(x)Y^{(m)}(x)}
 \end{align}
 These expressions will prove to be very useful in \ref{}.
 
@@ -184,7 +184,7 @@ then it's easy to guess that the embedding
 \begin{equation}
     p\mapsto 2\,\sqrt{p} \eqqcolon p_{(0)}
 \end{equation}
-is the one whose representation of the tangent spaces 
+is the one whose representation of the tangent spaces
 \begin{equation}
     X^{(0)}\coloneqq X(2\,\sqrt{p})=\frac{X(p)}{\sqrt{p}},\qquad X\in T_p(\mathcal{P})
 \end{equation}

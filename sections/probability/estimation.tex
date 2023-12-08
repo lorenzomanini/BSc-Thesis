@@ -1,1 +1,50 @@
 \chapter{Parameter estimation}
+%Unbiased estimators) Estimators, unbiased estimators and covariance matrix
+%Discorsive explanation
+%
+%Variance of a random variable) The gradient of a function of P
+%Variance of a random variable of P
+%Variance of a random variable of S
+%
+%The Cramer-Rao bound) Cramer Rao bound, i.e. variance of estimators on S
+%Discorsive explanation
+\section{Unbiased estimators}
+%Define discursively what is an estimator
+%Define estimators
+%Define unbiased estimators
+%Define the covariance matrix
+%Give geometrical intuition of it (ellipsoid)
+Consider a random process and an $n$-dim statistical model $\mathcal{S}=\left\{ p_\xi \mid \xi\in\Xi \right\}$ of it, as defined in \cref{ch:stat-models}; it is often the case that from a measured sample $x\in\mathcal{X}$ we want to estimate the parameters $\xi$ of the underlying probability distribution, that we assume to be in $\mathcal{S}$.
+
+The estimation is represented by a function
+\begin{equation}
+    \hat{\xi}=(\hat{\xi}^{(1)},\dots,\hat{\xi}^{(n)})\colon\mathcal{X}\to\Xi\subseteq\mathbb{R}^n
+\end{equation}
+that we call \emph{estimator}. Each component $\hat{\xi}^{(i)}$ is a random variable, and we say that $\hat{\xi}$ is an \emph{unbiased estimator} if
+\begin{equation}
+    \mathrm{E}_{p_\xi}\left[\,\hat{\xi}\,\right]= \left(\mathrm{E}_{p_\xi}\left[ \hat{\xi}^{(1)} \right],\dots,\mathrm{E}_{p_\xi}\left[ \hat{\xi}^{(n)} \right]\right)=\xi\qquad\forall \xi\in\Xi
+\end{equation}
+i.e. if for each $p_\xi\in\mathcal{S}$ the expectation value of the estimator is the correct parameter $\xi$.
+
+Then for an unbiased estimator, we may represent the deviation from the true parameters with the variance-covariance matrix of the estimator $V_\xi\left[ \,\hat{\xi}\, \right]\coloneqq\left\{v_\xi^{ij}\right\}$ where
+\begin{align}
+    v_\xi^{ij}&\coloneqq \mathrm{E}_{p_\xi}\left[ \left( \hat{\xi}^{(i)}(x) - \mathrm{E}_{p_\xi} \left[ \hat{\xi}^{(i)}(x) \right] \right) \left( \hat{\xi}^{(j)}(x) - \mathrm{E}_{p_\xi} \left[ \hat{\xi}^{(j)}(x) \right] \right) \right]
+    \\
+    &=\mathrm{E}_{p_\xi}\left[ \left( \hat{\xi}^{(i)}(x) - \xi^i \right) \left( \hat{\xi}^{(j)}(x) - \xi^j \right) \right]
+\end{align}
+In particular, the elements on the diagonal are the variances of the components of the estimator
+\begin{align}
+    \mathrm{V}_{p_\xi}\left[ \hat{\xi}^{(i)}(x) \right]&\coloneqq\mathrm{E}_{p_\xi}\left[ \left( \hat{\xi}^{(i)}(x) - \mathrm{E}_{p_\xi} \left[ \hat{\xi}^{(i)}(x) \right] \right)^2 \right]\equiv v_\xi^{ii}
+    \\
+    &=\mathrm{E}_{p_\xi}\left[ \left( \hat{\xi}^{(i)}(x) - \xi^i \right)^2 \right]
+\end{align}
+
+\section{Variance of a random variable}
+%(Re) Define the variance of a random variable.
+% Show that it must be the norm of some vector of TpP
+% Define the differential of a function on P
+% State and prove the theorem 2.7 on P
+\section{The Cramér-Rao bound}
+% State and prove the theorem 2.8 on S
+% State and prove the Cràmer-Rao bound
+% Define an optimal estimator and give the interpretation
