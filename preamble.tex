@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[italian,english]{babel}
 %\usepackage{toptesi}
+\usepackage{xcolor}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
@@ -16,7 +17,7 @@
 %\relpenalty=10000 
 
 %Work in progress
-\newcommand{\todo}[1]{\PackageWarning{todo}{Todo: #1}}
+\newcommand{\todo}[1]{\PackageWarning{todo}{Todo: #1} \textcolor{red}{(#1)} }
 
 \usepackage{silence}
 \WarningFilter[todo]{todo}

@@ -4,19 +4,29 @@ Consider a \emph{random process} and the set $\mathcal{X}$ of all its possible o
 \begin{equation} \label{eq:prob-dist-def}
     p(x)\ge 0 \quad \forall x\in\mathcal{X} \quad \text{and} \quad \sum_{x\in\mathcal{X}}p(x)=1
 \end{equation}
-where $p(x)$ represents the probability of the outcome $x$. We also have that every function $A\in\mathbb{R}^\mathcal{X}$ represents a real \emph{random variable}, as it maps every outcome of a random process to a number.
+where $p(x)$ represents the probability of the outcome $x$.
+
+Further, every function $A\in\mathbb{R}^\mathcal{X}$ represents a real \emph{random variable}, as it maps every outcome of a random process to a number. Then the \emph{expectation value} of $A$ when the underlying probability distribution is $p$ is expressed by
+\begin{equation}
+    \mathrm{E}_p[A]\coloneqq\sum_{x\in\mathcal{X}}p(x)A(x)
+\end{equation}
+Also, given two random variables $A,B$ their \emph{covariance} is
+\begin{equation}
+    \mathrm{Cov}_p[A,B]\coloneqq\mathrm{E}_p[(A-\mathrm{E}_p[A])(B-\mathrm{E}_p[B])]
+\end{equation}
+and so the \emph{variance} of a random variable $A$ is
+\begin{equation}
+    \mathrm{V}_p[A]\coloneqq\mathrm{Cov}_p[A,A]=\mathrm{E}_p[(A-\mathrm{E}_p[A])^2]
+\end{equation}
 
 Let now $N$ be the cardinality of $\mathcal{X}$. To have a picture of $\mathbb{R}^\mathcal{X}$ we can index the outcomes and consider the natural isomorphism between $\mathbb{R}^\mathcal{X}$ and $\mathbb{R}^N$
 \begin{equation}
     f \leftrightarrow (f(x_1),\dots,f(x_N))
 \end{equation}
-then it's easy to recognize that the \emph{space of probability distributions} is a convex subset of the affine subspace $\mathcal{A}_1\coloneqq\{f\in\mathbb{R}^\mathcal{X}\mid\sum_{x\in\mathcal{X}}f(x)=1\}$. In particular, it is the set resulting from the convex mixing of the trivial probability distributions $f(x_i)=\delta_{ik}$, represented by the unit vectors of $\mathbb{R}^N$.
-
-It's also interesting to consider the inner product induced on $\mathbb{R}^\mathcal{X}$ by the Euclidean one of $\mathbb{R}^N$. Let $p$ be a probability distribution and $A$ a random variable, then
+then it's easy to recognize that the \emph{space of probability distributions} is a convex subset of the affine subspace $\mathcal{A}_1\coloneqq\{f\in\mathbb{R}^\mathcal{X}\mid\sum_{x\in\mathcal{X}}f(x)=1\}$. In particular, it is the set resulting from the convex mixing of the trivial probability distributions $f(x_i)=\delta_{ik}$, represented by the unit vectors of $\mathbb{R}^N$. Finally, it's also interesting to consider the inner product induced on $\mathbb{R}^\mathcal{X}$ by the Euclidean one of $\mathbb{R}^N$. Let $p$ be a probability distribution and $A$ a random variable, then
 \begin{equation} \label{eq:inn-prod-Rx}
-    p \cdot A = \sum_{x\in\mathcal{X}}p(x)A(x)\coloneqq\mathrm{E}_p[A]
+    p \cdot A = \sum_{x\in\mathcal{X}}p(x)A(x)=\mathrm{E}_p[A]
 \end{equation}
-where $\mathrm{E}_p[A]$ is the \emph{expectation value} of the random variable $A$ when the underlying probability distribution of the random process is $p$.
 
 \section{Statistical models and manifolds} \label{ch:stat-models}
 We call an n-dimensional \emph{statistical model} on $\mathcal{X}$ a family of probability distributions that are globally parametrized by n real-valued variables. Formally this is a subset $\mathcal{S}$ of the space of probability distributions with an invertible function $\psi\colon\mathcal{S}\to\Xi\subseteq\mathbb{R}^n$, so that we may write
@@ -39,7 +49,7 @@ From our definitions, it is clear that the maximal dimension of a model is $n=N-
     \mathcal{P}\coloneqq\{p\in\mathbb{R}^\mathcal{X}\mid p(x)>0 \quad \forall x\in\mathcal{X} \quad \text{and} \quad \sum_{x\in\mathcal{X}}p(x)=1\}
 \end{equation}
 that we call the \emph{manifold of probability distributions}. Notice that $\mathcal{P}$ is the interior of the space of probability distributions, this is because from our definitions follows that every $(N-1)$-dimensional statistical manifold must be an open subset of $\mathcal{A}_1$.
-\todo{Esempi}
+\todo{Examples?}
 
 \section{The tangent space and its representations} \label{ch:tgt-space}
 %Define m-representation of Tp through the displacement vector space of A1: A0

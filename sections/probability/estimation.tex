@@ -27,23 +27,66 @@ that we call \emph{estimator}. Each component $\hat{\xi}^{(i)}$ is a random vari
 i.e. if for each $p_\xi\in\mathcal{S}$ the expectation value of the estimator is the correct parameter $\xi$.
 
 Then for an unbiased estimator, we may represent the deviation from the true parameters with the variance-covariance matrix of the estimator $V_\xi\left[ \,\hat{\xi}\, \right]\coloneqq\left\{v_\xi^{ij}\right\}$ where
-\begin{align}
-    v_\xi^{ij}&\coloneqq \mathrm{E}_{p_\xi}\left[ \left( \hat{\xi}^{(i)}(x) - \mathrm{E}_{p_\xi} \left[ \hat{\xi}^{(i)}(x) \right] \right) \left( \hat{\xi}^{(j)}(x) - \mathrm{E}_{p_\xi} \left[ \hat{\xi}^{(j)}(x) \right] \right) \right]
-    \\
-    &=\mathrm{E}_{p_\xi}\left[ \left( \hat{\xi}^{(i)}(x) - \xi^i \right) \left( \hat{\xi}^{(j)}(x) - \xi^j \right) \right]
-\end{align}
-In particular, the elements on the diagonal are the variances of the components of the estimator
-\begin{align}
-    \mathrm{V}_{p_\xi}\left[ \hat{\xi}^{(i)}(x) \right]&\coloneqq\mathrm{E}_{p_\xi}\left[ \left( \hat{\xi}^{(i)}(x) - \mathrm{E}_{p_\xi} \left[ \hat{\xi}^{(i)}(x) \right] \right)^2 \right]\equiv v_\xi^{ii}
-    \\
-    &=\mathrm{E}_{p_\xi}\left[ \left( \hat{\xi}^{(i)}(x) - \xi^i \right)^2 \right]
-\end{align}
+\begin{equation}
+    v_\xi^{ij}\coloneqq \mathrm{Cov}_{p_\xi}\left[ \hat{\xi}^{(i)},\hat{\xi}^{(j)}\right]=\mathrm{E}_{p_\xi}\left[ \left( \hat{\xi}^{(i)}(x) - \xi^i \right) \left( \hat{\xi}^{(j)}(x) - \xi^j \right) \right]
+\end{equation}
+In particular, the elements on the diagonal are the variances of the components of the estimator.
+\todo{Talk about the covariance ellipse?}
 
-\section{Variance of a random variable}
+\section{Variance and expectation value}
 %(Re) Define the variance of a random variable.
 % Show that it must be the norm of some vector of TpP
 % Define the differential of a function on P
 % State and prove the theorem 2.7 on P
+For a generic random variable $A\in\mathbb{R}^\mathcal{X}$ we may define a real function $\mathrm{E}[A]$ on $\mathcal{P}$ that maps every probability distribution $p$ to the expectation value of $A$ when the sample is generated with $p$ as underlying probability distribution
+\begin{equation}
+    \mathrm{E}[A]\colon\mathcal{P}\to\mathbb{R}\qquad p\mapsto\mathrm{E}_p[A]
+\end{equation}
+Since this is a function of the manifold $\mathcal{P}$, at every point $p$ we may consider its differential $(d\mathrm{E}[A])_p$. This is the element of the cotangent space $T_p^*(\mathcal{P})$ such that for any tangent vector $X\in T_p(\mathcal{P})$ we have
+\begin{equation}
+    (d\mathrm{E}[A])_p(X)=X(\mathrm{E}[A])
+\end{equation}
+Also, because a metric is defined on $\mathcal{P}$ we have a natural isomorphism between tangent and cotangent vectors, thus the gradient of $\mathrm{E}[A]$ is the tangent vector defined by
+\begin{equation} \label{eq:gradient}
+    \langle (grad\mathrm{E}[A])_p, X \rangle_p = (d\mathrm{E}[A])_p(X)=X(\mathrm{E}[A])\qquad\forall X\in T_p(\mathcal{P})
+\end{equation}
+
+We now state and prove the following theorem that relates the variance of a random variable to the sensitivity of its expectation value
+\begin{theorem}
+    For any random variable $A\in\mathbb{R}^\mathcal{X}$ we have that
+    \begin{equation}
+        \mathrm{V}_p[A]=\lVert (d\mathrm{E}[A])_p \rVert_p \qquad\forall p\in\mathcal{P}
+    \end{equation}
+    where the norm is the one induced by the Fisher metric.
+\end{theorem}
+\begin{proof}
+    For every $X\in T_p$ we have
+    \begin{align*}
+        X(\mathrm{E}[A])&=\sum_{x\in\mathcal{X}}X(p(x))A(x)
+        =\sum_{x\in\mathcal{X}}X^{(m)}(x)A(x)
+        \\
+        &=\mathrm{E}_p[X^{(e)}A]=\mathrm{E}_p[X^{(e)}(A-\mathrm{E}_p[A])]
+    \end{align*}
+    where in the last equation we used the fact that $\mathrm{E}_p[X^{(e)}]=0$. We notice that 
+    \begin{equation*}
+        \mathrm{E}_p[A-\mathrm{E}_p[A]]=0\implies (A-\mathrm{E}_p[A])\in T_p^{(e)}(\mathcal{P})
+    \end{equation*}
+    and so there must exist a tangent vector $Y\in T_p(\mathcal{P})$ such that $Y^{(e)}=(A-\mathrm{E}_p[A])$. Then
+    \begin{equation*}
+        X(\mathrm{E}[A])=\mathrm{E}_p[X^{(e)}Y^{(e)}]=\langle X,Y \rangle_p
+    \end{equation*}
+    and so from \cref{eq:gradient} we have that
+    \begin{equation}
+        (grad\mathrm{E}[A])_p=A-\mathrm{E}_p[A]
+    \end{equation}
+    Finnaly we have
+    \begin{align*}
+        \lVert (d\mathrm{E}[A])_p \rVert_p&=\lVert (grad\mathrm{E}[A])_p \rVert_p
+        \\
+        &= \mathrm{E}_p[(A-\mathrm{E}_p[A])^2]=\mathrm{V}_p[A]
+    \end{align*}
+\end{proof}
+
 \section{The Cramér-Rao bound}
 % State and prove the theorem 2.8 on S
 % State and prove the Cràmer-Rao bound

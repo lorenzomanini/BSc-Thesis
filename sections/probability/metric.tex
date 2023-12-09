@@ -46,8 +46,8 @@ Even though relative entropy doesn't follow triangle inequality, it does follow 
 \end{theorem}
 This is a generalization of the Pythagorean theorem in the sense that if it was stated in terms of the Euclidean distance squared, the angle between $\overline{pp_*}$ and $\overline{p_*q}$ would be convex and so \cref{eq:gen-pyth} would be the corollary of the Pythagorean theorem for convex triangles. This suggests that the relative entropy may be regarded as an asymmetric distance squared and as we will see this is enough to define a metric on the manifold.
 
-\section{Squared Riemannian distances} \label{ch:square-dist} \todo{Find better title: maybe Metric Riemannian manifolds?}
-Now that we have some notion of distance, we shall explore how to define a coherent metric on the manifold. First, we shall study this for a Riemannian distance as defined in \ref{}.
+\section{Squared Riemannian distances} \label{ch:square-dist} 
+Now that we have some notion of distance, we shall explore how to define a coherent metric on the manifold. First, we shall study this for a Riemannian distance as defined in \cref{empty}.
 
 Let $(M,g)$ be a Riemannian manifold where $g$ is the metric tensor, then consider a point $p\in M$. We define the \emph{exponential map} in $p$ as follows
 \begin{equation}
@@ -159,8 +159,7 @@ where we used the fact that
 \begin{equation}
     \sum_{x\in\mathcal{X}}\partial_i\partial_jp(x;\theta)=\partial_i\partial_j\sum_{x\in\mathcal{X}}p(x;\theta)=0
 \end{equation}
-Since we know that any $g_{ij}^{(D)}$ is positive semi-definite, $g_{ij}^{(S)}$ will be positive definite if and only if it is invertible. It can be easily shown that if the functions $\partial_ip(x;\theta)$ are linearly independent, then $g_{ij}^{(S)}$ is invertible and thus positive definite. Thus, relative entropy is a divergence and in fact, it is also known as \emph{Kullback-Leibler divergence} or \emph{information divergence}.
-\todo{proof positive-definite?}
+Since we know that any $g_{ij}^{(D)}$ is positive semi-definite, $g_{ij}^{(S)}$ will be positive definite if and only if it is invertible. It can be easily shown that if the functions $\partial_ip(x;\theta)$ are linearly independent, then $g_{ij}^{(S)}$ is invertible and thus positive definite\todo{proof?}. Thus, relative entropy is a divergence and in fact, it is also known as \emph{Kullback-Leibler divergence} or \emph{information divergence}.
 
 Finally, then, $g_{ij}^{(S)}$ defines a metric tensor and it is known as the \emph{Fisher information metric}. This is, up to a constant factor, the unique metric induced by the relative entropy, and it plays a focal role for the geometrical modeling and interpretation of statistics.
 
@@ -174,7 +173,7 @@ while from \cref{eq:fisher-mix} we get
     \langle X,Y \rangle_p & =\sum_{x\in\mathcal{X}}\frac{X^{(m)}(x)Y^{(m)}(x)}{p(x)}                                   \\
                           & =\sum_{x\in\mathcal{X}}{X^{(m)}(x)Y^{(e)}(x)}=\sum_{x\in\mathcal{X}}{X^{(e)}(x)Y^{(m)}(x)}
 \end{align}
-These expressions will prove to be very useful in \ref{}.
+These expressions will prove to be very useful in \cref{empty}.
 
 We notice that in neither representations the inner product is the Euclidean one induced by $\mathbb{R}^\mathcal{X}$ on the respective embeddings. For such a representation we would have that
 \begin{equation} \label{eq:fisher-0-rep}
