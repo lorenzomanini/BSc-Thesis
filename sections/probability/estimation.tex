@@ -121,7 +121,7 @@ Finally, we have the following theorem relating the variance of a random variabl
 We are now in the position to state and prove an important result of parameter estimation theory
 \begin{theorem}[Cramér-Rao bound]
     For any unbiased estimator $\hat{\xi}$ its variance-covariance matrix $\mathrm{V}_\xi[\hat{\xi}]$ satisfies
-    \begin{equation}
+    \begin{equation}\label{eq:cramer-rao}
         \mathrm{V}_\xi[\hat{\xi}]\ge G_F^{-1}(p_\xi)
     \end{equation}
     in the sense that $\mathrm{V}_\xi[\hat{\xi}]-G_F^{-1}(p_\xi)$ is positive semi-definite.
@@ -150,3 +150,5 @@ We are now in the position to state and prove an important result of parameter e
         c_i (v_\xi^{ij}-g^{ij}(p_\xi)) c_j \ge 0
     \end{equation*}
 \end{proof}
+
+An unbiased estimator that saturates \cref{eq:cramer-rao} is called an \emph{efficient estimator} and is the best unbiased estimator in the sense that its variance is minimum between all unbiased estimators. It's important to notice that an efficient estimator doesn't always exist. \todo{talk about asymptotically efficient estimators?}
