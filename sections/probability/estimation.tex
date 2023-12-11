@@ -9,11 +9,6 @@
 %The Cramer-Rao bound) Cramer Rao bound, i.e. variance of estimators on S
 %Discorsive explanation
 \section{Unbiased estimators}
-%Define discursively what is an estimator
-%Define estimators
-%Define unbiased estimators
-%Define the covariance matrix
-%Give geometrical intuition of it (ellipsoid)
 Consider a random process and an $n$-dim statistical model $\mathcal{S}=\left\{ p_\xi \mid \xi\in\Xi \right\}$ of it, as defined in \cref{ch:stat-models}; it is often the case that from a measured sample $x\in\mathcal{X}$ we want to estimate the parameters $\xi$ of the underlying probability distribution, that we assume to be in $\mathcal{S}$.
 
 The estimation is represented by a function
@@ -34,10 +29,6 @@ In particular, the elements on the diagonal are the variances of the components 
 \todo{Talk about the covariance ellipse?}
 
 \section{Variance and expectation value}
-%(Re) Define the variance of a random variable.
-% Show that it must be the norm of some vector of TpP
-% Define the differential of a function on P
-% State and prove the theorem 2.7 on P
 For a generic random variable $A\in\mathbb{R}^\mathcal{X}$ we may define a real function $\mathrm{E}[A]$ on $\mathcal{P}$ that maps every probability distribution $p$ to the expectation value of $A$ when the sample is generated with $p$ as underlying probability distribution
 \begin{equation}
     \mathrm{E}[A]\colon\mathcal{P}\to\mathbb{R}\qquad p\mapsto\mathrm{E}_p[A]
@@ -51,13 +42,13 @@ Also, because a metric is defined on $\mathcal{P}$ we have a natural isomorphism
     \langle (grad\mathrm{E}[A])_p, X \rangle_p = (d\mathrm{E}[A])_p(X)=X(\mathrm{E}[A])\qquad\forall X\in T_p(\mathcal{P})
 \end{equation}
 
-We now state and prove the following theorem that relates the variance of a random variable to the sensitivity of its expectation value
-\begin{theorem}
+We now state and prove the following theorem that relates the deviation of a random variable to the gradient of its expectation value
+\begin{theorem} \label{th:gradient}
     For any random variable $A\in\mathbb{R}^\mathcal{X}$ we have that
     \begin{equation}
-        \mathrm{V}_p[A]=\lVert (d\mathrm{E}[A])_p \rVert_p \qquad\forall p\in\mathcal{P}
+        (grad\mathrm{E}[A])_p^{(e)}=A-\mathrm{E}_p[A] \qquad\forall p\in\mathcal{P}
     \end{equation}
-    where the norm is the one induced by the Fisher metric.
+    where the gradient is the dual tangent vector of the differential with respect to the Fisher metric.
 \end{theorem}
 \begin{proof}
     For every $X\in T_p$ we have
@@ -75,19 +66,87 @@ We now state and prove the following theorem that relates the variance of a rand
     \begin{equation*}
         X(\mathrm{E}[A])=\mathrm{E}_p[X^{(e)}Y^{(e)}]=\langle X,Y \rangle_p
     \end{equation*}
-    and so from \cref{eq:gradient} we have that
+    and so from \cref{eq:gradient} we have that $Y=(grad\mathrm{E}[A])_p$ and so
+    \begin{equation*}
+        (grad\mathrm{E}[A])_p^{(e)}=A-\mathrm{E}_p[A]
+    \end{equation*}
+\end{proof}
+And we also get the following
+\begin{corollary}\label{cr:variance}
+    For any random variable $A$
     \begin{equation}
-        (grad\mathrm{E}[A])_p=A-\mathrm{E}_p[A]
+        \mathrm{V}_p[A]= \lVert (d\mathrm{E}[A])_p \rVert_p^2
     \end{equation}
-    Finnaly we have
+\end{corollary}
+\begin{proof}
+    Follows from \cref{th:gradient} noticing that
     \begin{align*}
-        \lVert (d\mathrm{E}[A])_p \rVert_p&=\lVert (grad\mathrm{E}[A])_p \rVert_p
+        \lVert (d\mathrm{E}[A])_p \rVert_p^2&=\langle (grad\mathrm{E}[A])_p,(grad\mathrm{E}[A])_p \rangle_p
         \\
-        &= \mathrm{E}_p[(A-\mathrm{E}_p[A])^2]=\mathrm{V}_p[A]
+        &=\mathrm{E}_p[(A-\mathrm{E}_p[A])^2]
     \end{align*}
 \end{proof}
 
+Let now $\mathcal{S}$ be an $n$-dim statistical manifold, since it is a submanifold of $\mathcal{P}$ we have that $T_p(\mathcal{S})$ is a linear subspace of $T_p(\mathcal{P})$ for every $p\in\mathcal{S}$. Then the gradient of the restriction on $\mathcal{S}$ of a function of $\mathcal{P}$ is its orthogonal projection on $T_p(\mathcal{S})$. In particular, we have that 
+\begin{equation}
+    T_p(\mathcal{P})=T_p(\mathcal{S})\oplus T_p(\mathcal{S})^\perp
+\end{equation}
+and so we may uniquely decompose
+\begin{equation}
+    (grad\mathrm{E}[A])_p=v_\parallel + v_\perp\qquad v_\parallel\in T_p(\mathcal{S}),v_\perp\in T_p(\mathcal{S})^\perp
+\end{equation}
+then we find that $\forall X\in T_p(\mathcal{S})$
+\begin{equation} \label{eq:grad-projection}
+    \langle (\left. grad\mathrm{E}[A] \right\rvert_\mathcal{S})_p, X \rangle_p = X(\mathrm{E}[A])= \langle v_\parallel + v_\perp, X\rangle_p = \langle v_\parallel, X\rangle_p
+\end{equation}
+
+Finally, we have the following theorem relating the variance of a random variable and the sensitivity of its expectation value to the changes in the model parameters
+\begin{theorem} \label{th:variance-ineq}
+    Given a statistical manifold $S$, for any random variable $A$ we have that
+    \begin{equation}
+            \mathrm{V}_p[A]\ge \lVert (\left.d\mathrm{E}[A]\right\rvert_\mathcal{S})_p \rVert_p^2
+    \end{equation}
+    where the equality holds if and only if
+    \begin{equation}
+        A-\mathrm{E}_p[A]\in T_p^{(e)}(\mathcal{S})
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    Follows immediately from \cref{cr:variance} and \cref{eq:grad-projection}
+\end{proof}
+
 \section{The Cramér-Rao bound}
-% State and prove the theorem 2.8 on S
 % State and prove the Cràmer-Rao bound
 % Define an optimal estimator and give the interpretation
+We are now in the position to state and prove an important result of parameter estimation theory
+\begin{theorem}[Cramér-Rao bound]
+    For any unbiased estimator $\hat{\xi}$ its variance-covariance matrix $\mathrm{V}_\xi[\hat{\xi}]$ satisfies
+    \begin{equation}
+        \mathrm{V}_\xi[\hat{\xi}]\ge G_F^{-1}(p_\xi)
+    \end{equation}
+    in the sense that $\mathrm{V}_\xi[\hat{\xi}]-G_F^{-1}(p_\xi)$ is positive semi-definite.
+\end{theorem}
+\begin{proof}
+    Let $A=c_i\hat{\xi}^{(i)}$ where $c$ is an arbitrary element of $\mathbb{R}^n$. Then $A$ is a random variable with $\mathrm{E}_{p_\xi}[A]=c_i\xi^i$ and
+    \begin{align*}
+        \mathrm{V}_{p_\xi}[A] &= \mathrm{E}_{p_\xi}[(c_i\hat{\xi}^{(i)}-c_i\xi^i)(c_j\hat{\xi}^{(j)}-c_j\xi^j)]
+        \\
+        &=\mathrm{E}_{p_\xi}[c_i(\hat{\xi}^{(i)}-\xi^i)(\hat{\xi}^{(j)}-\xi^j)c_j]
+        \\
+        &=c_i v_\xi^{ij} c_j
+    \end{align*}
+    Then letting $p=p_\xi$ from \cref{th:variance-ineq} we get
+    \begin{equation*}
+        c_i v_\xi^{ij} c_j\ge \lVert (\left.d\mathrm{E}[A]\right\rvert_\mathcal{S})_p \rVert_p^2
+    \end{equation*}
+    where
+    \begin{align*}
+        \lVert (\left.d\mathrm{E}[A]\right\rvert_\mathcal{S})_p \rVert_p^2&=(\partial_i\mathrm{E}[A])_p g^{ij}(p)(\partial_j\mathrm{E}[A])_p
+        \\
+        &=c_i g^{ij}(p) c_j
+    \end{align*}
+    and so, finally
+    \begin{equation*}
+        c_i (v_\xi^{ij}-g^{ij}(p_\xi)) c_j \ge 0
+    \end{equation*}
+\end{proof}
