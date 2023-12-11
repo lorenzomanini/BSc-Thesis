@@ -47,7 +47,7 @@ Even though relative entropy doesn't follow triangle inequality, it does follow 
 This is a generalization of the Pythagorean theorem in the sense that if it was stated in terms of the Euclidean distance squared, the angle between $\overline{pp_*}$ and $\overline{p_*q}$ would be convex and so \cref{eq:gen-pyth} would be the corollary of the Pythagorean theorem for convex triangles. This suggests that the relative entropy may be regarded as an asymmetric distance squared and as we will see this is enough to define a metric on the manifold.
 
 \section{Squared Riemannian distances} \label{ch:square-dist} 
-Now that we have some notion of distance, we shall explore how to define a coherent metric on the manifold. First, we shall study this for a Riemannian distance as defined in \cref{empty}.
+Now that we have some notion of distance, we shall explore how to define a coherent metric on the manifold. First, we shall study this for a Riemannian distance.
 
 Let $(M,g)$ be a Riemannian manifold where $g$ is the metric tensor, then consider a point $p\in M$. We define the \emph{exponential map} in $p$ as follows
 \begin{equation}
@@ -142,24 +142,24 @@ We now go back to the relative entropy, we report the definition given in \cref{
 \begin{equation*}
     S(p\parallel q)\coloneqq\sum_{x\in\mathcal{X}}p(x)\ln\left(\frac{p(x)}{q(x)}\right)
 \end{equation*}
-this is a $C^2$ function of $\mathcal{P}\times\mathcal{P}$ and it follows \cref{eq:div-def}. So for any model $\mathcal{S}$ with parameters $\{\theta^{(i)}\}$ we can define
+this is a $C^2$ function of $\mathcal{P}\times\mathcal{P}$ and it follows \cref{eq:div-def}. So for any model $\mathcal{S}$ with parameters $\{\xi^{(i)}\}$ we can define
 \begin{equation}
-    g_{ij}^{(S)}=S[\,\cdot\parallel\partial_i\partial_j\,]=\left.\partial_i\partial_j\sum_{x\in\mathcal{X}}p(x)\ln\left(\frac{p(x)}{q(x;\theta)}\right)\right\rvert_{q=p}
+    g_{ij}^{(S)}=S[\,\cdot\parallel\partial_i\partial_j\,]=\left.\partial_i\partial_j\sum_{x\in\mathcal{X}}p(x)\ln\left(\frac{p(x)}{q(x;\xi)}\right)\right\rvert_{q=p}
 \end{equation}
-for a fixed $p$ and $\partial_i=\frac{\partial}{\partial\theta^i}$. So we have
+for a fixed $p$ and $\partial_i=\frac{\partial}{\partial\xi^i}$. So we have
 \begin{equation}
-    g_{ij}^{(S)}=-\sum_{x\in\mathcal{X}}p(x)\partial_i\partial_j\ln p(x;\theta)=-\mathrm{E}_p[\partial_i\partial_j\ln p(x;\theta)]
+    g_{ij}^{(S)}=-\sum_{x\in\mathcal{X}}p(x)\partial_i\partial_j\ln p(x;\xi)=-\mathrm{E}_p[\partial_i\partial_j\ln p(x;\xi)]
 \end{equation}
 and equivalently
 \begin{align}
-    g_{ij}^{(S)}=\mathrm{E}_p\left[\frac{1}{p^2(x)}\partial_ip(x;\theta)\partial_jp(x;\theta)\right] & =\mathrm{E}_p[\partial_i\ln p(x;\theta) \partial_j\ln p(x;\theta)]\label{eq:fisher-exp}              \\
-                                                                                                     & =\sum_{x\in\mathcal{X}}\frac{\partial_ip(x;\theta)\partial_jp(x;\theta)}{p(x)} \label{eq:fisher-mix}
+    g_{ij}^{(S)}=\mathrm{E}_p\left[\frac{1}{p^2(x)}\partial_ip(x;\xi)\partial_jp(x;\xi)\right] & =\mathrm{E}_p[\partial_i\ln p(x;\xi) \partial_j\ln p(x;\xi)]\label{eq:fisher-exp}              \\
+                                                                                                     & =\sum_{x\in\mathcal{X}}\frac{\partial_ip(x;\xi)\partial_jp(x;\xi)}{p(x)} \label{eq:fisher-mix}
 \end{align}
 where we used the fact that
 \begin{equation}
-    \sum_{x\in\mathcal{X}}\partial_i\partial_jp(x;\theta)=\partial_i\partial_j\sum_{x\in\mathcal{X}}p(x;\theta)=0
+    \sum_{x\in\mathcal{X}}\partial_i\partial_jp(x;\xi)=\partial_i\partial_j\sum_{x\in\mathcal{X}}p(x;\xi)=0
 \end{equation}
-Since we know that any $g_{ij}^{(D)}$ is positive semi-definite, $g_{ij}^{(S)}$ will be positive definite if and only if it is invertible. It can be easily shown that if the functions $\partial_ip(x;\theta)$ are linearly independent, then $g_{ij}^{(S)}$ is invertible and thus positive definite\todo{proof?}. Thus, relative entropy is a divergence and in fact, it is also known as \emph{Kullback-Leibler divergence} or \emph{information divergence}.
+Since we know that any $g_{ij}^{(D)}$ is positive semi-definite, $g_{ij}^{(S)}$ will be positive definite if and only if it is invertible. It can be easily shown that if the functions $\partial_ip(x;\xi)$ are linearly independent, then $g_{ij}^{(S)}$ is invertible and thus positive definite\todo{proof?}. Thus, relative entropy is a divergence and in fact, it is also known as \emph{Kullback-Leibler divergence} or \emph{information divergence}.
 
 Finally, then, $G_F\coloneqq\{g_{ij}^{(S)}\}$ defines a metric tensor at every point and it is known as the \emph{Fisher information metric}. This is, up to a constant factor, the unique metric induced by the relative entropy, and it plays a focal role for the geometrical modeling and interpretation of statistics.
 
@@ -173,7 +173,7 @@ while from \cref{eq:fisher-mix} we get
     \langle X,Y \rangle_p & =\sum_{x\in\mathcal{X}}\frac{X^{(m)}(x)Y^{(m)}(x)}{p(x)}                                   \\
                           & =\sum_{x\in\mathcal{X}}{X^{(m)}(x)Y^{(e)}(x)}=\sum_{x\in\mathcal{X}}{X^{(e)}(x)Y^{(m)}(x)}
 \end{align}
-These expressions will prove to be very useful in \cref{empty}.
+These expressions will prove to be very useful in \cref{ch:param-est}.
 
 We notice that in neither representations the inner product is the Euclidean one induced by $\mathbb{R}^\mathcal{X}$ on the respective embeddings. For such a representation we would have that
 \begin{equation} \label{eq:fisher-0-rep}

@@ -1,13 +1,5 @@
-\chapter{Parameter estimation}
-%Unbiased estimators) Estimators, unbiased estimators and covariance matrix
-%Discorsive explanation
-%
-%Variance of a random variable) The gradient of a function of P
-%Variance of a random variable of P
-%Variance of a random variable of S
-%
-%The Cramer-Rao bound) Cramer Rao bound, i.e. variance of estimators on S
-%Discorsive explanation
+\chapter{Parameter estimation}\label{ch:param-est}
+
 \section{Unbiased estimators}
 Consider a random process and an $n$-dim statistical model $\mathcal{S}=\left\{ p_\xi \mid \xi\in\Xi \right\}$ of it, as defined in \cref{ch:stat-models}; it is often the case that from a measured sample $x\in\mathcal{X}$ we want to estimate the parameters $\xi$ of the underlying probability distribution, that we assume to be in $\mathcal{S}$.
 
@@ -116,8 +108,6 @@ Finally, we have the following theorem relating the variance of a random variabl
 \end{proof}
 
 \section{The Cramér-Rao bound}
-% State and prove the Cràmer-Rao bound
-% Define an optimal estimator and give the interpretation
 We are now in the position to state and prove an important result of parameter estimation theory
 \begin{theorem}[Cramér-Rao bound]
     For any unbiased estimator $\hat{\xi}$ its variance-covariance matrix $\mathrm{V}_\xi[\hat{\xi}]$ satisfies
