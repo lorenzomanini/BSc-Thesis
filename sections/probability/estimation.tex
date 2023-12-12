@@ -63,7 +63,7 @@ We now state and prove the following theorem that relates the deviation of a ran
         (grad\mathrm{E}[A])_p^{(e)}=A-\mathrm{E}_p[A]
     \end{equation*}
 \end{proof}
-And we also get the following
+We also get the following
 \begin{corollary}\label{cr:variance}
     For any random variable $A$
     \begin{equation}
@@ -91,6 +91,7 @@ then we find that $\forall X\in T_p(\mathcal{S})$
 \begin{equation} \label{eq:grad-projection}
     \langle (\left. grad\mathrm{E}[A] \right\rvert_\mathcal{S})_p, X \rangle_p = X(\mathrm{E}[A])= \langle v_\parallel + v_\perp, X\rangle_p = \langle v_\parallel, X\rangle_p
 \end{equation}
+and so $(\left. grad\mathrm{E}[A] \right\rvert_\mathcal{S})_p=v_\parallel$.
 
 Finally, we have the following theorem relating the variance of a random variable and the sensitivity of its expectation value to the changes in the model parameters
 \begin{theorem} \label{th:variance-ineq}
@@ -110,7 +111,7 @@ Finally, we have the following theorem relating the variance of a random variabl
 \section{The Cramér-Rao bound}
 We are now in the position to state and prove an important result of parameter estimation theory
 \begin{theorem}[Cramér-Rao bound]
-    For any unbiased estimator $\hat{\xi}$ its variance-covariance matrix $\mathrm{V}_\xi[\hat{\xi}]$ satisfies
+    Let $\mathcal{S}=\left\{ p_\xi \mid \xi\in\Xi \right\}$ be an $n$-dim statistical model of $\mathcal{P}$. Then, for any unbiased estimator $\hat{\xi}$ the variance-covariance matrix $\mathrm{V}_\xi[\hat{\xi}]$ satisfies
     \begin{equation}\label{eq:cramer-rao}
         \mathrm{V}_\xi[\hat{\xi}]\ge G_F^{-1}(p_\xi)
     \end{equation}
@@ -119,9 +120,9 @@ We are now in the position to state and prove an important result of parameter e
 \begin{proof}
     Let $A=c_i\hat{\xi}^{(i)}$ where $c$ is an arbitrary element of $\mathbb{R}^n$. Then $A$ is a random variable with $\mathrm{E}_{p_\xi}[A]=c_i\xi^i$ and
     \begin{align*}
-        \mathrm{V}_{p_\xi}[A] &= \mathrm{E}_{p_\xi}[(c_i\hat{\xi}^{(i)}-c_i\xi^i)(c_j\hat{\xi}^{(j)}-c_j\xi^j)]
+        \mathrm{V}_{p_\xi}[A] &= \mathrm{E}_{p_\xi}[(c_i\hat{\xi}^{(i)}(x)-c_i\xi^i)(c_j\hat{\xi}^{(j)}(x)-c_j\xi^j)]
         \\
-        &=\mathrm{E}_{p_\xi}[c_i(\hat{\xi}^{(i)}-\xi^i)(\hat{\xi}^{(j)}-\xi^j)c_j]
+        &=\mathrm{E}_{p_\xi}[c_i(\hat{\xi}^{(i)}(x)-\xi^i)(\hat{\xi}^{(j)}(x)-\xi^j)c_j]
         \\
         &=c_i v_\xi^{ij} c_j
     \end{align*}
@@ -129,7 +130,7 @@ We are now in the position to state and prove an important result of parameter e
     \begin{equation*}
         c_i v_\xi^{ij} c_j\ge \lVert (\left.d\mathrm{E}[A]\right\rvert_\mathcal{S})_p \rVert_p^2
     \end{equation*}
-    where
+    where, in the coordinate basis of $\{\xi^{(i)}\}$
     \begin{align*}
         \lVert (\left.d\mathrm{E}[A]\right\rvert_\mathcal{S})_p \rVert_p^2&=(\partial_i\mathrm{E}[A])_p g^{ij}(p)(\partial_j\mathrm{E}[A])_p
         \\
@@ -142,3 +143,5 @@ We are now in the position to state and prove an important result of parameter e
 \end{proof}
 
 An unbiased estimator that saturates \cref{eq:cramer-rao} is called an \emph{efficient estimator} and is the best unbiased estimator in the sense that its variance is minimum between all unbiased estimators. It's important to notice that an efficient estimator doesn't always exist. \todo{talk about asymptotically efficient estimators?}
+
+This result shows that the efficiency with which we can infer the underlying probability distribution of a process is deeply linked with the information geometry of the model. \todo{Examples}

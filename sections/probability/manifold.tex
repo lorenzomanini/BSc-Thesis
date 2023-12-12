@@ -23,7 +23,7 @@ Let now $N$ be the cardinality of $\mathcal{X}$. To have a picture of $\mathbb{R
 \begin{equation}
     f \leftrightarrow (f(x_1),\dots,f(x_N))
 \end{equation}
-then it's easy to recognize that the \emph{space of probability distributions} is a convex subset of the affine subspace $\mathcal{A}_1\coloneqq\{f\in\mathbb{R}^\mathcal{X}\mid\sum_{x\in\mathcal{X}}f(x)=1\}$. In particular, it is the set resulting from the convex mixing of the trivial probability distributions $f(x_i)=\delta_{ik}$, represented by the unit vectors of $\mathbb{R}^N$. Finally, it's also interesting to consider the inner product induced on $\mathbb{R}^\mathcal{X}$ by the Euclidean one of $\mathbb{R}^N$. Let $p$ be a probability distribution and $A$ a random variable, then
+then it's easy to recognize that the \emph{space of probability distributions} is a convex subset of the affine subspace $\mathcal{A}_1\coloneqq\{f\in\mathbb{R}^\mathcal{X}\mid\sum_{x\in\mathcal{X}}f(x)=1\}$. In particular, it is the set resulting from the convex mixing of the trivial probability distributions $f_k(x_i)=\delta_{ik}$, represented by the unit vectors of $\mathbb{R}^N$. Finally, it's also interesting to consider the inner product induced on $\mathbb{R}^\mathcal{X}$ by the Euclidean one of $\mathbb{R}^N$. Let $p$ be a probability distribution and $A$ a random variable, then
 \begin{equation} \label{eq:inn-prod-Rx}
     p \cdot A = \sum_{x\in\mathcal{X}}p(x)A(x)=\mathrm{E}_p[A]
 \end{equation}
@@ -35,7 +35,7 @@ We call an n-dimensional \emph{statistical model} on $\mathcal{X}$ a family of p
 \end{equation}
 where $p_\xi(x)$ may be equivalently written as $p(x;\xi)$ or $p(x;\xi^{(1)},\dots,\xi^{(n)})$. This definition of a statistical model reflects the act of hypothesizing an underlying model, that may depend on some parameters, for the generation of the random variable's samples. Then only a subset, here represented by $\mathcal{S}$, of all the possible probability distributions is considered as a candidate of the underlying probability distribution, and every candidate probability distribution is identified uniquely by the corresponding parameters, here represented by $\xi$.
 
-We now introduce some additional requirements to $S$ so that we may treat it as a well-behaved manifold. Firstly we regard $S$ as a subset of $\mathcal{A}_1$ equipped with the topology induced by the standard one of $\mathbb{R}^N$. Then, we require that
+We now introduce some additional requirements to statistical models so that we may define well-behaved manifolds from them. Firstly we regard $S$ as a subset of $\mathcal{A}_1$ equipped with the topology induced by the standard one of $\mathbb{R}^N$. Then we assume that
 \begin{equation} \label{eq:param-prop}
     \begin{aligned}
          & \text{$\Xi$ is an open set}                                                       \\
