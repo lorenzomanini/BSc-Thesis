@@ -1,5 +1,5 @@
-\chapter{The information metric}
-\section{Relative entropy} \label{ch:rel-entr}
+\section{The information metric}
+\subsection{Relative entropy} \label{ch:rel-entr}
 Given a statistical manifold, we may ask ourselves if a certain metric can be naturally defined on it. Such a metric would give rise to a Riemannian connection and consequently to a geodesic distance between elements of the manifold. For this reason, we should first find a statistical meaning to the notion of distance between probability distributions and only then try to find a metric coherent with it.
 
 One natural way to proceed is to consider how hard it is to distinguish a probability distribution from another one by extracting some samples. More precisely let's assume that a random process has an underlying probability distribution $q$ and that $N_s$ samples are generated. Then we can consider the probability that the resulting frequencies $f_i$ of the samples correspond to the probabilities $p_i$ of another probability distribution $p$.
@@ -46,7 +46,7 @@ Even though relative entropy doesn't follow triangle inequality, it does follow 
 \end{theorem}
 This is a generalization of the Pythagorean theorem in the sense that if it was stated in terms of the Euclidean distance squared, the angle between $\overline{pp_*}$ and $\overline{p_*q}$ would be obtuse and so \cref{eq:gen-pyth} would be the corollary of the Pythagorean theorem for obtuse triangles. This suggests that the relative entropy may be regarded as an asymmetric distance squared and as we will see this is enough to define a metric on the manifold.
 
-\section{Squared Riemannian distances} \label{ch:square-dist} 
+\subsection{Squared Riemannian distances} \label{ch:square-dist} 
 Now that we have some notion of distance, we shall explore how to define a coherent metric on the manifold. First, we shall study this for a Riemannian distance.
 
 Let $(M,g)$ be a Riemannian manifold where $g$ is the metric tensor, then consider a point $p\in M$. We define the \emph{exponential map} in $p$ as follows
@@ -100,7 +100,7 @@ so the metric tensor in $p$ is proportional to the Hessian matrix of $L_p^2$ in 
 
 We have thus found a way to recover the metric tensor from its squared Riemannian distance.
 
-\section{Divergences}
+\subsection{Divergences}
 As argued in the last paragraph of \cref{ch:rel-entr}, relative entropy has some properties of squared distances and so we may try to find a metric tensor coherent with it as we did in \cref{ch:square-dist}.
 
 Let $M$ be a differentiable manifold and $D(\,\cdot\parallel\cdot\,):M\times M\to[0,+\infty)$ a $C^2$ function (possibly asymmetric) satisfying
@@ -139,7 +139,7 @@ and so to the lowest order, the asymmetry is not present.
 
 Finally, if $g_{ij}^{(D)}$ is positive definite we say that $D$ is a \emph{divergence}, then $\frac{1}{2}g_{ij}^{(D)}$ defines a metric tensor and so a unique Riemannian structure on the manifold. The induced squared Riemannian distance coincides at the lowest order near the diagonal with the divergence.
 
-\section{The Fisher information metric}
+\subsection{The Fisher information metric}
 We now go back to the relative entropy, we report the definition given in \cref{ch:rel-entr}
 \begin{equation*}
     S(p\parallel q)\coloneqq\sum_{x\in\mathcal{X}}p(x)\ln\left(\frac{p(x)}{q(x)}\right)
@@ -165,7 +165,7 @@ Since we know that any $g_{ij}^{(D)}$ is positive semi-definite, $g_{ij}^{(S)}$ 
 
 Finally, then, $G_F\coloneqq\{g_{ij}^{(S)}\}$ defines a metric tensor at every point and it is known as the \emph{Fisher information metric}. This is, up to a constant factor, the unique metric induced by the relative entropy, and it plays a focal role in the geometrical modeling and interpretation of statistics.
 
-\section{The geometry of $\mathcal{P}$}
+\subsection{The geometry of $\mathcal{P}$}
 The Fisher metric defines the inner product $\langle\,\cdot\,,\,\cdot\,\rangle_p$ between tangent vectors of a point $p\in\mathcal{P}$. Let us now express this inner product through the representations we defined in \cref{ch:tgt-space}. Given two tangent vectors $X,Y\in T_p\mathcal{P}$ from \cref{eq:fisher-exp} we find that
 \begin{equation}
     \langle X,Y \rangle_p=\mathrm{E}_p[X^{(e)}Y^{(e)}]

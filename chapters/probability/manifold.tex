@@ -1,5 +1,5 @@
-\chapter{Manifolds of probability distributions}
-\section{Space of probability distributions} \label{ch:space-prob-dist}
+\section{Manifolds of probability distributions}
+\subsection{Space of probability distributions} \label{ch:space-prob-dist}
 Consider a \emph{random process} and the set $\mathcal{X}$ of all its possible outcomes. We call this set the \emph{sample space}, and we will only consider random processes for which it is finite. Then, a \emph{probability distribution} on $\mathcal{X}$ is a function $p\in\mathbb{R}^\mathcal{X}\coloneq\{f\mid f\colon \mathcal{X}\to\mathbb{R}\}$ which satisfies
 \begin{equation} \label{eq:prob-dist-def}
     p(x)\ge 0 \quad \forall x\in\mathcal{X} \quad \text{and} \quad \sum_{x\in\mathcal{X}}p(x)=1
@@ -28,7 +28,7 @@ then it's easy to recognize that the \emph{space of probability distributions} i
     p \cdot A = \sum_{x\in\mathcal{X}}p(x)A(x)=\mathrm{E}_p[A]
 \end{equation}
 
-\section{Statistical models and manifolds} \label{ch:stat-models}
+\subsection{Statistical models and manifolds} \label{ch:stat-models}
 We call an n-dimensional \emph{statistical model} on $\mathcal{X}$ a family of probability distributions that are globally parametrized by n real-valued variables. Formally this is a subset $\mathcal{S}$ of the space of probability distributions with an invertible function $\psi\colon\mathcal{S}\to\Xi\subseteq\mathbb{R}^n$, so that we may write
 \begin{equation}
     \mathcal{S} = \Bigl\{ p_\xi \bigm\vert \exists\,\xi=(\xi^{(1)},\dots,\xi^{(n)})\in\Xi \colon p_\xi=\psi^{-1}(\xi) \Bigr\}
@@ -51,10 +51,10 @@ From our definitions, it is clear that the maximal dimension of a model is $n=N-
 that we call the \emph{manifold of probability distributions}. Notice that $\mathcal{P}$ is the interior of the space of probability distributions, this is because from our definitions follows that every $(N-1)$-dimensional statistical manifold must be an open subset of $\mathcal{A}_1$.
 \todo{Examples?}
 
-\section{The tangent space and its representations} \label{ch:tgt-space}
+\subsection{The tangent space and its representations} \label{ch:tgt-space}
 We will now study tangent vectors of statistical manifolds looking for useful statistical interpretations of them. To do this we will use the fact that, as explained in \cref{ch:space-prob-dist}, $\mathcal{P}$ can be embedded in the space of random variables $\mathbb{R}^\mathcal{X}$. Then we can try to also embed the tangent spaces in $\mathbb{R}^\mathcal{X}$ in some meaningful ways, thus linking tangent vectors and random variables.
 
-\subsection*{The mixture representation}
+\subsubsection*{The mixture representation}
 Since $\mathcal{P}$ is an open subset of the affine space $\mathcal{A}_1$ we can naturally identify the tangent space at every point with the displacement vector space $\mathcal{A}_0\coloneqq\{A\in\mathbb{R}^\mathcal{X}\mid\sum_{x\in\mathcal{X}}A(x)=0\}$. This is the natural embedding of $T_p(\mathcal{P})$ that arises from the trivial embedding of $\mathcal{P}$ in $\mathbb{R}^\mathcal{X}$, in fact for any $X\in T_p(\mathcal{P})$ we can define
 \begin{equation}
     X^{(m)}(x)\coloneqq X(p(x))
@@ -77,7 +77,7 @@ is an isomorphism and
 \end{equation}
 We call $X^{(m)}$ the \emph{mixture representation} or \emph{m-representation} of $X$.
 
-\subsection*{The exponential representation}
+\subsubsection*{The exponential representation}
 Since $T_p(\mathcal{P})$ is an $(N-1)$-dimensional vector space, for every $p$ we may try to identify it to the subspace of $\mathbb{R}^\mathcal{X}$ orthogonal to $p$ with respect to the inner product defined in \cref{eq:inn-prod-Rx}. This is interesting given the statistical meaning of the inner product between a generic element of $\mathbb{R}^\mathcal{X}$ and a probability distribution. For every $p\in\mathcal{P}$ the orthogonal space is
 \begin{equation}
     \mathcal{A}_{p}^{\bot}\coloneqq\{A\in\mathbb{R}^\mathcal{X}\mid p\cdot A=\mathrm{E}_p[A]=0\}

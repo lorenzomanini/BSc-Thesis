@@ -1,6 +1,6 @@
-\chapter{Parameter estimation}\label{ch:param-est}
+\section{Parameter estimation}\label{ch:param-est}
 
-\section{Unbiased estimators}
+\subsection{Unbiased estimators}
 Consider a random process and an $n$-dim statistical model $\mathcal{S}=\left\{ p_\xi \mid \xi\in\Xi \right\}$ of it, as defined in \cref{ch:stat-models}; it is often the case that from a measured sample $x\in\mathcal{X}$ we want to estimate the parameters $\xi$ of the underlying probability distribution, that we assume to be in $\mathcal{S}$.
 
 The estimation is represented by a function
@@ -20,7 +20,7 @@ Then for an unbiased estimator, we may represent the deviation from the true par
 In particular, the elements on the diagonal are the variances of the components of the estimator.
 \todo{Talk about the covariance ellipse?}
 
-\section{Variance and expectation value}
+\subsection{Variance and expectation value}
 For a generic random variable $A\in\mathbb{R}^\mathcal{X}$ we may define a real function $\mathrm{E}[A]$ on $\mathcal{P}$ that maps every probability distribution $p$ to the expectation value of $A$ when the sample is generated with $p$ as underlying probability distribution
 \begin{equation}
     \mathrm{E}[A]\colon\mathcal{P}\to\mathbb{R}\qquad p\mapsto\mathrm{E}_p[A]
@@ -108,7 +108,7 @@ Finally, we have the following theorem relating the variance of a random variabl
     Follows immediately from \cref{cr:variance} and \cref{eq:grad-projection}
 \end{proof}
 
-\section{The Cramér-Rao bound}
+\subsection{The Cramér-Rao bound}
 We are now in the position to state and prove an important result of parameter estimation theory
 \begin{theorem}[Cramér-Rao bound]
     Let $\mathcal{S}=\left\{ p_\xi \mid \xi\in\Xi \right\}$ be an $n$-dim statistical model of $\mathcal{P}$. Then, for any unbiased estimator $\hat{\xi}$ the variance-covariance matrix $\mathrm{V}_\xi[\hat{\xi}]$ satisfies
