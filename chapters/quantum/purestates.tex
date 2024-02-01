@@ -13,10 +13,10 @@ With this requirement, the chosen inner product allows us to define a canonical 
     \mathbf{Z}^*\equiv\phi_{\mathbf{Z}}:\mathcal{H}\to\mathbb{C} \quad \phi_{\mathbf{Z}}(\mathbf{X})=\langle\mathbf{Z},\mathbf{X}\rangle \qquad \forall\, \mathbf{X}\in\mathcal{H}
 \end{equation}
 Similarly, given any linear mapping $\mathrm{A}$ from $\mathcal{H}$ to itself, that from now on we will call \emph{operator}, we can define its adjoint as the operator $\mathrm{A}^\dag$ such that
-\begin{equation}
+\begin{equation} \label{eq:adjoint}
     \langle\mathrm{A}^\dag\,\mathbf{X},\mathbf{Y}\rangle=\langle\mathbf{X},\mathrm{A}\,\mathbf{Y}\rangle \qquad \forall\, \mathbf{X},\mathbf{Y}\in\mathcal{H}
 \end{equation}
-it can be shown that this is always well-defined for finite-dimensional Hilbert spaces.
+it can be shown that this is always well-defined for finite-dimensional Hilbert spaces and that $(\mathrm{A}^\dag)^\dag=\mathrm{A}$.
 
 Given the hermitian form of $\mathbb{C}^N$ we can define the canonical base $\{\mathbf{e_i}\}_{i=1\dots N}$ such that
 \begin{equation}
@@ -52,6 +52,23 @@ where the operation being done may be equivalently interpreted as the dual funct
     \end{equation}
     where $U(t_1,t_2)$ is a unitary operator that only depends on $t_1$ and $t_2$.
 \end{postulate}
+Unitary operators are defined as operators U that preserve the inner product, i.e.
+\begin{equation}
+    \braket{\mathrm{U}\mathbf{X},\mathrm{U}\mathbf{Y}}=\braket{\mathbf{X},\mathbf{Y}}\qquad \forall \mathbf{X},\mathbf{Y}\in\mathcal{H}
+\end{equation}
+From \cref{eq:adjoint} it's easy to show that
+\begin{equation}
+    \textit{U is unitary} \iff \mathrm{U}\mathrm{U}^\dag=\mathbb{I}\textit{ i.e }\mathrm{U}^{-1}=\mathrm{U}^\dag
+\end{equation}
+from which also follows $\mathrm{U}\mathrm{U}^\dag=\mathrm{U}^\dag\mathrm{U}$.
 \begin{postulate}[Measurements]
-    Every 
+    Measurements are described by a collection of pairs $\{\mathrm{M}_x,x\}$ of \emph{measurement operators} $\mathrm{M}_x$ and \emph{outcomes} $x$ such that
+    \begin{equation}
+        \sum_{x}\mathrm{M}_x^\dag\,\mathrm{M}_x=\mathbb{I}
+    \end{equation}
+    where $\mathbb{I}$ is the identity operator. Then, given a system in a state described by a state vector $\ket{\psi}$, the probability distribution of the outcomes is
+    \begin{equation}
+        p(x)=\frac{\braket{\psi|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi}}{\braket{\psi|\psi}}
+    \end{equation}
+    Finally, any interaction with the system that leads to the measurement of an outcome $x$ transforms the state vectors through $\mathrm{M}_x$. This means that any state vector $\ket{\psi}$ after the measurement
 \end{postulate}
