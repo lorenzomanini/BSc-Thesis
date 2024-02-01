@@ -1,0 +1,57 @@
+\section{The manifold of quantum states}
+\subsection{The postulates of quantum mechanics}
+Quantum mechanics is a fundamental theory that prescribes a mathematical framework to model the states of physical systems and their evolution, and that describes how to predict the results of our observations of them. We begin by stating its postulates loosely following the treatment of \ref{chuang}.
+
+\begin{postulate}[The Hilbert space]
+    Any isolated physical system is associated with a complex \emph{Hilbert space} i.e.\ a, possibly infinite-dimensional, complex vector space $\mathcal{H}$ with an inner product $\langle\cdot,\cdot\rangle$ that is also complete with respect to the metric induced by the inner product.
+\end{postulate}
+
+If the Hilbert space is finite-dimensional with dimension $N$, then it is isomorphic to $\mathbb{C}^N$ with a hermitian form as the inner product. In what follows we will only study systems that are associated with a finite-dimensional Hilbert space; the physical meaning of this condition will be discussed later in the section.
+
+With this requirement, the chosen inner product allows us to define a canonical isomorphism between $\mathcal{H}$ and its dual vector space $\mathcal{H}^*$ so that for every $\mathbf{Z}\in\mathcal{H}$ its dual functional is defined as
+\begin{equation} \label{eq:duality}
+    \mathbf{Z}^*\equiv\phi_{\mathbf{Z}}:\mathcal{H}\to\mathbb{C} \quad \phi_{\mathbf{Z}}(\mathbf{X})=\langle\mathbf{Z},\mathbf{X}\rangle \qquad \forall\, \mathbf{X}\in\mathcal{H}
+\end{equation}
+Similarly, given any linear mapping $\mathrm{A}$ from $\mathcal{H}$ to itself, that from now on we will call \emph{operator}, we can define its adjoint as the operator $\mathrm{A}^\dag$ such that
+\begin{equation}
+    \langle\mathrm{A}^\dag\,\mathbf{X},\mathbf{Y}\rangle=\langle\mathbf{X},\mathrm{A}\,\mathbf{Y}\rangle \qquad \forall\, \mathbf{X},\mathbf{Y}\in\mathcal{H}
+\end{equation}
+it can be shown that this is always well-defined for finite-dimensional Hilbert spaces.
+
+Given the hermitian form of $\mathbb{C}^N$ we can define the canonical base $\{\mathbf{e_i}\}_{i=1\dots N}$ such that
+\begin{equation}
+    \langle\mathbf{X},\mathbf{Y}\rangle=\sum_{i=1}^{\mathrm{N}}\bar{X}_i\,Y_i \qquad \forall\, \mathbf{X},\mathbf{Y}\in\mathbb{C}^N
+\end{equation}
+Then we also have a dual canonical base and the following relationship between the components of any vector and the ones of its dual
+\begin{equation}
+    Z^*_i=\bar{Z}_i \quad i=1,\dots, N \qquad \forall\, \mathbf{Z}\in\mathcal{H}
+\end{equation}
+Finally, we have the canonical isomorphism between operators and $N\times N$ complex matrices where
+\begin{equation}
+    \mathrm{A}_{ij}=\langle\mathbf{e_i},\mathrm{A}\,\mathbf{e_j}\rangle \quad i,j=1,\dots, N
+\end{equation}
+for any operator A, and the following relationship between the matrix elements of any operator and the ones of its adjoint
+\begin{equation}
+    A^\dag_{ij}=\bar{A}_{ji} \quad i,j=1,\dots, N
+\end{equation}
+i.e.\, the matrix representation of the adjoint operator is the transposed complex conjugate of the operator's one.
+
+We can now state the remaining postulates of quantum mechanics for the finite-dimensional case.
+\begin{postulate}[The state vectors]
+    Every non-zero vector of the Hilbert space completely characterizes a possible state of the system, we call such vectors \emph{state vectors}. The state vectors of the Hilbert space describe all the possible states of the system.
+\end{postulate}
+For state vectors, we will also use the Dirac notation writing vectors as $\ket{\psi}$ and their dual as $\bra{\psi}$. Then, from \cref{eq:duality} follows that we may write unambiguously
+\begin{equation}
+    \langle\ket{\psi},\ket{\phi}\rangle\equiv\braket{\psi|\phi}
+\end{equation}
+where the operation being done may be equivalently interpreted as the dual functional of $\ket{\psi}$ acting on $\ket{\phi}$ or as the inner product of the two vectors.
+\begin{postulate}[Evolution]
+    The state vectors of a closed system evolve only through unitary transformations of the Hilbert space. That is, the time evolution of any state vector $\ket{\psi(t)}$ is given by
+    \begin{equation}
+        \ket{\psi(t_2)}=\mathrm{U(t_1,t_2)}\ket{\psi(t_1)}
+    \end{equation}
+    where $U(t_1,t_2)$ is a unitary operator that only depends on $t_1$ and $t_2$.
+\end{postulate}
+\begin{postulate}[Measurements]
+    Every 
+\end{postulate}
