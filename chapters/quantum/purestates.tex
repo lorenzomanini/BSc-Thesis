@@ -10,7 +10,7 @@ If the Hilbert space is finite-dimensional with dimension $N$, then it is isomor
 
 With this requirement, the chosen inner product allows us to define a canonical isomorphism between $\mathcal{H}$ and its dual vector space $\mathcal{H}^*$ so that for every $\mathbf{Z}\in\mathcal{H}$ its dual functional is defined as
 \begin{equation} \label{eq:duality}
-    \mathbf{Z}^*\equiv\phi_{\mathbf{Z}}:\mathcal{H}\to\mathbb{C} \quad \phi_{\mathbf{Z}}(\mathbf{X})=\langle\mathbf{Z},\mathbf{X}\rangle \qquad \forall\, \mathbf{X}\in\mathcal{H}
+    \mathbf{Z}^*\equiv f_{\mathbf{Z}}:\mathcal{H}\to\mathbb{C} \quad f_{\mathbf{Z}}(\mathbf{X})=\langle\mathbf{Z},\mathbf{X}\rangle \qquad \forall\, \mathbf{X}\in\mathcal{H}
 \end{equation}
 Similarly, given any linear mapping $\mathrm{A}$ from $\mathcal{H}$ to itself, that from now on we will call \emph{operator}, we can define its adjoint as the operator $\mathrm{A}^\dag$ such that
 \begin{equation} \label{eq:adjoint}
@@ -18,41 +18,26 @@ Similarly, given any linear mapping $\mathrm{A}$ from $\mathcal{H}$ to itself, t
 \end{equation}
 it can be shown that this is always well-defined for finite-dimensional Hilbert spaces and that $(\mathrm{A}^\dag)^\dag=\mathrm{A}$.
 
-Given the hermitian form of $\mathbb{C}^N$ we can define the canonical base $\{\mathbf{e_i}\}_{i=1\dots N}$ such that
-\begin{equation}
-    \langle\mathbf{X},\mathbf{Y}\rangle=\sum_{i=1}^{\mathrm{N}}\bar{X}_i\,Y_i \qquad \forall\, \mathbf{X},\mathbf{Y}\in\mathbb{C}^N
-\end{equation}
-Then we also have a dual canonical base and the following relationship between the components of any vector and the ones of its dual
-\begin{equation}
-    Z^*_i=\bar{Z}_i \quad i=1,\dots, N \qquad \forall\, \mathbf{Z}\in\mathcal{H}
-\end{equation}
-Finally, we have the canonical isomorphism between operators and $N\times N$ complex matrices where
-\begin{equation}
-    \mathrm{A}_{ij}=\langle\mathbf{e_i},\mathrm{A}\,\mathbf{e_j}\rangle \quad i,j=1,\dots, N
-\end{equation}
-for any operator A, and the following relationship between the matrix elements of any operator and the ones of its adjoint
-\begin{equation}
-    A^\dag_{ij}=\bar{A}_{ji} \quad i,j=1,\dots, N
-\end{equation}
-i.e.\, the matrix representation of the adjoint operator is the transposed complex conjugate of the operator's one.
+%Coordinates
+% Given the hermitian form of $\mathbb{C}^N$ we can uniquely define a canonical base $\{\mathbf{e_i}\}_{i=1\dots N}$ such that
+% \begin{equation}
+%     \langle\mathbf{X},\mathbf{Y}\rangle=\sum_{i=1}^{\mathrm{N}}\bar{X}_i\,Y_i \qquad \forall\, \mathbf{X},\mathbf{Y}\in\mathbb{C}^N
+% \end{equation}
+% Then we also have a dual canonical base and the following relationship between the components of any vector and the ones of its dual
+% \begin{equation}
+%     Z^*_i=\bar{Z}_i \quad i=1,\dots, N \qquad \forall\, \mathbf{Z}\in\mathcal{H}
+% \end{equation}
+% Finally, we have the canonical isomorphism between operators and $N\times N$ complex matrices where
+% \begin{equation}
+%     \mathrm{A}_{ij}=\langle\mathbf{e_i},\mathrm{A}\,\mathbf{e_j}\rangle \quad i,j=1,\dots, N
+% \end{equation}
+% for any operator A, and the following relationship between the matrix elements of any operator and the ones of its adjoint
+% \begin{equation}
+%     A^\dag_{ij}=\bar{A}_{ji} \quad i,j=1,\dots, N
+% \end{equation}
+% i.e.\, the matrix representation of the adjoint operator is the transposed complex conjugate of the operator's one.
 
-We can now state the remaining postulates of quantum mechanics for the finite-dimensional case.
-\begin{postulate}[The state vectors]
-    Every non-zero vector of the Hilbert space completely characterizes a possible state of the system, we call such vectors \emph{state vectors}. The state vectors of the Hilbert space describe all the possible states of the system.
-\end{postulate}
-For state vectors, we will also use the Dirac notation writing vectors as $\ket{\psi}$ and their dual as $\bra{\psi}$. Then, from \cref{eq:duality} follows that we may write unambiguously
-\begin{equation}
-    \langle\ket{\psi},\ket{\phi}\rangle\equiv\braket{\psi|\phi}
-\end{equation}
-where the operation being done may be equivalently interpreted as the dual functional of $\ket{\psi}$ acting on $\ket{\phi}$ or as the inner product of the two vectors.
-\begin{postulate}[Evolution]
-    The state vectors of a closed system evolve only through unitary transformations of the Hilbert space. That is, the time evolution of any state vector $\ket{\psi(t)}$ is given by
-    \begin{equation}
-        \ket{\psi(t_2)}=\mathrm{U(t_1,t_2)}\ket{\psi(t_1)}
-    \end{equation}
-    where $U(t_1,t_2)$ is a unitary operator that only depends on $t_1$ and $t_2$.
-\end{postulate}
-Unitary operators are defined as operators U that preserve the inner product, i.e.
+There are two families of operators that will be instrumental to the formulation of the remaining postulates: unitary operators and self-adjoint operators. Unitary operators are defined as operators U that preserve the inner product, i.e.
 \begin{equation}
     \braket{\mathrm{U}\mathbf{X},\mathrm{U}\mathbf{Y}}=\braket{\mathbf{X},\mathbf{Y}}\qquad \forall \mathbf{X},\mathbf{Y}\in\mathcal{H}
 \end{equation}
@@ -60,15 +45,54 @@ From \cref{eq:adjoint} it's easy to show that
 \begin{equation}
     \textit{U is unitary} \iff \mathrm{U}\mathrm{U}^\dag=\mathbb{I}\textit{ i.e }\mathrm{U}^{-1}=\mathrm{U}^\dag
 \end{equation}
-from which also follows $\mathrm{U}\mathrm{U}^\dag=\mathrm{U}^\dag\mathrm{U}$.
+from which also follows $\mathrm{U}\mathrm{U}^\dag=\mathrm{U}^\dag\mathrm{U}$. Self-adjoint operators are defined as operators A that are equal to their adjoint, i.e.
+\begin{equation} \label{eq:selfadj}
+    \langle\mathrm{A}\,\mathbf{X},\mathbf{Y}\rangle=\langle\mathbf{X},\mathrm{A}\,\mathbf{Y}\rangle \qquad \forall\, \mathbf{X},\mathbf{Y}\in\mathcal{H}
+\end{equation}
+or, equivalently, $\mathrm{A}=\mathrm{A}^\dag$. From their definition follows immediately that
+\begin{equation} \label{eq:selfadj-real}
+    \langle\mathrm{A}\,\mathbf{X},\mathbf{X}\rangle=\overline{\langle\mathbf{X},\mathrm{A}\,\mathbf{X}\rangle}=\overline{\langle\mathrm{A}\,\mathbf{X},\mathbf{X}\rangle}\in\mathbb{R}\qquad \forall\, \mathbf{X}\in\mathcal{H}
+\end{equation}
+
+We can now state the remaining postulates of quantum mechanics for the finite-dimensional case.
+\begin{postulate}[The state vectors]
+    Every non-zero vector of the Hilbert space completely characterizes a possible state of the system, we call such vectors \emph{state vectors}. The state vectors of the Hilbert space describe all the possible states of the system.
+\end{postulate}
+For state vectors, we will also use the Dirac notation writing vectors as $\ket{\psi}$ and their dual as $\bra{\psi}$. Then, from \cref{eq:duality} follows that we may write unambiguously
+\begin{equation}
+    \braket{\psi|\phi}\equiv\langle\ket{\psi},\ket{\phi}\rangle=\bigl[\bra{\psi}\bigr] (\ket{\phi})
+\end{equation}
+where the operation being done may be equivalently interpreted as the dual functional of $\ket{\psi}$ acting on $\ket{\phi}$ or as the inner product of the two vectors. The image of a vector $\ket{\psi}$ under the action of an operator $\mathrm{L}$ will be written as $\mathrm{L}\ket{\psi}$, then from the definition of adjoint operators follows that its dual will be $\bra{\psi}\mathrm{L}^\dag$. Finally, given any self-adjoint operator $\mathrm{A}$, from \cref{eq:selfadj} follows that we may write unambiguously
+\begin{equation}
+    \braket{\psi | A | \phi}\equiv[\bra{\psi}A]\ket{\phi}=\bra{\psi}[A\ket{\phi}]
+\end{equation}
+\begin{postulate}[Evolution]
+    The state vectors of a closed system evolve only through unitary transformations of the Hilbert space. That is, the time evolution of any state vector $\ket{\psi(t)}$ is given by
+    \begin{equation}
+        \ket{\psi(t_2)}=\mathrm{U(t_1,t_2)}\ket{\psi(t_1)}
+    \end{equation}
+    where $U(t_1,t_2)$ is a unitary operator that only depends on $t_1$ and $t_2$.
+\end{postulate}
 \begin{postulate}[Measurements]
-    Measurements are described by a collection of pairs $\{\mathrm{M}_x,x\}$ of \emph{measurement operators} $\mathrm{M}_x$ and \emph{outcomes} $x$ such that
+    Measurements are described by a collection of pairs $\{\mathrm{M}_x,x\}$ of \emph{measurement operators} $\mathrm{M}_x$ and \emph{outcomes} $x$ such that the following \emph{completeness equation} is satisfied
     \begin{equation}
         \sum_{x}\mathrm{M}_x^\dag\,\mathrm{M}_x=\mathbb{I}
     \end{equation}
     where $\mathbb{I}$ is the identity operator. Then, given a system in a state described by a state vector $\ket{\psi}$, the probability distribution of the outcomes is
-    \begin{equation}
+    \begin{equation} \label{eq:quant-probability}
         p(x)=\frac{\braket{\psi|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi}}{\braket{\psi|\psi}}
     \end{equation}
-    Finally, any interaction with the system that leads to the measurement of an outcome $x$ transforms the state vectors through $\mathrm{M}_x$. This means that any state vector $\ket{\psi}$ after the measurement
+    Finally, any interaction with the system that leads to the measurement of a specific outcome $x$ transforms any state vector $\ket{\psi}$ before the measurement to a new state vector $\ket{\psi'}$ after the measurement according to
+    \begin{equation}
+        \ket{\psi'}=\mathrm{M}_x\ket{\psi}
+    \end{equation}
+    that depends on the outcome measured.
 \end{postulate}
+The probabilities of \cref{eq:quant-probability} are well defined since
+\begin{align}
+    p(x)&=\frac{\left\lVert\mathrm{M}_x\ket{\psi}\right\rVert^2}{\left\lVert\ket{\psi}\right\rVert^2}\ge 0 \qquad \forall x
+    \\
+    \sum_{x}p(x)&=\frac{\braket{\psi|\sum_{x}\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi}}{\braket{\psi|\psi}}=1
+\end{align}
+\todo{Example}
+\todo{Composed systems and tensor product}
