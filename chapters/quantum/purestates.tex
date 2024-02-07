@@ -73,9 +73,10 @@ where the operation being done may be equivalently interpreted as the dual funct
     \end{equation}
     where $U(t_1,t_2)$ is a unitary operator that only depends on $t_1$ and $t_2$.
 \end{postulate}
+We may interpret this as requiring that any evolution preserves the structure we defined on the set $\mathcal{H}$, that is the vector space structure and the inner product space structure. Thus we expect the transformations to be invertible, and linear and to preserve the inner product; in this sense, unitary operators are the automorphisms of the Hilbert space.
 \begin{postulate}[Measurements]
     Measurements are described by a collection of pairs $\{\mathrm{M}_x,x\}$ of \emph{measurement operators} $\mathrm{M}_x$ and \emph{outcomes} $x$ such that the following \emph{completeness equation} is satisfied
-    \begin{equation}
+    \begin{equation} \label{eq:completeness}
         \sum_{x}\mathrm{M}_x^\dag\,\mathrm{M}_x=\mathbb{I}
     \end{equation}
     where $\mathbb{I}$ is the identity operator. Then, given a system in a state described by a state vector $\ket{\psi}$, the probability distribution of the outcomes is
@@ -94,5 +95,34 @@ The probabilities of \cref{eq:quant-probability} are well defined since
     \\
     \sum_{x}p(x)&=\frac{\braket{\psi|\sum_{x}\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi}}{\braket{\psi|\psi}}=1
 \end{align}
+We thus have that for any fixed measurement every state vector defines a probability distribution on the outcomes. In this sense, quantum states can be thought of as a generalization of probability distributions.
 \todo{Example}
 \todo{Composed systems and tensor product}
+
+\subsection{PVM and observables}
+There is a special class of quantum measurements we will be interested in: projection-valued measurements (PVM). PVMs are quantum measurements where the measurement operators $\{P_x\}$ are also required to be orthogonal projectors, i.e.
+\begin{align}
+    P_x^\dag&=P_x \qquad \forall x
+    \\
+    P_x\,P_y&=\delta_{xy}P_x \qquad \forall x,y
+\end{align}
+this, with the completeness equation of \cref{eq:completeness} means that $\{P_x\}$ is a complete set of otrhogonal projectors. PVMs have the interesting property that repeating the same measurement multiple times while the Hilbert space is evolving with the identity operator (i.e. is not changing) always leads to identical results. In fact, after the first measurement, if the measured outcome was $x$, we will have that
+\begin{equation}
+    \ket{\psi'_{(0)}}=P_x \ket{\psi}
+\end{equation}
+for any initial vector state $\ket{\psi}$. Then, repeating the same measurement we will have the probability distribution
+\begin{equation}
+    p(y)=\frac{\braket{\psi|P_x^\dag\,P_y^\dag\,P_y\,P_x|\psi}}{\braket{\psi|P_x^\dag\,P_x|\psi}}=\delta_{xy}
+\end{equation}
+and so we will get with certainty the same result. After the measurement, we will have the state vector
+\begin{equation}
+    \ket{\psi'_{(1)}}=P_x P_x \ket{\psi}=P_x \ket{\psi}
+\end{equation}
+and so we can reiterate the same argument for the following measurements.
+
+When we think of well-defined measurable properties of a system we may require repeated measurements to always give the same outcome if in between them the system was unchanged. From this intuitive concept follows the definition of an \emph{observable} as a PVM with real-valued outcomes $\lambda_i$. Then, we may associate to any observable the self-adjoint operator
+\begin{equation}
+    A=\sum_{i}\lambda_i P_i
+\end{equation}
+Finally the spectral theorem \ref{} shows that the converse is also true, and so to any selfadjoint operator, we may uniquely associate the complete set of orthogonal projectors of its eigenvectors together with their real eigenvalues. We have thus proved that there is a 1-1 relationship between observables and selfadjoint operators so that we may identify any observable with its selfadjoint operator.
+\todo{spectral theorem}
