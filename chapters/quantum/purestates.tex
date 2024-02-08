@@ -1,5 +1,5 @@
 \section{The manifold of quantum states}
-\subsection{The postulates of quantum mechanics}
+\subsection{The postulates of quantum mechanics} \label{sec:postulates}
 Quantum mechanics is a fundamental theory that prescribes a mathematical framework to model the states of physical systems and their evolution, and that describes how to predict the results of our observations of them. We begin by stating its postulates loosely following the treatment of \ref{chuang}.
 
 \begin{postulate}[The Hilbert space]
@@ -55,7 +55,7 @@ or, equivalently, $\mathrm{A}=\mathrm{A}^\dag$. From their definition follows im
 \end{equation}
 
 We can now state the remaining postulates of quantum mechanics for the finite-dimensional case.
-\begin{postulate}[The state vectors]
+\begin{postulate}[The state vectors] \label{pt:state-vect}
     Every non-zero vector of the Hilbert space completely characterizes a possible state of the system, we call such vectors \emph{state vectors}. The state vectors of the Hilbert space describe all the possible states of the system.
 \end{postulate}
 For state vectors, we will also use the Dirac notation writing vectors as $\ket{\psi}$ and their dual as $\bra{\psi}$. Then, from \cref{eq:duality} follows that we may write unambiguously
@@ -66,16 +66,16 @@ where the operation being done may be equivalently interpreted as the dual funct
 \begin{equation}
     \braket{\psi | A | \phi}\equiv[\bra{\psi}A]\ket{\phi}=\bra{\psi}[A\ket{\phi}]
 \end{equation}
-\begin{postulate}[Evolution]
+\begin{postulate}[Unitary evolution]
     The state vectors of a closed system evolve only through unitary transformations of the Hilbert space. That is, the time evolution of any state vector $\ket{\psi(t)}$ is given by
     \begin{equation}
         \ket{\psi(t_2)}=\mathrm{U(t_1,t_2)}\ket{\psi(t_1)}
     \end{equation}
     where $U(t_1,t_2)$ is a unitary operator that only depends on $t_1$ and $t_2$.
 \end{postulate}
-We may interpret this as requiring that any evolution preserves the structure we defined on the set $\mathcal{H}$, that is the vector space structure and the inner product space structure. Thus we expect the transformations to be invertible, and linear and to preserve the inner product; in this sense, unitary operators are the automorphisms of the Hilbert space.
-\begin{postulate}[Measurements]
-    Measurements are described by a collection of pairs $\{\mathrm{M}_x,x\}$ of \emph{measurement operators} $\mathrm{M}_x$ and \emph{outcomes} $x$ such that the following \emph{completeness equation} is satisfied
+We may interpret this as requiring that the evolution of a closed system preserves the structure we defined on the set $\mathcal{H}$, that is the vector space structure and the inner product space structure. Thus we expect the transformations to be invertible, and linear and to preserve the inner product; in this sense, unitary operators are the automorphisms of the Hilbert space.
+\begin{postulate}[Quantum measurements]
+    Quantum measurements are described by a collection of pairs $\{(\mathrm{M}_x,x)\}$ of \emph{measurement operators} $\mathrm{M}_x$ and \emph{outcomes} $x$ such that the following \emph{completeness equation} is satisfied
     \begin{equation} \label{eq:completeness}
         \sum_{x}\mathrm{M}_x^\dag\,\mathrm{M}_x=\mathbb{I}
     \end{equation}
@@ -126,3 +126,23 @@ When we think of well-defined measurable properties of a system we may require r
 \end{equation}
 Finally the spectral theorem \ref{} shows that the converse is also true, and so to any selfadjoint operator, we may uniquely associate the complete set of orthogonal projectors of its eigenvectors together with their real eigenvalues. We have thus proved that there is a 1-1 relationship between observables and selfadjoint operators so that we may identify any observable with its selfadjoint operator.
 \todo{spectral theorem}
+\todo{expectation value?}
+
+\subsection{Quantum states}
+Given the postulates of \cref{sec:postulates} we may ask ourselves if there is a 1-1 correspondence between quantum states and state vectors. \Cref{pt:state-vect} ensures that every state vector corresponds to a quantum state and that for each quantum state, there is at least one state vector that corresponds to it. Though it might be that multiple state vectors correspond to the same quantum state, and as we shall see this is the case.
+
+We start by requiring that two equivalent state vectors have the same probability distributions for any measurement. This means that for two equivalent state vectors $\ket{\psi}$, $\ket{\psi'}$
+\begin{equation}
+    \frac{\braket{\psi|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi}}{\braket{\psi|\psi}}=\frac{\braket{\psi'|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi'}}{\braket{\psi'|\psi'}} \qquad \forall x
+\end{equation}
+for any quantum measurement $\{(M_x,x)\}$. It's easy to guess that a sufficient condition is
+\begin{equation}\label{eq:equiv-state-vect}
+    \ket{\psi'}=c\ket{\psi} \quad \forall c\in\mathbb{C}
+\end{equation}
+since for any operator $\mathrm{M}_x$
+\begin{equation}
+    \frac{\braket{\psi'|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi'}}{\braket{\psi'|\psi'}}=\frac{\lVert c \rVert^2}{\lVert c \rVert^2}\cdot\frac{\braket{\psi|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi}}{\braket{\psi|\psi}}
+\end{equation}
+Then by choosing $\mathrm{M}_x=P_\psi$, the projector of $\psi$, it's easy to show that \cref{eq:equiv-state-vect} is also a necessary condition.
+
+We also note that 
