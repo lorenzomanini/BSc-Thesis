@@ -66,7 +66,7 @@ where the operation being done may be equivalently interpreted as the dual funct
 \begin{equation}
     \braket{\psi | A | \phi}\equiv[\bra{\psi}A]\ket{\phi}=\bra{\psi}[A\ket{\phi}]
 \end{equation}
-\begin{postulate}[Unitary evolution]
+\begin{postulate}[Unitary evolution] \label{pt:unit-evol}
     The state vectors of a closed system evolve only through unitary transformations of the Hilbert space. That is, the time evolution of any state vector $\ket{\psi(t)}$ is given by
     \begin{equation}
         \ket{\psi(t_2)}=\mathrm{U(t_1,t_2)}\ket{\psi(t_1)}
@@ -74,7 +74,7 @@ where the operation being done may be equivalently interpreted as the dual funct
     where $U(t_1,t_2)$ is a unitary operator that only depends on $t_1$ and $t_2$.
 \end{postulate}
 We may interpret this as requiring that the evolution of a closed system preserves the structure we defined on the set $\mathcal{H}$, that is the vector space structure and the inner product space structure. Thus we expect the transformations to be invertible, and linear and to preserve the inner product; in this sense, unitary operators are the automorphisms of the Hilbert space.
-\begin{postulate}[Quantum measurements]
+\begin{postulate}[Quantum measurements] \label{pt:quant-meas}
     Quantum measurements are described by a collection of pairs $\{(\mathrm{M}_x,x)\}$ of \emph{measurement operators} $\mathrm{M}_x$ and \emph{outcomes} $x$ such that the following \emph{completeness equation} is satisfied
     \begin{equation} \label{eq:completeness}
         \sum_{x}\mathrm{M}_x^\dag\,\mathrm{M}_x=\mathbb{I}
@@ -129,15 +129,15 @@ Finally the spectral theorem \ref{} shows that the converse is also true, and so
 \todo{expectation value?}
 
 \subsection{Quantum states}
-Given the postulates of \cref{sec:postulates} we may ask ourselves if there is a 1-1 correspondence between quantum states and state vectors. \Cref{pt:state-vect} ensures that every state vector corresponds to a quantum state and that for each quantum state, there is at least one state vector that corresponds to it. Though it might be that multiple state vectors correspond to the same quantum state, and as we shall see this is the case.
+Following \crefrange{pt:state-vect}{pt:quant-meas} we have that given a state vector for the system we know how it will evolve under some unitary evolution, the probability distributions of the outcomes of quantum measurements we may do, and the vector state we will get after those measurements, depending on the outcomes. Then we may ask ourselves if there are multiple state vectors that for any measurement yield the same probabilities, and that continue to do so after any unitary evolution or measurement. Such two vectors would be completely equivalent in their predictions and so we may regard them as describing the same quantum state. What we have just described is an equivalence relation between state vectors so that quantum states are the equivalence classes.
 
-We start by requiring that two equivalent state vectors have the same probability distributions for any measurement. This means that for two equivalent state vectors $\ket{\psi}$, $\ket{\psi'}$
+We start by requiring that two equivalent state vectors have the same probability distributions for any measurement. This means that
 \begin{equation}
-    \frac{\braket{\psi|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi}}{\braket{\psi|\psi}}=\frac{\braket{\psi'|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi'}}{\braket{\psi'|\psi'}} \qquad \forall x
+    \ket{\psi}\sim\ket{\psi'} \iff \frac{\braket{\psi|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi}}{\braket{\psi|\psi}}=\frac{\braket{\psi'|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi'}}{\braket{\psi'|\psi'}} \qquad \forall x
 \end{equation}
 for any quantum measurement $\{(M_x,x)\}$. It's easy to guess that a sufficient condition is
 \begin{equation}\label{eq:equiv-state-vect}
-    \ket{\psi'}=c\ket{\psi} \quad \forall c\in\mathbb{C}
+    \exists\,c\ne 0\in\mathbb{C} :\quad \ket{\psi'}=c\ket{\psi}
 \end{equation}
 since for any operator $\mathrm{M}_x$
 \begin{equation}
@@ -145,4 +145,18 @@ since for any operator $\mathrm{M}_x$
 \end{equation}
 Then by choosing $\mathrm{M}_x=P_\psi$, the projector of $\psi$, it's easy to show that \cref{eq:equiv-state-vect} is also a necessary condition.
 
-We also note that 
+We also note that for any operator $A$
+\begin{equation}
+    A(c\ket{\psi})=cA\ket{\psi} \quad \forall c\in\mathbb{C}
+\end{equation}
+so that any operator has a well-defined action on equivalence classes. In particular, this holds for unitary operators and measurement operators, and so two state vectors in the same equivalence class remain in the equivalence class after any unitary evolution or measurement.
+
+We have thus proved that quantum states are the equivalence classes of
+\begin{equation}
+    \ket{\psi}\sim\ket{\psi'} \iff \exists\,c\ne 0 \in\mathbb{C} :\quad \ket{\psi'}=c\ket{\psi}
+\end{equation}
+Then for any state vector $\ket{\psi}$
+\begin{equation}
+    \left[\ket{\psi}\right]_\sim=\{c\ket{\psi}\,\forall c\in\mathbb{C}\}\setminus\{0\}
+\end{equation}
+and so the space of quantum states is isomorphic to the set of 1-dim linear subspaces of $\mathcal{H}$, also called \emph{complex lines}. When $\mathcal{H}=\mathbb{C}^N$ this set is known as the $N$-dimensional complex projective space $\mathbf{\mathbb{C}P}^N$.
