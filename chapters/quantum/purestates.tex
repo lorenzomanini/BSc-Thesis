@@ -12,12 +12,30 @@ With this requirement, the chosen inner product allows us to define a canonical 
 \begin{equation} \label{eq:duality}
     \mathbf{Z}^*\equiv f_{\mathbf{Z}}:\mathcal{H}\to\mathbb{C} \quad f_{\mathbf{Z}}(\mathbf{X})=\langle\mathbf{Z},\mathbf{X}\rangle \qquad \forall\, \mathbf{X}\in\mathcal{H}
 \end{equation}
-Similarly, given any linear mapping $\mathrm{A}$ from $\mathcal{H}$ to itself, that from now on we will call \emph{operator}, we can define its adjoint as the operator $\mathrm{A}^\dag$ such that
+Then we may also define a tensor $T$ of type $\binom{p}{q}$ as a multilinear map
+\begin{equation}
+    T:{\mathcal{H}^*}^p\times\mathcal{H}^q \to \mathbb{C}
+\end{equation}
+where from \cref{eq:duality} follows that vectors can be identified with tensors of type $\binom{1}{0}$ and dual vectors with tensors of type $\binom{0}{1}$. We also have that operators (linear maps from $\mathcal{H}$ to itself) can be identified with $\binom{1}{1}$ tensors since for any operator $A$ we can define the tensor
+\begin{equation}
+    T_A(u^*,v)=u^*(Av)=\braket{u,Av}
+\end{equation}
+Then we may define the tensor product $\otimes$ between any two tensors $T$ and $T'$ of type $\binom{p}{q}$ and $\binom{p'}{q'}$ as the tensor of type $\binom{p+p'}{q+q'}$ such that
+\begin{align}
+    &(T\otimes T')(u^*_1,\dots,u^*_{p+p'},v_1,\dots,v_{q+q'})= \notag
+    \\
+    &T(u^*_1,\dots,u^*_{p},v_1,\dots,v_{q})\cdot T'(u^*_{p+1},\dots,u^*_{p+p'},v_{q+1},\dots,v_{q+q'})
+\end{align}
+and, in particular, given a vector $v$ and a dual vector $u^*$ their tensor product is the operator
+\begin{equation}
+    A(w)=u^*(w)\cdot v=\braket{u,w}\cdot v
+\end{equation}
+
+Given any linear mapping $\mathrm{A}$ from $\mathcal{H}$ to itself we can define its adjoint as the operator $\mathrm{A}^\dag$ such that
 \begin{equation} \label{eq:adjoint}
     \langle\mathrm{A}^\dag\,\mathbf{X},\mathbf{Y}\rangle=\langle\mathbf{X},\mathrm{A}\,\mathbf{Y}\rangle \qquad \forall\, \mathbf{X},\mathbf{Y}\in\mathcal{H}
 \end{equation}
 it can be shown that this is always well-defined for finite-dimensional Hilbert spaces and that $(\mathrm{A}^\dag)^\dag=\mathrm{A}$.
-
 %Coordinates
 % Given the hermitian form of $\mathbb{C}^N$ we can uniquely define a canonical base $\{\mathbf{e_i}\}_{i=1\dots N}$ such that
 % \begin{equation}
@@ -36,7 +54,6 @@ it can be shown that this is always well-defined for finite-dimensional Hilbert 
 %     A^\dag_{ij}=\bar{A}_{ji} \quad i,j=1,\dots, N
 % \end{equation}
 % i.e.\, the matrix representation of the adjoint operator is the transposed complex conjugate of the operator's one.
-
 There are two families of operators that will be instrumental to the formulation of the remaining postulates: unitary operators and self-adjoint operators. Unitary operators are defined as operators U that preserve the inner product, i.e.
 \begin{equation}
     \braket{\mathrm{U}\mathbf{X},\mathrm{U}\mathbf{Y}}=\braket{\mathbf{X},\mathbf{Y}}\qquad \forall \mathbf{X},\mathbf{Y}\in\mathcal{H}
@@ -62,10 +79,15 @@ For state vectors, we will also use the Dirac notation writing vectors as $\ket{
 \begin{equation}
     \braket{\psi|\phi}\equiv\langle\ket{\psi},\ket{\phi}\rangle=\bigl[\bra{\psi}\bigr] (\ket{\phi})
 \end{equation}
-where the operation being done may be equivalently interpreted as the dual functional of $\ket{\psi}$ acting on $\ket{\phi}$ or as the inner product of the two vectors. The image of a vector $\ket{\psi}$ under the action of an operator $\mathrm{L}$ will be written as $\mathrm{L}\ket{\psi}$, then from the definition of adjoint operators follows that its dual will be $\bra{\psi}\mathrm{L}^\dag$. Finally, given any self-adjoint operator $\mathrm{A}$, from \cref{eq:selfadj} follows that we may write unambiguously
+where the operation being done may be equivalently interpreted as the dual functional of $\ket{\psi}$ acting on $\ket{\phi}$ or as the inner product of the two vectors. The image of a vector $\ket{\psi}$ under the action of an operator $\mathrm{L}$ will be written as $\mathrm{L}\ket{\psi}$, then from the definition of adjoint operators follows that its dual will be $\bra{\psi}\mathrm{L}^\dag$. Then, given any self-adjoint operator $\mathrm{A}$, from \cref{eq:selfadj} follows that we may write unambiguously
 \begin{equation}
     \braket{\psi | A | \phi}\equiv[\bra{\psi}A]\ket{\phi}=\bra{\psi}[A\ket{\phi}]
 \end{equation}
+Finally, given a vector $\ket{\psi}$ and a dual vector $\bra{\phi}$, we write their tensor product as
+\begin{equation}
+    \ket{\psi}\bra{\phi}
+\end{equation}
+
 \begin{postulate}[Unitary evolution] \label{pt:unit-evol}
     The state vectors of a closed system evolve only through unitary transformations of the Hilbert space. That is, the time evolution of any state vector $\ket{\psi(t)}$ is given by
     \begin{equation}
@@ -149,22 +171,17 @@ and so we can reiterate the same argument for the following measurements.
 
 When we think of well-defined measurable properties of a system we may require repeated measurements to always give the same outcome if in between them the system was unchanged. From this intuitive concept follows the definition of an \emph{observable} as a PVM with real-valued outcomes $\lambda_i$. Then the following corollary allows us to link observables and self-adjoint operators
 \begin{corollary}
-    Any self-adjoint operator may be 
+    Any self-adjoint operator $\mathrm{A}$ with eigenvalues $\{\lambda_i\}$ may be expressed in term of the projectors $P_i$ of its eigenspaces as
+    \begin{equation}
+        \mathrm{A}=\sum_{i}\lambda_i\,P_i
+    \end{equation}
 \end{corollary}
-From the definition of a complete set of orthogonal projectors and 
 
-
-Then, we may uniquely associate to any observable the self-adjoint operator
-\begin{equation} \label{eq:observable-op}
-    A=\sum_{i}\lambda_i P_i
-\end{equation}
-Finally, we may ask ourselves if the converse is true, i.e. if we may associate a unique PVM to any self-adjoint operator, expressing it as in \ref{eq:observable-op}. The following theorem ensures that this is the case.
-Finally the spectral theorem \ref{} shows that the converse is also true, and so to any selfadjoint operator, we may uniquely associate the complete set of orthogonal projectors of its eigenvectors together with their real eigenvalues. We have thus proved that there is a 1-1 relationship between observables and selfadjoint operators so that we may identify any observable with its selfadjoint operator.
-\todo{spectral theorem}
+From this immediately follows that letting $\{\lambda_i\}$ be the real outcomes and $P_i$ be their PVM measurement there is a 1-1 relationship between observables and selfadjoint operators so that we may identify any observable with its selfadjoint operator.
 \todo{expectation value?}
 
 \subsection{Quantum states}
-Following \crefrange{pt:state-vect}{pt:quant-meas} we have that given a state vector for the system we know how it will evolve under some unitary evolution, the probability distributions of the outcomes of quantum measurements we may do, and the vector state we will get after those measurements, depending on the outcomes. Then we may ask ourselves if there are multiple state vectors that for any measurement yield the same probabilities, and that continue to do so after any unitary evolution or measurement. Such two vectors would be completely equivalent in their predictions and so we may regard them as describing the same quantum state. What we have just described is an equivalence relation between state vectors so that quantum states are the equivalence classes.
+Following \crefrange{pt:state-vect}{pt:quant-meas} we have that if we are given a state vector for the system we will know how it will evolve under unitary evolutions, the probability distributions of the outcomes of quantum measurements, and the vector state we will get after those measurements, depending on the outcomes. Then we may ask ourselves if there are multiple state vectors that for any measurement yield the same probabilities, and that continue to do so after any unitary evolution or measurement. Such two vectors would be completely equivalent in their predictions and so we may regard them as describing the same quantum state. What we have just described is an equivalence relation between state vectors so that quantum states are the equivalence classes.
 
 We start by requiring that two equivalent state vectors have the same probability distributions for any measurement. This means that
 \begin{equation}
@@ -172,26 +189,30 @@ We start by requiring that two equivalent state vectors have the same probabilit
 \end{equation}
 for any quantum measurement $\{(M_x,x)\}$. It's easy to guess that a sufficient condition is
 \begin{equation}\label{eq:equiv-state-vect}
-    \exists\,c\ne 0\in\mathbb{C} :\quad \ket{\psi'}=c\ket{\psi}
+    \exists\,c \ne 0 \in\mathbb{C} :\quad \ket{\psi'}=c\ket{\psi}
 \end{equation}
 since for any operator $\mathrm{M}_x$
 \begin{equation}
     \frac{\braket{\psi'|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi'}}{\braket{\psi'|\psi'}}=\frac{\lVert c \rVert^2}{\lVert c \rVert^2}\cdot\frac{\braket{\psi|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi}}{\braket{\psi|\psi}}
 \end{equation}
-Then by choosing $\mathrm{M}_x=P_\psi$, the projector of $\psi$, it's easy to show that \cref{eq:equiv-state-vect} is also a necessary condition.
+Then by choosing $\mathrm{M}_x=P(\ket{\psi})$, the orthogonal projector on the span of $\ket{\psi}$, it's easy to show that \cref{eq:equiv-state-vect} is also a necessary condition.
 
 We also note that for any operator $A$
 \begin{equation}
     A(c\ket{\psi})=cA\ket{\psi} \quad \forall c\in\mathbb{C}
 \end{equation}
-so that any operator has a well-defined action on equivalence classes. In particular, this holds for unitary operators and measurement operators, and so two state vectors in the same equivalence class remain in the equivalence class after any unitary evolution or measurement.
+so that any operator has a well-defined action on equivalence classes. In particular, this holds for unitary operators and measurement operators, and so two state vectors in the same equivalence class will remain in the equivalence class after any unitary evolution or measurement.
 
 We have thus proved that quantum states are the equivalence classes of
 \begin{equation}
-    \ket{\psi}\sim\ket{\psi'} \iff \exists\,c\ne 0 \in\mathbb{C} :\quad \ket{\psi'}=c\ket{\psi}
+    \ket{\psi}\sim\ket{\psi'} \iff \exists\,c \ne 0 \in\mathbb{C} :\quad \ket{\psi'}=c\ket{\psi}
 \end{equation}
-Then for any state vector $\ket{\psi}$
+Then for any state vector $\ket{\psi}$ its quantum state is
 \begin{equation}
     \left[\ket{\psi}\right]_\sim=\{c\ket{\psi}\,\forall c\in\mathbb{C}\}\setminus\{0\}
 \end{equation}
-and so the space of quantum states is isomorphic to the set of 1-dim linear subspaces of $\mathcal{H}$, also called \emph{complex lines}. When $\mathcal{H}=\mathbb{C}^N$ this set is known as the $N$-dimensional complex projective space $\mathbf{\mathbb{C}P}^N$.
+and so the space of quantum states is isomorphic to the set of 1-dim linear subspaces of $\mathcal{H}$, also called \emph{complex lines}. When $\mathcal{H}=\mathbb{C}^N$ this set is known as the $N$-dimensional complex projective space $\mathbf{\mathbb{C}P}^N$ and it will be the object of our study.
+
+\subsection{Density matrices}
+As explained in the previous subsection quantum states are the 1-dim linear subspaces of $\mathcal{H}$, thus we should be able to identify them with orthogonal projectors. The only added requirement is that the projected spaces must be 1-dim, complex lines
+
