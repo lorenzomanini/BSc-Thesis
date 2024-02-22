@@ -192,8 +192,54 @@ and so the space of quantum states is isomorphic to the set of 1-dim linear subs
 
 \subsection{Density matrices}
 As explained in the previous subsection quantum states are the 1-dim linear subspaces of $\mathcal{H}$, thus we should be able to identify them with orthogonal projectors. The only added requirement is that the projected spaces must be 1-dim, i.e. they must be rank-1 orthogonal projectors. From \cref{eq:proj-decomp} and \cref{eq:outer-prod} we have that for any rank-1 projector
-\begin{equation}
+\begin{equation} \label{eq:rank1-proj}
     P_{\tilde{e}}\ket{\psi}=\braket{\tilde{e}|\psi}\ket{\tilde{e}} \implies  P_{\tilde{e}}=\ket{\tilde{e}}\bra{\tilde{e}}
 \end{equation}
-for some normalized vector $\ket{\tilde{e}}$. 
+for some normalized vector $\ket{\tilde{e}}$. In the context of quantum mechanics, the set on rank-1 orthogonal projectors is known as the set of pure density matrices $\mathfrak{D}$
 
+We now define the \emph{projection map} $\pi$
+\begin{equation}
+    \pi:\mathcal{H}\setminus\{0\}\to\mathfrak{D}\quad\pi(\ket{\psi})=\frac{\ket{\psi}\bra{\psi}}{\braket{\psi|\psi}}\coloneq \rho_\psi
+\end{equation}
+this is well-defined since for every $\ket{\psi}$ we have that $\rho_\psi$ is self-adjoint, idempotent and
+\begin{equation}
+    \rho_\psi=\frac{\ket{\psi}\bra{\psi}}{\braket{\psi|\psi}}=(\frac{1}{\lVert\ket{\psi}\rVert}\ket{\psi})(\bra{\psi}\frac{1}{\lVert\ket{\psi}\rVert})
+\end{equation}
+so that it is of rank 1.
+This map also has a well-defined action on quantum states since
+\begin{equation}
+    \frac{(c\ket{\psi})(\bra{\psi}c^*)}{(\bra{\psi}c^*)(c\ket{\psi})}=\frac{\ket{\psi}\bra{\psi}}{\braket{\psi|\psi}}\quad\forall c\ne 0\in\mathbb{C}
+\end{equation}
+so that it defines the map
+\begin{equation}
+    g:\mathbf{\mathbb{C}P}^N\to\mathfrak{D}\quad g([\ket{\psi}]_\sim)=\pi(\ket{\psi})=\rho_\psi
+\end{equation}
+Finally, we can prove that $g$ is invertible so that we may identify quantum states with density matrices. The map is 1-1 since given any two state vectors $\ket{\psi}$ and $\ket{\phi}$ we have that
+\begin{align*}
+    \rho_\psi=\rho_\phi &\implies \rho_\psi\,\rho_\phi=\rho_\phi
+    \\
+    &\implies \frac{\ket{\psi}\braket{\psi|\phi}\bra{\phi}}{\braket{\psi|\psi}\braket{\phi|\phi}}=\frac{\ket{\phi}\bra{\phi}}{\braket{\phi|\phi}}
+    \\
+    &\implies \frac{\braket{\psi|\phi}}{\braket{\psi|\psi}}\ket{\psi}=\ket{\phi}
+    \\
+    &\implies \ket{\psi} \sim \ket{\phi}
+\end{align*}
+Then, since any rank-1 orthogonal projector can be expressed as in \cref{eq:rank1-proj} we also have that $g$ is SU.
+
+In light of this identification, we now want to restate \crefrange{pt:state-vect}{pt:quant-meas} in terms of pure density matrices. To do so we will need the concept of the trace of an operator. For a finite-dimensional Hilbert space, we may define the trace of an operator $A$ as the linear functional
+\begin{equation}\label{eq:trace}
+    \mathrm{tr}(A)=\sum_{i}\braket{e_i|A|e_i},\quad\{\ket{e_i}\}\,\mathrm{o.n. basis}
+\end{equation}
+where it can be shown that the expression on the right of \cref{eq:trace} is independent of the choice of the orthonormal base. Then we also have the following result from linear algebra
+\begin{theorem}
+    Let $\mathcal{H}$ be a finite-dimensional complex Hilbert space and $\mathrm{A}$ any operator on $\mathcal{H}$. Then
+    \begin{equation}
+        \mathrm{tr}(A)=\sum_{i}\lambda_i
+    \end{equation}
+    where $\{\lambda_i\}$ are the eigenvalues of $\mathrm{A}$
+     repeated according to their algebraic multiplicity.
+\end{theorem}
+One immediate consequence of this theorem is that an orthogonal projector is of rank 1 if and only if it has a unitary trace. Then we may equivalently define pure density matrices in the following, more common, way
+\begin{equation}
+    \mathfrak{D}\coloneq\{\rho\in\mathfrak{L}\mid\rho^\dag=\rho,\,\rho^2=\rho,\,\mathrm{tr}(\rho)=1\}
+\end{equation}
