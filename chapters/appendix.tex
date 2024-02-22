@@ -1,0 +1,34 @@
+\chapter{Appendix}
+\section{Canonical coordinates}
+Coordinates
+Given the hermitian form of $\mathbb{C}^N$ we can uniquely define a canonical base $\{\mathbf{e_i}\}_{i=1\dots N}$ such that
+\begin{equation}
+    \langle\mathbf{X},\mathbf{Y}\rangle=\sum_{i=1}^{\mathrm{N}}\bar{X}_i\,Y_i \qquad \forall\, \mathbf{X},\mathbf{Y}\in\mathbb{C}^N
+\end{equation}
+Then we also have a dual canonical base and the following relationship between the components of any vector and the ones of its dual
+\begin{equation}
+    Z^*_i=\bar{Z}_i \quad i=1,\dots, N \qquad \forall\, \mathbf{Z}\in\mathcal{H}
+\end{equation}
+Finally, we have the canonical isomorphism between operators and $N\times N$ complex matrices where
+\begin{equation}
+    \mathrm{A}_{ij}=\langle\mathbf{e_i},\mathrm{A}\,\mathbf{e_j}\rangle \quad i,j=1,\dots, N
+\end{equation}
+for any operator A, and the following relationship between the matrix elements of any operator and the ones of its adjoint
+\begin{equation}
+    A^\dag_{ij}=\bar{A}_{ji} \quad i,j=1,\dots, N
+\end{equation}
+i.e.\, the matrix representation of the adjoint operator is the transposed complex conjugate of the operator's one.
+
+\section{Dirac notation}
+For state vectors, we will also use the Dirac notation writing vectors as $\ket{\psi}$ and their dual as $\bra{\psi}$. Then, from \cref{eq:duality} follows that we may write unambiguously
+\begin{equation}
+    \braket{\psi|\phi}\equiv\langle\ket{\psi},\ket{\phi}\rangle=\bigl[\bra{\psi}\bigr] (\ket{\phi})
+\end{equation}
+where the operation being done may be equivalently interpreted as the dual functional of $\ket{\psi}$ acting on $\ket{\phi}$ or as the inner product of the two vectors. The image of a vector $\ket{\psi}$ under the action of an operator $\mathrm{L}$ will be written as $\mathrm{L}\ket{\psi}$, then from the definition of adjoint operators follows that its dual will be $\bra{\psi}\mathrm{L}^\dag$. Then, given any self-adjoint operator $\mathrm{A}$, from \cref{eq:selfadj} follows that we may write unambiguously
+\begin{equation}
+    \braket{\psi | A | \phi}\equiv[\bra{\psi}A]\ket{\phi}=\bra{\psi}[A\ket{\phi}]
+\end{equation}
+Finally, given a vector $\ket{\psi}$ and a dual vector $\bra{\phi}$, we write their tensor product as
+\begin{equation}
+    \ket{\psi}\bra{\phi}
+\end{equation}
