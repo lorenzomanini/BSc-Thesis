@@ -230,7 +230,7 @@ In light of this identification, we now want to restate \crefrange{pt:state-vect
 \begin{equation}\label{eq:trace}
     \mathrm{tr}(A)=\sum_{i}\braket{e_i|A|e_i},\quad\{\ket{e_i}\}\,\mathrm{o.n. basis}
 \end{equation}
-where it can be shown that the expression on the right of \cref{eq:trace} is independent of the choice of the orthonormal base. Then we also have the following result from linear algebra
+where it can be shown that the expression on the right of \cref{eq:trace} is independent of the choice of the orthonormal base. \todo{Cyclic property.} Then we also have the following result from linear algebra
 \begin{theorem}
     Let $\mathcal{H}$ be a finite-dimensional complex Hilbert space and $\mathrm{A}$ any operator on $\mathcal{H}$. Then
     \begin{equation}
@@ -243,3 +243,58 @@ One immediate consequence of this theorem is that an orthogonal projector is of 
 \begin{equation}
     \mathfrak{D}\coloneq\{\rho\in\mathfrak{L}\mid\rho^\dag=\rho,\,\rho^2=\rho,\,\mathrm{tr}(\rho)=1\}
 \end{equation}
+We can now reformulate \cref{pt:state-vect} as
+\setcounter{postulate}{0}\begin{postulate}[Quantum states]
+    The set of all the possible quantum states of the system is the complex projective space of the system's Hilbert space. Then every quantum state is uniquely determined by a pure density matrix $\rho\in\mathfrak{D}$
+\end{postulate}
+
+Given a unitary evolution of the system, we can compute the evolution of any density matrix as follows. Any initial quantum state can be expressed as
+\begin{equation}
+    \rho(t_1)=\ket{\psi(t_1)}\bra{\psi(t_1)}
+\end{equation}
+where $\ket{\psi(t_1)}$ is a normalized state vector, then for any unitary evolution $U(t_1,t_2)$ we have that $\ket{\psi(t_2)}$ remains normalized and
+\begin{align*}
+    \rho(t_2)&=\ket{\psi(t_2)}\bra{\psi(t_2)}
+    \\
+    &=U(t_1,t_2)\ket{\psi(t_1)}\bra{\psi(t_1)}U^\dag(t_1,t_2)
+    \\
+    &=U(t_1,t_2)\rho(t_1)U^\dag(t_1,t_2)
+\end{align*}
+so that we can reformulate \cref{pt:unit-evol} as
+\begin{postulate}[Unitary evolution]
+    The Hilbert space of a closed system evolves only through unitary transformations. Coherently, the time evolution of any pure density matrix $\rho(t)$ describing the quantum state of the system is given by
+    \begin{equation}
+        \rho(t_2)=U(t_1,t_2)\rho(t_1)U^\dag(t_1,t_2)
+    \end{equation}
+    where $U(t_1,t_2)$ is a unitary operator that only depends on $t_1$ and $t_2$.
+\end{postulate}
+
+Finally, given any quantum measurement $\{(\mathrm{M}_x,x)\}$ and a quantum state $\rho$ we have that
+\begin{equation}
+    \rho=\ket{\psi}\bra{\psi} \implies p(x)=\braket{\psi|M_x^\dag\,M_x|\psi}=\lVert M_x\ket{\psi}\rVert^2
+\end{equation}
+for some normalized state vector $\ket{\psi}$. Then by choosing
+\begin{equation}
+    \frac{M_x\ket{\psi}}{\lVert M_x\ket{\psi}\rVert}
+\end{equation}
+ as the first element of an orthonormal basis, we have that
+\begin{equation}
+    \mathrm{tr}(M_x\,\rho\,M_x^\dag)=\frac{\braket{\psi|M_x^\dag\,M_x|\psi}\braket{\psi|M_x\,M_x^\dag|\psi}}{\lVert M_x\ket{\psi}\rVert^2}=\lVert M_x\ket{\psi}\rVert^2
+\end{equation}
+so that we can reformulate \cref{pt:quant-meas} as
+\begin{postulate}[Quantum measurements]
+    Quantum measurements are described by a collection of pairs $\{(\mathrm{M}_x,x)\}$ of \emph{measurement operators} $\mathrm{M}_x$ and \emph{outcomes} $x$ such that the following \emph{completeness equation} is satisfied
+    \begin{equation}
+        \sum_{x}\mathrm{M}_x^\dag\,\mathrm{M}_x=\mathbb{I}
+    \end{equation}
+    where $\mathbb{I}$ is the identity operator. Then, given a system in a quantum state described by a pure density matrix $\rho$, the probability distribution of the outcomes is
+    \begin{equation}
+        p(x)=\mathrm{tr}(M_x\,\rho\,M_x^\dag)
+    \end{equation}
+    Finally, any interaction with the system that leads to the measurement of a specific outcome $x$ transforms the quantum state $\rho$ before the measurement to a new quantum state $\rho'$ after the measurement according to
+    \begin{equation}
+        \rho'=\frac{M_x\,\rho\,M_x^\dag}{\mathrm{tr}(M_x\,\rho\,M_x^\dag)}
+    \end{equation}
+    that depends on the outcome measured.
+\end{postulate}
+\todo{PVMs and expectation value}
