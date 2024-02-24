@@ -1,4 +1,4 @@
-\section{The manifold of quantum states}
+\section{Quantum mechanics}
 \subsection{The postulates of quantum mechanics} \label{sec:postulates}
 Quantum mechanics is a fundamental theory that prescribes a mathematical framework to model the states of physical systems and their evolution, and that describes how to predict the results of our observations of them. We begin by stating its postulates loosely following the treatment of \ref{chuang}.
 
@@ -298,3 +298,28 @@ so that we can reformulate \cref{pt:quant-meas} as
     that depends on the outcome measured.
 \end{postulate}
 \todo{PVMs and expectation value}
+
+\section{The manifold of quantum states}
+\subsection{Geometry of the Hilbert space}
+Finite dimensional Hilbert spaces are complex vector spaces and hence they also are trivial \emph{complex manifolds}. A complex manifold is defined in analogy with real ones with the requirement of being locally isomorphic to $\mathbb{C}^N$ for some $N$ and with holomorphic transition functions between charts; the tangent space at each point is thus also isomorphic to $\mathbb{C}^N$. Every $N$-dimensional complex manifold is also a $2N$-dimensional real manifold where every complex coordinate basis $\{e_1,\dots,e_N\}$ corresponds to a real coordinate basis $\{e_1,\dots,e_N,\,ie_1,\dots,ie_N\}$, this manifold is called the \emph{realification} of the original complex one.
+
+Since Hilbert spaces are vector spaces there is a canonical isomorphism between the tangent space at each point and the Hilbert space itself
+\begin{equation}
+    T_{\mathbf{X}}\mathcal{H}\sim\mathcal{H}\qquad\mathrm{with}\qquad\frac{\partial}{\partial\theta}\leftrightarrow\frac{\partial\mathbf{X}(\theta)}{\partial\theta}
+\end{equation}
+so that the inner product on the Hilbert space also defines an inner product on the tangent space of every point (i.e. it defines a complex $\binom{0}{2}$ tensor field on the manifold). Hilbert spaces also are metric spaces with respect to the distance induced by the inner product
+\begin{equation}
+    d(\mathbf{X},\mathbf{Y})=\lVert\mathbf{X}-\mathbf{Y}\rVert=\sqrt{\langle\mathbf{X}-\mathbf{Y},\mathbf{X}-\mathbf{Y}\rangle}
+\end{equation}
+For finite-dimensional Hilbert spaces, the inner product is a hermitian form that may be expressed as
+\begin{equation}
+    \langle\mathbf{X},\mathbf{Y}\rangle=h(\mathbf{X},\mathbf{Y})=g(\mathbf{X},\mathbf{Y})+iw(\mathbf{X},\mathbf{Y})
+\end{equation}
+where $g$ is a real-valued symmetric bilinear form and $w$ is a real-valued antisymmetric bilinear form. Then, the distance may be expressed as
+\begin{equation}
+    d(\mathbf{X},\mathbf{Y})=\sqrt{g(\mathbf{X}-\mathbf{Y},\mathbf{X}-\mathbf{Y})}
+\end{equation}
+so that the real part of the inner product also defines a metric tensor on the Hilbert space as in \cref{sec:riemannian}, endowing it with a Riemannian structure.
+\todo{Unitary invariant, notice that is intrinsic}
+
+With a sound choice of coordinates, one can easily verify that $\mathbf{\mathbb{C}P}^N$ is also a complex manifold \todo{proof} and so we may ask ourselves if there is a natural way to induce a metric on it from the one of $\mathcal{H}$.
