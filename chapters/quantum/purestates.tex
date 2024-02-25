@@ -1,14 +1,14 @@
 \section{Quantum mechanics}
 \subsection{The postulates of quantum mechanics} \label{sec:postulates}
-Quantum mechanics is a fundamental theory that prescribes a mathematical framework to model the states of physical systems and their evolution, and that describes how to predict the results of our observations of them. We begin by stating its postulates loosely following the treatment of \ref{chuang}.
+Quantum mechanics is a fundamental theory that provides a mathematical framework for modeling the states and evolution of physical systems, as well as predicting the results of observations. In this section, we will state the postulates of quantum mechanics, roughly following the treatment in \ref{chuang}.
 
 \begin{postulate}[The Hilbert space]
     Any isolated physical system is associated with a complex \emph{Hilbert space} i.e.\ a, possibly infinite-dimensional, complex vector space $\mathcal{H}$ with an inner product $\langle\cdot,\cdot\rangle$ that is also complete with respect to the metric induced by the inner product.
 \end{postulate}
 
-If the Hilbert space is finite-dimensional with dimension $N$, then it is isomorphic to $\mathbb{C}^N$ with a hermitian form as the inner product. In what follows we will only study systems that are associated with a finite-dimensional Hilbert space; the physical meaning of this condition will be discussed later in the section.
+If the Hilbert space is finite-dimensional with dimension $N$, then it is isomorphic to $\mathbb{C}^N$ with a hermitian form as the inner product. In what follows we will only study systems that are associated with a finite-dimensional Hilbert space.
 
-With this requirement, the chosen inner product allows us to define a canonical isomorphism between $\mathcal{H}$ and its dual vector space $\mathcal{H}^*$ so that for every $\mathbf{Z}\in\mathcal{H}$ its dual functional is defined as
+The chosen inner product allows us to define a canonical isomorphism between $\mathcal{H}$ and its dual vector space $\mathcal{H}^*$ so that for every $\mathbf{Z}\in\mathcal{H}$ its dual functional is defined as
 \begin{equation} \label{eq:duality}
     \mathbf{Z}^*\equiv f_{\mathbf{Z}}:\mathcal{H}\to\mathbb{C} \quad f_{\mathbf{Z}}(\mathbf{X})=\langle\mathbf{Z},\mathbf{X}\rangle \qquad \forall\, \mathbf{X}\in\mathcal{H}
 \end{equation}
@@ -140,7 +140,7 @@ We thus have that, intuitively, PVMs are defined by decomposing the Hilbert spac
 \begin{equation}
     p(y)=\frac{\braket{\psi_x|P_y^\dag\,P_y|\psi_x}}{\braket{\psi_x|\psi_x}}=\delta_{xy}
 \end{equation}
-then, after the measurement, the state vector is projected onto the subspace of the outcome
+also, after the measurement, the state vector is projected onto the subspace of the outcome
 \begin{equation}
     \ket{\psi'}=P_x \ket{\psi}
 \end{equation}
@@ -202,16 +202,17 @@ and so the space of quantum states is isomorphic to the set of 1-dim linear subs
 \begin{equation}
     \pi:\mathcal{H}_0\to\mathbf{P}\mathcal{H}\quad\pi(\ket{\psi})=[\ket{\psi}]_\sim
 \end{equation}
+that maps every state vector to its quantum state.
 
-\subsection{Density matrices}\label{sec:density-matrices}
+\subsection{Density operators}\label{sec:density-matrices}
 We have seen that quantum states are the 1-dim linear subspaces of $\mathcal{H}$, thus we should be able to identify them with orthogonal projectors. The only added requirement is that the projected spaces must be 1-dim, i.e. they must be rank-1 orthogonal projectors. From \cref{eq:proj-decomp}, we have that for any rank-1 projector there must exist a normalized vector $\ket{\tilde{e}}$ such that
-\begin{equation} \label{eq:rank1-proj}
+\begin{equation}
     P_{\tilde{e}}\ket{\psi}=\braket{\tilde{e}|\psi}\ket{\tilde{e}}\quad\forall\ket{\psi}\in\mathcal{H}_0
 \end{equation}
 and so from \cref{eq:outer-prod} follows that
 \begin{equation}
     P_{\tilde{e}}=\ket{\tilde{e}}\bra{\tilde{e}}
-\end{equation}
+\end{equation} \label{eq:rank1-proj}
 In the context of quantum mechanics, the set on rank-1 orthogonal projectors is known as the set of \emph{pure density operators} and we will note it with $\mathfrak{D}$.
 
 We now define a candidate for the \emph{projection map} to pure density operators
@@ -259,7 +260,7 @@ so that for any number of operators $A_1,\dots,A_n$ we have that
 \begin{equation}
     \mathrm{tr}(A_1\dots A_n)=\mathrm{tr}(A_nA_1\dots A_{n-1})
 \end{equation}
-Finally, we also have the following result from linear algebra
+We also have the following result from linear algebra
 \begin{theorem}
     Let $\mathcal{H}$ be a finite-dimensional complex Hilbert space and $\mathrm{A}$ any operator on $\mathcal{H}$. Then
     \begin{equation}
@@ -292,7 +293,7 @@ where $\ket{\psi(t_1)}$ is a normalized state vector, then for any unitary evolu
 \end{align*}
 so that we can reformulate \cref{pt:unit-evol} as
 \begin{postulate}[Unitary evolution]
-    The Hilbert space of a closed system evolves only through unitary transformations. Coherently, the time evolution of any pure density operator $\rho(t)$ describing the quantum state of the system is given by
+    The Hilbert space of a closed system evolves only through unitary transformations. Coherently, the time evolution of any pure2 density operator $\rho(t)$ describing the quantum state of the system is given by
     \begin{equation}
         \rho(t_2)=U(t_1,t_2)\rho(t_1)U^\dag(t_1,t_2)
     \end{equation}
