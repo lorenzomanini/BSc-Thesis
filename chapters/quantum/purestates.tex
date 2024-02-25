@@ -18,17 +18,17 @@ Then we may also define a tensor $T$ of type $\binom{p}{q}$ as a multilinear map
 \end{equation}
 where from \cref{eq:duality} follows that vectors can be identified with tensors of type $\binom{1}{0}$ and dual vectors with tensors of type $\binom{0}{1}$. We also have that operators (linear maps from $\mathcal{H}$ to itself) can be identified with $\binom{1}{1}$ tensors since for any operator $A$ we can define the tensor
 \begin{equation}
-    T_A(u^*,v)=u^*(Av)=\braket{u,Av}
+    T_A(\mathbf{X}^*,\mathbf{Y})=\mathbf{X}^*(A\mathbf{Y})=\braket{\mathbf{X},A\mathbf{Y}}
 \end{equation}
 Then we may define the tensor product $\otimes$ between any two tensors $T$ and $T'$ of type $\binom{p}{q}$ and $\binom{p'}{q'}$ as the tensor of type $\binom{p+p'}{q+q'}$ such that
 \begin{align}
-    &(T\otimes T')(u^*_1,\dots,u^*_{p+p'},v_1,\dots,v_{q+q'})= \notag
+    &(T\otimes T')(\mathbf{X}^*_1,\dots,\mathbf{X}^*_{p+p'},\mathbf{Y}_1,\dots,\mathbf{Y}_{q+q'})= \notag
     \\
-    &T(u^*_1,\dots,u^*_{p},v_1,\dots,v_{q})\cdot T'(u^*_{p+1},\dots,u^*_{p+p'},v_{q+1},\dots,v_{q+q'})
+    &T(\mathbf{X}^*_1,\dots,\mathbf{X}^*_{p},\mathbf{Y}_1,\dots,\mathbf{Y}_{q})\cdot T'(\mathbf{X}^*_{p+1},\dots,\mathbf{X}^*_{p+p'},\mathbf{Y}_{q+1},\dots,\mathbf{Y}_{q+q'})
 \end{align}
-and, in particular, given a vector $v$ and a dual vector $u^*$ their tensor product is the operator
+and, in particular, given a vector $\mathbf{Y}$ and a dual vector $\mathbf{X}^*$ their tensor product is the operator
 \begin{equation} \label{eq:outer-prod}
-    A(w)=u^*(w)\cdot v=\braket{u,w}\cdot v
+    A(\mathbf{Z})=\mathbf{X}^*(\mathbf{Z})\cdot \mathbf{Y}=\braket{\mathbf{X},\mathbf{Z}}\cdot \mathbf{Y}
 \end{equation}
 
 Given any operator, we can also define its adjoint as the operator $\mathrm{A}^\dag$ such that
@@ -54,7 +54,11 @@ or, equivalently, $\mathrm{A}=\mathrm{A}^\dag$. From their definition follows im
 
 We can now state the remaining postulates of quantum mechanics for the finite-dimensional case.
 \begin{postulate}[The state vectors] \label{pt:state-vect}
-    Every non-zero vector of the Hilbert space completely characterizes a possible state of the system, we call such vectors \emph{state vectors}. The state vectors of the Hilbert space describe all the possible states of the system.
+    Every non-zero vector of the Hilbert space completely characterizes a possible state of the system, we call such vectors \emph{state vectors}. We thus have that the elements of
+    \begin{equation}
+        \mathcal{H}_0\coloneqq\mathcal{H}\setminus\{0\}
+    \end{equation}
+    describe all the possible states of the system.
 \end{postulate}
 For state vectors, we will also use the Dirac notation writing vectors as $\ket{\psi}$ and their dual as $\bra{\psi}$. An exhaustive treatment of this notation may be found in \cref.
 
@@ -89,7 +93,7 @@ The probabilities of \cref{eq:quant-probability} are well defined since
 \end{align}
 We thus have that for any fixed measurement every state vector defines a probability distribution on the outcomes. In this sense, quantum states can be thought of as a generalization of probability distributions.
 \todo{Example}
-\todo{Composed systems and tensor product}
+\todo{Composed systems?}
 
 \subsection{PVM and observables}
 There is a special class of quantum measurements we will be interested in: projection-valued measurements (PVM). PVMs are quantum measurements where the measurement operators $\{P_x\}$ are required to be orthogonal projectors, i.e.
@@ -118,7 +122,7 @@ For any orthogonal projector $P$, we can show that
     \\
     &\implies \lambda=0,1
 \end{align}
-and, given an orthonormal base of eigenvectors $\{\ket{e_i}\}$ we may partition it in the two subsets $\{\ket{e_j^{(0)}}\}$ and $\{\ket{e_k^{(1)}}\}$ respectivly of eigenvectors with eigenvalue 0 and 1. Then by expressing a generic vector as a linear combination of this base, we have that
+and, given an orthonormal base of eigenvectors $\{\ket{e_i}\}$ we may partition it into the two subsets $\{\ket{e_j^{(0)}}\}$ and $\{\ket{e_k^{(1)}}\}$ respectively of eigenvectors with eigenvalue 0 and 1. Then by expressing a generic vector as a linear combination of this base, we have that
 \begin{equation} \label{eq:proj-decomp}
     \ket{\psi}=\sum_{i}\braket{e_i|\psi}\ket{e_i} \implies P\ket{\psi}=\sum_{k}\braket{e_k^{(1)}|\psi}\ket{e_k^{(1)}}
 \end{equation}
@@ -126,25 +130,25 @@ so that any orthogonal projector "orthogonally projects" vectors to its eigenspa
 
 We can now recognize that a set of orthonormal projectors is complete when the spaces on which they project are orthogonal (\cref{eq:ortnorm-pro}) and add up to all the Hilbert space (\cref{eq:complete-pro}). With this setting, it can be easily shown that the following corollary holds
 \begin{corollary} \label{cr:spect-decomp}
-    Any self-adjoint operator $\mathrm{A}$ with eigenvalues $\{\lambda_i\}$ may be expressed in term of the projectors $P_i$ of its eigenspaces as
+    Any self-adjoint operator $\mathrm{A}$ with eigenvalues $\{\lambda_i\}$ may be expressed in terms of the projectors $P_i$ of its eigenspaces as
     \begin{equation} \label{eq:spect-decomp}
         \mathrm{A}=\sum_{i}\lambda_i\,P_i
     \end{equation}
 \end{corollary}
 
-We thus have that, intuitively, PVMs are defined by decomposing the Hilbert space in orthogonal subspaces and then assigning a certain outcome to each one. In fact, if $\ket{\psi_x}$ is in the projected space of $P_x$ the probability distribution of the outcomes will be
+We thus have that, intuitively, PVMs are defined by decomposing the Hilbert space into orthogonal subspaces and then assigning a certain outcome to each one. In fact, if $\ket{\psi_x}$ is in the projected space of $P_x$ the probability distribution of the outcomes will be
 \begin{equation}
     p(y)=\frac{\braket{\psi_x|P_y^\dag\,P_y|\psi_x}}{\braket{\psi_x|\psi_x}}=\delta_{xy}
 \end{equation}
-then, after the measurement, the state vector is projected on the subspace of the outcome
+then, after the measurement, the state vector is projected onto the subspace of the outcome
 \begin{equation}
     \ket{\psi'}=P_x \ket{\psi}
 \end{equation}
-With this interpretation it's easy to recognize an interesting property of PVMs: repeating the same PVM multiple times while the Hilbert space is evolving with the identity operator (i.e. is not changing) always leads to identical results. In fact, after the first measurement, if the measured outcome was $x$, we will have that
+With this interpretation, it's easy to recognize an interesting property of PVMs: repeating the same PVM multiple times while the Hilbert space is evolving with the identity operator (i.e. is not changing) always leads to identical results. In fact, after the first measurement, if the measured outcome was $x$, we will have that
 \begin{equation}
     \ket{\psi'_{(0)}}=P_x \ket{\psi}
 \end{equation}
-for any initial vector state $\ket{\psi}$. Then, repeating the same measurement we will have the probability distribution
+for any initial vector state $\ket{\psi}$. Then, repeating the same measurement, we will have the probability distribution
 \begin{equation}
     p(y)=\frac{\braket{\psi|P_x^\dag\,P_y^\dag\,P_y\,P_x|\psi}}{\braket{\psi|P_x^\dag\,P_x|\psi}}=\delta_{xy}
 \end{equation}
@@ -154,11 +158,17 @@ and so we will get with certainty the same result. After the measurement, we wil
 \end{equation}
 and so we can reiterate the same argument for the following measurements.
 
-When we think of well-defined measurable properties of a system we may require repeated measurements to always give the same outcome if in between them the system was unchanged. From this intuitive concept follows the definition of an \emph{observable} as a PVM with real-valued outcomes. Then, from \cref{cr:spect-decomp} follows that there is a 1-1 relationship between observables and selfadjoint operators through \cref{eq:spect-decomp} so that we may identify any observable with its selfadjoint operator.
-\todo{expectation value?}
+When we think of well-defined measurable properties of a system, we may require repeated measurements to always give the same outcome if in between them the system was unchanged. From this intuitive concept follows the definition of an \emph{observable} as a PVM with real-valued outcomes. Then, from \cref{cr:spect-decomp} follows that there is a 1-1 relationship between observables and self-adjoint operators through \cref{eq:spect-decomp} so that we may identify any observable with its self-adjoint operator
+\begin{equation}
+    \{P_i,\lambda_i\}\leftrightarrow\mathrm{A}=\sum_{i}\lambda_i\,P_i
+\end{equation}
+Then its expectation value when the system is in a state described by a state vector $\ket{\psi}$ is
+\begin{equation}
+    \mathrm{E}[A]=\sum_{i}\lambda_i\,p_i=\sum_{i}\lambda_i\frac{\braket{\psi|P_i^\dag\,P_i|\psi}}{\braket{\psi|\psi}}=\frac{\braket{\psi|\mathrm{A}|\psi}}{\braket{\psi|\psi}}
+\end{equation}
 
-\subsection{Quantum states}
-Following \crefrange{pt:state-vect}{pt:quant-meas} we have that if we are given a state vector for the system we will know how it will evolve under unitary evolutions, the probability distributions of the outcomes of quantum measurements, and the vector state we will get after those measurements, depending on the outcomes. Then we may ask ourselves if there are multiple state vectors that for any measurement yield the same probabilities, and that continue to do so after any unitary evolution or measurement. Such two vectors would be completely equivalent in their predictions and so we may regard them as describing the same quantum state. What we have just described is an equivalence relation between state vectors so that quantum states are the equivalence classes.
+\subsection{Quantum states} \label{sec:quantum-states}
+Following \crefrange{pt:state-vect}{pt:quant-meas}, we have that if we are given a state vector for the system, we will know how it will evolve under unitary evolutions, the probability distributions of the outcomes of quantum measurements, and the vector state we will get after those measurements, depending on the outcomes. Then we may ask ourselves if there are multiple state vectors that for any measurement yield the same probabilities, and that continue to do so after any unitary evolution or measurement. Such two vectors would be completely equivalent in their predictions, and so we may regard them as describing the same quantum state. What we have just described is an equivalence relation between state vectors, so that quantum states are the equivalence classes.
 
 We start by requiring that two equivalent state vectors have the same probability distributions for any measurement. This means that
 \begin{equation}
@@ -172,7 +182,7 @@ since for any operator $\mathrm{M}_x$
 \begin{equation}
     \frac{\braket{\psi'|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi'}}{\braket{\psi'|\psi'}}=\frac{\lVert c \rVert^2}{\lVert c \rVert^2}\cdot\frac{\braket{\psi|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi}}{\braket{\psi|\psi}}
 \end{equation}
-Then by choosing $\mathrm{M}_x=\ket{\psi}\bra{\psi}$ it's easy to show that \cref{eq:equiv-state-vect} is also a necessary condition.
+Then by choosing $\mathrm{M}_x=\ket{\psi}\bra{\psi}$, it's easy to show that \cref{eq:equiv-state-vect} is also a necessary condition.
 
 We also note that for any operator $A$
 \begin{equation}
@@ -184,22 +194,29 @@ We have thus proved that quantum states are the equivalence classes of
 \begin{equation}
     \ket{\psi}\sim\ket{\psi'} \iff \exists\,c \ne 0 \in\mathbb{C} :\quad \ket{\psi'}=c\ket{\psi}
 \end{equation}
-Then for any state vector $\ket{\psi}$ its quantum state is
-\begin{equation}
-    \left[\ket{\psi}\right]_\sim=\{c\ket{\psi}\,\forall c\in\mathbb{C}\}\setminus\{0\}
+Then for any state vector $\ket{\psi}$, its quantum state is
+\begin{equation}\label{eq:quantum-state}
+    \left[\ket{\psi}\right]_\sim=\{c\ket{\psi}\,\forall c\ne 0\in\mathbb{C}\}
 \end{equation}
-and so the space of quantum states is isomorphic to the set of 1-dim linear subspaces of $\mathcal{H}$, also called \emph{complex lines}. When $\mathcal{H}=\mathbb{C}^N$ this set is known as the $N$-dimensional complex projective space $\mathbf{\mathbb{C}P}^N$ and it will be the object of our study.
+and so the space of quantum states is isomorphic to the set of 1-dim linear subspaces of $\mathcal{H}$, also called \emph{complex lines}. This set is known as the \emph{projective space} of $\mathcal{H}$ and is denoted as $\mathbf{P}\mathcal{H}$. When $\mathcal{H}=\mathbb{C}^N$, it is known as the $n$-dimensional complex projective space $\mathbf{\mathbb{C}P}^n$, where $n=N-1$. Then \cref{eq:quantum-state} leads to the intrinsic definition of a surjective \emph{projection map}
+\begin{equation}
+    \pi:\mathcal{H}_0\to\mathbf{P}\mathcal{H}\quad\pi(\ket{\psi})=[\ket{\psi}]_\sim
+\end{equation}
 
-\subsection{Density matrices}
-As explained in the previous subsection quantum states are the 1-dim linear subspaces of $\mathcal{H}$, thus we should be able to identify them with orthogonal projectors. The only added requirement is that the projected spaces must be 1-dim, i.e. they must be rank-1 orthogonal projectors. From \cref{eq:proj-decomp} and \cref{eq:outer-prod} we have that for any rank-1 projector
+\subsection{Density matrices}\label{sec:density-matrices}
+We have seen that quantum states are the 1-dim linear subspaces of $\mathcal{H}$, thus we should be able to identify them with orthogonal projectors. The only added requirement is that the projected spaces must be 1-dim, i.e. they must be rank-1 orthogonal projectors. From \cref{eq:proj-decomp}, we have that for any rank-1 projector there must exist a normalized vector $\ket{\tilde{e}}$ such that
 \begin{equation} \label{eq:rank1-proj}
-    P_{\tilde{e}}\ket{\psi}=\braket{\tilde{e}|\psi}\ket{\tilde{e}} \implies  P_{\tilde{e}}=\ket{\tilde{e}}\bra{\tilde{e}}
+    P_{\tilde{e}}\ket{\psi}=\braket{\tilde{e}|\psi}\ket{\tilde{e}}\quad\forall\ket{\psi}\in\mathcal{H}_0
 \end{equation}
-for some normalized vector $\ket{\tilde{e}}$. In the context of quantum mechanics, the set on rank-1 orthogonal projectors is known as the set of pure density matrices $\mathfrak{D}$
-
-We now define the \emph{projection map} $\pi$
+and so from \cref{eq:outer-prod} follows that
 \begin{equation}
-    \pi:\mathcal{H}\setminus\{0\}\to\mathfrak{D}\quad\pi(\ket{\psi})=\frac{\ket{\psi}\bra{\psi}}{\braket{\psi|\psi}}\coloneq \rho_\psi
+    P_{\tilde{e}}=\ket{\tilde{e}}\bra{\tilde{e}}
+\end{equation}
+In the context of quantum mechanics, the set on rank-1 orthogonal projectors is known as the set of \emph{pure density operators} and we will note it with $\mathfrak{D}$.
+
+We now define a candidate for the \emph{projection map} to pure density operators
+\begin{equation} \label{eq:proj-map}
+    \Pi:\mathcal{H}_0\to\mathfrak{D}\quad\Pi(\ket{\psi})=\frac{\ket{\psi}\bra{\psi}}{\braket{\psi|\psi}}\coloneq \rho_\psi
 \end{equation}
 this is well-defined since for every $\ket{\psi}$ we have that $\rho_\psi$ is self-adjoint, idempotent and
 \begin{equation}
@@ -212,9 +229,9 @@ This map also has a well-defined action on quantum states since
 \end{equation}
 so that it defines the map
 \begin{equation}
-    g:\mathbf{\mathbb{C}P}^N\to\mathfrak{D}\quad g([\ket{\psi}]_\sim)=\pi(\ket{\psi})=\rho_\psi
+    f:\mathbf{P}\mathcal{H}\to\mathfrak{D}\quad f([\ket{\psi}]_\sim)=\Pi(\ket{\psi})=\rho_\psi
 \end{equation}
-Finally, we can prove that $g$ is invertible so that we may identify quantum states with density matrices. The map is 1-1 since given any two state vectors $\ket{\psi}$ and $\ket{\phi}$ we have that
+Finally, we can prove that $f$ is invertible so that we may identify quantum states with density matrices. The map is 1-1 since given any two state vectors $\ket{\psi}$ and $\ket{\phi}$ we have that
 \begin{align*}
     \rho_\psi=\rho_\phi &\implies \rho_\psi\,\rho_\phi=\rho_\phi
     \\
@@ -224,13 +241,25 @@ Finally, we can prove that $g$ is invertible so that we may identify quantum sta
     \\
     &\implies \ket{\psi} \sim \ket{\phi}
 \end{align*}
-Then, since any rank-1 orthogonal projector can be expressed as in \cref{eq:rank1-proj} we also have that $g$ is SU.
+Then, since any rank-1 orthogonal projector can be expressed as in \cref{eq:rank1-proj} we also have that $f$ is SU. We have thus proved that
+\begin{equation}
+    \mathbf{P}\mathcal{H}\sim\mathfrak{D}
+\end{equation}
+through the intrinsic map $f$, so we may identify quantum states with pure density operators and we have that the two projection maps $\pi$ and $\Pi$ are the same under this identification.
 
-In light of this identification, we now want to restate \crefrange{pt:state-vect}{pt:quant-meas} in terms of pure density matrices. To do so we will need the concept of the trace of an operator. For a finite-dimensional Hilbert space, we may define the trace of an operator $A$ as the linear functional
+We now want to restate \crefrange{pt:state-vect}{pt:quant-meas} in terms of pure density matrices. To do so we will need the concept of the trace of an operator. For a finite-dimensional Hilbert space, we may define the trace of an operator $A$ as the linear functional
 \begin{equation}\label{eq:trace}
     \mathrm{tr}(A)=\sum_{i}\braket{e_i|A|e_i},\quad\{\ket{e_i}\}\,\mathrm{o.n. basis}
 \end{equation}
-where it can be shown that the expression on the right of \cref{eq:trace} is independent of the choice of the orthonormal base. \todo{Cyclic property.} Then we also have the following result from linear algebra
+where it can be shown that the expression on the right is independent of the choice of the orthonormal base. The trace also has the following cyclic property
+\begin{equation}
+    \mathrm{tr}(AB)=\mathrm{tr}(BA)
+\end{equation}
+so that for any number of operators $A_1,\dots,A_n$ we have that
+\begin{equation}
+    \mathrm{tr}(A_1\dots A_n)=\mathrm{tr}(A_nA_1\dots A_{n-1})
+\end{equation}
+Finally, we also have the following result from linear algebra
 \begin{theorem}
     Let $\mathcal{H}$ be a finite-dimensional complex Hilbert space and $\mathrm{A}$ any operator on $\mathcal{H}$. Then
     \begin{equation}
@@ -239,16 +268,17 @@ where it can be shown that the expression on the right of \cref{eq:trace} is ind
     where $\{\lambda_i\}$ are the eigenvalues of $\mathrm{A}$
      repeated according to their algebraic multiplicity.
 \end{theorem}
-One immediate consequence of this theorem is that an orthogonal projector is of rank 1 if and only if it has a unitary trace. Then we may equivalently define pure density matrices in the following, more common, way
+
+One immediate consequence of this theorem is that an orthogonal projector is of rank 1 if and only if it has a unitary trace. Then we may equivalently define pure density operators in the following, more common, way
 \begin{equation}
     \mathfrak{D}\coloneq\{\rho\in\mathfrak{L}\mid\rho^\dag=\rho,\,\rho^2=\rho,\,\mathrm{tr}(\rho)=1\}
 \end{equation}
 We can now reformulate \cref{pt:state-vect} as
 \setcounter{postulate}{0}\begin{postulate}[Quantum states]
-    The set of all the possible quantum states of the system is the complex projective space of the system's Hilbert space. Then every quantum state is uniquely determined by a pure density matrix $\rho\in\mathfrak{D}$
+    The set of all the possible quantum states of a system is the projective space of the system's Hilbert space. Then every quantum state is uniquely determined by a pure density operator $\rho\in\mathfrak{D}$
 \end{postulate}
 
-Given a unitary evolution of the system, we can compute the evolution of any density matrix as follows. Any initial quantum state can be expressed as
+Given a unitary evolution of the system, we can compute the evolution of any density operator as follows. Any initial quantum state can be expressed as
 \begin{equation}
     \rho(t_1)=\ket{\psi(t_1)}\bra{\psi(t_1)}
 \end{equation}
@@ -262,14 +292,14 @@ where $\ket{\psi(t_1)}$ is a normalized state vector, then for any unitary evolu
 \end{align*}
 so that we can reformulate \cref{pt:unit-evol} as
 \begin{postulate}[Unitary evolution]
-    The Hilbert space of a closed system evolves only through unitary transformations. Coherently, the time evolution of any pure density matrix $\rho(t)$ describing the quantum state of the system is given by
+    The Hilbert space of a closed system evolves only through unitary transformations. Coherently, the time evolution of any pure density operator $\rho(t)$ describing the quantum state of the system is given by
     \begin{equation}
         \rho(t_2)=U(t_1,t_2)\rho(t_1)U^\dag(t_1,t_2)
     \end{equation}
     where $U(t_1,t_2)$ is a unitary operator that only depends on $t_1$ and $t_2$.
 \end{postulate}
 
-Finally, given any quantum measurement $\{(\mathrm{M}_x,x)\}$ and a quantum state $\rho$ we have that
+Given any quantum measurement $\{(\mathrm{M}_x,x)\}$ and a quantum state $\rho$ we have that
 \begin{equation}
     \rho=\ket{\psi}\bra{\psi} \implies p(x)=\braket{\psi|M_x^\dag\,M_x|\psi}=\lVert M_x\ket{\psi}\rVert^2
 \end{equation}
@@ -287,7 +317,7 @@ so that we can reformulate \cref{pt:quant-meas} as
     \begin{equation}
         \sum_{x}\mathrm{M}_x^\dag\,\mathrm{M}_x=\mathbb{I}
     \end{equation}
-    where $\mathbb{I}$ is the identity operator. Then, given a system in a quantum state described by a pure density matrix $\rho$, the probability distribution of the outcomes is
+    where $\mathbb{I}$ is the identity operator. Then, given a system in a quantum state described by a pure density operator $\rho$, the probability distribution of the outcomes is
     \begin{equation}
         p(x)=\mathrm{tr}(M_x\,\rho\,M_x^\dag)
     \end{equation}
@@ -297,7 +327,12 @@ so that we can reformulate \cref{pt:quant-meas} as
     \end{equation}
     that depends on the outcome measured.
 \end{postulate}
-\todo{PVMs and expectation value}
+
+At last, we have that the expectation value of an observable $A$ when the system is in a quantum state described by a pure density operator $\rho$ is
+\begin{equation}
+    \mathrm{E}[A]=\sum_{i}\lambda_i\,\mathrm{tr}(P_i\,\rho\,P_i^\dag)=\mathrm{tr}(\rho\,A)
+\end{equation}
+
 
 \section{The manifold of quantum states}
 \subsection{Geometry of the Hilbert space}
@@ -305,7 +340,7 @@ Finite dimensional Hilbert spaces are complex vector spaces and hence they also 
 
 Since Hilbert spaces are vector spaces there is a canonical isomorphism between the tangent space at each point and the Hilbert space itself
 \begin{equation}
-    T_{\mathbf{X}}\mathcal{H}\sim\mathcal{H}\qquad\mathrm{with}\qquad\frac{\partial}{\partial\theta}\leftrightarrow\frac{\partial\mathbf{X}(\theta)}{\partial\theta}
+    T_{\ket{\psi}}\mathcal{H}\sim\mathcal{H}\qquad\mathrm{with}\qquad\frac{\partial}{\partial\theta}\leftrightarrow\frac{\partial\ket{\psi(\theta)}}{\partial\theta}\coloneqq\ket{d\psi_\theta}
 \end{equation}
 so that the inner product on the Hilbert space also defines an inner product on the tangent space of every point (i.e. it defines a complex $\binom{0}{2}$ tensor field on the manifold). Hilbert spaces also are metric spaces with respect to the distance induced by the inner product
 \begin{equation}
@@ -319,7 +354,41 @@ where $g$ is a real-valued symmetric bilinear form and $w$ is a real-valued anti
 \begin{equation}
     d(\mathbf{X},\mathbf{Y})=\sqrt{g(\mathbf{X}-\mathbf{Y},\mathbf{X}-\mathbf{Y})}
 \end{equation}
-so that the real part of the inner product also defines a metric tensor on the Hilbert space as in \cref{sec:riemannian}, endowing it with a Riemannian structure.
-\todo{Unitary invariant, notice that is intrinsic}
+so that the real part of the inner product also defines a metric tensor on the Hilbert space as in \cref{sec:riemannian}, endowing it with a Riemannian structure
+\begin{equation}
+    g_{\ket{\psi}}(\ket{d\psi_1},\ket{d\psi_2})=\mathrm{Re}\left[\braket{d\psi_1|d\psi_2}\right]
+\end{equation}
 
-With a sound choice of coordinates, one can easily verify that $\mathbf{\mathbb{C}P}^N$ is also a complex manifold \todo{proof} and so we may ask ourselves if there is a natural way to induce a metric on it from the one of $\mathcal{H}$.
+This metric tensor is intrinsically derived from the structure of the Hilbert space and so it is also invariant under unitary transformations. Moreover, the set $U(N)$ of unitary transformations of $\mathbb{C}^N$ is a Lie group and thus the Lie algebra of its left-invariant vector fields are the killing vector fields of the Hilbert space. These vector fields also preserve the norm of the points in the Hilbert space and it can be shown that in each point they form a real $(2N-1)$-dimensional linear subspace of the tangent space. From this follows that the integral curves of the killing vector fields mesh to form a foliation of submanifolds of the realifed Hilbert space, i.e. spheres of vectors with the same norm.
+
+\subsection{T}
+We are now interested in the geometry of the space of quantum states. For start we have that, with a sound choice of coordinates, one can easily verify that $\mathbf{\mathbb{C}P}^N$ is also a complex manifold. \todo{proof}. Then we may ask ourselves if there is a natural way to induce a metric on it from the one of $\mathcal{H}$. Such an intrinsic metric would lead to a natural notion of distance between quantum states that we would then have to interpret.
+
+Firstly it can be shown that the intrinsically defined projection map of \cref{eq:proj-map}
+\begin{equation*}
+    \pi:\mathcal{H}_0\to\mathfrak{D}\sim\mathbf{\mathbb{C}P}^N
+\end{equation*}
+is a smooth SU map between the two manifolds so that we may regard $\mathcal{H}_0$ as a fibre bundle with base space $\mathbf{\mathbb{C}P}^N$. Let us now recall the definition of a quantum state from \cref{eq:quantum-state}
+\begin{equation}
+    \left[\ket{\psi}\right]_\sim=\{c\ket{\psi}\,\forall c\ne0 \in\mathbb{C}\}
+\end{equation}
+where we recognize that the fibers of the fiber bundle are the orbits of the action of the abelian Lie group
+\begin{equation}
+    \mathbf{C}_0=\{c\cdot\mathbb{I}\mid\forall c\ne0\in\mathbb{C}\}
+\end{equation}
+on $\mathcal{H}_0$. We can thus write
+\begin{equation}\label{eq:cpn-quotient}
+    \mathbf{\mathbb{C}P}^N=\mathcal{H}_0/\mathbf{C}_0
+\end{equation}
+and $\mathcal{H}_0$ is a principle fibre bundle\cref. \todo{No cross-section?}
+
+We now notice that any smooth curve on $\mathcal{H}_0$ can be projected to a smooth curve of $\mathbf{\mathbb{C}P}^N$ through the projection map and we thus we have the following map between the tangent spaces
+\begin{equation}
+    d\pi:T_{\ket{\psi}}\mathcal{H}_0\to T_{\rho_\psi}\mathbf{\mathbb{C}P}^N\qquad
+\end{equation}
+Then we also have that any field of 1-forms on $\mathbf{\mathbb{C}P}^N$ can be \emph{pushed back} to $\mathcal{H}_0$ through
+\begin{equation}
+    d\rho_\theta^*\mapsto\ket{d\psi_\theta}
+\end{equation}
+
+The invariant vector fields of $\mathbf{C}_0$ define in every tangent space the "directions" where the quantum state is not changing, then, intuitively, the only "true directions" of change of the quantum states are the ones orthogonal to the orbits of $\mathbf{C^*}$
