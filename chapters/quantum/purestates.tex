@@ -8,38 +8,38 @@ Quantum mechanics is a fundamental theory that provides a mathematical framework
 
 If the Hilbert space is finite-dimensional with dimension $N$, then it is isomorphic to $\mathbb{C}^N$ with a hermitian form as the inner product. In what follows we will only study systems that are associated with a finite-dimensional Hilbert space.
 
-The chosen inner product allows us to define a canonical isomorphism between $\mathcal{H}$ and its dual vector space $\mathcal{H}^*$ so that for every $\mathbf{Z}\in\mathcal{H}$ its dual functional is defined as
+The chosen inner product allows us to define a canonical isomorphism between $\mathcal{H}$ and its dual vector space $\mathcal{H}^*$, where for every $\mathbf{Z}\in\mathcal{H}$ its dual functional is defined as
 \begin{equation} \label{eq:duality}
     \mathbf{Z}^*\equiv f_{\mathbf{Z}}:\mathcal{H}\to\mathbb{C} \quad f_{\mathbf{Z}}(\mathbf{X})=\langle\mathbf{Z},\mathbf{X}\rangle \qquad \forall\, \mathbf{X}\in\mathcal{H}
 \end{equation}
-Then we may also define a tensor $T$ of type $\binom{p}{q}$ as a multilinear map
+We also define tensors $T$ of type $\binom{p}{q}$ as multilinear maps
 \begin{equation}
     T:{\mathcal{H}^*}^p\times\mathcal{H}^q \to \mathbb{C}
 \end{equation}
-where from \cref{eq:duality} follows that vectors can be identified with tensors of type $\binom{1}{0}$ and dual vectors with tensors of type $\binom{0}{1}$. We also have that operators (linear maps from $\mathcal{H}$ to itself) can be identified with $\binom{1}{1}$ tensors since for any operator $A$ we can define the tensor
+where vectors can be identified with tensors of type $\binom{1}{0}$ and dual vectors with tensors of type $\binom{0}{1}$. Operators, which are linear maps from $\mathcal{H}$ to itself, can be identified with $\binom{1}{1}$ tensors. For any operator $A$, the corresponding tensor $T_A$ is defined as
 \begin{equation}
     T_A(\mathbf{X}^*,\mathbf{Y})=\mathbf{X}^*(A\mathbf{Y})=\braket{\mathbf{X},A\mathbf{Y}}
 \end{equation}
-Then we may define the tensor product $\otimes$ between any two tensors $T$ and $T'$ of type $\binom{p}{q}$ and $\binom{p'}{q'}$ as the tensor of type $\binom{p+p'}{q+q'}$ such that
+The tensor product $\otimes$ between two tensors $T$ and $T'$ of type $\binom{p}{q}$ and $\binom{p'}{q'}$ is a tensor of type $\binom{p+p'}{q+q'}$ defined as
 \begin{align}
     &(T\otimes T')(\mathbf{X}^*_1,\dots,\mathbf{X}^*_{p+p'},\mathbf{Y}_1,\dots,\mathbf{Y}_{q+q'})= \notag
     \\
     &T(\mathbf{X}^*_1,\dots,\mathbf{X}^*_{p},\mathbf{Y}_1,\dots,\mathbf{Y}_{q})\cdot T'(\mathbf{X}^*_{p+1},\dots,\mathbf{X}^*_{p+p'},\mathbf{Y}_{q+1},\dots,\mathbf{Y}_{q+q'})
 \end{align}
-and, in particular, given a vector $\mathbf{Y}$ and a dual vector $\mathbf{X}^*$ their tensor product is the operator
+In particular, given a vector $\mathbf{Y}$ and a dual vector $\mathbf{X}^*$, their tensor product is the operator
 \begin{equation} \label{eq:outer-prod}
     A(\mathbf{Z})=\mathbf{X}^*(\mathbf{Z})\cdot \mathbf{Y}=\braket{\mathbf{X},\mathbf{Z}}\cdot \mathbf{Y}
 \end{equation}
 
-Given any operator, we can also define its adjoint as the operator $\mathrm{A}^\dag$ such that
+The adjoint of any operator $\mathrm{A}$ is the operator $\mathrm{A}^\dag$ such that
 \begin{equation} \label{eq:adjoint}
     \langle\mathrm{A}^\dag\,\mathbf{X},\mathbf{Y}\rangle=\langle\mathbf{X},\mathrm{A}\,\mathbf{Y}\rangle \qquad \forall\, \mathbf{X},\mathbf{Y}\in\mathcal{H}
 \end{equation}
-it can be shown that this is always well-defined for finite-dimensional Hilbert spaces and that $(\mathrm{A}^\dag)^\dag=\mathrm{A}$. There are two families of operators that will be instrumental to the formulation of the remaining postulates: unitary operators and self-adjoint operators. Unitary operators are defined as operators U that preserve the inner product, i.e.
+It can be shown that this is always well-defined for finite-dimensional Hilbert spaces and that $(\mathrm{A}^\dag)^\dag=\mathrm{A}$. There are two families of operators that will be instrumental to the formulation of the remaining postulates: unitary operators and self-adjoint operators. Unitary operators are defined as operators U that preserve the inner product, i.e.
 \begin{equation}
     \braket{\mathrm{U}\mathbf{X},\mathrm{U}\mathbf{Y}}=\braket{\mathbf{X},\mathbf{Y}}\qquad \forall \mathbf{X},\mathbf{Y}\in\mathcal{H}
 \end{equation}
-From \cref{eq:adjoint} it's easy to show that
+From \cref{eq:adjoint}, it's easy to show that
 \begin{equation}
     \textit{U is unitary} \iff \mathrm{U}\mathrm{U}^\dag=\mathbb{I}\textit{ i.e }\mathrm{U}^{-1}=\mathrm{U}^\dag
 \end{equation}
@@ -156,25 +156,25 @@ and so we will get with certainty the same result. After the measurement, we wil
 \begin{equation}
     \ket{\psi'_{(1)}}=P_x P_x \ket{\psi}=P_x \ket{\psi}
 \end{equation}
-and so we can reiterate the same argument for the following measurements.
+and we can reiterate the same argument for the following measurements.
 
-When we think of well-defined measurable properties of a system, we may require repeated measurements to always give the same outcome if in between them the system was unchanged. From this intuitive concept follows the definition of an \emph{observable} as a PVM with real-valued outcomes. Then, from \cref{cr:spect-decomp} follows that there is a 1-1 relationship between observables and self-adjoint operators through \cref{eq:spect-decomp} so that we may identify any observable with its self-adjoint operator
+When considering well-defined measurable properties of a system, we may require repeated measurements to always give the same outcome if the system remains unchanged in between. From this intuitive concept follows the definition of an \emph{observable} as a PVM with real-valued outcomes. Then, from \cref{cr:spect-decomp}, there is a 1-1 relationship between observables and self-adjoint operators through \cref{eq:spect-decomp}, allowing us to identify any observable with its self-adjoint operator
 \begin{equation}
     \{P_i,\lambda_i\}\leftrightarrow\mathrm{A}=\sum_{i}\lambda_i\,P_i
 \end{equation}
-Then its expectation value when the system is in a state described by a state vector $\ket{\psi}$ is
+The expectation value of the observable when the system is in a state described by a state vector $\ket{\psi}$ is then given by
 \begin{equation}
     \mathrm{E}[A]=\sum_{i}\lambda_i\,p_i=\sum_{i}\lambda_i\frac{\braket{\psi|P_i^\dag\,P_i|\psi}}{\braket{\psi|\psi}}=\frac{\braket{\psi|\mathrm{A}|\psi}}{\braket{\psi|\psi}}
 \end{equation}
 
 \subsection{Quantum states} \label{sec:quantum-states}
-Following \crefrange{pt:state-vect}{pt:quant-meas}, we have that if we are given a state vector for the system, we will know how it will evolve under unitary evolutions, the probability distributions of the outcomes of quantum measurements, and the vector state we will get after those measurements, depending on the outcomes. Then we may ask ourselves if there are multiple state vectors that for any measurement yield the same probabilities, and that continue to do so after any unitary evolution or measurement. Such two vectors would be completely equivalent in their predictions, and so we may regard them as describing the same quantum state. What we have just described is an equivalence relation between state vectors, so that quantum states are the equivalence classes.
+Following \crefrange{pt:state-vect}{pt:quant-meas}, if we are given a state vector for the system, we can determine how it will evolve under unitary evolutions, the probability distributions of the outcomes of quantum measurements, and the vector state we will obtain after those measurements, depending on the outcomes. We may then ask if there are multiple state vectors that yield the same probabilities for any measurement and continue to do so after any unitary evolution or measurement. Such two vectors would be completely equivalent in their predictions, and we can regard them as describing the same quantum state. This leads to an equivalence relation between state vectors, so that quantum states are the equivalence classes.
 
 We start by requiring that two equivalent state vectors have the same probability distributions for any measurement. This means that
 \begin{equation}
-    \ket{\psi}\sim\ket{\psi'} \iff \frac{\braket{\psi|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi}}{\braket{\psi|\psi}}=\frac{\braket{\psi'|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi'}}{\braket{\psi'|\psi'}} \qquad \forall x
+    \ket{\psi}\sim\ket{\psi'} \iff \frac{\braket{\psi|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi}}{\braket{\psi|\psi}}=\frac{\braket{\psi'|\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi'}}{\braket{\psi'|\psi'}} \quad \forall x
 \end{equation}
-for any quantum measurement $\{(M_x,x)\}$. It's easy to guess that a sufficient condition is
+for any quantum measurement $\{(M_x,x)\}$. It's easy to see that a sufficient condition is
 \begin{equation}\label{eq:equiv-state-vect}
     \exists\,c \ne 0 \in\mathbb{C} :\quad \ket{\psi'}=c\ket{\psi}
 \end{equation}
@@ -205,21 +205,21 @@ and so the space of quantum states is isomorphic to the set of 1-dim linear subs
 that maps every state vector to its quantum state.
 
 \subsection{Density operators}\label{sec:density-matrices}
-We have seen that quantum states are the 1-dim linear subspaces of $\mathcal{H}$, thus we should be able to identify them with orthogonal projectors. The only added requirement is that the projected spaces must be 1-dim, i.e. they must be rank-1 orthogonal projectors. From \cref{eq:proj-decomp}, we have that for any rank-1 projector there must exist a normalized vector $\ket{\tilde{e}}$ such that
+We have seen that quantum states are the 1-dim linear subspaces of $\mathcal{H}$, so we can identify them with orthogonal projectors. The only additional requirement is that the projected spaces must be 1-dim, i.e., they must be rank-1 orthogonal projectors. From \cref{eq:proj-decomp}, we know that for any rank-1 projector, there must exist a normalized vector $\ket{\tilde{e}}$ such that
 \begin{equation}
     P_{\tilde{e}}\ket{\psi}=\braket{\tilde{e}|\psi}\ket{\tilde{e}}\quad\forall\ket{\psi}\in\mathcal{H}_0
 \end{equation}
-and so from \cref{eq:outer-prod} follows that
-\begin{equation}
+and so from \cref{eq:outer-prod}, we have
+\begin{equation}\label{eq:rank1-proj}
     P_{\tilde{e}}=\ket{\tilde{e}}\bra{\tilde{e}}
-\end{equation} \label{eq:rank1-proj}
-In the context of quantum mechanics, the set on rank-1 orthogonal projectors is known as the set of \emph{pure density operators} and we will note it with $\mathfrak{D}$.
+\end{equation}
+In the context of quantum mechanics, the set of rank-1 orthogonal projectors is known as the set of \emph{pure density operators} and is denoted as $\mathfrak{D}$.
 
 We now define a candidate for the \emph{projection map} to pure density operators
 \begin{equation} \label{eq:proj-map}
     \Pi:\mathcal{H}_0\to\mathfrak{D}\quad\Pi(\ket{\psi})=\frac{\ket{\psi}\bra{\psi}}{\braket{\psi|\psi}}\coloneq \rho_\psi
 \end{equation}
-this is well-defined since for every $\ket{\psi}$ we have that $\rho_\psi$ is self-adjoint, idempotent and
+This map is well-defined since for every $\ket{\psi}$ we have that $\rho_\psi$ is self-adjoint, idempotent and
 \begin{equation}
     \rho_\psi=\frac{\ket{\psi}\bra{\psi}}{\braket{\psi|\psi}}=(\frac{1}{\lVert\ket{\psi}\rVert}\ket{\psi})(\bra{\psi}\frac{1}{\lVert\ket{\psi}\rVert})
 \end{equation}
@@ -232,7 +232,7 @@ so that it defines the map
 \begin{equation}
     f:\mathbf{P}\mathcal{H}\to\mathfrak{D}\quad f([\ket{\psi}]_\sim)=\Pi(\ket{\psi})=\rho_\psi
 \end{equation}
-Finally, we can prove that $f$ is invertible so that we may identify quantum states with density matrices. The map is 1-1 since given any two state vectors $\ket{\psi}$ and $\ket{\phi}$ we have that
+Finally, we can prove that $f$ is invertible, allowing us to identify quantum states with density matrices. The map is 1-1 since given any two state vectors $\ket{\psi}$ and $\ket{\phi}$, we have that
 \begin{align*}
     \rho_\psi=\rho_\phi &\implies \rho_\psi\,\rho_\phi=\rho_\phi
     \\
@@ -242,21 +242,21 @@ Finally, we can prove that $f$ is invertible so that we may identify quantum sta
     \\
     &\implies \ket{\psi} \sim \ket{\phi}
 \end{align*}
-Then, since any rank-1 orthogonal projector can be expressed as in \cref{eq:rank1-proj} we also have that $f$ is SU. We have thus proved that
+Then, since any rank-1 orthogonal projector can be expressed as in \cref{eq:rank1-proj}, we also have that $f$ is surjective. We have thus proved that
 \begin{equation}
     \mathbf{P}\mathcal{H}\sim\mathfrak{D}
 \end{equation}
-through the intrinsic map $f$, so we may identify quantum states with pure density operators and we have that the two projection maps $\pi$ and $\Pi$ are the same under this identification.
+through the intrinsic map $f$, so we may identify quantum states with pure density operators, and the two projection maps $\pi$ and $\Pi$ are the same under this identification.
 
-We now want to restate \crefrange{pt:state-vect}{pt:quant-meas} in terms of pure density matrices. To do so we will need the concept of the trace of an operator. For a finite-dimensional Hilbert space, we may define the trace of an operator $A$ as the linear functional
+We now want to restate \crefrange{pt:state-vect}{pt:quant-meas} in terms of pure density matrices. To do so, we will need the concept of the trace of an operator. For a finite-dimensional Hilbert space, we may define the trace of an operator $A$ as the linear functional
 \begin{equation}\label{eq:trace}
     \mathrm{tr}(A)=\sum_{i}\braket{e_i|A|e_i},\quad\{\ket{e_i}\}\,\mathrm{o.n. basis}
 \end{equation}
-where it can be shown that the expression on the right is independent of the choice of the orthonormal base. The trace also has the following cyclic property
+where it can be shown that the expression on the right is independent of the choice of the orthonormal basis. The trace also has the following cyclic property
 \begin{equation}
     \mathrm{tr}(AB)=\mathrm{tr}(BA)
 \end{equation}
-so that for any number of operators $A_1,\dots,A_n$ we have that
+so that for any number of operators $A_1,\dots,A_n$, we have
 \begin{equation}
     \mathrm{tr}(A_1\dots A_n)=\mathrm{tr}(A_nA_1\dots A_{n-1})
 \end{equation}
@@ -266,8 +266,7 @@ We also have the following result from linear algebra
     \begin{equation}
         \mathrm{tr}(A)=\sum_{i}\lambda_i
     \end{equation}
-    where $\{\lambda_i\}$ are the eigenvalues of $\mathrm{A}$
-     repeated according to their algebraic multiplicity.
+    where $\{\lambda_i\}$ are the eigenvalues of $\mathrm{A}$ repeated according to their algebraic multiplicity.
 \end{theorem}
 
 One immediate consequence of this theorem is that an orthogonal projector is of rank 1 if and only if it has a unitary trace. Then we may equivalently define pure density operators in the following, more common, way
