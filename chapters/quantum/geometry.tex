@@ -1,5 +1,5 @@
 \section{The manifold of quantum states}
-\subsection{Geometry of the Hilbert space}
+\subsection{Geometry of the Hilbert space} \label{sec:geometry-HS}
 Complex manifolds are defined in analogy with real ones with the requirement of being locally isomorphic to $\mathbb{C}^N$ for some $N$ and with holomorphic transition functions between charts; the tangent space at each point is thus also isomorphic to $\mathbb{C}^N$. Every $N$-dimensional complex manifold is also a $2N$-dimensional real manifold where every complex c
 oordinate basis $\{e_1,\dots,e_N\}$ corresponds to a real coordinate basis $\{e_1,\dots,e_N,\,ie_1,\dots,ie_N\}$, this manifold is called the \emph{realification} of the original complex one.
 
@@ -102,3 +102,54 @@ and thus $d\pi_x'$ defines an isomorphism between $O_x$ and $T_{\pi(x)}B$ at eve
     v_l(x)=d\pi_{y}'^{-1}(v(y))\, , \quad y=\pi(x) \qquad\forall x\in X
 \end{equation}
 that is the unique horizontal vector field on the fiber bundle that projects to $v(y)$.
+
+We can now try to induce a metric tensor field on the base space by identifying its action on vector fields with the action of the metric tensor of the fiber bundle on the horizontal lift of the vector fields of the base space. This is possible only if the scalar field that results from the inner product of the horizontal lifts is constant on the fibers. Only in this case we can then push forward the scalar field to the base space and thus define the action of the induced metric tensor field on the original vector fields. Requiring the inner product of the horizontal lifts to be constant on the fibers is equivalent to requiring it to be constant under the action of the structure group $G$. By definition horizontal lifts are invariant under the action of $G$ so that the only requirement is that the metric tensor field must be invariant, i.e., the left-invariant vector fields must also be killing vector fields.
+
+We have thus shown that we can induce a metric tensor field on the base space of a Riemannian principal fiber bundle if the elements of the structure group are isometries of the fiber bundle. As we have seen in \cref{sec:geometry-HS} the set of isometries of $\mathcal{H}_0=\mathbb{C}^N_0$ is the unitary group $U(N)$, while its structure group is the abelian group $\mathbf{C}_0$. Then not every element of the structure group is an isometry since
+\begin{equation}
+    \mathbf{C}_0=\mathbb{R}^+\times U(1)\qquad c=\lVert c\rVert\cdot e^{i\theta}\leftrightarrow(\lVert c\rVert,e^{i\theta})
+\end{equation}
+To proceed we must first fibrate with $\mathbb{R}^+$ and induce a metric on the base of this fibration. This is easily done since we can intrinsically define the embedding of the projection as the normalized state vectors
+\begin{equation}
+    \ket{\psi}\mapsto\frac{\ket{\psi}}{\lVert\ket{\psi}\rVert}=\frac{\ket{\psi}}{\sqrt{\braket{\psi|\psi}}}\in\mathcal{H}_0\qquad\forall\ket{\psi}\in\mathcal{H}_0
+\end{equation}
+so that the base space is
+\begin{equation}
+    S^{2N-1}=\mathbb{C}^N_0/\mathbb{R}^+
+\end{equation}
+inherits a Riemannian structure such that
+\begin{equation}
+    g_{\ket{\psi}}(\ket{d\psi_1},\ket{d\psi_2})=\mathrm{Re}\left[\braket{d\psi_1|d\psi_2}\right]
+\end{equation}
+for any normalized state vector $\ket{\psi}$. Then considering the restriction of the projection map of \cref{eq:proj-map-PH} on $S^{2N-1}$ we can repeat the same arguments so that $S^{2N-1}$ is a Riemannian principal fiber bundle with structure group $U(1)$ and base space
+\begin{equation}
+    \mathbf{\mathbb{C}P}^n=S^{2N-1}/U(1)
+\end{equation}
+where $n=N-1$. The structure group is a one-parameter subgroup of the isometry group, so we can induce a metric tensor field on $\mathbf{\mathbb{C}P}^n$ as described in this section. This metric for $\mathbf{\mathbb{C}P}^n$ is known as the Fubini-Study metric $g_{FS}$.
+
+We first derive an explicit expression for the pullback of the Fubini-Study metric on $\mathcal{H}_0$. From our definitions, we have that for any normalized state vector $\ket{\psi}$ 
+\begin{equation}
+    g_{FS}(\ket{d\psi_1},\ket{d\psi_2})=g(d\pi_\rho'^{-1}(d\rho_1),d\pi_\rho'^{-1}(d\rho_2))
+\end{equation}
+where $\pi(\ket{\psi})=\rho$ and $d\rho_i=d\pi_{\ket{\psi}}(\ket{d\psi_i})$. We first notice that the linear map
+\begin{equation}
+    d\pi_\rho'^{-1}\circ d\pi_{\ket{\psi}}:T_{\ket{\psi}}\mathcal{H}\to O_{\ket{\psi}}
+\end{equation}
+must act as the identity on $O_{\ket{\psi}}$ and must have kernel $V_{\ket{\psi}}$, the same of $d\pi_{\ket{\psi}}$, so that we can recognize it as the orthogonal projector on $O_{\ket{\psi}}$. Since for every $\ket{\psi}$ the motion along its fiber is given by $c\ket{\psi}$ for some complex number $c$, then
+\begin{equation}
+    V_{\ket{\psi}}=\{c\ket{\psi}\quad \forall c\in\mathbb{C}\}
+\end{equation}
+and thus
+\begin{equation}
+    d\pi_\rho'^{-1}\circ d\pi_{\ket{\psi}}(\ket{d\psi})=(\mathbb{I}-\rho)\ket{d\psi}=\ket{d\psi}-\braket{\psi | d\psi}\ket{\psi}
+\end{equation}
+so that for normalized state vectors we have
+\begin{align}
+    g_{FS}(\ket{d\psi_1},\ket{d\psi_2})&=\mathrm{Re}[(\bra{d\psi_2}-\bra{\psi}\braket{d\psi_2| \psi})(\ket{d\psi_1}-\braket{\psi | d\psi_1}\ket{\psi})] \notag
+    \\
+    &=\mathrm{Re}[\braket{d\psi_2|d\psi_1}-\braket{d\psi_2|\psi}\braket{\psi|d\psi_1}]
+\end{align}
+Finally then for any state vector $\ket{\psi}\in\mathcal{H}_0$ and two tangent vectors $\ket{d\psi_1},\ket{d\psi_2}\in T_{\ket{\psi}}\mathcal{H}$ we have
+\begin{equation}
+    g_{FS}(\ket{d\psi_1},\ket{d\psi_2})=\mathrm{Re}\left[\frac{\braket{d\psi_2|d\psi_1}}{\braket{\psi|\psi}}-\frac{\braket{d\psi_2|\psi}\braket{\psi|d\psi_1}}{\braket{\psi|\psi}^2}\right]
+\end{equation}
