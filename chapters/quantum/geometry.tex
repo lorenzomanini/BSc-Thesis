@@ -48,13 +48,57 @@ Since this group acts smoothly and transitively on the fibers, we have that the 
 One way to induce a metric on $\mathbf{P}\mathcal{H}$ would be to find a natural embedding of it into $\mathcal{H}_0$. It is a known result from the theory of principal fiber bundles that if such an embedding existed then the fiber bundle would be the trivial $\mathcal{H}_0=\mathbf{P}\mathcal{H}\times\mathbf{C}_0$. Since this is not the case, there is no natural embedding, i.e., there is no way to choose a representative state vector for every quantum state in terms of the structure of the Hilbert space only.
 
 \subsection{The Fubini-Study metric}
+Now that we have described the fiber bundle structure that links $\mathcal{H}_0$ and $\mathbf{P}\mathcal{H}$ we introduce two concepts that will be instrumental in our aim of inducing a metric on the space of quantum states: the push-forward of vectors and the pull-back of 1-forms.
 
-We now notice that any smooth curve on $\mathcal{H}_0$ can be projected to a smooth curve of $\mathbf{\mathbb{C}P}^N$ through the projection map and we thus we have the following map between the tangent spaces
+Given a fiber bundle $X$ with base space $B$ the projection map $\pi:X\to B$ allows us to project any smooth curve on the fiber bundle to a smooth curve on the base space. From this follows that we have a natural map
 \begin{equation}
-    d\pi:T_{\ket{\psi}}\mathcal{H}_0\to T_{\rho_\psi}\mathbf{\mathbb{C}P}^N\qquad
+    d\pi_x:T_xX\to T_{\pi(x)}B\qquad\forall x\in X
 \end{equation}
-Then we also have that any field of 1-forms on $\mathbf{\mathbb{C}P}^N$ can be \emph{pushed back} to $\mathcal{H}_0$ through
+such that given any smooth curve $\gamma(t)$ with $\gamma(0)=x$ then
 \begin{equation}
-    d\rho_\theta^*\mapsto\ket{d\psi_\theta}
+    d\pi_x(\gamma'(0))=\left.\frac{d}{dt}\left[\pi(\gamma(t))\right]\right\rvert_{t=0}
 \end{equation}
-The invariant vector fields of $\mathbf{C}_0$ define in every tangent space the "directions" where the quantum state is not changing, then, intuitively, the only "true directions" of change of the quantum states are the ones orthogonal to the orbits of $\mathbf{C^*}$
+where we have used the identification of tangent vectors with equivalence classes of curves. From the linearity of the differentiation follows that $d\pi$ is also linear. Then the push-forward is the map between the tangent bundles of the fiber bundle and the base space such that
+\begin{equation}
+    d\pi:TX\to TB \qquad\mathrm{with}\qquad d\pi(x,v)=(\pi(x),d\pi_x(v))
+\end{equation}
+The pull-back of 1-forms is the dual map of the push-forward. Given any any 1-form $\alpha\in T^*_{\pi(x)}B$ we define its pull-back on $T^*_xX$ as the 1-form $\alpha'\in T^*_xX$ such that
+\begin{equation}
+    \alpha'(v)=\alpha(d\pi_x(v))\qquad\forall v\in T_xX
+\end{equation}
+Then we have that given a 1-form in the cotangent space of some point of the base space, we can pull it back to the cotangent spaces of the entire corresponding fiber of the fiber bundle. From this follows that the pull-back is defined as a map from entire fields of 1-forms in the base space to entire fields of 1-forms in the fiber bundle. This is in contrast with the push forward since for vector fields to be pushed forward it would be necessary that every vector on the same fiber was pushed to the same vector on the corresponding element of the base space. Finally, using the tensor product we can similarly define the push-forward of $\binom{p}{0}$ tensors and the pull-back of $\binom{0}{q}$ tensor fields.
+
+The structure we want to project onto $\mathbf{P}\mathcal{H}$ is the $\binom{0}{2}$ metric tensor field, and so we can not simply push it forward. The fiber bundle we are interested in, $\mathcal{H}_0$, is also a Riemannian principal fiber bundle. As we will see this allows us to uniquely \emph{lift} vector fields from the base space to the fiber bundle.
+
+Given a fiber bundle $X$ as before we have that at every point $x\in X$ the curves through $x$ that remain on the same fiber are projected to single points on the base manifold so that the push forward of their tangent vectors must be the null vector. We define the vertical subspace of $T_xX$ as the kernel of the push-forward
+\begin{equation}
+    V_x\coloneqq\mathrm{ker}\,d\pi_x\subseteq T_xX
+\end{equation}
+Then a vector field is vertical if its value at every point is in the vertical subspace. For a general fiber bundle, there may not be any vertical vector fields, since the vertical subspaces may not be a smooth subset of its tangent bundle. If $X$ is also a principal fiber bundle with structure group $G$ we have that the fibers are given by the mesh of left-invariant vector fields of $G$. Then the vertical vector fields are precisely the left-invariant vector fields of $G$ and the vertical subspace is isomorphic to the Lie algebra of $G$ at every point
+\begin{equation}
+    V_x\sim\mathfrak{g}
+\end{equation}
+
+We may also choose at every point $x\in X$ a horizontal subspace $O_x$, i.e., a complementary subspace to the vertical one so that
+\begin{equation}
+    T_xX=V_x\oplus O_x
+\end{equation}
+In general, there is no intrinsic way to choose a horizontal subspace at every point but if $X$ is also a Riemannian manifold then we can define the horizontal subspaces as the orthogonal complements of the vertical ones
+\begin{equation}
+    O_x\coloneqq V_x^\perp
+\end{equation} 
+and horizontal vector fields are defined in analogy with the vertical ones.
+
+Let us now consider the restriction to $O_x$ of the push-forward at every point
+\begin{equation}
+    d\pi_x'\equiv d\pi_x\big|_{O_x}:O_x\subseteq T_xX\to T_{\pi(x)}B
+\end{equation}
+it can be shown that from the smoothness of the metric tensor field follows that $d\pi_x'$ defines a smooth map between the tangent bundles of the fiber bundle and the base space. Then from our previous considerations follows that
+\begin{equation}
+    \mathrm{ker}\,d\pi_x'=\mathbf{0} \qquad\forall x\in X
+\end{equation}
+and thus $d\pi_x'$ defines an isomorphism between $O_x$ and $T_{\pi(x)}B$ at every point. We can then uniquely define the \emph{horizontal lift} $v_l(x)\in T_xX$ to the fiber bundle of any vector field $v(y)\in T_yB$ on the base space as
+\begin{equation}
+    v_l(x)=d\pi_{y}'^{-1}(v(y))\, , \quad y=\pi(x) \qquad\forall x\in X
+\end{equation}
+that is the unique horizontal vector field on the fiber bundle that projects to $v(y)$.
