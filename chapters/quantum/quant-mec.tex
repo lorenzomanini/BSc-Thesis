@@ -21,11 +21,10 @@ where vectors can be identified with tensors of type $\binom{1}{0}$ and dual vec
     T_A(\mathbf{X}^*,\mathbf{Y})=\mathbf{X}^*(A\mathbf{Y})=\braket{\mathbf{X},A\mathbf{Y}}
 \end{equation}
 The tensor product $\otimes$ between two tensors $T$ and $T'$ of type $\binom{p}{q}$ and $\binom{p'}{q'}$ is a tensor of type $\binom{p+p'}{q+q'}$ defined as
-\begin{align}
-    &(T\otimes T')(\mathbf{X}^*_1,\dots,\mathbf{X}^*_{p+p'},\mathbf{Y}_1,\dots,\mathbf{Y}_{q+q'})= \notag
-    \\
-    &T(\mathbf{X}^*_1,\dots,\mathbf{X}^*_{p},\mathbf{Y}_1,\dots,\mathbf{Y}_{q})\cdot T'(\mathbf{X}^*_{p+1},\dots,\mathbf{X}^*_{p+p'},\mathbf{Y}_{q+1},\dots,\mathbf{Y}_{q+q'})
-\end{align}
+\begin{align*}
+    &(T\otimes T')(\mathbf{X}^*_1,\dots,\mathbf{X}^*_{p+p'},\mathbf{Y}_1,\dots,\mathbf{Y}_{q+q'}) \\
+    &= T(\mathbf{X}^*_1,\dots,\mathbf{X}^*_{p},\mathbf{Y}_1,\dots,\mathbf{Y}_{q}) \cdot T'(\mathbf{X}^*_{p+1},\dots,\mathbf{X}^*_{p+p'},\mathbf{Y}_{q+1},\dots,\mathbf{Y}_{q+q'})
+\end{align*}
 In particular, given a vector $\mathbf{Y}$ and a dual vector $\mathbf{X}^*$, their tensor product is the operator
 \begin{equation} \label{eq:outer-prod}
     A(\mathbf{Z})=\mathbf{X}^*(\mathbf{Z})\cdot \mathbf{Y}=\braket{\mathbf{X},\mathbf{Z}}\cdot \mathbf{Y}
@@ -140,7 +139,7 @@ We thus have that, intuitively, PVMs are defined by decomposing the Hilbert spac
 \begin{equation}
     p(y)=\frac{\braket{\psi_x|P_y^\dag\,P_y|\psi_x}}{\braket{\psi_x|\psi_x}}=\delta_{xy}
 \end{equation}
-also, after the measurement, the state vector is projected onto the subspace of the outcome
+and also, after the measurement, any state vector is projected onto the subspace of the outcome
 \begin{equation}
     \ket{\psi'}=P_x \ket{\psi}
 \end{equation}
@@ -198,14 +197,14 @@ Then for any state vector $\ket{\psi}$, its quantum state is
 \begin{equation}\label{eq:quantum-state}
     \left[\ket{\psi}\right]_\sim=\{c\ket{\psi}\,\forall c\ne 0\in\mathbb{C}\}
 \end{equation}
-and so the space of quantum states is isomorphic to the set of 1-dim linear subspaces of $\mathcal{H}$, also called \emph{complex lines}. This set is known as the \emph{projective space} of $\mathcal{H}$ and is denoted as $\mathbf{P}\mathcal{H}$. When $\mathcal{H}=\mathbb{C}^N$, it is known as the $n$-dimensional complex projective space $\mathbf{\mathbb{C}P}^n$, where $n=N-1$. Then \cref{eq:quantum-state} leads to the intrinsic definition of a surjective \emph{projection map}
-\begin{equation}
+and so the space of quantum states is isomorphic to the set of 1-dim linear subspaces of $\mathcal{H}$, also called \emph{complex lines}. This set is known as the \emph{projective space} of $\mathcal{H}$ and is denoted as $\mathbf{P}\mathcal{H}$. When $\mathcal{H}=\mathbb{C}^N$, the projective space is known as the $n$-dimensional complex projective space $\mathbf{\mathbb{C}P}^n$, where $n=N-1$. Then \cref{eq:quantum-state} leads to the intrinsic definition of a surjective \emph{projection map}
+\begin{equation} \label{eq:proj-map-PH}
     \pi:\mathcal{H}_0\to\mathbf{P}\mathcal{H}\quad\pi(\ket{\psi})=[\ket{\psi}]_\sim
 \end{equation}
 that maps every state vector to its quantum state.
 
 \subsection{Density operators}\label{sec:density-matrices}
-We have seen that quantum states are the 1-dim linear subspaces of $\mathcal{H}$, so we can identify them with orthogonal projectors. The only additional requirement is that the projected spaces must be 1-dim, i.e., they must be rank-1 orthogonal projectors. From \cref{eq:proj-decomp}, we know that for any rank-1 projector, there must exist a normalized vector $\ket{\tilde{e}}$ such that
+We have seen that quantum states are the 1-dim linear subspaces of $\mathcal{H}$, so we can identify them with some orthogonal projectors. The only additional requirement is that the projected spaces must be 1-dim, i.e., they must be rank-1 orthogonal projectors. From \cref{eq:proj-decomp}, we know that for any rank-1 projector, there must exist a normalized vector $\ket{\tilde{e}}$ such that
 \begin{equation}
     P_{\tilde{e}}\ket{\psi}=\braket{\tilde{e}|\psi}\ket{\tilde{e}}\quad\forall\ket{\psi}\in\mathcal{H}_0
 \end{equation}
@@ -216,7 +215,7 @@ and so from \cref{eq:outer-prod}, we have
 In the context of quantum mechanics, the set of rank-1 orthogonal projectors is known as the set of \emph{pure density operators} and is denoted as $\mathfrak{D}$.
 
 We now define a candidate for the \emph{projection map} to pure density operators
-\begin{equation} \label{eq:proj-map}
+\begin{equation} \label{eq:proj-map-D}
     \Pi:\mathcal{H}_0\to\mathfrak{D}\quad\Pi(\ket{\psi})=\frac{\ket{\psi}\bra{\psi}}{\braket{\psi|\psi}}\coloneq \rho_\psi
 \end{equation}
 This map is well-defined since for every $\ket{\psi}$ we have that $\rho_\psi$ is self-adjoint, idempotent and
@@ -292,7 +291,7 @@ where $\ket{\psi(t_1)}$ is a normalized state vector, then for any unitary evolu
 \end{align*}
 so that we can reformulate \cref{pt:unit-evol} as
 \begin{postulate}[Unitary evolution]
-    The Hilbert space of a closed system evolves only through unitary transformations. Coherently, the time evolution of any pure2 density operator $\rho(t)$ describing the quantum state of the system is given by
+    The Hilbert space of a closed system evolves only through unitary transformations. Coherently, the time evolution of any pure density operator $\rho(t)$ describing the quantum state of the system is given by
     \begin{equation}
         \rho(t_2)=U(t_1,t_2)\rho(t_1)U^\dag(t_1,t_2)
     \end{equation}
@@ -332,63 +331,3 @@ At last, we have that the expectation value of an observable $A$ when the system
 \begin{equation}
     \mathrm{E}[A]=\sum_{i}\lambda_i\,\mathrm{tr}(P_i\,\rho\,P_i^\dag)=\mathrm{tr}(\rho\,A)
 \end{equation}
-
-
-\section{The manifold of quantum states}
-\subsection{Geometry of the Hilbert space}
-Finite dimensional Hilbert spaces are complex vector spaces and hence they also are trivial \emph{complex manifolds}. A complex manifold is defined in analogy with real ones with the requirement of being locally isomorphic to $\mathbb{C}^N$ for some $N$ and with holomorphic transition functions between charts; the tangent space at each point is thus also isomorphic to $\mathbb{C}^N$. Every $N$-dimensional complex manifold is also a $2N$-dimensional real manifold where every complex coordinate basis $\{e_1,\dots,e_N\}$ corresponds to a real coordinate basis $\{e_1,\dots,e_N,\,ie_1,\dots,ie_N\}$, this manifold is called the \emph{realification} of the original complex one.
-
-Since Hilbert spaces are vector spaces there is a canonical isomorphism between the tangent space at each point and the Hilbert space itself
-\begin{equation}
-    T_{\ket{\psi}}\mathcal{H}\sim\mathcal{H}\qquad\mathrm{with}\qquad\frac{\partial}{\partial\theta}\leftrightarrow\frac{\partial\ket{\psi(\theta)}}{\partial\theta}\coloneqq\ket{d\psi_\theta}
-\end{equation}
-so that the inner product on the Hilbert space also defines an inner product on the tangent space of every point (i.e. it defines a complex $\binom{0}{2}$ tensor field on the manifold). Hilbert spaces also are metric spaces with respect to the distance induced by the inner product
-\begin{equation}
-    d(\mathbf{X},\mathbf{Y})=\lVert\mathbf{X}-\mathbf{Y}\rVert=\sqrt{\langle\mathbf{X}-\mathbf{Y},\mathbf{X}-\mathbf{Y}\rangle}
-\end{equation}
-For finite-dimensional Hilbert spaces, the inner product is a hermitian form that may be expressed as
-\begin{equation}
-    \langle\mathbf{X},\mathbf{Y}\rangle=h(\mathbf{X},\mathbf{Y})=g(\mathbf{X},\mathbf{Y})+iw(\mathbf{X},\mathbf{Y})
-\end{equation}
-where $g$ is a real-valued symmetric bilinear form and $w$ is a real-valued antisymmetric bilinear form. Then, the distance may be expressed as
-\begin{equation}
-    d(\mathbf{X},\mathbf{Y})=\sqrt{g(\mathbf{X}-\mathbf{Y},\mathbf{X}-\mathbf{Y})}
-\end{equation}
-so that the real part of the inner product also defines a metric tensor on the Hilbert space as in \cref{sec:riemannian}, endowing it with a Riemannian structure
-\begin{equation}
-    g_{\ket{\psi}}(\ket{d\psi_1},\ket{d\psi_2})=\mathrm{Re}\left[\braket{d\psi_1|d\psi_2}\right]
-\end{equation}
-
-This metric tensor is intrinsically derived from the structure of the Hilbert space and so it is also invariant under unitary transformations. Moreover, the set $U(N)$ of unitary transformations of $\mathbb{C}^N$ is a Lie group and thus the Lie algebra of its left-invariant vector fields are the killing vector fields of the Hilbert space. These vector fields also preserve the norm of the points in the Hilbert space and it can be shown that in each point they form a real $(2N-1)$-dimensional linear subspace of the tangent space. From this follows that the integral curves of the killing vector fields mesh to form a foliation of submanifolds of the realifed Hilbert space, i.e. spheres of vectors with the same norm.
-
-\subsection{T}
-We are now interested in the geometry of the space of quantum states. For start we have that, with a sound choice of coordinates, one can easily verify that $\mathbf{\mathbb{C}P}^N$ is also a complex manifold. \todo{proof}. Then we may ask ourselves if there is a natural way to induce a metric on it from the one of $\mathcal{H}$. Such an intrinsic metric would lead to a natural notion of distance between quantum states that we would then have to interpret.
-
-Firstly it can be shown that the intrinsically defined projection map of \cref{eq:proj-map}
-\begin{equation*}
-    \pi:\mathcal{H}_0\to\mathfrak{D}\sim\mathbf{\mathbb{C}P}^N
-\end{equation*}
-is a smooth SU map between the two manifolds so that we may regard $\mathcal{H}_0$ as a fibre bundle with base space $\mathbf{\mathbb{C}P}^N$. Let us now recall the definition of a quantum state from \cref{eq:quantum-state}
-\begin{equation}
-    \left[\ket{\psi}\right]_\sim=\{c\ket{\psi}\,\forall c\ne0 \in\mathbb{C}\}
-\end{equation}
-where we recognize that the fibers of the fiber bundle are the orbits of the action of the abelian Lie group
-\begin{equation}
-    \mathbf{C}_0=\{c\cdot\mathbb{I}\mid\forall c\ne0\in\mathbb{C}\}
-\end{equation}
-on $\mathcal{H}_0$. We can thus write
-\begin{equation}\label{eq:cpn-quotient}
-    \mathbf{\mathbb{C}P}^N=\mathcal{H}_0/\mathbf{C}_0
-\end{equation}
-and $\mathcal{H}_0$ is a principle fibre bundle\cref. \todo{No cross-section?}
-
-We now notice that any smooth curve on $\mathcal{H}_0$ can be projected to a smooth curve of $\mathbf{\mathbb{C}P}^N$ through the projection map and we thus we have the following map between the tangent spaces
-\begin{equation}
-    d\pi:T_{\ket{\psi}}\mathcal{H}_0\to T_{\rho_\psi}\mathbf{\mathbb{C}P}^N\qquad
-\end{equation}
-Then we also have that any field of 1-forms on $\mathbf{\mathbb{C}P}^N$ can be \emph{pushed back} to $\mathcal{H}_0$ through
-\begin{equation}
-    d\rho_\theta^*\mapsto\ket{d\psi_\theta}
-\end{equation}
-
-The invariant vector fields of $\mathbf{C}_0$ define in every tangent space the "directions" where the quantum state is not changing, then, intuitively, the only "true directions" of change of the quantum states are the ones orthogonal to the orbits of $\mathbf{C^*}$

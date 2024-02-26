@@ -1,0 +1,60 @@
+\section{The manifold of quantum states}
+\subsection{Geometry of the Hilbert space}
+Complex manifolds are defined in analogy with real ones with the requirement of being locally isomorphic to $\mathbb{C}^N$ for some $N$ and with holomorphic transition functions between charts; the tangent space at each point is thus also isomorphic to $\mathbb{C}^N$. Every $N$-dimensional complex manifold is also a $2N$-dimensional real manifold where every complex c
+oordinate basis $\{e_1,\dots,e_N\}$ corresponds to a real coordinate basis $\{e_1,\dots,e_N,\,ie_1,\dots,ie_N\}$, this manifold is called the \emph{realification} of the original complex one.
+
+Finite-dimensional Hilbert spaces are isomorphic to $\mathbb{C}^N$ for some $N$ and so they are also trivial complex manifolds. Moreover, there is a canonical isomorphism between the tangent space at each point and the Hilbert space itself
+\begin{equation}
+    T_{\ket{\psi}}\mathcal{H}\sim\mathcal{H}\qquad\mathrm{with}\qquad\frac{\partial}{\partial\theta} \leftrightarrow \left.\frac{d\ket{\psi(\theta)}}{d\theta}\right\rvert_{\theta=0}\eqqcolon\ket{d\psi_\theta}
+\end{equation}
+so that the inner product on the Hilbert space defines an inner product on the complex tangent space of every point, i.e., it defines a complex $\binom{0}{2}$ tensor field on the manifold. Hilbert spaces also are metric spaces with respect to the distance induced by the inner product
+\begin{equation}
+    d(\mathbf{X},\mathbf{Y})=\lVert\mathbf{X}-\mathbf{Y}\rVert=\sqrt{\langle\mathbf{X}-\mathbf{Y},\mathbf{X}-\mathbf{Y}\rangle}
+\end{equation}
+For finite-dimensional Hilbert spaces, the inner product is a hermitian form that may be expressed as
+\begin{equation}
+    \langle\mathbf{X},\mathbf{Y}\rangle=h(\mathbf{X},\mathbf{Y})=g(\mathbf{X},\mathbf{Y})+iw(\mathbf{X},\mathbf{Y})
+\end{equation}
+where $g$ is a real-valued symmetric bilinear form and $w$ is a real-valued antisymmetric bilinear form. Then, the distance may be expressed as
+\begin{equation}
+    d(\mathbf{X},\mathbf{Y})=\sqrt{g(\mathbf{X}-\mathbf{Y},\mathbf{X}-\mathbf{Y})}
+\end{equation}
+so that the real part of the inner product also defines a metric tensor on the Hilbert space as in \cref{sec:riemannian}, endowing it with a Riemannian structure
+\begin{equation}
+    g_{\ket{\psi}}(\ket{d\psi_1},\ket{d\psi_2})=\mathrm{Re}\left[\braket{d\psi_1|d\psi_2}\right]
+\end{equation}
+
+This metric tensor is intrinsically derived from the structure of the Hilbert space and so it is invariant under unitary transformations. The set $U(N)$ of unitary transformations of $\mathbb{C}^N$ is a Lie group and thus the Lie algebra of its left-invariant vector fields are the killing vector fields of the Hilbert space. The integral curves of these vector fields also preserve the norm of the points in the Hilbert space, and it can be shown that in each point their tangent vectors form a real $(2N-1)$-dimensional linear subspace of the tangent space. From this follows that the integral curves of the killing vector fields mesh to form a foliation of the realified Hilbert space where each leaf is the set of vectors with a fixed norm and is thus isomorphic to $S^{2N-1}$. Then each leaf is a $(2N-1)$-dimensional submanifold of the realified Hilbert space and inherits a Riemannian structure.
+
+\subsection{Fiber bundle structure of the Hilbert space}
+We are now interested in the geometry of the space of quantum states. For start we have that, with a sound choice of coordinates, one can easily verify that $\mathbf{\mathbb{C}P}^N$ is also a complex manifold. \todo{proof?}. Then tangent vectors of $\mathbf{P}\mathcal{H}$ can be intrinsically mapped to operators of $\mathcal{H}$ as follows
+\begin{equation}
+    \frac{\partial}{\partial\theta}\in T_\rho\mathfrak{D}\mapsto d\rho_\theta\quad\mathrm{with}\quad d\rho_\theta(\mathbf{X})=\left.\frac{d}{d\theta}\left[\rho(\theta)(\mathbf{X})\right]\right\rvert_{\theta=0}\quad\forall\mathbf{X}\in\mathcal{H}
+\end{equation}
+where from the linearity of differntiation follows that $d\rho_\theta$ is a well-defined linear operator on $\mathcal{H}$.
+
+Now we may ask ourselves if there is a natural way to induce a metric on $\mathbf{P}\mathcal{H}$ from the one of $\mathcal{H}$. Such an intrinsic metric would lead to a natural notion of distance between quantum states that we would then have to interpret. To do this we will investigate the relationship between $\mathcal{H}$ and $\mathbf{P}\mathcal{H}$ as complex manifolds.
+
+Firstly let us now recall the intrinsic projection map of \cref{eq:proj-map-PH}
+\begin{equation*}
+    \pi:\mathcal{H}_0\to\mathbf{P}\mathcal{H}\quad\ket{\psi}\mapsto[\ket{\psi}]_\sim=\{c\ket{\psi}\,\forall c\ne 0\in\mathbb{C}\}
+\end{equation*}
+it can be shown that it is a smooth surjective map between the two manifolds so that we may regard $\mathcal{H}_0$ as a fiber bundle with base space $\mathbf{P}\mathcal{H}$. The fibers of the fiber bundle are the orbits of the action on $\mathcal{H}_0$ of the abelian Lie group
+\begin{equation}
+    \mathbf{C}_0=\{c\cdot\mathbb{I}\mid\forall c\ne0\in\mathbb{C}\}
+\end{equation}
+Since this group acts smoothly and transitively on the fibers, we have that the fibers are isomorphic to $\mathbf{C}_0$ and the fiber bundle is a principal fiber bundle.
+
+One way to induce a metric on $\mathbf{P}\mathcal{H}$ would be to find a natural embedding of it into $\mathcal{H}_0$. It is a known result from the theory of principal fiber bundles that if such an embedding existed then the fiber bundle would be the trivial $\mathcal{H}_0=\mathbf{P}\mathcal{H}\times\mathbf{C}_0$. Since this is not the case, there is no natural embedding, i.e., there is no way to choose a representative state vector for every quantum state in terms of the structure of the Hilbert space only.
+
+\subsection{The Fubini-Study metric}
+
+We now notice that any smooth curve on $\mathcal{H}_0$ can be projected to a smooth curve of $\mathbf{\mathbb{C}P}^N$ through the projection map and we thus we have the following map between the tangent spaces
+\begin{equation}
+    d\pi:T_{\ket{\psi}}\mathcal{H}_0\to T_{\rho_\psi}\mathbf{\mathbb{C}P}^N\qquad
+\end{equation}
+Then we also have that any field of 1-forms on $\mathbf{\mathbb{C}P}^N$ can be \emph{pushed back} to $\mathcal{H}_0$ through
+\begin{equation}
+    d\rho_\theta^*\mapsto\ket{d\psi_\theta}
+\end{equation}
+The invariant vector fields of $\mathbf{C}_0$ define in every tangent space the "directions" where the quantum state is not changing, then, intuitively, the only "true directions" of change of the quantum states are the ones orthogonal to the orbits of $\mathbf{C^*}$
