@@ -24,7 +24,7 @@ We thus have that the space of state vectors $\mathcal{H}_0$ is also a complex m
 \begin{equation}
     g_{\ket{\psi}}(\ket{d\psi_1},\ket{d\psi_2})=\mathrm{Re}\left[\braket{d\psi_1|d\psi_2}\right]
 \end{equation}
-This metric tensor is intrinsically derived from the structure of the Hilbert space and so it is invariant under unitary transformations. The set $U(N)$ of unitary transformations of $\mathbb{C}^N$ is a Lie group and so the Lie algebra of its left-invariant vector fields are the killing vector fields of the Hilbert space. The integral curves of these vector fields also preserve the norm of the points in the Hilbert space, and it can be shown that in each point their tangent vectors form a real $(2N-1)$-dimensional linear subspace of the tangent space. From this follows that the integral curves of the killing vector fields mesh to form a foliation of the realified Hilbert space where each leaf is the set of vectors with a fixed norm and is thus isomorphic to $S^{2N-1}$. Then each leaf is a $(2N-1)$-dimensional submanifold of the realified Hilbert space and inherits a Riemannian structure.
+This metric tensor is intrinsically derived from the structure of the Hilbert space and so it is invariant under unitary transformations. The set $U(N)$ of unitary transformations of $\mathbb{C}^N$ is a Lie group and so the Lie algebra of its left-invariant vector fields are the killing vector fields of the Hilbert space. The integral curves of these vector fields also preserve the norm of the points in the Hilbert space, and it can be shown that in each point their tangent vectors form a real $(2N-1)$-dimensional linear subspace of the tangent space. From this follows that the integral curves of the killing vector fields mesh to form a foliation of the realified Hilbert space where each leaf is the set of state vectors with a fixed norm and is thus isomorphic to $S^{2N-1}$. Then each leaf is a $(2N-1)$-dimensional submanifold of the realified Hilbert space and inherits a Riemannian structure.
 
 \subsection{Fiber bundle structure of the Hilbert space} \label{sec:fibr-bund}
 We are now interested in the geometry of the space of quantum states. For start we have that, with a sound choice of coordinates, one can easily verify that $\mathbf{\mathbb{C}P}^N$ is also a complex manifold. \todo{proof?}. Then tangent vectors of $\mathbf{P}\mathcal{H}$ can be intrinsically mapped to operators of $\mathcal{H}$ as follows
@@ -89,15 +89,15 @@ In general, there is no intrinsic way to choose a horizontal subspace at every p
 \begin{equation}
     O_x\coloneqq V_x^\perp
 \end{equation} 
-and horizontal vector fields are defined in analogy with the vertical ones. We now thus have at every point of $X$ a well-defined notion of motion tangent (vertical) or orthogonal (horizontal) to its fiber.
+and horizontal vector fields are defined in analogy with the vertical ones. We thus have a well-defined notion of vertical motion, tangent to the fibers, and of horizontal motion, orthogonal to the fibers.
 
-Intuitively, we can now lift any curve in the base space to the fiber bundle by starting from a point on the fiber and then moving orthogonally to it. To precisely define this concept, let us now consider the restriction to $O_x$ of the push-forward at every point
+Intuitively, we can now lift any curve in the base space to the fiber bundle by starting from a point on the fiber and then moving orthogonally to it. To precisely define this concept, let us consider the restriction to $O_x$ of the push-forward at every point
 \begin{equation}
     d\pi_x'\equiv d\pi_x\big|_{O_x}:O_x\subseteq T_xX\to T_{\pi(x)}B
 \end{equation}
 It can be shown that from the smoothness of the metric tensor field follows that $d\pi_x'$ defines a smooth map between the tangent bundles of the fiber bundle and the base space. Then from our previous considerations follows that
 \begin{equation}
-    \mathrm{ker}\,d\pi_x'=\mathbf{0} \qquad\forall x\in X
+    \mathrm{ker}\,d\pi_x'=\{\mathbf{0}\}\qquad\forall x\in X
 \end{equation}
 and thus $d\pi_x'$ defines an isomorphism between $O_x$ and $T_{\pi(x)}B$ at every point. We can then uniquely define the \emph{horizontal lift} $v_l(x)\in T_xX$ to the fiber bundle of any vector field $v(y)\in T_yB$ on the base space as
 \begin{equation}
@@ -127,11 +127,11 @@ as described in \cref{sec:fibr-bund}, then it also inherits the Riemannian struc
 \begin{equation}
     g_{\ket{\psi}}(\ket{d\psi_1},\ket{d\psi_2})=\mathrm{Re}\left[\braket{d\psi_1|d\psi_2}\right]
 \end{equation}
-for any normalized state vector $\ket{\psi}$. Then considering the restriction of the projection map of \cref{eq:proj-map-PH} on the set of normalized state vectors, we can repeat the same arguments of \cref{sec:fibr-bund} and show that $S^{2N-1}$ is a Riemannian principal fiber bundle with structure group $U(1)$ and base space
+for any normalized state vector $\ket{\psi}$. Considering the restriction of the projection map of \cref{eq:proj-map-PH} on the set of normalized state vectors, we can repeat the same arguments of \cref{sec:fibr-bund} and show that $S^{2N-1}$ is a Riemannian principal fiber bundle with structure group $U(1)$ and base space
 \begin{equation} \label{eq:u-fibr}
     \mathbf{\mathbb{C}P}^n=S^{2N-1}/U(1)
 \end{equation}
-where $n=N-1$. The structure group is then a one-parameter subgroup of the isometry group, so we can induce a metric tensor field on $\mathbf{\mathbb{C}P}^n$ as described in this section. This metric for $\mathbf{\mathbb{C}P}^n$ is known as the Fubini-Study metric $g_{FS}$ and it is intrinsically defined in terms of the structure of the Hilbert space only.
+where $n=N-1$. The structure group is then a one-parameter subgroup of the isometry group, so we can induce a metric tensor field on $\mathbf{\mathbb{C}P}^n$ as described in this section. This metric for $\mathbf{\mathbb{C}P}^n$ is known as the Fubini-Study metric $g_{FS}$ and is thus intrinsically defined in terms of the structure of the Hilbert space only.
 
 \subsubsection{The pullback of the FS metric on state vectors
 }
@@ -163,7 +163,7 @@ Finally, it can be similarly shown that for any state vector $\ket{\psi}\in\math
 \end{equation}
 
 \subsubsection{The FS metric on pure density operators}
-We now want to derive an explicit expression for the Fubini-Study metric on $\mathbf{\mathbb{C}P}^n$. As we have seen, the first fibration projects the state vectors to the normalized state vectors, which constitute a leaf of the foliation of submanifolds of $\mathcal{H}_0$ that are meshed by the integral curves of the killing vector fields, i.e., the left-invariant vector fields of $U(N)$. Then, at any point of $S^{2N-1}$, the tangent space is isomorphic to the Lie algebra of $U(N)$. This is the space of anti-hermitian operators, so the action of any 1-parameter subgroup of $U(N)$ on a normalized state vector $\ket{\psi}$ can always be locally expressed as
+We now want to derive an explicit expression for the Fubini-Study metric on $\mathbf{\mathbb{C}P}^n$. As we have seen, the first fibration projects the state vectors to the normalized state vectors, which constitute a leaf of the foliation of submanifolds of $\mathcal{H}_0$ that are meshed by the integral curves of the left-invariant vector fields of $U(N)$. Then, at any point of $S^{2N-1}$, the tangent space is isomorphic to the Lie algebra of $U(N)$. This is the space of anti-hermitian operators since the action of any 1-parameter subgroup of $U(N)$ on a normalized state vector $\ket{\psi}$ can always be locally expressed as
 \begin{equation}
     U(\theta)\ket{\psi}=e^{iA\theta}\ket{\psi}
 \end{equation}
