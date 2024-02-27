@@ -1,7 +1,6 @@
 \section{The manifold of quantum states}
 \subsection{Geometry of the Hilbert space} \label{sec:geometry-HS}
-Complex manifolds are defined in analogy with real ones with the requirement of being locally isomorphic to $\mathbb{C}^N$ for some $N$ and with holomorphic transition functions between charts; the tangent space at each point is thus also isomorphic to $\mathbb{C}^N$. Every $N$-dimensional complex manifold is also a $2N$-dimensional real manifold where every complex c
-oordinate basis $\{e_1,\dots,e_N\}$ corresponds to a real coordinate basis $\{e_1,\dots,e_N,\,ie_1,\dots,ie_N\}$, this manifold is called the \emph{realification} of the original complex one.
+Complex manifolds are defined in analogy with real ones with the requirement of being locally isomorphic to $\mathbb{C}^N$ for some $N$ and with holomorphic transition functions between charts; the tangent space at each point is thus also isomorphic to $\mathbb{C}^N$. Every $N$-dimensional complex manifold is also a $2N$-dimensional real manifold where every complex coordinate basis $\{e_1,\dots,e_N\}$ corresponds to a real coordinate basis $\{e_1,\dots,e_N,\,ie_1,\dots,ie_N\}$, this manifold is called the \emph{realification} of the original complex one.
 
 Finite-dimensional Hilbert spaces are isomorphic to $\mathbb{C}^N$ for some $N$ and so they are also trivial complex manifolds. Moreover, there is a canonical isomorphism between the tangent space at each point and the Hilbert space itself
 \begin{equation}
@@ -9,7 +8,7 @@ Finite-dimensional Hilbert spaces are isomorphic to $\mathbb{C}^N$ for some $N$ 
 \end{equation}
 so that the inner product on the Hilbert space defines an inner product on the complex tangent space of every point, i.e., it defines a complex $\binom{0}{2}$ tensor field on the manifold. Hilbert spaces also are metric spaces with respect to the distance induced by the inner product
 \begin{equation}
-    d(\mathbf{X},\mathbf{Y})=\lVert\mathbf{X}-\mathbf{Y}\rVert=\sqrt{\langle\mathbf{X}-\mathbf{Y},\mathbf{X}-\mathbf{Y}\rangle}
+    d(\mathbf{X},\mathbf{Y})=\lVert\mathbf{X}-\mathbf{Y}\rVert=\sqrt{\langle\mathbf{X}-\mathbf{Y},\mathbf{X}-\mathbf{Y}\rangle} \quad\forall\mathbf{X},\mathbf{Y}\in\mathcal{H}
 \end{equation}
 For finite-dimensional Hilbert spaces, the inner product is a hermitian form that may be expressed as
 \begin{equation}
@@ -19,21 +18,22 @@ where $g$ is a real-valued symmetric bilinear form and $w$ is a real-valued anti
 \begin{equation}
     d(\mathbf{X},\mathbf{Y})=\sqrt{g(\mathbf{X}-\mathbf{Y},\mathbf{X}-\mathbf{Y})}
 \end{equation}
-so that the real part of the inner product also defines a metric tensor on the Hilbert space as in \cref{sec:riemannian}, endowing it with a Riemannian structure
+so that the real part of the inner product also defines a metric tensor on the Hilbert space as explained in \cref{ch:square-dist}, endowing it with a Riemannian structure.
+
+We thus have that the space of state vectors $\mathcal{H}_0$ is also a complex manifold with the Riemannian structure
 \begin{equation}
     g_{\ket{\psi}}(\ket{d\psi_1},\ket{d\psi_2})=\mathrm{Re}\left[\braket{d\psi_1|d\psi_2}\right]
 \end{equation}
+This metric tensor is intrinsically derived from the structure of the Hilbert space and so it is invariant under unitary transformations. The set $U(N)$ of unitary transformations of $\mathbb{C}^N$ is a Lie group and so the Lie algebra of its left-invariant vector fields are the killing vector fields of the Hilbert space. The integral curves of these vector fields also preserve the norm of the points in the Hilbert space, and it can be shown that in each point their tangent vectors form a real $(2N-1)$-dimensional linear subspace of the tangent space. From this follows that the integral curves of the killing vector fields mesh to form a foliation of the realified Hilbert space where each leaf is the set of vectors with a fixed norm and is thus isomorphic to $S^{2N-1}$. Then each leaf is a $(2N-1)$-dimensional submanifold of the realified Hilbert space and inherits a Riemannian structure.
 
-This metric tensor is intrinsically derived from the structure of the Hilbert space and so it is invariant under unitary transformations. The set $U(N)$ of unitary transformations of $\mathbb{C}^N$ is a Lie group and thus the Lie algebra of its left-invariant vector fields are the killing vector fields of the Hilbert space. The integral curves of these vector fields also preserve the norm of the points in the Hilbert space, and it can be shown that in each point their tangent vectors form a real $(2N-1)$-dimensional linear subspace of the tangent space. From this follows that the integral curves of the killing vector fields mesh to form a foliation of the realified Hilbert space where each leaf is the set of vectors with a fixed norm and is thus isomorphic to $S^{2N-1}$. Then each leaf is a $(2N-1)$-dimensional submanifold of the realified Hilbert space and inherits a Riemannian structure.
-
-\subsection{Fiber bundle structure of the Hilbert space}
+\subsection{Fiber bundle structure of the Hilbert space} \label{sec:fibr-bund}
 We are now interested in the geometry of the space of quantum states. For start we have that, with a sound choice of coordinates, one can easily verify that $\mathbf{\mathbb{C}P}^N$ is also a complex manifold. \todo{proof?}. Then tangent vectors of $\mathbf{P}\mathcal{H}$ can be intrinsically mapped to operators of $\mathcal{H}$ as follows
 \begin{equation}
     \frac{\partial}{\partial\theta}\in T_\rho\mathfrak{D}\mapsto d\rho_\theta\quad\mathrm{with}\quad d\rho_\theta(\mathbf{X})=\left.\frac{d}{d\theta}\left[\rho(\theta)(\mathbf{X})\right]\right\rvert_{\theta=0}\quad\forall\mathbf{X}\in\mathcal{H}
 \end{equation}
 where from the linearity of differntiation follows that $d\rho_\theta$ is a well-defined linear operator on $\mathcal{H}$.
 
-Now we may ask ourselves if there is a natural way to induce a metric on $\mathbf{P}\mathcal{H}$ from the one of $\mathcal{H}$. Such an intrinsic metric would lead to a natural notion of distance between quantum states that we would then have to interpret. To do this we will investigate the relationship between $\mathcal{H}$ and $\mathbf{P}\mathcal{H}$ as complex manifolds.
+Now we may ask ourselves if there is a natural way to induce a metric on $\mathbf{P}\mathcal{H}$ from the one of $\mathcal{H}$. Such an intrinsic metric would lead to a natural notion of distance between quantum states. To do this we will start by investigating the relationship between $\mathcal{H}$ and $\mathbf{P}\mathcal{H}$ as complex manifolds.
 
 Firstly let us now recall the intrinsic projection map of \cref{eq:proj-map-PH}
 \begin{equation*}
@@ -52,7 +52,7 @@ One way to induce a metric on $\mathbf{P}\mathcal{H}$ would be to find a natural
 
 Now that we have described the fiber bundle structure that links $\mathcal{H}_0$ and $\mathbf{P}\mathcal{H}$, we introduce two concepts that will be instrumental in our aim of inducing a metric on the space of quantum states: the push-forward of vectors and the pull-back of 1-forms.
 
-Given a fiber bundle $X$ with base space $B$, the projection map $\pi:X\to B$ allows us to project any smooth curve on the fiber bundle to a smooth curve on the base space. From this follows that we have a natural map
+Given a fiber bundle $X$ with base space $B$, the projection map $\pi:X\to B$ allows us to locally project any smooth curve on the fiber bundle to a smooth curve on the base space. From this follows that we have a natural map
 \begin{equation}
     d\pi_x:T_xX\to T_{\pi(x)}B\qquad\forall x\in X
 \end{equation}
@@ -89,9 +89,9 @@ In general, there is no intrinsic way to choose a horizontal subspace at every p
 \begin{equation}
     O_x\coloneqq V_x^\perp
 \end{equation} 
-and horizontal vector fields are defined in analogy with the vertical ones.
+and horizontal vector fields are defined in analogy with the vertical ones. We now thus have at every point of $X$ a well-defined notion of motion tangent (vertical) or orthogonal (horizontal) to its fiber.
 
-Let us now consider the restriction to $O_x$ of the push-forward at every point
+Intuitively we can now lift any curve in the base space to the fiber bundle by starting from a point on the fiber and then moving orthogonally to it. To precisely define this concept let us now consider the restriction to $O_x$ of the push-forward at every point
 \begin{equation}
     d\pi_x'\equiv d\pi_x\big|_{O_x}:O_x\subseteq T_xX\to T_{\pi(x)}B
 \end{equation}
@@ -105,7 +105,11 @@ and thus $d\pi_x'$ defines an isomorphism between $O_x$ and $T_{\pi(x)}B$ at eve
 \end{equation}
 that is the unique horizontal vector field on the fiber bundle that projects to $v(y)$.
 
-We can now try to induce a metric tensor field on the base space by identifying its action on vector fields with the action of the metric tensor of the fiber bundle on the horizontal lift of the vector fields of the base space. This is possible only if the scalar field resulting from the inner product of the horizontal lifts is constant on the fibers. Only in this case, we can then push forward the scalar field to the base space and thus define the action of the induced metric tensor field on the original vector fields. Requiring the inner product of the horizontal lifts to be constant on the fibers is equivalent to requiring it to be constant under the action of the structure group $G$. By definition, horizontal lifts are invariant under the action of $G$, so the only requirement is that the metric tensor field must be invariant, i.e., the left-invariant vector fields must also be killing vector fields.
+We can now try to induce a metric tensor field on the base space by identifying its action on vector fields with the action of the metric tensor of the fiber bundle on the horizontal lift of the vector fields of the base space, i.e. given $dy_1,dy_2\in T_yB$
+\begin{equation}
+    g'_y(dy_1,dy_2)=g_x(d\pi_{y}'^{-1}(dy_1),d\pi_{y}'^{-1}(dy_1))
+\end{equation}
+where $y=\pi(x)$. This is possible only if the scalar field resulting from the inner product of the horizontal lifts is constant on the fibers; only in this case, we can then push forward the scalar field to the base space and thus define the action of the induced metric tensor field on the original vector fields. Requiring the inner product of the horizontal lifts to be constant on the fibers is equivalent to requiring it to be constant under the action of the structure group $G$. By definition, horizontal lifts are invariant under the action of $G$, so the only requirement is that the metric tensor field must be invariant, i.e., the left-invariant vector fields must also be killing vector fields.
 
 We have thus shown that we can induce a metric tensor field on the base space of a Riemannian principal fiber bundle if the elements of the structure group are isometries of the fiber bundle. As we have seen in \cref{sec:geometry-HS}, the set of isometries of $\mathcal{H}_0=\mathbb{C}^N_0$ is the unitary group $U(N)$, while its structure group is the abelian group $\mathbf{C}_0$. Then not every element of the structure group is an isometry since
 \begin{equation}
@@ -115,48 +119,51 @@ To proceed, we must first fibrate with $\mathbb{R}^+$ and induce a metric on the
 \begin{equation}
     \ket{\psi}\mapsto\frac{\ket{\psi}}{\lVert\ket{\psi}\rVert}=\frac{\ket{\psi}}{\sqrt{\braket{\psi|\psi}}}\in\mathcal{H}_0\qquad\forall\ket{\psi}\in\mathcal{H}_0
 \end{equation}
-so that the base space is
+so that the base space is one of the leaves of the foliation induced by $U(N)$ on $\mathcal{H}_0$
 \begin{equation}
     S^{2N-1}=\mathbb{C}^N_0/\mathbb{R}^+
 \end{equation}
-inherits a Riemannian structure such that
+as described in \cref{sec:fibr-bund}, then it also inherits the Riemannian structure such that
 \begin{equation}
     g_{\ket{\psi}}(\ket{d\psi_1},\ket{d\psi_2})=\mathrm{Re}\left[\braket{d\psi_1|d\psi_2}\right]
 \end{equation}
-for any normalized state vector $\ket{\psi}$. Then considering the restriction of the projection map of \cref{eq:proj-map-PH} on $S^{2N-1}$, we can repeat the same arguments so that $S^{2N-1}$ is a Riemannian principal fiber bundle with structure group $U(1)$ and base space
+for any normalized state vector $\ket{\psi}$. Then considering the restriction of the projection map of \cref{eq:proj-map-PH} on the set of normalized state vectors we can repeat the same arguments of \cref{sec:fibr-bund} and show that $S^{2N-1}$ is a Riemannian principal fiber bundle with structure group $U(1)$ and base space
 \begin{equation} \label{eq:u-fibr}
     \mathbf{\mathbb{C}P}^n=S^{2N-1}/U(1)
 \end{equation}
-where $n=N-1$. The structure group is a one-parameter subgroup of the isometry group, so we can induce a metric tensor field on $\mathbf{\mathbb{C}P}^n$ as described in this section. This metric for $\mathbf{\mathbb{C}P}^n$ is known as the Fubini-Study metric $g_{FS}$.
+where $n=N-1$. The structure group is then a one-parameter subgroup of the isometry group, so we can induce a metric tensor field on $\mathbf{\mathbb{C}P}^n$ as described in this section. This metric for $\mathbf{\mathbb{C}P}^n$ is known as the Fubini-Study metric $g_{FS}$ and it is intrinsically defined in terms of the structure of the Hilbert space only.
 
+\subsubsection{The pullback of the FS metric on state vectors
+}
 We first derive an explicit expression for the pullback of the Fubini-Study metric on $\mathcal{H}_0$. From our definitions, we have that for any normalized state vector $\ket{\psi}$ 
 \begin{equation}
     g_{FS}(\ket{d\psi_1},\ket{d\psi_2})=g(d\pi_\rho'^{-1}(d\rho_1),d\pi_\rho'^{-1}(d\rho_2))
 \end{equation}
-where $\pi(\ket{\psi})=\rho$ and $d\rho_i=d\pi_{\ket{\psi}}(\ket{d\psi_i})$. We first notice that the linear map
+where $\rho=\pi(\ket{\psi})$ and $d\rho_i=d\pi_{\ket{\psi}}(\ket{d\psi_i})$. We first notice that the linear map
 \begin{equation}
     d\pi_\rho'^{-1}\circ d\pi_{\ket{\psi}}:T_{\ket{\psi}}\mathcal{H}\to O_{\ket{\psi}}
 \end{equation}
-must act as the identity on $O_{\ket{\psi}}$ and must have the kernel $V_{\ket{\psi}}$, the same as $d\pi_{\ket{\psi}}$, so that we can recognize it as the orthogonal projector on $O_{\ket{\psi}}$. Since for every $\ket{\psi}$, the motion along its fiber is given by $c\ket{\psi}$ for some complex number $c$, then
+must act as the identity on $O_{\ket{\psi}}$ and must have kernel $V_{\ket{\psi}}$, the same as $d\pi_{\ket{\psi}}$, so that we can recognize it as the orthogonal projector on $O_{\ket{\psi}}$. Since for every $\ket{\psi}$, the motion along its fiber is given by $c\ket{\psi}$ for some complex number $c$, then
 \begin{equation}
     V_{\ket{\psi}}=\{c\ket{\psi}\quad \forall c\in\mathbb{C}\}
 \end{equation}
-and thus
+and so the projector to the vertical space is $\rho$. The projector to the horizontal space is then $(\mathbb{I}-\rho)$ so that 
 \begin{equation}
     d\pi_\rho'^{-1}\circ d\pi_{\ket{\psi}}(\ket{d\psi})=(\mathbb{I}-\rho)\ket{d\psi}=\ket{d\psi}-\braket{\psi | d\psi}\ket{\psi}
 \end{equation}
-so that for normalized state vectors we have
+and for normalized state vectors we have
 \begin{align}
     g_{FS}(\ket{d\psi_1},\ket{d\psi_2})&=\mathrm{Re}[(\bra{d\psi_2}-\bra{\psi}\braket{d\psi_2| \psi})(\ket{d\psi_1}-\braket{\psi | d\psi_1}\ket{\psi})] \notag
     \\
     &=\mathrm{Re}[\braket{d\psi_2|d\psi_1}-\braket{d\psi_2|\psi}\braket{\psi|d\psi_1}]
 \end{align}
-Finally, for any state vector $\ket{\psi}\in\mathcal{H}_0$ and two tangent vectors $\ket{d\psi_1},\ket{d\psi_2}\in T_{\ket{\psi}}\mathcal{H}$ we have
+Finally, it can be similarly shown that for any state vector $\ket{\psi}\in\mathcal{H}_0$ and two tangent vectors $\ket{d\psi_1},\ket{d\psi_2}\in T_{\ket{\psi}}\mathcal{H}$ we have
 \begin{equation}
     g_{FS}(\ket{d\psi_1},\ket{d\psi_2})=\mathrm{Re}\left[\frac{\braket{d\psi_2|d\psi_1}}{\braket{\psi|\psi}}-\frac{\braket{d\psi_2|\psi}\braket{\psi|d\psi_1}}{\braket{\psi|\psi}^2}\right]
 \end{equation}
 
-We now want to derive an explicit expression for the Fubini-Study metric on $\mathbf{\mathbb{C}P}^n$. As we have seen, the first fibration projects the state vectors to the normalized state vectors, which are a leaf of the foliation of submanifolds of $\mathcal{H}_0$ that are meshed by the integral curves of the killing vector fields, i.e., the left-invariant vector fields of $U(N)$. Then, at any point of $S^{2N-1}$, the tangent space is isomorphic to the Lie algebra of $U(N)$. The Lie algebra of $U(N)$ is the space of anti-hermitian operators, so the action of any 1-parameter subgroup of $U(N)$ on a normalized state vector $\ket{\psi}$ can always be expressed as
+\subsubsection{The FS metric on pure density operators}
+We now want to derive an explicit expression for the Fubini-Study metric on $\mathbf{\mathbb{C}P}^n$. As we have seen, the first fibration projects the state vectors to the normalized state vectors, which constitute a leaf of the foliation of submanifolds of $\mathcal{H}_0$ that are meshed by the integral curves of the killing vector fields, i.e., the left-invariant vector fields of $U(N)$. Then, at any point of $S^{2N-1}$, the tangent space is isomorphic to the Lie algebra of $U(N)$. This is the space of anti-hermitian operators, so the action of any 1-parameter subgroup of $U(N)$ on a normalized state vector $\ket{\psi}$ can always be locally expressed as
 \begin{equation}
     U(\theta)\ket{\psi}=e^{iA\theta}\ket{\psi}
 \end{equation}
@@ -170,7 +177,7 @@ The push forward of this vector is then given by
     \\
     &=i[A,\rho]
 \end{align}
-We can then express the pullback of the Fubini-Study metric on $S^{2N-1}$ through the push forward of the tangent vectors
+We can then express the pullback of the Fubini-Study metric on $S^{2N-1}$ in terms of the push forward of the tangent vectors
 \begin{align}
     g_{FS}(\ket{d\psi_1},\ket{d\psi_2})&=\mathrm{Re}\left[\braket{d\psi_2|d\psi_1}-\braket{d\psi_2|\psi}\braket{\psi|d\psi_1}\right] \notag
     \\
@@ -182,7 +189,7 @@ We can then express the pullback of the Fubini-Study metric on $S^{2N-1}$ throug
     \\
     &=\frac{1}{2}\mathrm{tr}\left([A_1,\rho]\,[\rho,A_2]\right)=\frac{1}{2}\mathrm{tr}\left(d\rho_1\,d\rho_2\right)
 \end{align}
-so that the Fubini-Study metric on $\mathbf{\mathbb{C}P}^n$ is given by
+and so we find that the Fubini-Study metric on $\mathbf{\mathbb{C}P}^n$ is given by
 \begin{equation}
     g_{FS}(d\rho_1,d\rho_2)=\frac{1}{2}\mathrm{tr}\left(d\rho_1\,d\rho_2\right)
 \end{equation}
