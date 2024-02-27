@@ -76,7 +76,7 @@ Given a fiber bundle $X$ as before we have that at every point $x\in X$ the curv
 \end{equation}
 Then a vector field is vertical if its value at every point is in the vertical subspace. For a general fiber bundle, there may not be any vertical vector fields, since the vertical subspaces may not be a smooth subset of its tangent bundle. If $X$ is also a principal fiber bundle with structure group $G$ we have that the fibers are given by the mesh of left-invariant vector fields of $G$. Then the vertical vector fields are precisely the left-invariant vector fields of $G$ and the vertical subspace is isomorphic to the Lie algebra of $G$ at every point
 \begin{equation}
-    V_x\sim\mathfrak{g}
+    V_x\sim\mathfrak{g}_G
 \end{equation}
 
 We may also choose at every point $x\in X$ a horizontal subspace $O_x$, i.e., a complementary subspace to the vertical one so that
@@ -122,7 +122,7 @@ inherits a Riemannian structure such that
     g_{\ket{\psi}}(\ket{d\psi_1},\ket{d\psi_2})=\mathrm{Re}\left[\braket{d\psi_1|d\psi_2}\right]
 \end{equation}
 for any normalized state vector $\ket{\psi}$. Then considering the restriction of the projection map of \cref{eq:proj-map-PH} on $S^{2N-1}$ we can repeat the same arguments so that $S^{2N-1}$ is a Riemannian principal fiber bundle with structure group $U(1)$ and base space
-\begin{equation}
+\begin{equation} \label{eq:u-fibr}
     \mathbf{\mathbb{C}P}^n=S^{2N-1}/U(1)
 \end{equation}
 where $n=N-1$. The structure group is a one-parameter subgroup of the isometry group, so we can induce a metric tensor field on $\mathbf{\mathbb{C}P}^n$ as described in this section. This metric for $\mathbf{\mathbb{C}P}^n$ is known as the Fubini-Study metric $g_{FS}$.
@@ -152,4 +152,35 @@ so that for normalized state vectors we have
 Finally then for any state vector $\ket{\psi}\in\mathcal{H}_0$ and two tangent vectors $\ket{d\psi_1},\ket{d\psi_2}\in T_{\ket{\psi}}\mathcal{H}$ we have
 \begin{equation}
     g_{FS}(\ket{d\psi_1},\ket{d\psi_2})=\mathrm{Re}\left[\frac{\braket{d\psi_2|d\psi_1}}{\braket{\psi|\psi}}-\frac{\braket{d\psi_2|\psi}\braket{\psi|d\psi_1}}{\braket{\psi|\psi}^2}\right]
+\end{equation}
+
+We now want to derive an explicit expression for the Fubini-Study metric on $\mathbf{\mathbb{C}P}^n$. As we have seen the first fibration projects the state vectors to the normalized state vectors, that is a leaf of the foliation of submanifolds of $\mathcal{H}_0$ that are meshed by the integral curves of the killing vector fields, i.e., the left-invariant vector fields of $U(N)$. Then we have that at any point of $S^{2N-1}$ the tangent space is isomorph to the Lie algebra of $U(N)$. The Lie algebra of $U(N)$ is the space of anti-hermitian operators, so that the action of any 1-parameter subgroup of $U(N)$ on a normalized state vector $\ket{\psi}$ can always be expressed as
+\begin{equation}
+    U(\theta)\ket{\psi}=e^{iA\theta}\ket{\psi}
+\end{equation}
+for some hermitian operator $A$. Then for any tangent vector $\ket{d\psi}\in T_{\ket{\psi}}S^{2N-1}$ there must exist a unique hermitian operator $A$ such that
+\begin{equation}
+    \ket{d\psi}=\left.\frac{d}{d\theta}\left(e^{iA\theta}\ket{\psi}\right)\right\rvert_{\theta=0} = iA\ket{\psi}
+\end{equation}
+The push forwad of this vector is then given by
+\begin{align}
+    d\rho&=\left.\frac{d}{d\theta}\left(e^{iA\theta}\rho e^{-iA\theta}\right)\right\rvert_{\theta=0}=(iA\rho-\rho iA) \notag
+    \\
+    &=i[A,\rho]
+\end{align}
+We can then express the pull-back of the Fubini-Study metric on $S^{2N-1}$ through the push-forwad of the tangent vectors
+\begin{align}
+    g_{FS}(\ket{d\psi_1},\ket{d\psi_2})&=\mathrm{Re}\left[\braket{d\psi_2|d\psi_1}-\braket{d\psi_2|\psi}\braket{\psi|d\psi_1}\right] \notag
+    \\
+    &=\mathrm{Re}\left[\braket{\psi|A_2\,A_1|\psi}-\braket{\psi|A_2|\psi}\braket{\psi|A_1|\psi}\right] \notag
+    \\
+    &=\mathrm{Re}\left[\mathrm{tr}\left(\rho\,(A_2\,A_1-A_2\,\rho\,A_1)\right)\right] \notag
+    \\
+    &=\frac{1}{2}\mathrm{tr}\left(\rho\,A_2\,A_1+\rho\,A_1\,A_2-\rho\,A_2\,\rho\,A_1-\rho\,A_1\,\rho\,A_2\right) \notag
+    \\
+    &=\frac{1}{2}\mathrm{tr}\left([A_1,\rho]\,[\rho,A_2]\right)=\frac{1}{2}\mathrm{tr}\left(d\rho_1\,d\rho_2\right)
+\end{align}
+so that the Fubini-Study metric on $\mathbf{\mathbb{C}P}^n$ is given by
+\begin{equation}
+    g_{FS}(d\rho_1,d\rho_2)=\frac{1}{2}\mathrm{tr}\left(d\rho_1\,d\rho_2\right)
 \end{equation}
