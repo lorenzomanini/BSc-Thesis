@@ -1,0 +1,22 @@
+\section{Quantum Fisher Information}
+\subsection{Observables and the tangent space}
+
+As we have seen in \cref{ch:quantum-geom}, quantum states can be interpreted as a generalization of probability distributions. We now want to further investigate the parallelisms between the geometry of quantum states and the one of probability distributions. 
+
+We start by recalling the representation of tangent vectors to quantum states as linear operators, that we defined in \cref{eq:tgt-operator}
+\begin{equation}
+    \frac{\partial}{\partial\theta}\in T_\rho\mathfrak{D}\mapsto d\rho_\theta\quad\mathrm{with}\quad d\rho_\theta(\mathbf{X})=\left.\frac{d}{d\theta}\left[\rho(\theta)(\mathbf{X})\right]\right\rvert_{\theta=0}\quad\forall\mathbf{X}\in\mathcal{H}
+\end{equation}
+This is precisely analogous to the mixture representation of tangent vectors to probability distributions we defined in \cref{eq:mixt-rep}. To define an analogous to the exponential representation, we would have to divide the mixture representation by the probability distribution itself but this is not possible since we are dealing with operators. Instead, we can use the implicit expression of \cref{eq:rep-rel} and symmetrize it to obtain
+\begin{equation} \label{eq:SLD-mixture}
+    d\rho = \frac{1}{2}\left\{\rho\,L^{(\rho)}+L^{(\rho)}\,\rho\right\}
+\end{equation}
+where $L^{(\rho)}$ would serve as the analogous to the exponential representation of tangent vectors. From \cref{eq:SLD-mixture} however it is not evident that $L^{(\rho)}$ is well defined; we then recall from the last section of \cref{ch} that the mixture representation of any tangent vector can be expressed as
+\begin{equation}
+    d\rho = i[A,\rho]
+\end{equation}
+for some Hermitian operator $A$, so that we obtain the following expression
+\begin{equation}
+    i[A,\rho] = \frac{1}{2}\left\{\rho,L^{(\rho)}(A)\right\}
+\end{equation}
+It can be proved that $L^{(\rho)}(A)$ is always well defined when $A$ is an operator and $\rho$ is a pure density operator, and it is known as the \emph{symmetric logarithmic derivative (SLD)} of $A$. Moreover, it can be shown that  $L^{(\rho)}(A)$ is linear in $A$ and is hermitian if $A$ is hermitian.
