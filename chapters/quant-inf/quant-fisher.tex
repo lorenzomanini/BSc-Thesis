@@ -111,12 +111,12 @@ Then the kernel of this map is the linear subspace of observables that commute w
     \\
     &\implies A\ket{\psi}=A\,\rho\ket{\psi}=\rho\,A\ket{\psi}=\braket{\psi|A|\psi}\ket{\psi}
     \\
-    &\implies A\,\rho=\mathrm{tr}(\rho\,A)\,\rho
+    &\implies A\,\rho=\mathrm{E}_\rho[A]\,\rho
 \end{align}
 and so the 1-parameter unitary subgroup of $A$ will move state vectors parallel to the fiber, thus not changing the quantum state.
 
 We can now consider the restriction of this map to the observables with zero expectation value. Through the matrix representation of operators we can easily compute the real dimensions of $\mathfrak{A}^\bot$ and of the kernel of the map. These turn out to be respectively $N^2-1$ and $(N-1)^2$ so that the image of the map must have real dimension $2N-2$, equal to the dimension of the tangent space; this proves that the map is surjective. Then we can also show that the map maps $T_\rho\mathfrak{D}$ to itself since
-\begin{align}
+\begin{align*}
     [L^{(\rho)},\rho]=0&\implies d\rho=L^{(\rho)}\,\rho=\rho\,L^{(\rho)}
     \\
     &\implies (d\rho-L^{(\rho)})\,\rho=\rho\,(d\rho-L^{(\rho)})
@@ -126,4 +126,37 @@ We can now consider the restriction of this map to the observables with zero exp
     &\implies i[A,\rho]=[L^{(\rho)},\rho]
     \\
     &\implies d\rho=0,\, L^{(\rho)}=0
+\end{align*}
+where we considered $d\rho=i[A,\rho]$. From this follows that we can decompose the vector space of observables with zero expectation value as
+\begin{equation}
+    \mathfrak{A}^\bot=\mathfrak{A}^\bot_{C(\rho)}\oplus T_\rho\mathfrak{D}\qquad\forall \rho\in\mathfrak{D}
+\end{equation}
+where $\mathfrak{A}^\bot_{C(\rho)}$ is the set of zero expectation value observables that commute with $\rho$. Given any observable
+with zero expectation value we write
+\begin{gather}
+    A=A_{C(\rho)}+A^{(e)}_\rho\qquad\forall A\in\mathfrak{A}^\bot\notag
+    \\
+    \mathrm{with}\quad A_{C(\rho)}\in\mathfrak{A}^\bot_{C(\rho)},\,A^{(e)}_\rho\in T_\rho\mathfrak{D}
+\end{gather}
+and we thus have that the decomposition is unique.
+
+Finally, we can show that the symmetric covariance we defined only depends on the non-commuting part of the decomposition
+\begin{align}
+    \ll A,B \gg_\rho&=\frac{1}{2}\,\mathrm{tr}\left[\rho\left\{A,\,B\right\}\right] \notag
+    \\
+    &=\frac{1}{2}\,\mathrm{tr}\left[\rho\left\{A_{C(\rho)}+A^{(e)}_\rho,\,B_{C(\rho)}+B^{(e)}_\rho\right\}\right] \notag
+    \\
+    &=\frac{1}{2}\,\mathrm{tr}\left[\rho\left\{A^{(e)}_\rho,\,B^{(e)}_\rho\right\}\right]+\frac{1}{2}\,\mathrm{tr}\left[\rho\left\{A^{(e)}_\rho,\,B_{C(\rho)}\right\}\right]+ \notag
+    \\
+    &\quad+\frac{1}{2}\,\mathrm{tr}\left[\rho\left\{A_{C(\rho)},\,B^{(e)}_\rho\right\}\right]+\frac{1}{2}\,\mathrm{tr}\left[\rho\left\{A_{C(\rho)},\,B_{C(\rho)}\right\}\right] \notag
+    \\
+    &=\frac{1}{2}\,\mathrm{tr}\left[\rho\left\{A^{(e)}_\rho,\,B^{(e)}_\rho\right\}\right]=\ll A^{(e)}_\rho,B^{(e)}_\rho \gg_\rho
 \end{align}
+so that we can define the map
+\begin{equation}
+    A\mapsto A_\rho\in T_\rho\mathbf{P}\mathcal{H}\qquad\forall A\in\mathfrak{A}^\bot,\,\rho\in\mathbf{P}\mathcal{H}
+\end{equation}
+where $A_\rho$ is the tangent vector whose exponential rapresenntation is $A^{(e)}_\rho$. Then we have also showed that
+\begin{equation}
+    \ll A,B \gg_\rho=G_{QF}(A_\rho,B_\rho)
+\end{equation}
