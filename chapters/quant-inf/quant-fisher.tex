@@ -1,4 +1,4 @@
-\section{Quantum Fisher Information}
+\section{Quantum information geometry}
 \subsection{Observables and the tangent space}
 
 As we have seen in \cref{ch:quantum-geom}, quantum states can be interpreted as a generalization of probability distributions. We now want to further investigate the parallelisms between the geometry of quantum states and the one of probability distributions. 
@@ -7,16 +7,67 @@ We start by recalling the representation of tangent vectors to quantum states as
 \begin{equation}
     \frac{\partial}{\partial\theta}\in T_\rho\mathfrak{D}\mapsto d\rho_\theta\quad\mathrm{with}\quad d\rho_\theta(\mathbf{X})=\left.\frac{d}{d\theta}\left[\rho(\theta)(\mathbf{X})\right]\right\rvert_{\theta=0}\quad\forall\mathbf{X}\in\mathcal{H}
 \end{equation}
-This is precisely analogous to the mixture representation of tangent vectors to probability distributions we defined in \cref{eq:mixt-rep}. To define an analogous to the exponential representation, we would have to divide the mixture representation by the probability distribution itself but this is not possible since we are dealing with operators. Instead, we can use the implicit expression of \cref{eq:rep-rel} and symmetrize it to obtain
-\begin{equation} \label{eq:SLD-mixture}
-    d\rho = \frac{1}{2}\left\{\rho\,L^{(\rho)}+L^{(\rho)}\,\rho\right\}
-\end{equation}
-where $L^{(\rho)}$ would serve as the analogous to the exponential representation of tangent vectors. From \cref{eq:SLD-mixture} however it is not evident that $L^{(\rho)}$ is well defined; we then recall from the last section of \cref{ch} that the mixture representation of any tangent vector can be expressed as
-\begin{equation}
+This is analogous to the mixture representation of tangent vectors to probability distributions we defined in \cref{eq:mixt-rep}. We then recall from the last section of \cref{ch} that the mixture representation of any tangent vector $d\rho\in T_\rho\mathfrak{D}$ can be expressed as
+\begin{equation} \label{eq:QI-mixt-rep}
     d\rho = i[A,\rho]
 \end{equation}
-for some Hermitian operator $A$, so that we obtain the following expression
+for some Hermitian operator $A$. Then it is evident that $d\rho$ is also Hermitian and we may interpret it as an observable; further, we have
+\begin{equation}
+    \mathrm{tr}(d\rho_\theta)=\frac{d}{d\theta}\left[\mathrm{tr}(\rho(\theta))\right]=0
+\end{equation}
+that is equivalent to the expression \cref{ff}.
+
+To define an analogous to the exponential representation, we would have to divide the mixture representation by the probability distribution itself but this is not possible since we are dealing with operators. Instead, we can use the implicit expression of \cref{eq:rep-rel} and symmetrize it to obtain
+\begin{equation} \label{eq:SLD-mixture}
+    d\rho = \frac{1}{2}\left[\rho\,L^{(\rho)}+L^{(\rho)}\,\rho\right]
+\end{equation}
+where $L^{(\rho)}$ would serve as the analogous to the exponential representation of tangent vectors. To precisely define this operator we express $d\rho$ as in \cref{eq:QI-mixt-rep}, so that we obtain the following equation
 \begin{equation}
     i[A,\rho] = \frac{1}{2}\left\{\rho,L^{(\rho)}(A)\right\}
 \end{equation}
-It can be proved that $L^{(\rho)}(A)$ is always well defined when $A$ is an operator and $\rho$ is a pure density operator, and it is known as the \emph{symmetric logarithmic derivative (SLD)} of $A$. Moreover, it can be shown that  $L^{(\rho)}(A)$ is linear in $A$ and is hermitian if $A$ is hermitian.
+It can be proved that $L^{(\rho)}(A)$ is well-defined for any operator $A$ when $\rho$ is Hermitian and positive semi-definite\cref{ff}. Then the so-defined $L^{(\rho)}(A)$ is a linear map between operators and it is known as the \emph{symmetric logarithmic derivative (SLD)} of $A$. Moreover, it can be shown that  $L^{(\rho)}(A)$ is Hermitian if $A$ is Hermitian, and so also the exponential representations of tangent vectors can be interpreted as observables. In analogy with \cref{ff} we also have that its expectation value is zero since
+\begin{equation}
+    \mathrm{E}\left[L^{(\rho)}\right]=\mathrm{tr}(\rho\,L^{(\rho)})=\frac{1}{2}\mathrm{tr}(\rho\,L^{(\rho)}+L^{(\rho)}\,\rho)=\mathrm{tr}(d\rho)=0
+\end{equation}
+
+Finally, for pure density operators, we can find an explicit expression for the SLD as follows
+\begin{equation}
+    d\rho=\frac{d}{d\theta}\left[\rho(\theta)\right]\rvert_{\theta=0}=\frac{d}{d\theta}\left[\rho^2(\theta)\right]\rvert_{\theta=0}=\rho\,d\rho+d\rho\,\rho
+\end{equation}
+so that for any pure density operator $\rho\in\mathfrak{D}$
+\begin{equation}
+    L^{(\rho)}_\theta=2d\rho_\theta\qquad\forall d\rho_\theta\in T_\rho\mathfrak{D}
+\end{equation}
+We have thus shown that the mixture and exponential representations of tangent vectors to pure quantum states coincide up to a constant factor.
+\todo{Talk about the space of the mixture representation}
+\todo{Show that the analogy works if quantum states are the pure states?}
+
+
+\subsection{Quantum Fisher information}
+
+In light of the analogies between the space of quantum states and the space of probability distributions, we can now try to define the analogous of the Fisher information metric for quantum states. We start from the formulation of the Fisher information metric in terms of the exponential representation of tangent vectors, recalling \cref{ref}
+\begin{equation}
+    G_F(X,Y)=\mathrm{E}_p[X^{(e)}Y^{(e)}]\quad\forall X,Y\in T_p\mathcal{P}
+\end{equation}
+that is defined in terms of the expectation value of the product of the exponential representations of tangent vectors. Then we can define the quantum Fisher information metric by analogy, symmetrizing the arguments
+\begin{align}
+    G_{QF}(d\rho_1,d\rho_2)&=\mathrm{E}_\rho\left[\frac{1}{2}\left(L^{(\rho)}_1\,L^{(\rho)}_2+L^{(\rho)}_2\,L^{(\rho)}_1\right)\right]\notag
+    \\
+    &=\mathrm{tr}\left[\rho\,\frac{L^{(\rho)}_1\,L^{(\rho)}_2+L^{(\rho)}_2\,L^{(\rho)}_1}{2}\right]\quad\forall d\rho_1,d\rho_2\in T_\rho\mathfrak{D}
+    \\
+    &=\mathrm{tr}\left[\frac{1}{2}\left\{\rho,L^{(\rho)}_1\right\}L^{(\rho)}_2\right]=\mathrm{tr}\left[L^{(\rho)}_1\,\frac{1}{2}\left\{\rho,L^{(\rho)}_2\right\}\right]\notag
+    \\
+    &=\mathrm{tr}\left[d\rho_1\,L^{(\rho)}_2\right]=\mathrm{tr}\left[L^{(\rho)}_1\,d\rho_2\right]\quad\forall d\rho_1,d\rho_2\in\in T_\rho\mathfrak{D}
+\end{align}
+so that from \cref{ref} follows that for pure quantum states
+\begin{align}
+    G_{QF}(d\rho_1,d\rho_2)&=2\,\mathrm{tr}\left[d\rho_1\,d\rho_2\right]\quad\forall d\rho_1,d\rho_2\in T_\rho\mathfrak{D}
+    \\
+    &=4\,g_{FS}(d\rho_1,d\rho_2)\quad\forall d\rho_1,d\rho_2\in T_\rho\mathfrak{D}
+\end{align}
+This shows that the Fubini-Study metric we defined intrinsically for pure quantum states can be precisely interpreted as a quantum information metric.
+
+\subsection{Generalized covariance}
+
+
+\section{Quantum estimation}
