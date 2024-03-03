@@ -55,7 +55,11 @@ that we call the \emph{manifold of probability distributions}. Notice that $\mat
 We will now study tangent vectors of statistical manifolds looking for useful statistical interpretations of them. To do this we will use the fact that, as explained in \cref{ch:space-prob-dist}, $\mathcal{P}$ can be embedded in the space of random variables $\mathbb{R}^\mathcal{X}$. Then we can try to also embed the tangent spaces in $\mathbb{R}^\mathcal{X}$ in some meaningful ways, thus linking tangent vectors and random variables.
 
 \subsubsection*{The mixture representation}
-Since $\mathcal{P}$ is an open subset of the affine space $\mathcal{A}_1$ we can naturally identify the tangent space at every point with the displacement vector space $\mathcal{A}_0\coloneqq\{A\in\mathbb{R}^\mathcal{X}\mid\sum_{x\in\mathcal{X}}A(x)=0\}$. This is the natural embedding of $T_p(\mathcal{P})$ that arises from the trivial embedding of $\mathcal{P}$ in $\mathbb{R}^\mathcal{X}$, in fact for any $X\in T_p(\mathcal{P})$ we can define
+Since $\mathcal{P}$ is an open subset of the affine space $\mathcal{A}_1$ we can naturally identify the tangent space at every point with the displacement vector space
+\begin{equation}\label{eq:disp-aff-space}
+    \mathcal{A}_0\coloneqq\{A\in\mathbb{R}^\mathcal{X}\mid\sum_{x\in\mathcal{X}}A(x)=0\}
+\end{equation}
+This is the natural embedding of $T_p(\mathcal{P})$ that arises from the trivial embedding of $\mathcal{P}$ in $\mathbb{R}^\mathcal{X}$, in fact for any $X\in T_p(\mathcal{P})$ we can define
 \begin{equation}\label{eq:mixt-rep}
     X^{(m)}(x)\coloneqq X(p(x))
 \end{equation}
@@ -64,7 +68,7 @@ then by considering a parametrization $\{\xi^{(i)}\}$ of $\mathcal{P}$ and its r
     \partial_i^{(m)}(x)=\partial_ip(x;\xi)\in\mathcal{A}_0
 \end{equation}
 since
-\begin{equation}
+\begin{equation}\label{eq:mixt-zero-sum}
     \sum_{x\in\mathcal{X}}\partial_ip(x;\xi)=\partial_i\sum_{x\in\mathcal{X}}p(x;\xi)=0
 \end{equation}
 Finally, from \cref{eq:param-prop} follows that $\partial_ip(x;\xi)$ are $N-1$ linearly independent functions and thus
@@ -97,7 +101,7 @@ and by considering a parametrization $\{\xi^{(i)}\}$ of $\mathcal{P}$ and its re
     \partial_i^{(e)}(x)=\partial_i\ln p(x;\xi)\in\mathcal{A}_{p}^{\bot}
 \end{equation}
 since
-\begin{equation}
+\begin{equation}\label{eq:exp-zero-ev}
     \mathrm{E}_p[\partial_i\ln p(x;\xi)]=\sum_{x\in\mathcal{X}}p(x;\xi)\frac{\partial_ip(x;\xi)}{p(x;\xi)}=\sum_{x\in\mathcal{X}}\partial_ip(x;\xi)=0
 \end{equation}
 It's easy to prove that the linear independence of $\partial_i\ln p(x;\xi)$ follows from the one of $\partial_i p(x;\xi)$ and thus
