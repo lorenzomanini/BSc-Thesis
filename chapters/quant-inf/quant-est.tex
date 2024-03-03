@@ -1,0 +1,95 @@
+\section{Quantum estimation}
+\subsection{Variance and expectation value}
+The analogy with statistical models we developed in the previous section allows us to state and prove the quantum version of the results we found in \cref{classical est} about classical parameter estimation.
+
+We start with the quantum version of \cref{theorem 2}
+\begin{theorem}
+    For any observable $A\in\mathfrak{A}$ we have that
+    \begin{equation}
+        (grad\mathrm{E}[A])_\rho=(A-\mathrm{E}_p[A])_\rho \qquad\forall \rho\in\mathbf{P}\mathcal{H}
+    \end{equation}
+    where the gradient is the dual tangent vector of the differential with respect to the quantum Fisher metric.
+\end{theorem}
+\begin{proof}
+    For every $X_\theta\in T_\rho\mathbf{P}\mathcal{H}$ we have
+    \begin{align*}
+        X_\theta(\mathrm{E}[A])&=\mathrm{tr}(X_\theta(\rho)\,A)
+        =\mathrm{tr}(d\rho_\theta\,A)
+        \\
+        &=\mathrm{tr}\left(d\rho_\theta\,(A-\mathrm{E}_\rho[A])\right)
+        \\
+        &=\mathrm{tr}\left(\frac{1}{2}\left\{\rho,\,L^{(\rho)}_\theta\right\}\,(A-\mathrm{E}_\rho[A])\right)
+        \\
+        &=\frac{1}{2}\mathrm{tr}\left(\rho\,L^{(\rho)}_\theta\,(A-\mathrm{E}_\rho[A])+L^{(\rho)}_\theta\,\rho\,(A-\mathrm{E}_\rho[A])\right)
+        \\
+        &=\llangle L^{(\rho)}_\theta,(A-\mathrm{E}_\rho[A]) \rrangle_\rho=G_{QF}(X_\rho,(A-\mathrm{E}_\rho[A])_\rho)
+    \end{align*}
+\end{proof}
+And thus follows immediately
+\begin{corollary}
+    For any observable $A\in\mathfrak{A}$
+    \begin{equation}
+        \mathrm{V}_\rho[A]= \lVert (d\mathrm{E}[A])_\rho \rVert_\rho^2
+    \end{equation}
+\end{corollary}
+
+Then, we can consider pure state models, i.e., submanifolds $\mathcal{S}$ of $\mathbf{P}\mathcal{H}$, and, by the same arguments we used in the classical case, we have that
+\begin{theorem}
+    Given a pure state model $\mathcal{S}$, for any observable $A$ we have that
+    \begin{equation}
+            \mathrm{V}_\rho[A]\ge \lVert (\left.d\mathrm{E}[A]\right\rvert_\mathcal{S})_\rho \rVert_\rho^2
+    \end{equation}
+    where the equality holds if and only if
+    \begin{equation}
+        (A-\mathrm{E}_\rho[A])_\rho\in T_p\mathcal{S}
+    \end{equation}
+\end{theorem}
+
+\subsection{Quantum Cramér-Rao bound}
+
+We can now develope the quantum version of parameter estimation for statistical models. We will proceed similarly to the classical version but we will have to be careful when treating multivariate models.
+
+Let us consider an m-dim pure state model
+\begin{equation}
+    \mathcal{S}=\{\rho_\xi\mid\xi=[\xi^{(1)},\dots,\xi^{(m)}]\in\Xi\subseteq\mathbb{R}^n\}
+\end{equation}
+where $\Xi$ is the parameters set. We can define the unbiased estimators for the single parameters as the observables
+\begin{equation}
+    F^{(i)}\in\mathfrak{A}:\quad \mathrm{E}_\rho[F^{(i)}]=\xi^{(i)}\qquad\forall\rho\in\mathcal{S}
+\end{equation}
+Then if we consider an m-tuple of single-parameter estimators
+\begin{equation}
+    \Vec{F}=[F^{(1)},\dots,F^{(m)}]
+\end{equation}
+we can define the matrix $W_\xi[\Vec{F}]=\{w^{ij}_\xi\}$ where
+\begin{equation}
+    w^{ij}_\xi\coloneqq \mathrm{Cov}_{\rho_\xi}[F^{(i)},F^{(j)}]=\llangle F^{(i)}-\xi^{(i)},F^{(j)}-\xi^{(j)} \rrangle_{\rho_\xi}
+\end{equation}
+so that on the diagonal we have the variances of the estimators of the individual parameters
+\begin{equation}
+    w^{ii}_\xi=\mathrm{V}_{\rho_\xi}[F^{(i)}]
+\end{equation}
+We can then repeat the same arguments as for \cref{cramer-Rao} to prove the following theorem.
+\begin{theorem}
+    Let $\mathcal{S}=\left\{ \rho_\xi \mid \xi\in\Xi \right\}$ be an m-dim pure states model of $\mathcal{P}$. Then, for any m-tuple $\Vec{F}$ of single-parameter estimators the matrix $\mathrm{W}_\xi[\Vec{F}]$ satisfies
+    \begin{equation}
+        \mathrm{V}_\xi[\hat{\xi}]\ge G_F^{-1}(p_\xi)
+    \end{equation}
+    in the sense that $\mathrm{V}_\xi[\hat{\xi}]-G_F^{-1}(p_\xi)$ is positive semi-definite.
+\end{theorem}
+
+Differently from the classical case, the m-tuple of single-parameter estimators we defined can not be used as a multivariate estimator. Intuitively this is because every single-parameter estimator is a PVM and, unless the corresponding observable commute, the order of the measurements changes the distributions of the outcomes.
+
+A general quantum estimator is composed of a quantum measurement $\hat{M}$ with outcomes set $\mathcal{X}$ and of a classical estimator $\hat{\xi}$ such that
+\begin{equation}
+    \hat{M}=\{(M_x,x)\}_{x\in\mathcal{X}}\quad\mathrm{and}\quad\hat{\xi}:\mathcal{X}\to\Xi
+\end{equation}
+This definition can be interpreted as performing a quantum measurement on a system and then classically processing the results in order to estimate the parameters of the original quantum state. Then by denoting
+\begin{equation}
+    \mathrm{E}_\rho[\hat{\xi}]\coloneqq\sum_{x\in\mathcal{X}}\hat{\xi}(x)p_\rho(x)=\sum_{x\in\mathcal{X}}\hat{\xi}(x)\mathrm{tr}(\rho\,M_x)
+\end{equation}
+we say that a quantum estimator $(\hat{M},\hat{\xi})$ is unbiased when
+\begin{equation}
+    \mathrm{E}_{\rho_\xi}[\hat{\xi}]=\xi\qquad\forall \rho_\xi\in\mathcal{S}
+\end{equation}
+and we define the variance-covariance matrix of the estimator as 
