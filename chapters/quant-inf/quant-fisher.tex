@@ -85,11 +85,11 @@ so that from \cref{eq:qm-exp-mix} follows that for pure quantum states
 This shows that the Fubini-Study metric we defined intrinsically for pure quantum states can be precisely interpreted as a quantum information metric.
 
 \subsection{Symmetric covariance}
-Our analogy between the geometry of quantum states and the one of probability distributions is now almost complete but there are still some details to be precised. For start, we would want to treat observables as we treated random variables but while every tangent vector can be associated with an observable with zero expectation value, the converse is not directly true since
+Our analogy between the geometry of quantum states and the one of probability distributions is now almost complete but there are still some details to be precised. Firstly, we would want to treat observables as we treated random variables but while every tangent vector can be associated with an observable with zero expectation value, the converse is not directly true since
 \begin{equation}
     T_\rho\mathfrak{D}\subset\mathfrak{A}^{\bot}_\rho\coloneqq\left\{A\in\mathfrak{A}(\mathcal{H})\mid \mathrm{E}_\rho[A]=0\right\}
 \end{equation}
-as can be easily checked by comparing the real dimensions of the two vector spaces. Moreover, since operators don't commute in general, we must define a sound generalization of the covariance and as we will show these two problems are related.
+as can be easily checked by comparing the real dimensions of the two vector spaces. Secondly, since operators don't commute in general, we must define a sound generalization of the covariance and as we will show these two problems are related.
 
 For start, we require our generalized covariance to reduce to the variance of the observable when evaluated on the diagonal
 \begin{equation}
@@ -111,7 +111,7 @@ This is no coincidence and it can be shown that the definitions of the exponenti
 
 Let us now go back to the problem of associating every observable with zero expectation value to the exponential representation of a tangent vector. We notice that every observable $A\in\mathfrak{A}$ can be thought of as an element of the Lie algebra of $U(N)$ and thus we can associate it with a tangent vector through the linear map
 \begin{equation}
-    \mathfrak{M}_\rho:A\mapsto\left.\frac{d}{d\theta}\left(e^{iA\theta}\rho e^{-iA\theta}\right)\right\rvert_{\theta=0}=i[A,\rho]\eqqcolon d\rho_A\in T_\rho\mathfrak{D}
+    \mathfrak{M}_\rho:\mathfrak{A}\to T_\rho\mathfrak{D}\quad |\quad A\mapsto\left.\frac{d}{d\theta}\left(e^{iA\theta}\rho e^{-iA\theta}\right)\right\rvert_{\theta=0}=i[A,\rho]\eqqcolon d\rho_A
 \end{equation}
 Then the kernel of $\mathfrak{M}_\rho$ is the linear subspace of observables that commute with the pure density operator of the quantum state. We can easily interpret this considering the fact that if an observable commutes with the pure density operator of a quantum state, then the state vectors of that quantum state are eigenvectors of the observable. Let $\rho=\ket{\psi}\bra{\psi}$ for some normalized state vector $\ket{\psi}$, then
 \begin{align}
@@ -123,7 +123,11 @@ Then the kernel of $\mathfrak{M}_\rho$ is the linear subspace of observables tha
 \end{align}
 and so the 1-parameter unitary subgroup of $A$ will move state vectors parallel to the fiber, thus not changing the quantum state.
 
-We can then consider the restriction of $\mathfrak{M}_\rho$ to the observables with zero expectation value, denoting it as $\mathfrak{M}_\rho^{(0)}$. Through the matrix representation of operators we can easily compute the real dimensions of $\mathfrak{A}^\bot$ and of the kernel of $\mathfrak{M}_\rho^{(0)}$. These turn out to be respectively $(N^2-1)$ and $(N-1)^2$ \todo{proof?} so that the image of $\mathfrak{M}_\rho^{(0)}$ must have real dimension $(2N-2)$, equal to the dimension of the tangent space; this proves that $\mathfrak{M}_\rho^{(0)}$ is surjective. Then we can also show that $\mathfrak{M}_\rho^{(0)}$ maps $T_\rho\mathfrak{D}$ to itself since
+We consider now the restriction of $\mathfrak{M}_\rho$ to the observables with zero expectation value in $\rho$
+\begin{equation}
+    \left.\mathfrak{M}_\rho^{(0)}\right\rvert_{\mathfrak{A}^\bot_\rho}:\mathfrak{A}^\bot_\rho\to T_\rho\mathfrak{D}
+\end{equation}
+Through the matrix representation of operators, we can easily compute the real dimensions of the domain and of the kernel of $\mathfrak{M}_\rho^{(0)}$ to be respectively $(N^2-1)$ and $(N-1)^2$ \todo{proof?}. Then the image of $\mathfrak{M}_\rho^{(0)}$ must have real dimension $(2N-2)$, equal to the one of the tangent space, thus proving that $\mathfrak{M}_\rho^{(0)}$ is surjective. Then we also have that $\mathfrak{M}_\rho^{(0)}$ maps $T_\rho\mathfrak{D}$ to itself since
 \begin{align*}
     [L^{(\rho)},\rho]=0&\implies d\rho=L^{(\rho)}\,\rho=\rho\,L^{(\rho)}
     \\
@@ -135,35 +139,35 @@ We can then consider the restriction of $\mathfrak{M}_\rho$ to the observables w
     \\
     &\implies d\rho=0,\, L^{(\rho)}=0
 \end{align*}
-where we considered $d\rho=i[A,\rho]$. From this follows that we can decompose the vector space of observables with zero expectation value as
+where we considered $d\rho=i[A,\rho]$. It follows that we can decompose the vector space of observables with zero expectation value in $\rho$ as
 \begin{equation}
-    \mathfrak{A}^\bot=\mathfrak{A}^\bot_{C(\rho)}\oplus T_\rho\mathfrak{D}\qquad\forall \rho\in\mathfrak{D}
+    \mathfrak{A}^\bot_\rho=\mathfrak{A}^\bot_{C(\rho)}\oplus T_\rho\mathfrak{D}\qquad\forall \rho\in\mathfrak{D}
 \end{equation}
-where $\mathfrak{A}^\bot_{C(\rho)}$ is the set of zero expectation value observables that commute with $\rho$. We thus have the unique decomposition
+where $\mathfrak{A}^\bot_{C(\rho)}$ is the set of zero expectation value observables that commute with $\rho$, then we write
 \begin{gather}
-    A=A_{C(\rho)}+A^{(e)}_\rho\qquad\forall A\in\mathfrak{A}^\bot\notag
+    A=A_C^{(\rho)}+A^{(\rho)}\qquad\forall A\in\mathfrak{A}^\bot_\rho\notag
     \\
-    \mathrm{with}\quad A_{C(\rho)}\in\mathfrak{A}^\bot_{C(\rho)}\quad\mathrm{and}\quad A^{(e)}_\rho\in T_\rho\mathfrak{D}
+    \mathrm{with}\quad A_C^{(\rho)}\in\mathfrak{A}^\bot_{C(\rho)}\quad\mathrm{and}\quad A^{(\rho)}\in T_\rho\mathfrak{D}
 \end{gather}
 
 Finally, we can show that the inner product we defined on $A\in\mathfrak{A}$ depends only on the non-commuting part of the decomposition
 \begin{align}
     \llangle A,B \rrangle_\rho&=\frac{1}{2}\,\mathrm{tr}\left(\rho\left\{A,\,B\right\}\right) \notag
     \\
-    &=\frac{1}{2}\,\mathrm{tr}\left(\rho\left\{A_{C(\rho)}+A^{(e)}_\rho,\,B_{C(\rho)}+B^{(e)}_\rho\right\}\right) \notag
+    &=\frac{1}{2}\,\mathrm{tr}\left(\rho\left\{A_C^{(\rho)}+A^{(\rho)},\,B_C^{(\rho)}+B^{(\rho)}\right\}\right) \notag
     \\
-    &=\frac{1}{2}\,\mathrm{tr}\left(\rho\left\{A^{(e)}_\rho,\,B^{(e)}_\rho\right\}\right)+\frac{1}{2}\,\mathrm{tr}\left(\rho\left\{A^{(e)}_\rho,\,B_{C(\rho)}\right\}\right)+ \notag
+    &=\frac{1}{2}\,\mathrm{tr}\left(\rho\left\{A^{(\rho)},\,B^{(\rho)}\right\}\right)+\frac{1}{2}\,\mathrm{tr}\left(\rho\left\{A^{(\rho)},\,B_C^{(\rho)}\right\}\right)+ \notag
     \\
-    &\quad+\frac{1}{2}\,\mathrm{tr}\left(\rho\left\{A_{C(\rho)},\,B^{(e)}_\rho\right\}\right)+\frac{1}{2}\,\mathrm{tr}\left(\rho\left\{A_{C(\rho)},\,B_{C(\rho)}\right\}\right) \notag
+    &\quad+\frac{1}{2}\,\mathrm{tr}\left(\rho\left\{A_C^{(\rho)},\,B^{(\rho)}\right\}\right)+\frac{1}{2}\,\mathrm{tr}\left(\rho\left\{A_C^{(\rho)},\,B_C^{(\rho)}\right\}\right) \notag
     \\
-    &=\frac{1}{2}\,\mathrm{tr}\left(\rho\left\{A^{(e)}_\rho,\,B^{(e)}_\rho\right\}\right)=\llangle A^{(e)}_\rho,B^{(e)}_\rho \rrangle_\rho
+    &=\frac{1}{2}\,\mathrm{tr}\left(\rho\left\{A^{(\rho)},\,B^{(\rho)}\right\}\right)=\llangle A^{(\rho)},B^{(\rho)} \rrangle_\rho
 \end{align}
-so that we can define the map
+so that we can map every observable with zero expectation value in $\rho$ to a tangent vector of $\rho$ through
 \begin{equation}
-    A\mapsto \tilde{A}_\rho\in T_\rho\mathbf{P}\mathcal{H}\qquad\forall A\in\mathfrak{A}^\bot,\,\rho\in\mathbf{P}\mathcal{H}
+    A\in\mathfrak{A}^\bot_\rho\mapsto \tilde{A}\in T_\rho\mathbf{P}\mathcal{H}:\quad \tilde{A}^{(e)}=A^{(\rho)}\in T_\rho \mathfrak{D}
 \end{equation}
-where $A_\rho$ is the tangent vector whose exponential rapresenntation is $A^{(e)}_\rho$. Then we have also proved that
+Then we have also proved that
 \begin{equation}
-    \llangle A,B \rrangle_\rho=G_{QF}(\tilde{A}_\rho,\tilde{B}_\rho)
+    \llangle A,B \rrangle_\rho=G_{QF}(\tilde{A},\tilde{B})
 \end{equation}
 and we have thus arrived at an exact analogy of \cref{fisher-exp}.
