@@ -53,11 +53,11 @@ so that for any pure density operator $\rho\in\mathfrak{D}$
 \begin{equation}\label{eq:qm-exp-mix}
     L^{(\rho)}_\theta=2d\rho_\theta\qquad\forall d\rho_\theta\in T_\rho\mathfrak{D}
 \end{equation}
-and since the SLD is a linear map we have that
+and since the SLD is a linear map, we have that
 \begin{equation}
     T_\rho^{(e)}\myPH\equiv T_\rho^{(m)}\myPH\equiv T_\rho\mathfrak{D}
 \end{equation}
-\todo{Show that pure quantum states are analogous to pure prob. dist.?}
+\todo{Show that pure quantum states are analogous to pure probability distributions?}
 
 
 \subsection{Quantum Fisher information}
@@ -85,13 +85,13 @@ so that from \cref{eq:qm-exp-mix} follows that for pure quantum states
 This shows that the Fubini-Study metric we defined intrinsically for pure quantum states can be precisely interpreted as a quantum information metric.
 
 \subsection{Symmetric covariance}
-Our analogy between the geometry of quantum states and the one of probability distributions is now almost complete but there are still some details to be precised. Firstly, we would want to treat observables as we treated random variables but while every tangent vector can be associated with an observable with zero expectation value, the converse is not directly true since
+Our analogy between the geometry of quantum states and the one of probability distributions is now almost complete, but there are still some details to be clarified. Firstly, we would want to treat observables as we treated random variables, but while every tangent vector can be associated with an observable with zero expectation value, the converse is not directly true since
 \begin{equation}
     T_\rho\mathfrak{D}\subset\mathfrak{A}^{\bot}_\rho\coloneqq\left\{A\in\mathfrak{A}(\mathcal{H})\mid \mathrm{E}_\rho[A]=0\right\}
 \end{equation}
-as can be easily checked by comparing the real dimensions of the two vector spaces. Secondly, since operators don't commute in general, we must define a sound generalization of the covariance and as we will show these two problems are related.
+as can be easily checked by comparing the real dimensions of the two vector spaces. Secondly, since operators don't commute in general, we must define a sound generalization of the covariance, and as we will show, these two problems are related.
 
-For start, we require our generalized covariance to reduce to the variance of the observable when evaluated on the diagonal
+For starters, we require our generalized covariance to reduce to the variance of the observable when evaluated on the diagonal
 \begin{equation}
     \mathrm{Cov}_\rho[A,A]=\mathrm{V}_\rho[A]=\mathrm{tr}\left(\rho\,(A-\mathrm{E}_\rho[A])^2\right)\quad\forall A\in\mathfrak{A}
 \end{equation}
@@ -103,13 +103,13 @@ Since $(A-\mathrm{E}_\rho[A])$ always has zero expectation value, we can recogni
 \begin{equation}
     \llangle A,B \rrangle_\rho\coloneqq\frac{1}{2}\,\mathrm{E}\left[\{A,B\}\right]\quad\forall A,B\in\mathfrak{A}^\bot
 \end{equation}
-Then we can easily recognize that this inner product coincides with the quantum fisher metric when the arguments are the exponential representations of tangent vectors
+Then we can easily recognize that this inner product coincides with the quantum Fisher metric when the arguments are the exponential representations of tangent vectors
 \begin{equation}
     \llangle L^{(\rho)}_1,L^{(\rho)}_2 \rrangle_\rho=G_{QF}(\Tilde{X}_1,\Tilde{X}_2)\quad\forall \Tilde{X}_1,\Tilde{X}_2\in T_\rho\myPH
 \end{equation}
-This is no coincidence and it can be shown that the definitions of the exponential representation and of the generalized covariance are deeply linked \cref{amari,matsumoto}.
+This is no coincidence, and it can be shown that the definitions of the exponential representation and of the generalized covariance are deeply linked \cref{amari,matsumoto}.
 
-Let us now go back to the problem of associating every observable with zero expectation value to the exponential representation of a tangent vector. We notice that every observable $A\in\mathfrak{A}$ can be thought of as an element of the Lie algebra of $U(N)$ and thus we can associate it with a tangent vector through the linear map
+Let us now go back to the problem of associating every observable with zero expectation value to the exponential representation of a tangent vector. We notice that every observable $A\in\mathfrak{A}$ can be thought of as an element of the Lie algebra of $U(N)$, and thus we can associate it with a tangent vector through the linear map
 \begin{equation}
     \mathfrak{M}_\rho:\mathfrak{A}\to T_\rho\mathfrak{D}\quad |\quad A\mapsto\left.\frac{d}{d\theta}\left(e^{iA\theta}\rho e^{-iA\theta}\right)\right\rvert_{\theta=0}=i[A,\rho]\eqqcolon d\rho_A
 \end{equation}
@@ -127,7 +127,7 @@ We consider now the restriction of $\mathfrak{M}_\rho$ to the observables with z
 \begin{equation}
     \left.\mathfrak{M}_\rho^{(0)}\right\rvert_{\mathfrak{A}^\bot_\rho}:\mathfrak{A}^\bot_\rho\to T_\rho\mathfrak{D}
 \end{equation}
-Through the matrix representation of operators, we can easily compute the real dimensions of the domain and of the kernel of $\mathfrak{M}_\rho^{(0)}$ to be respectively $(N^2-1)$ and $(N-1)^2$ \todo{proof?}. Then the image of $\mathfrak{M}_\rho^{(0)}$ must have real dimension $(2N-2)$, equal to the one of the tangent space, thus proving that $\mathfrak{M}_\rho^{(0)}$ is surjective. Then we also have that $\mathfrak{M}_\rho^{(0)}$ maps $T_\rho\mathfrak{D}$ to itself since
+Through the matrix representation of operators, we can easily compute the real dimensions of the domain and of the kernel of $\mathfrak{M}_\rho^{(0)}$ to be respectively $(N^2-1)$ and $(N-1)^2$ \todo{proof?}. Then the image of $\mathfrak{M}_\rho^{(0)}$ must have a real dimension of $(2N-2)$, equal to the one of the tangent space, thus proving that $\mathfrak{M}_\rho^{(0)}$ is surjective. Then we also have that $\mathfrak{M}_\rho^{(0)}$ maps $T_\rho\mathfrak{D}$ to itself since
 \begin{align*}
     [L^{(\rho)},\rho]=0&\implies d\rho=L^{(\rho)}\,\rho=\rho\,L^{(\rho)}
     \\

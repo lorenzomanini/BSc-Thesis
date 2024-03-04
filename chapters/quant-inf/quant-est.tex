@@ -2,16 +2,16 @@
 \subsection{Variance and expectation value}
 The analogy between quantum states and statistical models we developed allows us to state and prove the quantum versions of the results in \cref{ch:param-est} about classical parameter estimation.
 
-We start with the quantum version of \cref{th:gradient}
+We start with the quantum version of \cref{th:gradient}.
 \begin{theorem}
-    For any observable $A\in\mathfrak{A}$ we have that
+    For any observable $A\in\mathfrak{A}$, we have that
     \begin{equation}
-        (grad\mathrm{E}[A])_\rho^{(e)}=(A-\mathrm{E}_\rho[A])^{(\rho)} \qquad\forall \rho\in\mathbf{P}\mathcal{H}
+        (\mathrm{grad}\,\mathrm{E}[A])_\rho^{(e)}=(A-\mathrm{E}_\rho[A])^{(\rho)} \qquad\forall \rho\in\mathbf{P}\mathcal{H}
     \end{equation}
     where the gradient is the dual tangent vector of the differential with respect to the quantum Fisher metric.
 \end{theorem}
 \begin{proof}
-    For every $\Tilde{X}_\theta\in T_\rho\mathbf{P}\mathcal{H}$ we have
+    For every $\Tilde{X}_\theta\in T_\rho\mathbf{P}\mathcal{H}$, we have
     \begin{align*}
         \Tilde{X}_\theta(\mathrm{E}[A])&=\mathrm{tr}(\Tilde{X}_\theta(\rho)\,A)
         =\mathrm{tr}(d\rho_\theta\,A)
@@ -27,7 +27,7 @@ We start with the quantum version of \cref{th:gradient}
 \end{proof}
 Then it also follows that
 \begin{corollary}
-    For any observable $A\in\mathfrak{A}$
+    For any observable $A\in\mathfrak{A}$,
     \begin{equation}
         \mathrm{V}_\rho[A]= \lVert (d\mathrm{E}[A])_\rho \rVert_\rho^2
     \end{equation}
@@ -35,7 +35,7 @@ Then it also follows that
 
 We can now consider pure state models, i.e., submanifolds $\mathcal{S}$ of $\mathbf{P}\mathcal{H}$, and, by the same arguments we used in the classical case, we have that
 \begin{theorem}
-    Given a pure state model $\mathcal{S}$, for any observable $A$ we have that
+    Given a pure state model $\mathcal{S}$, for any observable $A$, we have that
     \begin{equation}
             \mathrm{V}_\rho[A]\ge \lVert (\left.d\mathrm{E}[A]\right\rvert_\mathcal{S})_\rho \rVert_\rho^2
     \end{equation}
@@ -47,9 +47,9 @@ We can now consider pure state models, i.e., submanifolds $\mathcal{S}$ of $\mat
 
 \subsection{Quantum Cramér-Rao bound}
 
-We can now develop the quantum version of the Cramér-Rao boun for statistical models. We will proceed similarly to the classical version but we will have to be careful when treating multivariate models.
+We can now develop the quantum version of the Cramér-Rao bound for statistical models. We will proceed similarly to the classical version, but we will have to be careful when treating multivariate models.
 
-Let us consider an m-dim pure state model
+Let us consider an m-dimensional pure state model
 \begin{equation}
     \mathcal{S}=\{\rho_\xi\mid\xi=[\xi^{(1)},\dots,\xi^{(m)}]\in\Xi\subseteq\mathbb{R}^n\}
 \end{equation}
@@ -57,7 +57,7 @@ where $\Xi$ is the parameters set. We can define the unbiased estimators for the
 \begin{equation}
     F^{(i)}\in\mathfrak{A}:\quad \mathrm{E}_\rho[F^{(i)}]=\xi^{(i)}\qquad\forall\rho\in\mathcal{S}
 \end{equation}
-Then if we consider an m-tuple of single-parameter estimators
+Then, if we consider an m-tuple of single-parameter estimators
 \begin{equation}
     \Vec{F}=[F^{(1)},\dots,F^{(m)}]
 \end{equation}
@@ -71,20 +71,20 @@ so that on the diagonal we have the variances of the estimators of the individua
 \end{equation}
 We can then repeat the same arguments as for \cref{th:cramer-rao} to prove the following theorem.
 \begin{theorem}
-    Let $\mathcal{S}=\left\{ \rho_\xi \mid \xi\in\Xi \right\}$ be an m-dim pure states model of $\mathbf{P}\mathcal{H}$. Then, for any m-tuple $\Vec{F}$ of single-parameter estimators, the matrix $\mathrm{W}_\xi[\Vec{F}]$ satisfies
+    Let $\mathcal{S}=\left\{ \rho_\xi \mid \xi\in\Xi \right\}$ be an m-dimensional pure state model of $\mathbf{P}\mathcal{H}$. Then, for any m-tuple $\Vec{F}$ of single-parameter estimators, the matrix $\mathrm{W}_\xi[\Vec{F}]$ satisfies
     \begin{equation}
         \mathrm{W}_\xi[\Vec{F}]\ge G_F^{-1}(p_\xi)
     \end{equation}
     in the sense that $\mathrm{W}_\xi[\Vec{F}]-G_F^{-1}(p_\xi)$ is positive semi-definite.
 \end{theorem}
 
-Differently from the classical case, the m-tuple of single-parameter estimators we defined cannot be used as a multivariate estimator. Intuitively this is because every single-parameter estimator is a PVM and, unless the corresponding observables commute, the order of the measurements changes the distributions of the outcomes.
+Differently from the classical case, the m-tuple of single-parameter estimators we defined cannot be used as a multivariate estimator. Intuitively, this is because every single-parameter estimator is a PVM and, unless the corresponding observables commute, the order of the measurements changes the distributions of the outcomes.
 
-A general quantum estimator is composed of a POVM $\hat{M}$ with outcomes in a set $\mathcal{X}$, and of a classical estimator $\hat{\xi}$ such that
+A general quantum estimator is composed of a POVM $\hat{M}$ with outcomes in a set $\mathcal{X}$ and of a classical estimator $\hat{\xi}$ such that
 \begin{equation}
     \hat{M}=\{(M_x,x)\}_{x\in\mathcal{X}}\quad\mathrm{and}\quad\hat{\xi}:\mathcal{X}\to\Xi
 \end{equation}
-This definition can be interpreted as performing a quantum measurement on a system and then classically processing the results in order to estimate the parameters of the original quantum state. Then by denoting
+This definition can be interpreted as performing a quantum measurement on a system and then classically processing the results in order to estimate the parameters of the original quantum state. Then, by denoting
 \begin{equation}
     \mathrm{E}_\rho[\hat{\xi}]\coloneqq\sum_{x\in\mathcal{X}}\hat{\xi}(x)p_\rho(x)=\sum_{x\in\mathcal{X}}\hat{\xi}(x)\mathrm{tr}(\rho\,M_x)
 \end{equation}
@@ -96,11 +96,11 @@ The variance-covariance matrix of the estimator is then $\mathrm{V}_\xi[(\hat{M}
 \begin{equation}
     v^{ij}=\sum_{x\in\mathcal{X}}(\hat{\xi}^{(i)}(x)-\xi^{(i)})(\hat{\xi}^{(j)}(x)-\xi^{(j)})\mathrm{tr}(\rho\,M_x)
 \end{equation}
-and the following lemma holds
+and the following lemma holds.
 \begin{lemma}
     Let $(\hat{M},\hat{\xi})$ be an unbiased estimator for a pure state model. Then
     \begin{equation}
-        F^{(i)}=\sum_{x\in\mathcal{X}}\xi^{(i)}(x)M_x\quad
+        F^{(i)}=\sum_{x\in\mathcal{X}}\xi^{(i)}(x)M_x
     \end{equation}
     defines an m-tuple $\Vec{F}$ of unbiased single-parameter estimators. Moreover, the following inequality holds
     \begin{equation}
@@ -109,16 +109,16 @@ and the following lemma holds
     where the equality is satisfied if and only if $\hat{M}$ is a PVM.
 \end{lemma}
 \begin{proof}
-    \todo{proof? A complete one is on [Amari]}
+    \todo{proof? A complete one is in [Amari]}
 \end{proof}
 
-We can thus finally state the quantum version of the Cramér-Rao bound, also known as the \emph{Holevo-Helstrom} theorem
+We can thus finally state the quantum version of the Cramér-Rao bound, also known as the \emph{Holevo-Helstrom} theorem.
 \begin{theorem} [Quantum Cramér-Rao bound]
     Let $(\hat{M},\hat{\xi})$ be an unbiased estimator for a pure state model $\mathcal{S}=\left\{ \rho_\xi \mid \xi\in\Xi \right\}$ of $\mathbf{P}\mathcal{H}$. Then its variance-covariance matrix satisfies
     \begin{equation}
         \mathrm{V}_\xi[(\hat{M},\hat{\xi})]\ge G_{QF}^{-1}(\rho_\xi)=\frac{1}{4}\,G_{FS}^{-1}(\rho_\xi)
     \end{equation}
-    where $G_{QF}$ and $G_{FS}$ are the matrix representations respectively of the \emph{quantum Fisher metric} and of the \emph{Fubini-Study metric} of $\mathbf{P}\mathcal{H}$.
+    where $G_{QF}$ and $G_{FS}$ are the matrix representations, respectively, of the \emph{quantum Fisher metric} and of the \emph{Fubini-Study metric} of $\mathbf{P}\mathcal{H}$.
 \end{theorem}
 
-This important result sets an intrinsic limit to the amount of information retrivable from the state of a quantum system.
+This important result sets an intrinsic limit to the amount of information retrievable from the state of a quantum system.
