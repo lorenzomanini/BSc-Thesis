@@ -43,17 +43,17 @@ and thus the exponential representations of tangent vectors can also be interpre
 \begin{equation}
     \mathrm{E}\left[L^{(\rho)}\right]=\mathrm{tr}(\rho\,L^{(\rho)})=\frac{1}{2}\mathrm{tr}(\rho\,L^{(\rho)}+L^{(\rho)}\,\rho)=\mathrm{tr}(d\rho)=0
 \end{equation}
-that corresponds to \cref{eq:exp-zero-ev}.
+which corresponds to \cref{eq:exp-zero-ev}.
 
 Finally, for pure density operators, we can find an explicit expression for the SLD as follows
 \begin{equation}
     d\rho=\left.\frac{d}{d\theta}\left[\rho(\theta)\right]\right\rvert_{\theta=0}=\left.\frac{d}{d\theta}\left[\rho^2(\theta)\right]\right\rvert_{\theta=0}=\rho\,d\rho+d\rho\,\rho
 \end{equation}
-so that for any pure density operator $\rho\in\mathfrak{D}$
+so that for any pure density operator $\rho\in\mathfrak{D}$,
 \begin{equation}\label{eq:qm-exp-mix}
     L^{(\rho)}_\theta=2d\rho_\theta\qquad\forall d\rho_\theta\in T_\rho\mathfrak{D}
 \end{equation}
-and since the SLD is a linear map, we have that
+and since the SLD is a linear map, we have
 \begin{equation}
     T_\rho^{(e)}\myPH\equiv T_\rho^{(m)}\myPH\equiv T_\rho\mathfrak{D}
 \end{equation}
@@ -76,7 +76,7 @@ Then we can define the quantum Fisher information metric by analogy, symmetrizin
     \\
     &=\mathrm{tr}\left(d\rho_1\,L^{(\rho)}_2\right)=\mathrm{tr}\left(L^{(\rho)}_1\,d\rho_2\right)
 \end{align}
-so that from \cref{eq:qm-exp-mix} follows that for pure quantum states
+thus, from \cref{eq:qm-exp-mix}, we have that for pure quantum states
 \begin{align}
     G_{QF}(\Tilde{X}_1,\Tilde{X}_2)&=2\,\mathrm{tr}\left(d\rho_1\,d\rho_2\right)
     \\

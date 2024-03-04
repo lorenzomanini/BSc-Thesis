@@ -4,7 +4,7 @@ The analogy between quantum states and statistical models we developed allows us
 
 We start with the quantum version of \cref{th:gradient}.
 \begin{theorem}
-    For any observable $A\in\mathfrak{A}$, we have that
+    For any observable $A\in\mathfrak{A}$, we have
     \begin{equation}
         (\mathrm{grad}\,\mathrm{E}[A])_\rho^{(e)}=(A-\mathrm{E}_\rho[A])^{(\rho)} \qquad\forall \rho\in\mathbf{P}\mathcal{H}
     \end{equation}
@@ -33,9 +33,9 @@ Then it also follows that
     \end{equation}
 \end{corollary}
 
-We can now consider pure state models, i.e., submanifolds $\mathcal{S}$ of $\mathbf{P}\mathcal{H}$, and, by the same arguments we used in the classical case, we have that
+We can now consider pure state models, i.e., submanifolds $\mathcal{S}$ of $\mathbf{P}\mathcal{H}$, and, using the same arguments as in the classical case, we have
 \begin{theorem}
-    Given a pure state model $\mathcal{S}$, for any observable $A$, we have that
+    Given a pure state model $\mathcal{S}$, for any observable $A$, we have
     \begin{equation}
             \mathrm{V}_\rho[A]\ge \lVert (\left.d\mathrm{E}[A]\right\rvert_\mathcal{S})_\rho \rVert_\rho^2
     \end{equation}
@@ -47,7 +47,7 @@ We can now consider pure state models, i.e., submanifolds $\mathcal{S}$ of $\mat
 
 \subsection{Quantum Cramér-Rao bound}
 
-We can now develop the quantum version of the Cramér-Rao bound for statistical models. We will proceed similarly to the classical version, but we will have to be careful when treating multivariate models.
+We can now develop the quantum version of the Cramér-Rao bound for statistical models. We will proceed similarly to the classical version, but we need to be careful when treating multivariate models.
 
 Let us consider an m-dimensional pure state model
 \begin{equation}
@@ -78,13 +78,13 @@ We can then repeat the same arguments as for \cref{th:cramer-rao} to prove the f
     in the sense that $\mathrm{W}_\xi[\Vec{F}]-G_F^{-1}(p_\xi)$ is positive semi-definite.
 \end{theorem}
 
-Differently from the classical case, the m-tuple of single-parameter estimators we defined cannot be used as a multivariate estimator. Intuitively, this is because every single-parameter estimator is a PVM and, unless the corresponding observables commute, the order of the measurements changes the distributions of the outcomes.
+Unlike the classical case, the m-tuple of single-parameter estimators we defined cannot be used as a multivariate estimator. Intuitively, this is because every single-parameter estimator is a PVM and, unless the corresponding observables commute, the order of the measurements changes the distributions of the outcomes.
 
-A general quantum estimator is composed of a POVM $\hat{M}$ with outcomes in a set $\mathcal{X}$ and of a classical estimator $\hat{\xi}$ such that
+A general quantum estimator is composed of a POVM $\hat{M}$ with outcomes in a set $\mathcal{X}$ and a classical estimator $\hat{\xi}$ such that
 \begin{equation}
     \hat{M}=\{(M_x,x)\}_{x\in\mathcal{X}}\quad\mathrm{and}\quad\hat{\xi}:\mathcal{X}\to\Xi
 \end{equation}
-This definition can be interpreted as performing a quantum measurement on a system and then classically processing the results in order to estimate the parameters of the original quantum state. Then, by denoting
+This definition can be interpreted as performing a quantum measurement on a system and then classically processing the results to estimate the parameters of the original quantum state. By denoting
 \begin{equation}
     \mathrm{E}_\rho[\hat{\xi}]\coloneqq\sum_{x\in\mathcal{X}}\hat{\xi}(x)p_\rho(x)=\sum_{x\in\mathcal{X}}\hat{\xi}(x)\mathrm{tr}(\rho\,M_x)
 \end{equation}
@@ -118,7 +118,7 @@ We can thus finally state the quantum version of the Cramér-Rao bound, also kno
     \begin{equation}
         \mathrm{V}_\xi[(\hat{M},\hat{\xi})]\ge G_{QF}^{-1}(\rho_\xi)=\frac{1}{4}\,G_{FS}^{-1}(\rho_\xi)
     \end{equation}
-    where $G_{QF}$ and $G_{FS}$ are the matrix representations, respectively, of the \emph{quantum Fisher metric} and of the \emph{Fubini-Study metric} of $\mathbf{P}\mathcal{H}$.
+    where $G_{QF}$ and $G_{FS}$ are the matrix representations, respectively, of the \emph{quantum Fisher metric} and the \emph{Fubini-Study metric} of $\mathbf{P}\mathcal{H}$.
 \end{theorem}
 
 This important result sets an intrinsic limit to the amount of information retrievable from the state of a quantum system.
