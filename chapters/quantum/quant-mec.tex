@@ -70,9 +70,9 @@ For state vectors, we will also use the Dirac notation writing vectors as $\ket{
 \end{postulate}
 We may interpret this as requiring that the evolution of a closed system preserves the structure we defined on the set $\mathcal{H}$, that is the vector space structure and the inner product space structure. Thus we expect the transformations to be invertible, and linear and to preserve the inner product; in this sense, unitary operators are the automorphisms of the Hilbert space.
 \begin{postulate}[Quantum measurements] \label{pt:quant-meas}
-    Quantum measurements are described by a collection of pairs $\{(\mathrm{M}_x,x)\}$ of \emph{measurement operators} $\mathrm{M}_x$ and \emph{outcomes} $x$ such that the following \emph{completeness equation} is satisfied
+    Quantum measurements are described by a collection of pairs $M=\{(\mathrm{M}_x,x)\}_{x\in\mathcal{X}}$ of \emph{measurement operators} $\mathrm{M}_x$ and \emph{outcomes} $x\in\mathcal{X}$ such that the following \emph{completeness equation} is satisfied
     \begin{equation} \label{eq:completeness}
-        \sum_{x}\mathrm{M}_x^\dag\,\mathrm{M}_x=\mathbb{I}
+        \sum_{x\in\mathcal{X}}\mathrm{M}_x^\dag\,\mathrm{M}_x=\mathbb{I}
     \end{equation}
     where $\mathbb{I}$ is the identity operator. Then, given a system in a state described by a state vector $\ket{\psi}$, the probability distribution of the outcomes is
     \begin{equation} \label{eq:quant-probability}
@@ -88,11 +88,72 @@ The probabilities of \cref{eq:quant-probability} are well defined since
 \begin{align}
     p(x)&=\frac{\left\lVert\mathrm{M}_x\ket{\psi}\right\rVert^2}{\left\lVert\ket{\psi}\right\rVert^2}\ge 0 \qquad \forall x
     \\
-    \sum_{x}p(x)&=\frac{\braket{\psi|\sum_{x}\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi}}{\braket{\psi|\psi}}=1
+    \sum_{x\in\mathcal{X}}p(x)&=\frac{\braket{\psi|\sum_{x}\mathrm{M}_x^\dag\,\mathrm{M}_x|\psi}}{\braket{\psi|\psi}}=1
 \end{align}
 We thus have that for any fixed measurement every state vector defines a probability distribution on the outcomes. In this sense, quantum states can be thought of as a generalization of probability distributions.
-\todo{Example}
-\todo{Composed systems?}
+
+Quantum measurements define both the probability distributions and the state obtained after the measurement. If we are only interested in the measurement per se we can equate quantum measurements that share the same probability distributions, so that
+\begin{equation}
+    \mathrm{M}\sim\mathrm{M}' \iff \mathrm{M}_x^\dag\,\mathrm{M}_x=\mathrm{M}_x^{'\dag}\,\mathrm{M}_x' \quad \forall x\in\mathcal{X}
+\end{equation}
+and the equivalence classes that follow are known as \emph{positive operator-valued measures} (POVMs). Then the following holds
+\begin{theorem}[POVMs]
+    Positive operator-valued measurements are uniquely determined by a collection of pairs $E=\{(E_x,x)\}_{x\in\mathcal{X}}$ of positive self-adjoint operators and outcomes $x\in\mathcal{X}$ such that
+    \begin{equation}
+        \sum_{x\in\mathcal{X}}E_x=\mathbb{I}
+    \end{equation}
+    Given a system in a state described by a state vector $\ket{\psi}$, the probability distribution of the outcomes is
+    \begin{equation}
+        p(x)=\frac{\braket{\psi|E_x|\psi}}{\braket{\psi|\psi}}
+    \end{equation}
+    Then the POVM of a quantum measurement M is
+    \begin{equation}
+        E^{(M)}=\{(E^{(M)}_x=\mathrm{M}_x^\dag\,\mathrm{M}_x,x)\}_{x\in\mathcal{X}}
+    \end{equation}
+\end{theorem}
+
+
+\subsubsection{Example: the qubit}
+The simplest non-trivial kind of quantum system is the one modeled by the 2-dimensional Hilbert space $\mathcal{H}=\mathbb{C}^2$: the \emph{qubit}. The name refers to the fact that it can be regarded as a quantum version of the classical two-state system, the bit.
+
+To perform explicit calculations we can express $\mathbb{C}^2$ vectors, dual vectors and operators with column vectors, raw vectors and square matrices respectively. Thus, for a fixed orthonormal basis $\{\ket{0},\ket{1}\}$ we can write
+\begin{equation}
+    \ket{0}=\begin{pmatrix} 1 \\ 0 \end{pmatrix}\quad\ket{1}=\begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\end{equation}
+so that any state vector $\ket{\psi}=c_0\ket{0}+c_1\ket{1}$ is expressed as
+\begin{equation}
+    \ket{\psi}=\begin{pmatrix} c_0 \\ c_1 \end{pmatrix}\quad\mathrm{with}\quad c_i\in\mathbb{C}
+\end{equation}
+Then any operator $O$ is represented by a $2\times2$ complex matrix
+\begin{equation}
+    O=\begin{pmatrix} c_{1,1} & c_{1,2}\\ c_{2,1} & c_{2,2} \end{pmatrix}\quad\mathrm{with}\quad c_{i,j}\in\mathbb{C}
+\end{equation}
+
+Self-adjoint operators are the Hermitian matrices, i.e., matrices equal to their conjugate transpose. A well-known real basis for $2\times2$ Hermitian matrices is the following
+\begin{equation}
+    \mathds{1}=\begin{pmatrix} 1 & 0\\ 0 & 1 \end{pmatrix}\quad\sigma_1=\begin{pmatrix} 0 & 1\\ 1 & 0 \end{pmatrix}\quad\sigma_2=\begin{pmatrix} 0 & -i\\ i & 0 \end{pmatrix}\quad\sigma_3=\begin{pmatrix} 1 & 0\\ 0 & -1 \end{pmatrix}
+\end{equation}
+where $\mathds{1}$ is the identity matrix and $\sigma_i$ are the Pauli matrices. Any self-adjoint operator $A$ can thus be expressed as
+\begin{align}
+    A&=a_0\mathds{1}+a_1\sigma_1+a_2\sigma_2+a_3\sigma_3=a_0\mathds{1}+\Vec{a}\cdot\Vec{\sigma},\quad\Vec{a}=(a_1,a_2,a_3)
+\end{align}
+where $a_0\in\mathbb{R}$ and $\Vec{a}\in\mathbb{R}^3$.
+
+Unitary operators are the $2\times2$ unitary matrices, i.e., invertible matrices whose inverse is equal to their conjugate transpose. Then they form a group under matrix multiplication so that any unitary matrix $U$ can be expressed as
+\begin{equation}
+    U=e^{iA}\quad\mathrm{with}\quad A=A^\dag
+\end{equation}
+and thus the general unitary evolution of a qubit is given by
+\begin{align}
+    U&=\mathrm{exp}\left[i(a_0\mathds{1}+\Vec{a}\cdot\Vec{\sigma})\right]=\mathrm{exp}\left[i\alpha\mathds{1}\right]\cdot \mathrm{exp}\left[i\frac{\theta}{2}\Hat{n}\cdot\Vec{\sigma}\right]
+    \\
+    &=e^{i\alpha}\left(\cos\frac{\theta}{2}\mathds{1}+i\sin\frac{\theta}{2}\Hat{n}\cdot\Vec{\sigma}\right)
+\end{align}
+where we used the notation $\alpha=a_0$, $\frac{\theta}{2}=\lVert\Vec{a}\rVert$ and $\Hat{n}=\frac{\Vec{a}}{\lVert\Vec{a}\rVert}$ that will be useful later on.
+
+
+
+
 
 \subsection{PVM and observables}
 There is a special class of quantum measurements we will be interested in: projection-valued measurements (PVM). PVMs are quantum measurements where the measurement operators $\{P_x\}$ are required to be orthogonal projectors, i.e.
