@@ -151,8 +151,7 @@ and thus the general unitary evolution of a qubit is given by
 \end{align}
 where we used the notation $\alpha=a_0$, $\frac{\theta}{2}=\lVert\Vec{a}\rVert$ and $\Hat{n}=\frac{\Vec{a}}{\lVert\Vec{a}\rVert}$ that will be useful later on.
 
-
-
+Finally, the positive operators of POVMs are the positive semidefinite matrices, i.e., Hermitian matrices whose eigenvalues are all non-negative. For $2\times2$ matrices, this means that the determinant and the trace are non-negative.
 
 
 \subsection{PVM and observables}
@@ -226,6 +225,10 @@ The expectation value of the observable when the system is in a state described 
 \begin{equation}
     \mathrm{E}[A]=\sum_{i}\lambda_i\,p_i=\sum_{i}\lambda_i\frac{\braket{\psi|P_i^\dag\,P_i|\psi}}{\braket{\psi|\psi}}=\frac{\braket{\psi|\mathrm{A}|\psi}}{\braket{\psi|\psi}}
 \end{equation}
+
+\subsubsection{Example: the qubit}
+
+
 
 \subsection{Quantum states} \label{sec:quantum-states}
 Following \crefrange{pt:state-vect}{pt:quant-meas}, if we are given a state vector for the system, we can determine how it will evolve under unitary evolutions, the probability distributions of the outcomes of quantum measurements, and the vector state we will obtain after those measurements, depending on the outcomes. We may then ask if there are multiple state vectors that yield the same probabilities for any measurement and continue to do so after any unitary evolution or measurement. Such two vectors would be completely equivalent in their predictions, and we can regard them as describing the same quantum state. This leads to an equivalence relation between state vectors, so that quantum states are the equivalence classes.
