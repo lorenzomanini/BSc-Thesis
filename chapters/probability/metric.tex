@@ -42,7 +42,7 @@ Even though relative entropy doesn't follow triangle inequality, it does follow 
     \begin{equation} \label{eq:gen-pyth}
         S(p\parallel q)\ge S(p\parallel p_*)+S(p_*\parallel q)
     \end{equation}
-    where $p_*$ is the element of $\partial\mathcal{E}$ for which $S(p_*\parallel q)$ is smallest.
+    where $p_*$ is the element of the boundary $\partial\mathcal{E}$ for which $S(p_*\parallel q)$ is smallest.
 \end{theorem}
 This is a generalization of the Pythagorean theorem in the sense that if it was stated in terms of the Euclidean distance squared, the angle between $\overline{pp_*}$ and $\overline{p_*q}$ would be obtuse and so \cref{eq:gen-pyth} would be the corollary of the Pythagorean theorem for obtuse triangles. This suggests that the relative entropy may be regarded as an asymmetric distance squared and as we will see this is enough to define a metric on the manifold.
 
@@ -67,7 +67,7 @@ Finally then, we get
 \begin{equation} \label{eq:geo-dist}
     L(p,q)=\int_{0}^{1}\sqrt{g_p(\mathbf{v}_q,\mathbf{v}_q)}d\lambda=\sqrt{g_p(\mathbf{v}_q,\mathbf{v}_q)}=\lVert \mathbf{v}_q \rVert
 \end{equation}
-and so $\mathbf{\hat{v}}_q={\mathbf{v}_q}\backslash{L(p,q)}$.
+and so $\mathbf{\hat{v}}_q={\mathbf{v}_q}/{L(p,q)}$.
 
 Now chose a vector $\mathbf{dp}\in T_pM$ and let $q=\text{Exp}_p(\mathbf{dp})$. Then, let $\Gamma_{\hat{\mathbf{dp}}}$ be the unique geodesic curve such that $\Gamma_{\hat{\mathbf{dp}}}(0)=p$ and $\Gamma_{\hat{\mathbf{dp}}}'(0)=\mathbf{\hat{dp}}$. Clearly, this is the following reparametrization of $\gamma_{\mathbf{dp}}$
 \begin{equation}

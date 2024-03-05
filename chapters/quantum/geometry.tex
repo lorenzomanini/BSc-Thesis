@@ -27,11 +27,11 @@ We thus have that the space of state vectors $\mathcal{H}_0$ is also a complex m
 This metric tensor is intrinsically derived from the structure of the Hilbert space and so it is invariant under unitary transformations. The set $U(N)$ of unitary transformations of $\mathbb{C}^N$ is a Lie group and so the Lie algebra of its left-invariant vector fields are the killing vector fields of the Hilbert space. The integral curves of these vector fields also preserve the norm of the points in the Hilbert space, and it can be shown that in each point their tangent vectors form a real $(2N-1)$-dimensional linear subspace of the tangent space. From this follows that the integral curves of the killing vector fields mesh to form a foliation of the realified Hilbert space where each leaf is the set of state vectors with a fixed norm and is thus isomorphic to $S^{2N-1}$. Then each leaf is a $(2N-1)$-dimensional submanifold of the realified Hilbert space and inherits a Riemannian structure.
 
 \subsection{Fiber bundle structure of the Hilbert space} \label{sec:fibr-bund}
-We are now interested in the geometry of the space of quantum states. For start we have that, with a sound choice of coordinates, one can easily verify that $\mathbf{\mathbb{C}P}^N$ is also a complex manifold. \todo{proof?}. Then tangent vectors of $\mathbf{P}\mathcal{H}$ can be intrinsically mapped to operators of $\mathcal{H}$ as follows
+We are now interested in the geometry of the space of quantum states. For start we have that, with a sound choice of coordinates, one can easily verify that $\mathbf{\mathbb{C}P}^n$ is also a complex manifold. \todo{proof?}. Then tangent vectors of $\mathbf{P}\mathcal{H}$ can be intrinsically mapped to operators of $\mathcal{H}$ as follows
 \begin{equation} \label{eq:tgt-operator}
     \frac{\partial}{\partial\theta}\in T_\rho\mathfrak{D}\mapsto d\rho_\theta\quad\mathrm{with}\quad d\rho_\theta(\mathbf{X})=\left.\frac{d}{d\theta}\left[\rho(\theta)(\mathbf{X})\right]\right\rvert_{\theta=0}\quad\forall\mathbf{X}\in\mathcal{H}
 \end{equation}
-where from the linearity of differntiation follows that $d\rho_\theta$ is a well-defined linear operator on $\mathcal{H}$.
+where from the linearity of differentiation follows that $d\rho_\theta$ is a well-defined linear operator on $\mathcal{H}$.
 
 Now we may ask ourselves if there is a natural way to induce a metric on $\mathbf{P}\mathcal{H}$ from the one of $\mathcal{H}$. Such an intrinsic metric would lead to a natural notion of distance between quantum states. To do this we will start by investigating the relationship between $\mathcal{H}$ and $\mathbf{P}\mathcal{H}$ as complex manifolds.
 
@@ -193,3 +193,5 @@ and so we find that the Fubini-Study metric on $\mathbf{\mathbb{C}P}^n$ is given
 \begin{equation}
     g_{FS}(d\rho_1,d\rho_2)=\frac{1}{2}\mathrm{tr}\left(d\rho_1\,d\rho_2\right)
 \end{equation}
+
+\subsection{Example: the qubit and the Hopf fibration}
