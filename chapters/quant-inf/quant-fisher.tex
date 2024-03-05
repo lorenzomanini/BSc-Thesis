@@ -31,37 +31,33 @@ To precisely define this operator we express any $d\rho\in T_\rho\mathfrak{D}$ a
 \begin{equation}
     i[A,\rho] = \frac{1}{2}\left\{\rho,L^{(\rho)}(A)\right\}
 \end{equation}
-It can be proved that $L^{(\rho)}(A)$ is well-defined for any operator $A$ when $\rho$ is Hermitian and positive semi-definite\cref{wikipedia-SLD}. $L^{(\rho)}(A)$ is then known as the \emph{symmetric logarithmic derivative (SLD)} and it is a linear map between operators of $A$. Then $L^{(\rho)}_\theta$ is analogous to the exponential representation of $d\rho_\theta$ so that
-\begin{equation}
-    \Tilde{X}_\theta^{(e)}\equiv L^{(\rho)}_\theta\qquad\forall\Tilde{X}_\theta\in T_\rho\myPH
-\end{equation}
-Moreover, it can be shown that  $L^{(\rho)}(A)$ is Hermitian if $A$ is Hermitian, so that
-\begin{equation}
-    L^{(\rho)}:\mathfrak{A}\to\mathfrak{A}\quad\mathrm{with}\quad\mathfrak{A}\coloneqq\left\{A\in\mathfrak{L}(\mathcal{H})\mid A=A^\dag\right\}
-\end{equation}
-and thus the exponential representations of tangent vectors can also be interpreted as observables. Then we have that
+It can be proven that when $\rho$ is Hermitian and positive semi-definite $L^{(\rho)}(A)$ is determined for every operator $A$, up to a term that anticommutes with $\rho$. Then $L^{(\rho)}(A)$ is known as the \emph{symmetric logarithmic derivative (SLD)} and one can also show that if $A$ is Hermitian $L^{(\rho)}(A)$ is also Hermitian. Analogously with probability distributions, the expectation value of the SLD is zero
 \begin{equation}
     \mathrm{E}\left[L^{(\rho)}\right]=\mathrm{tr}(\rho\,L^{(\rho)})=\frac{1}{2}\mathrm{tr}(\rho\,L^{(\rho)}+L^{(\rho)}\,\rho)=\mathrm{tr}(d\rho)=0
 \end{equation}
-which corresponds to \cref{eq:exp-zero-ev}.
+reguardless of the anticommutating term.
 
-Finally, for pure density operators, we can find an explicit expression for the SLD as follows
+For pure density operators, we can find an explicit expression for the SLD as follows
 \begin{equation}
-    d\rho=\left.\frac{d}{d\theta}\left[\rho(\theta)\right]\right\rvert_{\theta=0}=\left.\frac{d}{d\theta}\left[\rho^2(\theta)\right]\right\rvert_{\theta=0}=\rho\,d\rho+d\rho\,\rho
+    d\rho_\theta=\left.\frac{d}{d\theta}\left[\rho(\theta)\right]\right\rvert_{\theta=0}=\left.\frac{d}{d\theta}\left[\rho^2(\theta)\right]\right\rvert_{\theta=0}=\rho\,d\rho_\theta+d\rho_\theta\,\rho
 \end{equation}
-so that for any pure density operator $\rho\in\mathfrak{D}$,
+so that we can set
 \begin{equation}\label{eq:qm-exp-mix}
     L^{(\rho)}_\theta=2d\rho_\theta\qquad\forall d\rho_\theta\in T_\rho\mathfrak{D}
 \end{equation}
-and since the SLD is a linear map, we have
+by implicitly fixing the anticommutating term. It will become clear in the next sections that this choice has no effect on the geometry we will develop. 
+
+We thus have that $L^{(\rho)}_\theta$ is analogous to the exponential representation of $d\rho_\theta$
+\begin{equation}
+    \Tilde{X}_\theta^{(e)}\equiv L^{(\rho)}_\theta\qquad\forall\Tilde{X}_\theta\in T_\rho\myPH
+\end{equation}
+and we can identify the space of exponential representations with the space of mixture representations
 \begin{equation}
     T_\rho^{(e)}\myPH\equiv T_\rho^{(m)}\myPH\equiv T_\rho\mathfrak{D}
 \end{equation}
-\todo{Show that pure quantum states are analogous to pure probability distributions?}
 
 
 \subsection{Quantum Fisher information}
-
 In light of the analogies between the space of quantum states and the space of probability distributions, we can now try to define the Fisher information metric for quantum states. We start from the formulation of the Fisher information metric in terms of the exponential representation of tangent vectors, recalling \cref{eq:fisher-exp-int}
 \begin{equation}
     G_F(X,Y)=\mathrm{E}_p[X^{(e)}Y^{(e)}]\quad\forall X,Y\in T_p\mathcal{P}
@@ -76,13 +72,13 @@ Then we can define the quantum Fisher information metric by analogy, symmetrizin
     \\
     &=\mathrm{tr}\left(d\rho_1\,L^{(\rho)}_2\right)=\mathrm{tr}\left(L^{(\rho)}_1\,d\rho_2\right)
 \end{align}
-thus, from \cref{eq:qm-exp-mix}, we have that for pure quantum states
+The symmetrization of the arguments is necessary to ensure that the metric is symmetric, and it is also the reason why the choice of the anticommutating term in the SLD has no effect on the geometry. Then, from \cref{eq:qm-exp-mix}, we have that for pure quantum states
 \begin{align}
     G_{QF}(\Tilde{X}_1,\Tilde{X}_2)&=2\,\mathrm{tr}\left(d\rho_1\,d\rho_2\right)
     \\
     &=4\,G_{FS}(\Tilde{X}_1,\Tilde{X}_2)
 \end{align}
-This shows that the Fubini-Study metric we defined intrinsically for pure quantum states can be precisely interpreted as a quantum information metric.
+ This shows that the Fubini-Study metric we defined intrinsically for pure quantum states can be precisely interpreted as a quantum information metric.
 
 \subsection{Symmetric covariance}
 Our analogy between the geometry of quantum states and the one of probability distributions is now almost complete, but there are still some details to be clarified. Firstly, we would want to treat observables as we treated random variables, but while every tangent vector can be associated with an observable with zero expectation value, the converse is not directly true since
