@@ -227,8 +227,57 @@ The expectation value of the observable when the system is in a state described 
 \end{equation}
 
 \subsubsection{Example: the qubit}
+We have already seen that any self-adjoint operator $A$ can be expressed as
+\begin{equation}
+    A=a_0\mathds{1}+\Vec{a}\cdot\Vec{\sigma} \quad\mathrm{with}\quad a_0\in\mathbb{R},\Vec{a}\in\mathbb{R}^3
+\end{equation}
+and so these also represent the observables of the qubit.
 
+Let us now consider some examples of quantum measurements. In particular, we will consider the problem of discerning between two states of a qubit. This is a first, particular, instance of quantum estimation, a problem that will be of interest in \cref{ch3}.
 
+We start by considering a qubit that we know to be in one of two possible orthonormal states, $\ket{0}$ or $\ket{1}$. Then we can consider a PVM
+\begin{equation}
+    \{(P_0,\lambda_0),(P_1,\lambda_1)\}:P_0=\ket{0}\bra{0}=\begin{pmatrix} 1 & 0\\ 0 & 0 \end{pmatrix},\,P_1=\ket{1}\bra{1}=\begin{pmatrix} 0 & 0\\ 0 & 1 \end{pmatrix}
+\end{equation}
+that corresponds to the observable
+\begin{equation}
+    A=\begin{pmatrix} \lambda_0 & 0\\ 0 & \lambda_1 \end{pmatrix}
+\end{equation}
+when $\lambda_0$ and $\lambda_1$ are real numbers. Then the probability distributions of the outcomes are
+\begin{align*}
+    p_{\ket{0}}(\lambda_0)&=\begin{pmatrix} 1 & 0 \end{pmatrix}\cdot\begin{pmatrix} 1 & 0\\ 0 & 0 \end{pmatrix}\cdot\begin{pmatrix} 1 \\ 0 \end{pmatrix}=1
+    &
+    p_{\ket{0}}(\lambda_1)&=\begin{pmatrix} 1 & 0 \end{pmatrix}\cdot\begin{pmatrix} 0 & 0\\ 0 & 1 \end{pmatrix}\cdot\begin{pmatrix} 1 \\ 0 \end{pmatrix}=0
+    \\
+    p_{\ket{1}}(\lambda_0)&=\begin{pmatrix} 0 & 1 \end{pmatrix}\cdot\begin{pmatrix} 1 & 0\\ 0 & 0 \end{pmatrix}\cdot\begin{pmatrix} 0 \\ 1 \end{pmatrix}=0
+    &
+    p_{\ket{1}}(\lambda_1)&=\begin{pmatrix} 0 & 1 \end{pmatrix}\cdot\begin{pmatrix} 0 & 0\\ 0 & 1 \end{pmatrix}\cdot\begin{pmatrix} 0 \\ 1 \end{pmatrix}=1
+\end{align*}
+so that we can distinguish with certainty between the two states.
+
+Consider now the same problem but where the two states are not orthogonal, for example, $\ket{0}$ and $\ket{+}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$. Then the previous PVM will lead to the following probability distributions
+\begin{align*}
+    p_{\ket{0}}(\lambda_0)&=1\qquad p_{\ket{0}}(\lambda_1)=0
+    \\
+    p_{\ket{+}}(\lambda_0)&=\frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \end{pmatrix}\cdot\begin{pmatrix} 1 & 0\\ 0 & 0 \end{pmatrix}\cdot\frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1 \end{pmatrix}=\frac{1}{2}
+    \\
+    p_{\ket{+}}(\lambda_1)&=\frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \end{pmatrix}\cdot\begin{pmatrix} 0 & 0\\ 0 & 1 \end{pmatrix}\cdot\frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1 \end{pmatrix}=\frac{1}{2}
+\end{align*}
+so that if the measured outcome is $\lambda_1$ we are certain that the state was $\ket{+}$, but if the measured outcome is $\lambda_0$ we cannot distinguish them. Thus if the two initial states are equally likely, three times out of four we will not be able to distinguish them and it can be shown that this is the best we can do with a PVM for two non-orthogonal states.
+
+We can improve our results by considering a POVM. In particular, we can consider the following POVM
+\begin{gather}
+    E=\{(E_1,\,\lambda_1),(E_2,\,\lambda_2),(E_3,\,\lambda_3)\}
+    \\
+    E_1=\ket{1}\bra{1}=\begin{pmatrix} 0 & 0\\ 0 & 1 \end{pmatrix},\,E_2=\ket{-}\bra{-}=\frac{1}{2}\begin{pmatrix} +1 & -1\\ -1 & +1 \end{pmatrix},\,E_3=\frac{1}{2}\begin{pmatrix} +1 & +1\\ +1 & -1 \end{pmatrix}
+\end{gather}
+where $\ket{-}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})$, orthogonal to $\ket{+}$. Then one can verify that the probability distributions of the outcomes are
+\begin{align*}
+    p_{\ket{0}}(\lambda_1)&=0\qquad p_{\ket{0}}(\lambda_2)=\frac{1}{2}\qquad p_{\ket{0}}(\lambda_3)=\frac{1}{2}
+    \\
+    p_{\ket{+}}(\lambda_1)&=\frac{1}{2}\qquad p_{\ket{+}}(\lambda_2)=0\qquad p_{\ket{+}}(\lambda_3)=\frac{1}{2}
+\end{align*}
+so that half of the time we can distinguish them. It can be shown that this is the best we can do for two non-orthogonal states so that in this sense there is a degree of indistinguishability between non-orthogonal states, similarly to the indistinguishability of probability distributions we discussed in \cref{prob-dist-ind}.
 
 \subsection{Quantum states} \label{sec:quantum-states}
 Following \crefrange{pt:state-vect}{pt:quant-meas}, if we are given a state vector for the system, we can determine how it will evolve under unitary evolutions, the probability distributions of the outcomes of quantum measurements, and the vector state we will obtain after those measurements, depending on the outcomes. We may then ask if there are multiple state vectors that yield the same probabilities for any measurement and continue to do so after any unitary evolution or measurement. Such two vectors would be completely equivalent in their predictions, and we can regard them as describing the same quantum state. This leads to an equivalence relation between state vectors, so that quantum states are the equivalence classes.
@@ -266,6 +315,25 @@ and so the space of quantum states is isomorphic to the set of 1-dim linear subs
     \pi:\mathcal{H}_0\to\mathbf{P}\mathcal{H}\quad\pi(\ket{\psi})=[\ket{\psi}]_\sim
 \end{equation}
 that maps every state vector to its quantum state.
+
+\subsubsection{Example: the qubit}
+For the qubit, the projective space is the 1-dimensional complex projective space $\mathbf{\mathbb{C}P}^1$. We can get a sense of the structure of this space considering the expression of a general state vector as a linear combination of an orthonormal basis $\{\ket{0},\ket{1}\}$
+\begin{equation}
+    \ket{\psi}=c_0\ket{0}+c_1\ket{1}\quad\mathrm{with}\quad c_0=\lVert c_0\rVert e^{i\alpha},\,c_1=\lVert c_1\rVert e^{i\beta}\in\mathbb{C}
+\end{equation}
+so that $\lVert \ket{\psi} \rVert^2=\lVert c_0\rVert^2+\lVert c_1\rVert^2$. Every state vector with the same quantum state is given by
+\begin{equation}
+    \ket{\psi'}=c \ket{\psi}\quad\mathrm{with}\quad c=\lVert c \rVert e^{i\gamma}\in\mathbb{C}\setminus\{0\}
+\end{equation}
+so that the quantum state doesn't depend on the norm and the global phase of the state vector. We can then choose a representative for each quantum state by fixing the norm of the state vector to 1 and the phase of the first coefficient to 0, that is
+\begin{equation}
+    \ket{\psi}=c_0\ket{0}+c_1\ket{1}\mapsto\frac{\lVert c_0\rVert}{\sqrt{\lVert c_0\rVert^2+\lVert c_1\rVert^2}}\ket{0}+\frac{\lVert c_1\rVert}{\sqrt{\lVert c_0\rVert^2+\lVert c_1\rVert^2}}\,e^{i(\beta-\alpha)}\ket{1}
+\end{equation}
+so that any quantum state can be represented by a state vector of the form
+\begin{equation}
+    \ket{\psi}=\cos\frac{\theta}{2}\ket{0}+e^{i\phi}\sin\frac{\theta}{2}\ket{1} \quad\mathrm{with}\quad \theta\in[0,\pi],\,\phi\in\left[0,2\pi\right[
+\end{equation}
+where we have that when $\theta=0$ or $\theta=\pi$ the expression is independent of $\phi$. Then $\theta$ and $\phi$ can be regarded as the polar coordinates of a 2-sphere of quantum states with the north pole corresponding to $\ket{0}$ and the south pole to $\ket{1}$. This is known as the \emph{Bloch sphere} and is a representation of the projective space $\mathbf{\mathbb{C}P}^1$ for a fixed orthonormal basis.
 
 \subsection{Density operators}\label{sec:density-matrices}
 We have seen that quantum states are the 1-dim linear subspaces of $\mathcal{H}$, so we can identify them with some orthogonal projectors. The only additional requirement is that the projected spaces must be 1-dim, i.e., they must be rank-1 orthogonal projectors. From \cref{eq:proj-decomp}, we know that for any rank-1 projector, there must exist a normalized vector $\ket{\tilde{e}}$ such that
@@ -395,3 +463,14 @@ At last, we have that the expectation value of an observable $A$ when the system
 \begin{equation}
     \mathrm{E}[A]=\sum_{i}\lambda_i\,\mathrm{tr}(P_i\,\rho\,P_i^\dag)=\mathrm{tr}(\rho\,A)
 \end{equation}
+
+\subsubsection{Example: the qubit}
+Pure density operators for the qubit are the self-adjoint operators with one eigenvalue equal to 1 and the other equal to 0. Then pure density operators are represented by $2\times2$ Hermitian matrices with trace 1 and determinant 0. Expressing a generic Hermitian matrix $A$ as in \cref{pauli-rep} it can be shown that
+\begin{equation}
+    \mathrm{tr}(A)=2a_0\qquad\mathrm{det}(A)=a_0^2-\lVert\Vec{a}\rVert^2
+\end{equation}
+so that for any pure density operator, we have that $a_0=\frac{1}{2}$ and $\lVert\Vec{a}\rVert=\frac{1}{2}$. Then we can represent any pure density operator as
+\begin{equation}
+    \rho=\frac{\mathds{1}+\Vec{n}\cdot\Vec{\sigma}}{2}\quad\mathrm{with}\quad\Vec{n}\in\mathbb{R}^3:\,\lVert\Vec{n}\rVert=1
+\end{equation}
+where we recognize the Bloch sphere representation of the quantum states of the qubit.
