@@ -109,7 +109,7 @@ Let us now go back to the problem of associating every observable with zero expe
 \begin{equation}
     \mathfrak{M}_\rho:\mathfrak{A}\to T_\rho\mathfrak{D}\quad |\quad A\mapsto\left.\frac{d}{d\theta}\left(e^{iA\theta}\rho e^{-iA\theta}\right)\right\rvert_{\theta=0}=i[A,\rho]\eqqcolon d\rho_A
 \end{equation}
-Then the kernel of $\mathfrak{M}_\rho$ is the linear subspace of observables that commute with the pure density operator of the quantum state. We can easily interpret this considering the fact that if an observable commutes with the pure density operator of a quantum state, then the state vectors of that quantum state are eigenvectors of the observable. Let $\rho=\ket{\psi}\bra{\psi}$ for some normalized state vector $\ket{\psi}$, then
+The kernel of this map is the linear subspace of the Lie algebra of $U(N)$ that corresponds to the 1-parameter subgroups that leave the quantum state unchanged. We notice that $\mathrm{ker}\,\mathfrak{M}_\rho$ is the set of observables that commute with the pure density operator of the quantum state, i.e, the set of observables for which the state vectors of $\rho$ are eigenvectors; let $\rho=\ket{\psi}\bra{\psi}$ for some normalized state vector $\ket{\psi}$, then
 \begin{align}
     [\rho,A]=0&\implies \rho\,A=A\,\rho \notag
     \\
@@ -117,13 +117,24 @@ Then the kernel of $\mathfrak{M}_\rho$ is the linear subspace of observables tha
     \\
     &\implies A\,\rho=\mathrm{E}_\rho[A]\,\rho
 \end{align}
-and so the 1-parameter unitary subgroup of $A$ will move state vectors parallel to the fiber, thus not changing the quantum state.
+Then any element of $\mathrm{ker}\,\mathfrak{M}_\rho$ can be expressed as
+\begin{equation}\label{eq:subgroups}
+    K=\lambda^{(k)}\rho + K'\quad\mathrm{with}\quad K'=K'^\dag,\quad K'\,\rho=\rho\,K'=0
+\end{equation}
+notice that the two components decompose the kernel in two linear subspaces closed under commutation, thus they define two subgroups of $U(N)$
+\begin{equation}
+    e^{i\theta\lambda^{(k)}\,\rho}\ket{\psi}=e^{i\theta\lambda^{(k)}}\ket{\psi}\qquad e^{i\theta\,K'}\ket{\psi}=e^{i\theta\cdot0}\ket{\psi}=\ket{\psi}
+\end{equation}
+The first is isomorphic to $U(1)$ and is the subgroup that moves the state vectors of $\rho$ along the fiber. The second one is isomorphic to $U(N-1)$ and leaves the state vectors of $\rho$ unchanged. Through the matrix representation of operators, we can easily compute the real dimension of the lie algebra of $U(N)$ to be $N^2$ for any $N$. Then the dimension of $\mathrm{ker}\,\mathfrak{M}_\rho$ is $1+(N-1)^2$ while the dimension of the domain is $N^2$, so that $T_\rho\mathfrak{D}$ has dimension $2N-2$ as we expected.
+\footnote{
+    This shows that we could have defined $\mathbb{C}\mathbf{P}^n=\frac{U(N)}{U(1)\times U(N-1)}$. Through the same arguments, this expression can be easily generalized to mixed states, so that the space of rank-m density matrices is given by $\frac{U(N)}{U(m)\times U(N-m)}$
+}
 
 We consider now the restriction of $\mathfrak{M}_\rho$ to the observables with zero expectation value in $\rho$
 \begin{equation}
     \left.\mathfrak{M}_\rho^{(0)}\right\rvert_{\mathfrak{A}^\bot_\rho}:\mathfrak{A}^\bot_\rho\to T_\rho\mathfrak{D}
 \end{equation}
-Through the matrix representation of operators, we can easily compute the real dimensions of the domain and of the kernel of $\mathfrak{M}_\rho^{(0)}$ to be respectively $(N^2-1)$ and $(N-1)^2$ \todo{proof?}. Then the image of $\mathfrak{M}_\rho^{(0)}$ must have a real dimension of $(2N-2)$, equal to the one of the tangent space, thus proving that $\mathfrak{M}_\rho^{(0)}$ is surjective. Then we also have that $\mathfrak{M}_\rho^{(0)}$ maps $T_\rho\mathfrak{D}$ to itself since
+From \cref{eq:subgroups} we can easily compute the real dimensions of the domain and of the kernel of $\mathfrak{M}_\rho^{(0)}$ to be respectively $(N^2-1)$ and $(N-1)^2$. Then the image of $\mathfrak{M}_\rho^{(0)}$ must have a real dimension of $(2N-2)$, equal to the one of the tangent space, thus proving that $\mathfrak{M}_\rho^{(0)}$ is surjective. Then we also have that $\mathfrak{M}_\rho^{(0)}$ maps $T_\rho\mathfrak{D}$ to itself since
 \begin{align*}
     [L^{(\rho)},\rho]=0&\implies d\rho=L^{(\rho)}\,\rho=\rho\,L^{(\rho)}
     \\
