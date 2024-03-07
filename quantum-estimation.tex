@@ -1,17 +1,20 @@
-\documentclass[a4paper,12pt]{report}
-%\documentclass[a4paper]{report}
+\documentclass[a4paper,11pt,twoside]{book}
 \input{preamble.tex}
 
 \begin{document}
 
-%\input{chapters/frontmatter.tex}
+\frontmatter
+\input{chapters/frontmatter.tex}
+\cleardoublepage
 \tableofcontents
 
+\mainmatter
 \input{chapters/introduction.tex}
 \input{chapters/probability.tex}
 \input{chapters/quantum.tex}
 \input{chapters/quant-inf.tex}
 
+\backmatter
 \bibliographystyle{unsrt}
 \bibliography{quantum-estimation}
 
