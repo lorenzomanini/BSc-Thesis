@@ -1,5 +1,5 @@
 \section{Quantum information geometry}
-In this section, we draw the connection between the geometry of probability distributions and the one of quantum states. We begin by defining the mixture and exponential representations of tangent vectors to quantum states, using the symmetric logarithmic derivative (SLD). Then we define by analogy the quantum Fisher information and we find it to be equal to the Fubini-Study metric, up to a constant factor. Lastly, we discuss in more depth the analogy between random variables and observables through the definition of a symmetric generalized covariance. The treatment is based on \cite{amariMethodsInformationGeometry2007}, \cite{contrerasGeometryMixedStates2016} for the general theory and on \cite{facchiClassicalQuantumFisher2010}, \cite{fujiwaraQuantumFisherMetric1995} and \cite{matsumotoGeometricalApproachQuantum2021} for the details of the pure state case.
+In this section, we draw the connection between the geometry of probability distributions and the one of quantum states. We begin by defining the mixture and exponential representations of tangent vectors to quantum states, using the symmetric logarithmic derivative (SLD). Then we define by analogy the quantum Fisher information and we find it to be equal to the Fubini-Study metric, up to a constant factor. Lastly, we discuss in more depth the analogy between random variables and observables through the definition of a symmetric generalized covariance. The treatment is based on \cite{amariMethodsInformationGeometry2007}, \cite{contrerasGeometryMixedStates2016} for the general theory and on \cite{facchiClassicalQuantumFisher2010}, \cite{fujiwaraQuantumFisherMetric1995} and \cite{matsumotoGeometricalApproachQuantum1997} for the details of the pure state case.
 
 \subsection{Observables and the tangent space}
 As we have seen in \cref{sec:postulates}, quantum states can be interpreted as a generalization of probability distributions. We now want to further investigate the parallelisms between the geometry of quantum states and the one of probability distributions. 
@@ -82,9 +82,9 @@ The symmetrization of the arguments is necessary to ensure that the metric is sy
  This shows that the Fubini-Study metric we defined intrinsically for pure quantum states can be precisely interpreted as a quantum information metric.
 
 \subsection{Symmetric covariance}
-Our analogy between the geometry of quantum states and the one of probability distributions is now almost complete, but there are still some details to be clarified. Firstly, we would want to treat observables as we treated random variables, but while every tangent vector can be associated with an observable with zero expectation value, the converse is not directly true since
+Our analogy between the geometry of quantum states and the one of probability distributions is now almost complete, but there are still some details to be clarified. Firstly, we would want to treat observables as we treated random variables, but while every tangent vector can be associated with an observable with zero expectation value, the converse is not directly true. Let $\mathfrak{A}$ be the set of observables of $\mathcal{H}$ and $\rho$ a pure density operator, then
 \begin{equation}
-    T_\rho\mathfrak{D}\subset\mathfrak{A}^{\bot}_\rho\coloneqq\left\{A\in\mathfrak{A}(\mathcal{H})\mid \mathrm{E}_\rho[A]=0\right\}
+    T_\rho\mathfrak{D}\subset\mathfrak{A}^{\bot}_\rho\coloneqq\left\{A\in\mathfrak{A}\mid \mathrm{E}_\rho[A]=0\right\}
 \end{equation}
 as can be easily checked by comparing the real dimensions of the two vector spaces. Secondly, since operators don't commute in general, we must define a sound generalization of the covariance, and as we will show, these two problems are related.
 
@@ -104,7 +104,7 @@ Then we can easily recognize that this inner product coincides with the quantum 
 \begin{equation}
     \llangle L^{(\rho)}_1,L^{(\rho)}_2 \rrangle_\rho=G_{QF}(\Tilde{X}_1,\Tilde{X}_2)\quad\forall \Tilde{X}_1,\Tilde{X}_2\in T_\rho\myPH
 \end{equation}
-This is no coincidence, and it can be shown that the definitions of the exponential representation and of the generalized covariance are deeply linked \cref{amari,matsumoto}.
+This is no coincidence, and it can be shown that the definitions of the exponential representation and the generalized covariance are deeply linked \cite{amariMethodsInformationGeometry2007}.
 
 Let us now go back to the problem of associating every observable with zero expectation value to the exponential representation of a tangent vector. We notice that every observable $A\in\mathfrak{A}$ can be thought of as an element of the Lie algebra of $U(N)$, and thus we can associate it with a tangent vector through the linear map
 \begin{equation}
@@ -128,7 +128,7 @@ notice that the two components decompose the kernel in two linear subspaces clos
 \end{equation}
 The first is isomorphic to $U(1)$ and is the subgroup that moves the state vectors of $\rho$ along the fiber. The second one is isomorphic to $U(N-1)$ and leaves the state vectors of $\rho$ unchanged. Through the matrix representation of operators, we can easily compute the real dimension of the lie algebra of $U(N)$ to be $N^2$ for any $N$. Then the dimension of $\mathrm{ker}\,\mathfrak{M}_\rho$ is $1+(N-1)^2$ while the dimension of the domain is $N^2$, so that $T_\rho\mathfrak{D}$ has dimension $2N-2$ as we expected.
 \footnote{
-    This shows that we can define $\mathbb{C}\mathbf{P}^n=\frac{U(N)}{U(1)\times U(N-1)}$. Through the same arguments, this expression can be easily generalized to mixed states, so that the space of rank-m density matrices is given by $\frac{U(N)}{U(m)\times U(N-m)}$
+    This shows that we can define $\mathbb{C}\mathbf{P}^n=\frac{U(N)}{U(1)\times U(N-1)}$. Through the same arguments, this expression can be easily generalized to mixed states, so that the space of rank-m density matrices is given by $\frac{U(N)}{U(m)\times U(N-m)}$. This is treated in \cite{contrerasGeometryMixedStates2016}.
 }
 
 We consider now the restriction of $\mathfrak{M}_\rho$ to the observables with zero expectation value in $\rho$
