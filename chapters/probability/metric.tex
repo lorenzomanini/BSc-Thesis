@@ -1,4 +1,6 @@
 \section{The information metric}
+In this section, we derive and justify the Fisher information metric. We start by showing that the relative entropy can be thought of as a squared pseudo-distance on the space of probability distributions, following the approach of \cite{bengtssonGeometryQuantumStates2017}. Next, we discuss the relationship between the metric tensor of a Riemannian manifold and its squared geodesic distance, and we generalize it to divergences as in \cite{amariMethodsInformationGeometry2007}. Lastly, we show that the relative entropy is a divergence and from it, we derive the Fisher information metric.
+
 \subsection{Relative entropy} \label{ch:rel-entr}
 Given a statistical manifold, we may ask ourselves if a certain metric can be naturally defined on it. Such a metric would give rise to a Riemannian connection and consequently to a geodesic distance between elements of the manifold. For this reason, we should first find a statistical meaning to the notion of distance between probability distributions and only then try to find a metric coherent with it.
 
@@ -17,7 +19,7 @@ so the probability decreases exponentially with $N_s$ times the factor in the sq
     S(p\parallel q)\coloneqq\sum_{x\in\mathcal{X}}p(x)\ln\biggl(\frac{p(x)}{q(x)}\biggr)
 \end{equation}
 
-More generally it can be shown that the following theorem holds.
+More generally it can be shown that the following theorem holds \cite[pg. 42]{bengtssonGeometryQuantumStates2017}
 \begin{theorem}[Sanov's Theorem]
     Let $\mathcal{E}\subset\mathcal{P}$ be a closed set of probability distributions without isolated points. Then if $N_s$ samples are drawn with underlying probability distribution $q\in\mathcal{P}$, the probability $P_{N_s}(\mathcal{E})$ that the obtained frequencies correspond to an element in $\mathcal{E}$ has the following asymptotic behavior
     \begin{equation}
@@ -36,7 +38,7 @@ but it is not symmetric and it doesn't follow the triangle inequality, so it is 
 \end{example}
 This game is precisely a problem of distinguishability of probability distributions. In fact, we have the $N=2$ sample space and two probability distributions: $\mathbf{p}=(0.5,0.5)$ (the fair coin) and $\mathbf{q}=(1,0)$ (the double-head coin), so the two relative entropies are $S(p\parallel q)\to\infty$ and $S(q\parallel p)=\ln 2$. If we pick the fair coin for large $N_s$ the obtained frequencies will approach $\mathbf{p}$; then we consider the probability of obtaining these frequencies if the underlying distribution was $q$. This probability is identically 0, and it is coherent with Sanov's theorem since  $S(p\parallel q)\to\infty$ and so $P_{N_s}(p)\sim e^{-N_s\cdot\infty}=0$. Otherwise, if we pick the double-head coin the frequencies will always match exactly $\mathbf{q}$, and the probability of getting this if the underlying distribution was $q$ is $0.5^{N_s}$. This is coherent with Sanov's theorem since  $S(q\parallel p)=\ln 2$ and so $P_{N_s}(q)\sim e^{-N_s\cdot\ln 2}=0.5^{N_s}$.
 
-Even though relative entropy doesn't follow triangle inequality, it does follow a generalization of the Pythagorean theorem stated as follows
+Even though relative entropy doesn't follow triangle inequality, it can be shown to follow a generalization of the Pythagorean theorem \cite[pg. 43]{bengtssonGeometryQuantumStates2017}
 \begin{theorem}[Generalized Pythagorean theorem]
     Let $\mathcal{E}\subset\mathcal{P}$ be a convex set and consider $p\in\mathcal{E}$ and $q\in\mathcal{P}\setminus\mathcal{E}$. Then
     \begin{equation} \label{eq:gen-pyth}
@@ -47,7 +49,7 @@ Even though relative entropy doesn't follow triangle inequality, it does follow 
 This is a generalization of the Pythagorean theorem in the sense that if it was stated in terms of the Euclidean distance squared, the angle between $\overline{pp_*}$ and $\overline{p_*q}$ would be obtuse and so \cref{eq:gen-pyth} would be the corollary of the Pythagorean theorem for obtuse triangles. This suggests that the relative entropy may be regarded as an asymmetric distance squared and as we will see this is enough to define a metric on the manifold.
 
 \subsection{Squared Riemannian distances} \label{ch:square-dist} 
-Now that we have some notion of distance, we shall explore how to define a coherent metric on the manifold. First, we shall study this for a Riemannian distance.
+Now that we have some notion of distance, we shall explore how to define a coherent metric on the manifold. First, we shall study this for a Riemannian distance. The notation and the definitions will follow the ones of \cite{schutzGeometricalMethodsMathematical1980}.
 
 Let $(M,g)$ be a Riemannian manifold where $g$ is the metric tensor, then consider a point $p\in M$. We define the \emph{exponential map} in $p$ as follows
 \begin{equation}
@@ -85,7 +87,7 @@ then, from $\Gamma_{\hat{\mathbf{dp}}}(0)=p$, $\Gamma_{\hat{\mathbf{dp}}}'(0)=\m
 \end{equation}
 for every $q$ in the image of $\Gamma_{\hat{\mathbf{dp}}}$. Then, combining \cref{eq:geo-dist} and \cref{eq:p-dp} we get
 \begin{equation}
-    L^2(\{p^{(i)}\},\{p^{(i)}+dp^i\})\to L^2(p,q)=g_{ij}dp^i dp^j \quad \text{for} \quad dp^i\to 0
+    L^2(\{p^{(i)}\},\{p^{(i)}+dp^i\})\to L^2(p,q)=g_{ij}dp^i dp^j \quad \text{for small $dp^i$}
 \end{equation}
 
 We define $L_p^2:M\to [0,+\infty)$, $L_p^2(q)\coloneqq L^2(p,q)$ and consider its Taylor expansion in $q=p$

@@ -1,4 +1,6 @@
 \section{Manifolds of probability distributions}
+In this section we introduce the differential geometrical description of probability distributions and statistical models. The treatment mainly follows the one of \cite{amariMethodsInformationGeometry2007}, where further details can be found.
+
 \subsection{Space of probability distributions} \label{ch:space-prob-dist}
 Consider a \emph{random process} and the set $\mathcal{X}$ of all its possible outcomes. We call this set the \emph{sample space}, and we will only consider random processes for which it is finite. Then, a \emph{probability distribution} on $\mathcal{X}$ is a function $p\in\mathbb{R}^\mathcal{X}\coloneq\{f\mid f\colon \mathcal{X}\to\mathbb{R}\}$ which satisfies
 \begin{equation} \label{eq:prob-dist-def}
@@ -49,7 +51,6 @@ From our definitions, it is clear that the maximal dimension of a model is $n=N-
     \mathcal{P}\coloneqq\{p\in\mathbb{R}^\mathcal{X}\mid p(x)>0 \quad \forall x\in\mathcal{X} \quad \text{and} \quad \sum_{x\in\mathcal{X}}p(x)=1\}
 \end{equation}
 that we call the \emph{manifold of probability distributions}. Notice that $\mathcal{P}$ is the interior of the space of probability distributions, this is because from our definitions follows that every $(N-1)$-dimensional statistical manifold must be an open subset of $\mathcal{A}_1$.
-\todo{Examples?}
 
 \subsection{The tangent space and its representations} \label{ch:tgt-space}
 We will now study tangent vectors of statistical manifolds looking for useful statistical interpretations of them. To do this we will use the fact that, as explained in \cref{ch:space-prob-dist}, $\mathcal{P}$ can be embedded in the space of random variables $\mathbb{R}^\mathcal{X}$. Then we can try to also embed the tangent spaces in $\mathbb{R}^\mathcal{X}$ in some meaningful ways, thus linking tangent vectors and random variables.

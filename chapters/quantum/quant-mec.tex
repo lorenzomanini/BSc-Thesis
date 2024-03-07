@@ -1,6 +1,8 @@
 \section{Quantum mechanics}
+In this section the foundations of quantum mechanics are described, following the approach of \cite{nielsenQuantumComputationQuantum2010}. We first state the postulates in terms of state vectors of the Hilbert space. Then, we define quantum states as equivalence classes of physically indistinguishable state vectors and show that their space is the complex projective space. Lastly, we identify quantum states with pure density operators and we restate the postulates of quantum mechanics using these terms.
+
 \subsection{The postulates of quantum mechanics} \label{sec:postulates}
-Quantum mechanics is a fundamental theory that provides a mathematical framework for modeling the states and evolution of physical systems, as well as predicting the results of observations. In this section, we will state the postulates of quantum mechanics, roughly following the treatment in \ref{chuang}.
+Quantum mechanics is a fundamental theory that provides a mathematical framework for modeling the states and evolution of physical systems, as well as predicting the results of observations. In what follows will state the postulates of quantum mechanics, roughly following the treatment in \cite{nielsenQuantumComputationQuantum2010}.
 
 \begin{postulate}[The Hilbert space]
     Any isolated physical system is associated with a complex \emph{Hilbert space} i.e.\ a, possibly infinite-dimensional, complex vector space $\mathcal{H}$ with an inner product $\langle\cdot,\cdot\rangle$ that is also complete with respect to the metric induced by the inner product.
@@ -167,7 +169,7 @@ and to form a complete set of orthogonal projectors
     \\
     \sum_{x}P_x&=\mathbb{I} \label{eq:complete-pro}
 \end{align}
-To understand these definitions we first state an important theorem from linear algebra about self-adjoint operators, a complete treatment and proof can be found in \cref.
+To understand these definitions we first state an important theorem from linear algebra about self-adjoint operators, a complete treatment and proof can be found in \cite{langLinearAlgebra1987}.
 \begin{theorem}[Spectral theorem] \label{th:spectral}
     Let $\mathcal{H}$ be a finite-dimensional complex Hilbert space and $\mathrm{A}$ a self-adjoint operator on $\mathcal{H}$. Then there exists an orthonormal basis of eigenvectors of $\mathrm{A}$ with real eigenvalues.
 \end{theorem}
