@@ -61,7 +61,7 @@ We can now state the remaining postulates of quantum mechanics for the finite-di
     \end{equation}
     describe all the possible states of the system.
 \end{postulate}
-For state vectors, we will also use the Dirac notation writing vectors as $\ket{\psi}$ and their dual as $\bra{\psi}$. An exhaustive treatment of this notation may be found in \cref.
+For state vectors, we will also use the Dirac notation writing vectors as $\ket{\psi}$ and their dual as $\bra{\psi}$. An exhaustive treatment of this notation may be found in \cite{}.
 
 \begin{postulate}[Unitary evolution] \label{pt:unit-evol}
     The state vectors of a closed system evolve only through unitary transformations of the Hilbert space. That is, the time evolution of any state vector $\ket{\psi(t)}$ is given by
@@ -136,7 +136,7 @@ Self-adjoint operators are the Hermitian matrices, i.e., matrices equal to their
     \mathds{1}=\begin{pmatrix} 1 & 0\\ 0 & 1 \end{pmatrix}\quad\sigma_1=\begin{pmatrix} 0 & 1\\ 1 & 0 \end{pmatrix}\quad\sigma_2=\begin{pmatrix} 0 & -i\\ i & 0 \end{pmatrix}\quad\sigma_3=\begin{pmatrix} 1 & 0\\ 0 & -1 \end{pmatrix}
 \end{equation}
 where $\mathds{1}$ is the identity matrix and $\sigma_i$ are the Pauli matrices. Any self-adjoint operator $A$ can thus be expressed as
-\begin{align}
+\begin{align}\label{eq:pauli-rep}
     A&=a_0\mathds{1}+a_1\sigma_1+a_2\sigma_2+a_3\sigma_3=a_0\mathds{1}+\Vec{a}\cdot\Vec{\sigma},\quad\Vec{a}=(a_1,a_2,a_3)
 \end{align}
 where $a_0\in\mathbb{R}$ and $\Vec{a}\in\mathbb{R}^3$.
@@ -235,7 +235,7 @@ We have already seen that any self-adjoint operator $A$ can be expressed as
 \end{equation}
 and so these also represent the observables of the qubit.
 
-Let us now consider some examples of quantum measurements. In particular, we will consider the problem of discerning between two states of a qubit. This is a first, particular, instance of quantum estimation, a problem that will be of interest in \cref{ch3}.
+Let us now consider some examples of quantum measurements. In particular, we will consider the problem of discerning between two states of a qubit. This is an example of a quantum estimation problem.
 
 We start by considering a qubit that we know to be in one of two possible orthonormal states, $\ket{0}$ or $\ket{1}$. Then we can consider a PVM
 \begin{equation}
@@ -279,7 +279,7 @@ where $\ket{-}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})$, orthogonal to $\ket{+}$. Th
     \\
     p_{\ket{+}}(\lambda_1)&=\frac{1}{2}\qquad p_{\ket{+}}(\lambda_2)=0\qquad p_{\ket{+}}(\lambda_3)=\frac{1}{2}
 \end{align*}
-so that half of the time we can distinguish them. It can be shown that this is the best we can do for two non-orthogonal states so that in this sense there is a degree of indistinguishability between non-orthogonal states, similarly to the indistinguishability of probability distributions we discussed in \cref{prob-dist-ind}.
+so that half of the time we can distinguish them. It can be shown that this is the best we can do for two non-orthogonal states so that in this sense there is a degree of indistinguishability between non-orthogonal states, similar to the indistinguishability of probability distributions we discussed in \cref{ch:rel-entr}.
 
 \subsection{Quantum states} \label{sec:quantum-states}
 Following \crefrange{pt:state-vect}{pt:quant-meas}, if we are given a state vector for the system, we can determine how it will evolve under unitary evolutions, the probability distributions of the outcomes of quantum measurements, and the vector state we will obtain after those measurements, depending on the outcomes. We may then ask if there are multiple state vectors that yield the same probabilities for any measurement and continue to do so after any unitary evolution or measurement. Such two vectors would be completely equivalent in their predictions, and we can regard them as describing the same quantum state. This leads to an equivalence relation between state vectors, so that quantum states are the equivalence classes.
@@ -338,7 +338,7 @@ so that any quantum state can be represented by a state vector of the form
 where we have that when $\theta=0$ or $\theta=\pi$ the expression is independent of $\phi$. Then $\theta$ and $\phi$ can be regarded as the polar coordinates of a 2-sphere of quantum states with the north pole corresponding to $\ket{0}$ and the south pole to $\ket{1}$. This is known as the \emph{Bloch sphere} and is a representation of the projective space $\mathbf{\mathbb{C}P}^1$ for a fixed orthonormal basis.
 
 \subsection{Density operators}\label{sec:density-matrices}
-We have seen that quantum states are the 1-dim linear subspaces of $\mathcal{H}$, so we can identify them with some orthogonal projectors. The only additional requirement is that the projected spaces must be 1-dim, i.e., they must be rank-1 orthogonal projectors. From \cref{eq:proj-decomp}, we know that for any rank-1 projector, there must exist a normalized vector $\ket{\tilde{e}}$ such that
+We have seen that quantum states are the 1-dimensional linear subspaces of $\mathcal{H}$, so we can identify them with some orthogonal projectors. The only additional requirement is that the projected spaces must be 1-dim, i.e., they must be rank-1 orthogonal projectors. From \cref{eq:proj-decomp}, we know that for any rank-1 projector, there must exist a normalized vector $\ket{\tilde{e}}$ such that
 \begin{equation}
     P_{\tilde{e}}\ket{\psi}=\braket{\tilde{e}|\psi}\ket{\tilde{e}}\quad\forall\ket{\psi}\in\mathcal{H}_0
 \end{equation}
@@ -365,7 +365,7 @@ so that it defines the map
 \begin{equation}
     f:\mathbf{P}\mathcal{H}\to\mathfrak{D}\quad f([\ket{\psi}]_\sim)=\Pi(\ket{\psi})=\rho_\psi
 \end{equation}
-Finally, we can prove that $f$ is invertible, allowing us to identify quantum states with density matrices. The map is 1-1 since given any two state vectors $\ket{\psi}$ and $\ket{\phi}$, we have that
+Finally, we can prove that $f$ is invertible, allowing us to identify quantum states with density matrices. The map is 1-1 since given any two state-vectors $\ket{\psi}$ and $\ket{\phi}$, we have that
 \begin{align*}
     \rho_\psi=\rho_\phi &\implies \rho_\psi\,\rho_\phi=\rho_\phi
     \\
@@ -467,7 +467,7 @@ At last, we have that the expectation value of an observable $A$ when the system
 \end{equation}
 
 \subsubsection{Example: the qubit}
-Pure density operators for the qubit are the self-adjoint operators with one eigenvalue equal to 1 and the other equal to 0. Then pure density operators are represented by $2\times2$ Hermitian matrices with trace 1 and determinant 0. Expressing a generic Hermitian matrix $A$ as in \cref{pauli-rep} it can be shown that
+Pure density operators for the qubit are the self-adjoint operators with one eigenvalue equal to 1 and the other equal to 0. Then pure density operators are represented by $2\times2$ Hermitian matrices with trace 1 and determinant 0. Expressing a generic Hermitian matrix $A$ as in \cref{eq:pauli-rep} it can be shown that
 \begin{equation}
     \mathrm{tr}(A)=2a_0\qquad\mathrm{det}(A)=a_0^2-\lVert\Vec{a}\rVert^2
 \end{equation}
