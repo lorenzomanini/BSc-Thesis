@@ -73,9 +73,9 @@ We can then repeat the same arguments as for \cref{th:cramer-rao} to prove the f
 \begin{theorem}
     Let $\mathcal{S}=\left\{ \rho_\xi \mid \xi\in\Xi \right\}$ be an m-dimensional pure state model of $\mathbf{P}\mathcal{H}$. Then, for any m-tuple $\Vec{F}$ of single-parameter estimators, the matrix $\mathrm{W}_\xi[\Vec{F}]$ satisfies
     \begin{equation}
-        \mathrm{W}_\xi[\Vec{F}]\ge G_F^{-1}(p_\xi)
+        \mathrm{W}_\xi[\Vec{F}]\ge G_F^{-1}(\rho_\xi)
     \end{equation}
-    in the sense that $\mathrm{W}_\xi[\Vec{F}]-G_F^{-1}(p_\xi)$ is positive semi-definite.
+    in the sense that $\mathrm{W}_\xi[\Vec{F}]-G_F^{-1}(\rho_\xi)$ is positive semi-definite.
 \end{theorem}
 
 Unlike the classical case, the m-tuple of single-parameter estimators we defined cannot be used as a multivariate estimator. Intuitively, this is because every single-parameter estimator is a PVM and, unless the corresponding observables commute, the order of the measurements changes the distributions of the outcomes.

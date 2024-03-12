@@ -49,7 +49,7 @@ Even though relative entropy doesn't follow triangle inequality, it can be shown
 This is a generalization of the Pythagorean theorem in the sense that if it was stated in terms of the Euclidean distance squared, the angle between $\overline{pp_*}$ and $\overline{p_*q}$ would be obtuse and so \cref{eq:gen-pyth} would be the corollary of the Pythagorean theorem for obtuse triangles. This suggests that the relative entropy may be regarded as an asymmetric distance squared and as we will see this is enough to define a metric on the manifold.
 
 \subsection{Squared Riemannian distances} \label{ch:square-dist} 
-Now that we have some notion of distance, we shall explore how to define a coherent metric on the manifold. First, we shall study this for a Riemannian distance. The notation and the definitions will follow the ones of \cite{schutzGeometricalMethodsMathematical1980}.
+Now that we have some notion of distance, we explore how to define a coherent metric on the manifold. First, we shall study this for a Riemannian distance. The notation and the definitions will follow the ones of \cite{schutzGeometricalMethodsMathematical1980}.
 
 Let $(M,g)$ be a Riemannian manifold where $g$ is the metric tensor, then consider a point $p\in M$. We define the \emph{exponential map} in $p$ as follows
 \begin{equation}
@@ -163,7 +163,7 @@ where we used the fact that
 \begin{equation}
     \sum_{x\in\mathcal{X}}\partial_i\partial_jp(x;\xi)=\partial_i\partial_j\sum_{x\in\mathcal{X}}p(x;\xi)=0
 \end{equation}
-Since we know that any $g_{ij}^{(D)}$ is positive semi-definite, $g_{ij}^{(S)}$ will be positive definite if and only if it is invertible. It can be easily shown that if the functions $\partial_ip(x;\xi)$ are linearly independent, then $g_{ij}^{(S)}$ is invertible and thus positive definite. Thus, relative entropy is a divergence and in fact, it is also known as \emph{Kullback-Leibler divergence} or \emph{information divergence}.
+Since we know that any $g_{ij}^{(D)}$ is positive semi-definite, $g_{ij}^{(S)}$ will be positive definite if and only if it is invertible. It can be easily shown that if the functions $\partial_ip(x;\xi)$ are linearly independent, then $g_{ij}^{(S)}$ is invertible and thus positive definite. Then, relative entropy is a divergence and in fact, it is also known as \emph{Kullback-Leibler divergence} or \emph{information divergence}.
 
 Finally, then, $G_F\coloneqq\{g_{ij}^{(S)}\}$ defines a metric tensor at every point and it is known as the \emph{Fisher information metric}. This is, up to a constant factor, the unique metric induced by the relative entropy, and it plays a focal role in the geometrical modeling and interpretation of statistics.
 
