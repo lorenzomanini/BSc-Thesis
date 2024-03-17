@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt,oneside,titlepage]{report}
+\documentclass[a4paper,12pt,twoside,titlepage]{report}
 \input{preamble.tex}
 
 \begin{document}
@@ -26,8 +26,10 @@
 \cleardoublepage
 
 %\backmatter
+\addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{unsrt}
 \bibliography{quantum-estimation}
-\include{chapters/acknowledge.tex}
+\cleardoublepage
+\input{chapters/acknowledge.tex}
 
 \end{document}
